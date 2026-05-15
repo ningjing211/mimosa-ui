@@ -235,6 +235,8 @@
   --psy-a11y-fg-muted-on-page: var(--psy-text-secondary);
   --psy-a11y-fg-default-on-card: var(--psy-text-on-light);
   --psy-a11y-fg-muted-on-card: var(--psy-text-muted-on-light);
+  --psy-a11y-fg-on-alert: var(--psy-alert-fg);
+  --psy-a11y-fg-muted-on-alert: var(--psy-alert-fg-muted);
   --psy-a11y-fg-on-accent: var(--psy-text-on-dark);
 
   /* =========================
@@ -371,15 +373,24 @@
   --psy-sidenav-item-divider: color-mix(in srgb, var(--psy-color-base) 18%, transparent);
   --psy-sidenav-active-bg: color-mix(in srgb, var(--psy-color-secondary-lime) 30%, var(--psy-primitive-white));
 
-  /* Alerts（對齊 NASA WDS Alerts：success / warning / error / info） */
+  /* Alerts（淺底 elevated + 左側色條；前景用 --psy-text-on-light，勿用 text-primary） */
+  --psy-alert-fg: var(--psy-text-on-light);
+  --psy-alert-fg-muted: var(--psy-text-muted-on-light);
+  --psy-alert-icon-bg: var(--psy-color-base);
+  --psy-alert-icon-fg: var(--psy-primitive-white);
   --psy-alert-success-accent: var(--psy-color-secondary-lime);
-  --psy-alert-success-bg: color-mix(in srgb, var(--psy-color-secondary-lime) 18%, var(--psy-color-bg-panel));
+  --psy-alert-success-bg: color-mix(in srgb, var(--psy-color-secondary-lime) 22%, var(--psy-surface-card));
   --psy-alert-warning-accent: var(--psy-color-secondary-amber);
-  --psy-alert-warning-bg: color-mix(in srgb, var(--psy-color-secondary-amber) 22%, var(--psy-color-bg-panel));
+  --psy-alert-warning-bg: color-mix(in srgb, var(--psy-color-secondary-amber) 26%, var(--psy-surface-card));
   --psy-alert-error-accent: var(--psy-color-secondary-magenta);
-  --psy-alert-error-bg: color-mix(in srgb, var(--psy-color-secondary-magenta) 18%, var(--psy-color-bg-panel));
+  --psy-alert-error-bg: color-mix(in srgb, var(--psy-color-secondary-magenta) 18%, var(--psy-surface-card));
   --psy-alert-info-accent: var(--psy-color-secondary-orange);
-  --psy-alert-info-bg: color-mix(in srgb, var(--psy-color-secondary-orange) 16%, var(--psy-color-bg-panel));
+  --psy-alert-info-bg: color-mix(in srgb, var(--psy-color-secondary-orange) 16%, var(--psy-surface-card));
+  /* 深紫頁面上可略提高色條色洗濃度（仍為淺底） */
+  --psy-alert-success-bg-on-dark: color-mix(in srgb, var(--psy-color-secondary-lime) 18%, var(--psy-primitive-white));
+  --psy-alert-warning-bg-on-dark: color-mix(in srgb, var(--psy-color-secondary-amber) 20%, var(--psy-primitive-white));
+  --psy-alert-error-bg-on-dark: color-mix(in srgb, var(--psy-color-secondary-magenta) 14%, var(--psy-primitive-white));
+  --psy-alert-info-bg-on-dark: color-mix(in srgb, var(--psy-color-secondary-orange) 14%, var(--psy-primitive-white));
 
   /* Form controls（對齊 NASA WDS Form controls） */
   --psy-form-input-bg: color-mix(in srgb, var(--psy-primitive-white) 12%, var(--psy-color-bg-panel-muted));

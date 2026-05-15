@@ -13,15 +13,16 @@
   border: var(--psy-border-width-block) solid var(--psy-border-strong);
   box-shadow: var(--psy-shadow-hard);
   border-left-width: 10px;
+  color: var(--psy-alert-fg);
 }
 
 .alert__icon {
   width: 2.7rem;
   height: 2.7rem;
   border-radius: 999px;
-  border: 2px solid var(--psy-color-base);
-  background: var(--psy-color-base);
-  color: var(--psy-primitive-white);
+  border: 2px solid var(--psy-alert-icon-bg);
+  background: var(--psy-alert-icon-bg);
+  color: var(--psy-alert-icon-fg);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -41,18 +42,18 @@
   font-size: var(--psy-font-size-h3);
   font-weight: var(--psy-font-weight-h3);
   line-height: 1.25;
-  color: var(--psy-text-primary);
+  color: var(--psy-alert-fg);
 }
 
 .alert__text {
   margin: 0;
   font-size: var(--psy-font-size-body);
   line-height: var(--psy-line-height-body);
-  color: var(--psy-text-secondary);
+  color: var(--psy-alert-fg-muted);
 }
 
 .alert__text a {
-  color: var(--psy-text-primary);
+  color: var(--psy-alert-fg);
   font-weight: 700;
 }
 
@@ -76,37 +77,21 @@
   background: var(--psy-alert-info-bg);
 }
 
-.alert-on-dark {
-  border-color: var(--psy-border-strong);
-  background: color-mix(in srgb, var(--psy-primitive-white) 94%, var(--psy-color-bg-panel));
-}
-
-.alert-on-dark .alert__heading {
-  color: var(--psy-color-base);
-}
-
-.alert-on-dark .alert__text {
-  color: color-mix(in srgb, var(--psy-color-base) 76%, transparent);
-}
-
-.alert-on-dark .alert__text a {
-  color: var(--psy-color-base);
-}
-
+/* 深紫產品頁：仍為淺底 elevated；僅背景色洗略加深以利辨識 */
 .alert-on-dark.alert-success {
-  background: color-mix(in srgb, var(--psy-alert-success-accent) 14%, var(--psy-primitive-white));
+  background: var(--psy-alert-success-bg-on-dark);
 }
 
 .alert-on-dark.alert-warning {
-  background: color-mix(in srgb, var(--psy-alert-warning-accent) 16%, var(--psy-primitive-white));
+  background: var(--psy-alert-warning-bg-on-dark);
 }
 
 .alert-on-dark.alert-error {
-  background: color-mix(in srgb, var(--psy-alert-error-accent) 12%, var(--psy-primitive-white));
+  background: var(--psy-alert-error-bg-on-dark);
 }
 
 .alert-on-dark.alert-info {
-  background: color-mix(in srgb, var(--psy-alert-info-accent) 12%, var(--psy-primitive-white));
+  background: var(--psy-alert-info-bg-on-dark);
 }
 
 .alert-paragraph .alert__text {

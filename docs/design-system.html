@@ -824,6 +824,10 @@ import "mimosa-design-system/tailwind.css";
                       <td><code>--psy-a11y-fg-muted-on-card</code>（同 <code>--psy-text-muted-on-light</code>）</td>
                     </tr>
                     <tr>
+                      <td>提示列（Alert）主／次內文</td>
+                      <td><code>--psy-a11y-fg-on-alert</code>／<code>--psy-a11y-fg-muted-on-alert</code></td>
+                    </tr>
+                    <tr>
                       <td>螢光／淺飽和底上的字</td>
                       <td><code>--psy-a11y-fg-on-accent</code>（同 <code>--psy-text-on-dark</code>）</td>
                     </tr>
@@ -1279,7 +1283,9 @@ import "mimosa-design-system/tailwind.css";
             <p class="ds-section__lead">
               用來告知使用者<strong>重要或具時效</strong>的系統／表單狀態。結構與角色對齊
               <a href="https://nasa.github.io/nasawds-site/components/alerts/">NASA Web Design System — Alerts</a>；樣式沿用 Neo-Brutalism
-              粗框與硬陰影，狀態色對應 <code>--psy-alert-*</code>。產品 class 為 <code>.alert</code> 系列（raw 疊加層，已編入 <code>tailwind/product.css</code> 與本頁 bundle）。
+              粗框與硬陰影；底色為洗白 elevated（<code>--psy-alert-*-bg</code>），內文請用
+              <code>--psy-alert-fg</code>／<code>--psy-alert-fg-muted</code>，勿與深紫頁的 <code>--psy-text-primary</code> 混用。產品 class 為
+              <code>.alert</code> 系列（<code>tailwind/product.css</code>）。
             </p>
 
             <article class="ds-doc-card" id="alerts-variants">
