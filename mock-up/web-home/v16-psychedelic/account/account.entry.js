@@ -1,1 +1,0 @@
-import "mimosa-design-system/tailwind.css";
