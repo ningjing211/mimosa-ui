@@ -521,4 +521,39 @@
 
   /* Divider */
   --psy-divider-color: color-mix(in srgb, var(--psy-color-base) 22%, transparent);
+
+  /* Avatar */
+  --psy-avatar-size-sm: 2rem;
+  --psy-avatar-size-md: 2.5rem;
+  --psy-avatar-size-lg: 3.25rem;
+  --psy-avatar-size-xl: 4.5rem;
+  --psy-avatar-font-size-sm: 0.65rem;
+  --psy-avatar-font-size-md: 0.75rem;
+  --psy-avatar-font-size-lg: 1rem;
+  --psy-avatar-font-size-xl: 1.25rem;
+  --psy-avatar-fg: var(--psy-primitive-white);
+  --psy-avatar-stack-overlap: 0.65rem;
+
+  /* Range / slider（淺底表單；track 用 card 系 neutral） */
+  --psy-range-track-bg: color-mix(in srgb, var(--psy-color-base) 12%, var(--psy-surface-card));
+  --psy-range-fill-bg: var(--psy-color-secondary-lime);
+  --psy-range-thumb-bg: var(--psy-color-secondary-lime);
+  --psy-range-thumb-ring: var(--psy-color-base);
+
+  /* File upload */
+  --psy-file-upload-bg: var(--psy-surface-card);
+  --psy-file-upload-border: var(--psy-border-strong);
+  --psy-file-upload-fg: var(--psy-text-on-light);
+  --psy-file-upload-fg-muted: var(--psy-text-muted-on-light);
+
+  /* Timeline */
+  --psy-timeline-marker-size: 0.875rem;
+  --psy-timeline-line: var(--psy-divider-color);
+  --psy-timeline-marker-bg: var(--psy-color-secondary-lime);
+
+  /* Stat / metric card */
+  --psy-stat-value-color: var(--psy-text-on-light);
+  --psy-stat-label-color: var(--psy-text-muted-on-light);
+  --psy-stat-delta-positive: color-mix(in srgb, var(--psy-color-base) 70%, var(--psy-color-secondary-lime));
+  --psy-stat-delta-negative: var(--psy-alert-error-accent);
 }

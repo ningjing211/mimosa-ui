@@ -45,6 +45,9 @@ async function build() {
     "overlays.css",
     "feedback.css",
     "navigation-ui.css",
+    "avatar.css",
+    "forms-extended.css",
+    "data-display.css",
     "chrome.css",
     "flow-page.css"
   ];

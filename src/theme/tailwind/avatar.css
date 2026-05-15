@@ -1,0 +1,90 @@
+/**
+ * Avatar — circular identity (sizes, image, stack).
+ * Legacy .psy-avatar remains a large hero placeholder in components.css.
+ */
+@layer components {
+  .avatar {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--psy-avatar-size-md);
+    height: var(--psy-avatar-size-md);
+    overflow: hidden;
+    border: 2px solid var(--psy-border-strong);
+    border-radius: 999px;
+    box-shadow: var(--psy-shadow-soft);
+    background: var(--psy-gradient-avatar);
+    color: var(--psy-avatar-fg);
+    font-family: var(--psy-font-family-display);
+    font-size: var(--psy-avatar-font-size-md);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .avatar--sm {
+    width: var(--psy-avatar-size-sm);
+    height: var(--psy-avatar-size-sm);
+    font-size: var(--psy-avatar-font-size-sm);
+  }
+
+  .avatar--lg {
+    width: var(--psy-avatar-size-lg);
+    height: var(--psy-avatar-size-lg);
+    font-size: var(--psy-avatar-font-size-lg);
+  }
+
+  .avatar--xl {
+    width: var(--psy-avatar-size-xl);
+    height: var(--psy-avatar-size-xl);
+    font-size: var(--psy-avatar-font-size-xl);
+  }
+
+  .avatar__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .avatar-stack {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .avatar-stack__item {
+    margin: 0;
+  }
+
+  .avatar-stack .avatar,
+  .avatar-stack__item .avatar {
+    margin-inline-start: calc(var(--psy-avatar-stack-overlap) * -1);
+    box-shadow: 2px 2px 0 var(--psy-color-base);
+  }
+
+  .avatar-stack .avatar:first-child,
+  .avatar-stack__item:first-child .avatar {
+    margin-inline-start: 0;
+  }
+
+  .avatar-stack__more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--psy-avatar-size-md);
+    height: var(--psy-avatar-size-md);
+    padding: 0 var(--psy-space-3);
+    margin-inline-start: calc(var(--psy-avatar-stack-overlap) * -1);
+    border: 2px solid var(--psy-border-strong);
+    border-radius: 999px;
+    background: var(--psy-surface-card);
+    color: var(--psy-text-on-light);
+    font-size: var(--psy-font-size-chip);
+    font-weight: 800;
+    box-shadow: var(--psy-shadow-soft);
+  }
+}

@@ -200,6 +200,16 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                   </ul>
                 </li>
                 <li>
+                  <a href="#components-extended">進階元件 · Extended</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#extended-range">Range</a></li>
+                    <li><a href="#extended-file-upload">File upload</a></li>
+                    <li><a href="#extended-avatar">Avatar</a></li>
+                    <li><a href="#extended-timeline">Timeline</a></li>
+                    <li><a href="#extended-stat-card">Stat card</a></li>
+                  </ul>
+                </li>
+                <li>
                   <a href="#components-labels">標籤 · Labels</a>
                   <ul class="ds-sidenav__sub">
                     <li><a href="#labels-variants">樣式變體</a></li>
@@ -1506,6 +1516,131 @@ import "mimosa-design-system/tailwind.css";
                 <span class="switch__track" aria-hidden="true"></span>
                 <span class="switch__label">開啟推播通知</span>
               </label>
+            </article>
+          </section>
+
+          <!-- ========== Extended（range / upload / avatar / timeline / stat） ========== -->
+          <section class="ds-section" id="components-extended" aria-labelledby="extended-heading">
+            <h2 class="ds-section__title" id="extended-heading">進階元件 · Extended</h2>
+            <p class="ds-section__lead">
+              低頻但常見的資料與表單延伸；版面用 Tailwind utility，皮膚在
+              <code>avatar.css</code>、<code>forms-extended.css</code>、<code>data-display.css</code>。淺色 elevated 區塊請用
+              <code>--psy-text-on-light</code>／<code>--psy-text-muted-on-light</code>，勿混用頁面級 <code>--psy-text-primary</code>。
+            </p>
+
+            <article class="ds-doc-card" id="extended-range">
+              <h3 class="ds-doc-card__title">Range · Slider</h3>
+              <p class="ds-doc-card__desc">
+                原生 <code>input[type="range"]</code> + <code>.range</code>；track／thumb 由 <code>--psy-range-*</code> token 控制。
+              </p>
+              <div class="range-field max-w-md">
+                <div class="range-field__header">
+                  <label class="form-label" for="ds-range-volume">音量</label>
+                  <span class="range-field__value" id="ds-range-value" aria-live="polite">60</span>
+                </div>
+                <input
+                  class="range"
+                  id="ds-range-volume"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="60"
+                  oninput="document.getElementById('ds-range-value').textContent = this.value"
+                />
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="extended-file-upload">
+              <h3 class="ds-doc-card__title">File upload</h3>
+              <p class="ds-doc-card__desc">
+                整區可點擊；隱藏 <code>input[type="file"]</code> 覆蓋於 <code>.file-upload</code>。hover／focus-within 走
+                <code>--psy-elevated-hover-*</code>。
+              </p>
+              <label class="file-upload max-w-lg">
+                <input class="file-upload__input" type="file" accept="image/*,.pdf" multiple />
+                <p class="file-upload__title">拖曳檔案至此，或點擊選擇</p>
+                <p class="file-upload__hint">PNG、JPG 或 PDF，單檔上限 10MB</p>
+              </label>
+            </article>
+
+            <article class="ds-doc-card" id="extended-avatar">
+              <h3 class="ds-doc-card__title">Avatar · Stack</h3>
+              <p class="ds-doc-card__desc">
+                尺寸 <code>--sm|lg|xl</code>；圖片用 <code>.avatar__img</code>；疊加列用 <code>.avatar-stack</code>。
+              </p>
+              <div class="flex flex-wrap items-center gap-psy-7">
+                <span class="avatar avatar--sm" title="Small">S</span>
+                <span class="avatar" title="Medium">MJ</span>
+                <span class="avatar avatar--lg" title="Large">LG</span>
+                <span class="avatar avatar--xl" aria-hidden="true">
+                  <img
+                    class="avatar__img"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect fill='%23c4f542' width='72' height='72'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='28' font-weight='800' fill='%231a0a2e'%3EXL%3C/text%3E%3C/svg%3E"
+                    alt=""
+                  />
+                </span>
+              </div>
+              <ul class="avatar-stack mt-psy-7" aria-label="專案成員">
+                <li class="avatar-stack__item"><span class="avatar" title="Ana">AN</span></li>
+                <li class="avatar-stack__item"><span class="avatar" title="Bo">BO</span></li>
+                <li class="avatar-stack__item"><span class="avatar" title="Cy">CY</span></li>
+                <li class="avatar-stack__item"><span class="avatar-stack__more">+4</span></li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="extended-timeline">
+              <h3 class="ds-doc-card__title">Timeline</h3>
+              <p class="ds-doc-card__desc">垂直時間軸；節點 <code>.timeline__marker</code>，連線 <code>--psy-timeline-line</code>。</p>
+              <ol class="timeline max-w-lg">
+                <li class="timeline__item">
+                  <span class="timeline__marker" aria-hidden="true"></span>
+                  <div>
+                    <h4 class="timeline__title">報名開放</h4>
+                    <p class="timeline__text">參與者可提交表單並上傳證明文件。</p>
+                    <time class="timeline__time" datetime="2026-05-01">2026-05-01</time>
+                  </div>
+                </li>
+                <li class="timeline__item">
+                  <span class="timeline__marker" aria-hidden="true"></span>
+                  <div>
+                    <h4 class="timeline__title">審核完成</h4>
+                    <p class="timeline__text">主辦方已核准 128 筆申請。</p>
+                    <time class="timeline__time" datetime="2026-05-10">2026-05-10</time>
+                  </div>
+                </li>
+                <li class="timeline__item">
+                  <span class="timeline__marker" aria-hidden="true"></span>
+                  <div>
+                    <h4 class="timeline__title">活動開始</h4>
+                    <p class="timeline__text">現場簽到與即時通知將同步啟用。</p>
+                    <time class="timeline__time" datetime="2026-05-15">2026-05-15</time>
+                  </div>
+                </li>
+              </ol>
+            </article>
+
+            <article class="ds-doc-card" id="extended-stat-card">
+              <h3 class="ds-doc-card__title">Stat / metric card</h3>
+              <p class="ds-doc-card__desc">
+                獨立 <code>.stat-card</code>（亦可與 <code>.card</code> 組合）；數值與增減色見 <code>--psy-stat-*</code>。
+              </p>
+              <div class="grid gap-psy-5 sm:grid-cols-3 max-w-3xl">
+                <article class="stat-card">
+                  <p class="stat-card__label">活躍使用者</p>
+                  <p class="stat-card__value">12,480</p>
+                  <p class="stat-card__delta stat-card__delta--positive">+8.2% 較上週</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-card__label">轉換率</p>
+                  <p class="stat-card__value">3.4%</p>
+                  <p class="stat-card__delta stat-card__delta--negative">−0.3% 較上月</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-card__label">平均停留</p>
+                  <p class="stat-card__value">4m 12s</p>
+                  <p class="stat-card__delta stat-card__delta--positive">+12s</p>
+                </article>
+              </div>
             </article>
           </section>
 

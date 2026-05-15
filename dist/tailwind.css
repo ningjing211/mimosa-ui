@@ -12,8 +12,11 @@
  *   8. overlays.css      — .modal / .drawer (raw overlay)
  *   9. feedback.css      — .toast / .spinner / .progress / .skeleton (raw overlay)
  *  10. navigation-ui.css — .tabs / .dropdown / .breadcrumb / … (raw overlay)
- *  11. chrome.css        — .site-header / .data-table / … (raw overlay)
- *  12. flow-page.css     — .psy-flow-* (raw overlay)
+ *  11. avatar.css        — .avatar / .avatar-stack (raw overlay)
+ *  12. forms-extended.css — .range / .file-upload (raw overlay)
+ *  13. data-display.css  — .timeline / .stat-card (raw overlay)
+ *  14. chrome.css        — .site-header / .data-table / … (raw overlay)
+ *  15. flow-page.css     — .psy-flow-* (raw overlay)
  *
  * Peer dependency: tailwindcss ^4
  */
@@ -27,5 +30,8 @@
 @import "./tailwind/overlays.css";
 @import "./tailwind/feedback.css";
 @import "./tailwind/navigation-ui.css";
+@import "./tailwind/avatar.css";
+@import "./tailwind/forms-extended.css";
+@import "./tailwind/data-display.css";
 @import "./tailwind/chrome.css";
 @import "./tailwind/flow-page.css";

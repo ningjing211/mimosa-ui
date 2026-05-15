@@ -37,7 +37,11 @@
 | **Skeleton** | `.skeleton`、`.empty-state` | ✅ 基礎完整 |
 | **Toggle Switch** | `.switch`（`product.css`）| ✅ 基礎完整 |
 | **Divider** | `.divider` | ✅ 基礎完整 |
-| **Avatar** | 單一 Avatar 佔位 | ⚠️ 僅佔位圖 |
+| **Avatar** | `.avatar`（sm / md / lg / xl）、`.avatar__img`、`.avatar-stack`（`avatar.css`）| ✅ 基礎完整 |
+| **Range** | `.range`、`.range-field`（`forms-extended.css`）| ✅ 基礎完整 |
+| **File upload** | `.file-upload`（`forms-extended.css`）| ✅ 基礎完整 |
+| **Timeline** | `.timeline`、`.timeline__item`（`data-display.css`）| ✅ 基礎完整 |
+| **Stat card** | `.stat-card`（`data-display.css`）| ✅ 基礎完整 |
 
 ---
 
@@ -59,11 +63,7 @@
 
 | 元件 | 說明 |
 |---|---|
-| **Slider / Range** | 數值範圍選取 |
-| **File Upload** | 檔案上傳觸發區 |
-| **Avatar Stack** | 多人頭像疊加 |
-| **Timeline** | 時間序列展示 |
-| **Stat / Metric Card** | 數據指標卡片（可組合 `.card`）|
+| — | 低優先展示型元件已具基礎 CSS（見 Extended 文件區）|
 
 ---
 
@@ -74,7 +74,8 @@
 | **Button** | Ghost、Icon-only、Button group / Split button |
 | **Input** | Input with icon / prefix / suffix、Input group、OTP / PIN 輸入 |
 | **Table** | 排序狀態、Row selection、固定列 / 欄、空態 |
-| **Avatar** | 有圖版本、尺寸變體、Avatar group |
+| **Avatar** | 線上圖示狀態（online dot）、可點擊連結包裝 |
+| **Range** | 雙拇指區間、刻度標籤 |
 | **Navigation** | 行動裝置 hamburger menu、Mega menu、Mobile bottom nav |
 | **Modal / Drawer** | 尺寸變體、焦點陷阱、動畫（host 實作）|
 | **Toast** | 佇列動畫、自動關閉（host 實作）|
@@ -84,11 +85,12 @@
 ## 架構備註
 
 - **Tailwind**：版面 utility（`flex`、`gap-psy-*`、`max-w-*`）
-- **Raw CSS**：`overlays.css`、`feedback.css`、`navigation-ui.css` 等 partial
-- **Surface 原則**：elevated 元件使用 `--psy-overlay-surface` + `--psy-overlay-fg`，勿混用 `--psy-text-primary`
+- **Raw CSS**：`avatar.css`、`forms-extended.css`、`data-display.css` 等 partial；token 定義於 `tokens.css`
+- **Surface 原則**：elevated 元件使用 `--psy-surface-card` + `--psy-text-on-light`，勿混用 `--psy-text-primary`（頁面深紫底用）
+- **Elevated hover**：`--psy-elevated-hover-*` 用於 file-upload、tab、menu 等淺底互動
 
 ---
 
 ## 總結
 
-核心元件已覆蓋約 **75–80%** 的主流需求。下一步可補 Stepper、Slider、Avatar 變體，以及 overlay 的 JS 互動範例。
+核心與低優先展示型元件已覆蓋約 **82–85%** 的主流需求。下一步可補 **Stepper**、Button／Input 進階變體，以及 overlay／toast 的 host JS 互動範例。
