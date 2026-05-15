@@ -462,11 +462,16 @@
   --psy-tabs-bg: var(--psy-surface-card-muted);
   --psy-tab-fg: var(--psy-text-on-light);
   --psy-tab-fg-muted: var(--psy-text-muted-on-light);
-  /* 未選取 hover：實心底 + 框線 + 硬陰影（勿用 transparent 混色，在淺底 tabs 列上幾乎看不見） */
-  --psy-tab-hover-bg: color-mix(in srgb, var(--psy-primitive-white) 90%, var(--psy-surface-card));
-  --psy-tab-hover-fg: var(--psy-text-on-light);
-  --psy-tab-hover-border: var(--psy-color-base);
-  --psy-tab-hover-shadow: 2px 2px 0 var(--psy-color-base);
+  /* Elevated 淺底上的通用 hover（中性；勿混 surface-card-muted／cyan） */
+  --psy-elevated-hover-bg: color-mix(in srgb, var(--psy-primitive-white) 93%, var(--psy-surface-card));
+  --psy-elevated-hover-fg: var(--psy-text-on-light);
+  --psy-elevated-hover-border: var(--psy-color-base);
+  --psy-elevated-hover-shadow: 2px 2px 0 var(--psy-color-base);
+  /* 未選取 tab hover */
+  --psy-tab-hover-bg: var(--psy-elevated-hover-bg);
+  --psy-tab-hover-fg: var(--psy-elevated-hover-fg);
+  --psy-tab-hover-border: var(--psy-elevated-hover-border);
+  --psy-tab-hover-shadow: var(--psy-elevated-hover-shadow);
   --psy-tab-active-bg: var(--psy-color-secondary-lime);
   --psy-tab-active-fg: var(--psy-text-on-dark);
   --psy-tab-active-hover-bg: color-mix(in srgb, var(--psy-color-secondary-lime) 86%, var(--psy-color-base));
@@ -475,7 +480,18 @@
   --psy-tab-indicator: var(--psy-color-base);
   --psy-menu-bg: var(--psy-overlay-surface);
   --psy-menu-shadow: var(--psy-shadow-hard);
-  --psy-menu-item-hover: color-mix(in srgb, var(--psy-color-secondary-cyan) 18%, var(--psy-surface-card));
+  /* 選單項 hover：沿用 elevated-hover（白 + surface-card，無 cyan） */
+  --psy-menu-item-hover-bg: var(--psy-elevated-hover-bg);
+  --psy-menu-item-hover-fg: var(--psy-elevated-hover-fg);
+  --psy-menu-item-hover-border: var(--psy-elevated-hover-border);
+  --psy-menu-item-hover-shadow: var(--psy-elevated-hover-shadow);
+  --psy-menu-item-danger-hover-bg: color-mix(
+    in srgb,
+    var(--psy-color-secondary-magenta) 10%,
+    var(--psy-surface-card)
+  );
+  --psy-menu-item-danger-hover-fg: var(--psy-text-on-light);
+  --psy-menu-item-danger-hover-border: var(--psy-alert-error-accent);
   --psy-breadcrumb-fg: var(--psy-text-muted-on-light);
   --psy-breadcrumb-fg-current: var(--psy-text-on-light);
   --psy-pagination-bg: var(--psy-surface-card);

@@ -1446,13 +1446,18 @@ import "mimosa-design-system/tailwind.css";
 
             <article class="ds-doc-card" id="nav-ui-dropdown">
               <h3 class="ds-doc-card__title">Dropdown</h3>
+              <p class="ds-doc-card__desc">
+                選單項 hover 使用 <code>--psy-elevated-hover-*</code>（中性淺底 + 黑框／硬陰影，與 tabs 相同）；基底為
+                <code>--psy-surface-card</code>，<strong>勿</strong>混 <code>--psy-surface-card-muted</code>（含 cyan）。刪除項加
+                <code>dropdown__item--danger</code>。
+              </p>
               <div class="dropdown">
                 <button type="button" class="psy-brutal psy-btn" aria-haspopup="true" aria-expanded="true">更多動作</button>
                 <ul class="dropdown__menu" role="menu">
                   <li role="none"><button type="button" class="dropdown__item" role="menuitem">編輯</button></li>
                   <li role="none"><button type="button" class="dropdown__item" role="menuitem">複製連結</button></li>
                   <li role="presentation"><hr class="dropdown__divider" /></li>
-                  <li role="none"><button type="button" class="dropdown__item" role="menuitem">刪除</button></li>
+                  <li role="none"><button type="button" class="dropdown__item dropdown__item--danger" role="menuitem">刪除</button></li>
                 </ul>
               </div>
             </article>
