@@ -10,6 +10,6 @@
 @import "../../src/theme/tailwind/theme.css";
 @import "../../src/theme/tailwind/base.css";
 @import "../../src/theme/tailwind/components.css";
-/* Legacy product classes used in design-system demos (.alert, .form-*, .button) */
-@import "../../src/theme/mimosa.css";
+/* Product demos in design-system (.alert, .form-*, .search-bar, .label) */
+@import "./docs-product-demos.css";
 @import "./docs-overrides.css";

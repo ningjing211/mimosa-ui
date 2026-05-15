@@ -1072,7 +1072,7 @@ import "mimosa-design-system/tokens.css";</code></pre>
               <h3 class="ds-doc-card__title">實作說明 · Implementation</h3>
               <p class="ds-doc-card__desc">
                 範例以 <code>&lt;button&gt;</code> 為主；若為連結套用按鈕外觀，可加上與按鈕相同的 class（對齊 NASA：在
-                <code>&lt;a&gt;</code> 上使用 button class）。目前 package 的完整樣式入口為 <code>mimosa.css</code>，對應 legacy
+                <code>&lt;a&gt;</code> 上使用 button class）。建議入口為 <code>tailwind.css</code>（<code>.psy-btn</code>）；完整 raw 包為 legacy <code>mimosa.css</code>，對應
                 <code>.button</code>／<code>.button.primary</code>；文件示例則以 package primitives
                 <code>psy-btn</code>／<code>psy-btn--primary</code> 為主，再由 <code>ds-btn--demo-*</code> 補足靜態狀態展示。
               </p>
@@ -1122,7 +1122,7 @@ import "mimosa-design-system/tokens.css";</code></pre>
             <p class="ds-section__lead">
               用來告知使用者<strong>重要或具時效</strong>的系統／表單狀態。結構與角色對齊
               <a href="https://nasa.github.io/nasawds-site/components/alerts/">NASA Web Design System — Alerts</a>；樣式沿用 Neo-Brutalism
-              粗框與硬陰影，狀態色對應 <code>--psy-alert-*</code>。完整樣式 bundle 可使用 <code>mimosa.css</code> 的 <code>.alert</code> 系列 class。
+              粗框與硬陰影，狀態色對應 <code>--psy-alert-*</code>。產品 class 為 <code>.alert</code> 系列（本文件站已編入 <code>docs.bundle.css</code>；套件內見 <code>mimosa.css</code>）。
             </p>
 
             <article class="ds-doc-card" id="alerts-variants">
@@ -1349,7 +1349,7 @@ import "mimosa-design-system/tokens.css";</code></pre>
             <p class="ds-section__lead">
               讓使用者在頁面上輸入與選取資訊。結構與可訪問性要點對齊
               <a href="https://nasa.github.io/nasawds-site/components/form-controls/">NASA Web Design System — Form controls</a>；外觀沿用 Neo-Brutalism
-              粗框與硬陰影，錯誤／成功態沿用 <code>--psy-alert-*</code>。本頁示範為 <code>ds-*</code>；完整樣式 bundle 可使用 <code>mimosa.css</code> 的 <code>form-*</code>（見實作一節）。
+              粗框與硬陰影，錯誤／成功態沿用 <code>--psy-alert-*</code>。本頁示範為 <code>ds-*</code>；產品 class 為 <code>form-*</code>（已編入 <code>docs.bundle.css</code>；見實作一節）。
             </p>
 
             <article class="ds-doc-card" id="form-a11y-intro">
@@ -1612,7 +1612,7 @@ import "mimosa-design-system/tokens.css";</code></pre>
             <article class="ds-doc-card" id="form-implementation">
               <h3 class="ds-doc-card__title">實作 · Product classes</h3>
               <p class="ds-doc-card__desc">
-                使用完整樣式 bundle 時請載入 <code>mimosa.css</code>（其內已引用 <code>tokens.css</code>）。對應關係：<code>ds-label</code> → <code>form-label</code>、<code>ds-input</code> →
+                Host 專案請載入 <code>tailwind.css</code> 或 legacy <code>mimosa.css</code>（皆含 <code>tokens.css</code>）。對應關係：<code>ds-label</code> → <code>form-label</code>、<code>ds-input</code> →
                 <code>form-input</code>、<code>ds-textarea</code> → <code>form-textarea</code>、<code>ds-select</code> → <code>form-select</code>、<code>ds-hint</code> →
                 <code>form-hint</code>、錯誤群組 <code>form-error-group</code>／<code>form-error-msg</code>／<code>form-input--error</code>、<code>ds-fieldset</code> →
                 <code>form-fieldset</code>、<code>ds-legend</code> → <code>form-legend</code>、選項清單 <code>form-choice-list</code> + <code>form-choice</code>、日期列

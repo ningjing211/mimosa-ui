@@ -45,41 +45,9 @@ body {
   top: var(--psy-space-4);
 }
 
-.ds-page {
-  min-height: 100vh;
-}
-
-.ds-top {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--psy-space-4);
-  padding: var(--psy-space-6) var(--psy-space-8);
-  background: var(--ds-doc-surface);
-  color: var(--ds-doc-text);
-}
-
-.ds-top__brand {
-  font-family: var(--psy-font-family-display);
-  font-size: var(--psy-font-size-brand);
-  font-weight: var(--psy-font-weight-display);
-  color: inherit;
-  text-decoration: none;
-}
-
 .ds-top__brand:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
-}
-
-.ds-top__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--psy-space-3);
 }
 
 .ds-nav-chip {
@@ -92,13 +60,6 @@ body {
 }
 
 /* ---------- 文件首屏（層級參考 Tailwind / shadcn；視覺仍用 Psychedelic token） ---------- */
-.ds-landing {
-  position: relative;
-  padding: var(--psy-space-13) var(--psy-space-8) var(--psy-space-12);
-  overflow: hidden;
-  scroll-margin-top: var(--ds-sticky-top);
-}
-
 .ds-landing__bg {
   position: absolute;
   inset: 0;
@@ -107,13 +68,6 @@ body {
     radial-gradient(circle at 18% 12%, var(--psy-primitive-glow-orange-mix), transparent 28%),
     radial-gradient(circle at 82% 72%, var(--psy-primitive-glow-magenta-mix), transparent 32%),
     linear-gradient(165deg, var(--psy-surface-page-base), var(--psy-surface-page-deep));
-}
-
-.ds-landing__inner {
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
 .ds-landing__eyebrow {
@@ -158,13 +112,6 @@ body {
 
 .ds-landing__subtitle a:hover {
   color: var(--psy-text-primary);
-}
-
-.ds-landing__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--psy-space-4);
-  margin-bottom: var(--psy-space-10);
 }
 
 .ds-landing__btn {
@@ -254,13 +201,6 @@ body {
   font-size: var(--psy-font-size-small);
   line-height: 1.5;
   color: var(--psy-text-secondary);
-}
-
-/* 外層寬度：與 NASA 類似留出白邊 */
-.ds-shell {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: var(--psy-space-9) var(--psy-space-8) var(--psy-space-13);
 }
 
 .ds-layout {
