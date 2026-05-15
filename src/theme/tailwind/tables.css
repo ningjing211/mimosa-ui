@@ -1,0 +1,291 @@
+/**
+ * Data tables — 對齊 Untitled UI「Divider line / Alternating fills」節奏；
+ * 保留 Mimosa neo-brutal 外框。TableCard + data-table 變體。
+ */
+@layer components {
+  /* —— Table card（Untitled TableCard：標題區 + 表格本體） —— */
+  .table-card {
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-hard);
+    background: var(--psy-table-wrap-bg);
+    overflow: hidden;
+  }
+
+  .table-card__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--psy-space-4);
+    padding: var(--psy-space-6) var(--psy-space-6);
+    border-bottom: var(--psy-border-width-block) solid var(--psy-table-head-border-bottom);
+    background: var(--psy-table-wrap-bg);
+  }
+
+  .table-card__title {
+    margin: 0;
+    font-family: var(--psy-font-family-display);
+    font-size: var(--psy-font-size-subtitle);
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--psy-text-on-light);
+  }
+
+  .table-card__description {
+    margin: var(--psy-space-1) 0 0;
+    font-size: var(--psy-font-size-small);
+    line-height: 1.5;
+    color: var(--psy-text-muted-on-light);
+  }
+
+  .table-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--psy-space-3);
+  }
+
+  .table-card__body .data-table-wrap {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .table-card__body .data-table {
+    min-width: 0;
+  }
+
+  /* —— Wrap + base table —— */
+  .data-table-wrap {
+    overflow-x: auto;
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-hard);
+    background: var(--psy-table-wrap-bg);
+  }
+
+  .data-table {
+    width: 100%;
+    min-width: var(--psy-table-min-width);
+    border-collapse: collapse;
+    color: var(--psy-text-on-light);
+    font-family: var(--psy-font-family-body);
+    font-size: var(--psy-font-size-small);
+    line-height: var(--psy-line-height-ui-normal);
+  }
+
+  .data-table caption {
+    text-align: left;
+    padding: var(--psy-space-4) var(--psy-table-cell-padding-inline-md);
+    font-weight: 700;
+    color: var(--psy-text-on-light);
+    background: var(--psy-table-caption-bg);
+    border-bottom: 1px solid var(--psy-table-row-divider);
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: var(--psy-table-cell-padding-block-md) var(--psy-table-cell-padding-inline-md);
+    border-bottom: 1px solid var(--psy-table-row-divider);
+    vertical-align: middle;
+    text-align: left;
+  }
+
+  .data-table tbody tr:last-child th,
+  .data-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* 欄位標題列（Untitled：小字、semibold、muted、淺灰底帶） */
+  .data-table thead th {
+    font-family: var(--psy-font-family-body);
+    font-size: var(--psy-font-size-chip);
+    font-weight: var(--psy-table-head-font-weight);
+    letter-spacing: 0.02em;
+    color: var(--psy-table-head-fg);
+    background: var(--psy-table-head-bg);
+    padding: var(--psy-table-head-padding-block) var(--psy-table-head-padding-inline);
+    border-bottom: var(--psy-border-width-block) solid var(--psy-table-head-border-bottom);
+  }
+
+  /* 矩陣表列標（非 uniform 清單） */
+  .data-table:not(.data-table--uniform-rows) tbody th {
+    font-weight: 600;
+    background: var(--psy-table-rowhead-bg);
+  }
+
+  .data-table tbody td {
+    font-weight: 400;
+    background: var(--psy-table-row-bg);
+  }
+
+  .data-table--borderless th,
+  .data-table--borderless td {
+    border-bottom: none;
+  }
+
+  .data-table--borderless thead th,
+  .data-table--borderless tbody th {
+    background: transparent;
+  }
+
+  /* sm 尺寸（Untitled size="sm"） */
+  .data-table--sm th,
+  .data-table--sm td {
+    padding: var(--psy-table-cell-padding-block-sm) var(--psy-table-cell-padding-inline-sm);
+  }
+
+  .data-table--sm thead th {
+    padding: var(--psy-space-2) var(--psy-table-cell-padding-inline-sm);
+  }
+
+  /* Divider line：列底線 + 整列 hover（預設清單用 uniform-rows） */
+  .data-table--uniform-rows tbody td,
+  .data-table--uniform-rows tbody th {
+    background: var(--psy-table-row-bg);
+    color: var(--psy-text-on-light);
+  }
+
+  /* 清單型：主欄用 td + __cell--primary；勿 tbody th（易與表頭混淆） */
+  .data-table--uniform-rows tbody .data-table__cell--primary {
+    font-weight: 600;
+  }
+
+  .data-table--uniform-rows tbody th[scope="row"] {
+    font-weight: 600;
+  }
+
+  .data-table--uniform-rows tbody tr:hover > td,
+  .data-table--uniform-rows tbody tr:hover > th {
+    background: var(--psy-table-row-hover-bg);
+  }
+
+  .data-table--uniform-rows tbody tr.is-selected > th,
+  .data-table--uniform-rows tbody tr.is-selected > td {
+    background: var(--psy-table-row-selected-bg);
+  }
+
+  .data-table--uniform-rows tbody tr.is-selected:hover > th,
+  .data-table--uniform-rows tbody tr.is-selected:hover > td {
+    background: var(--psy-table-row-selected-bg);
+  }
+
+  /* Alternating fills（Untitled striped） */
+  .data-table--striped tbody tr:nth-child(even) > td,
+  .data-table--striped tbody tr:nth-child(even) > th {
+    background: var(--psy-table-row-bg-alt);
+  }
+
+  .data-table--striped.data-table--uniform-rows tbody tr:hover > td,
+  .data-table--striped.data-table--uniform-rows tbody tr:hover > th {
+    background: var(--psy-table-row-hover-bg);
+  }
+
+  .data-table--striped.data-table--uniform-rows tbody tr:nth-child(even):hover > td,
+  .data-table--striped.data-table--uniform-rows tbody tr:nth-child(even):hover > th {
+    background: var(--psy-table-row-hover-bg);
+  }
+
+  .data-table__cell--muted {
+    color: var(--psy-text-muted-on-light);
+  }
+
+  .data-table__cell--primary {
+    font-weight: 600;
+    color: var(--psy-text-on-light);
+  }
+
+  /* 排序：僅圖示／字色，勿整欄色洗（Untitled） */
+  .data-table thead th[data-sortable],
+  .data-table thead th.is-sortable {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .data-table thead th.is-sortable:hover {
+    background: var(--psy-table-head-hover-bg);
+  }
+
+  .data-table thead th.is-sorted {
+    background: var(--psy-table-head-bg);
+    color: var(--psy-table-head-fg);
+  }
+
+  .data-table__sort-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--psy-space-2);
+  }
+
+  .data-table__sort-icon {
+    font-size: 0.65em;
+    line-height: 1;
+    color: var(--psy-text-muted-on-light);
+  }
+
+  .data-table th.is-sorted--asc .data-table__sort-icon::before {
+    content: "▲";
+    color: var(--psy-table-sort-active-fg);
+  }
+
+  .data-table th.is-sorted--desc .data-table__sort-icon::before {
+    content: "▼";
+    color: var(--psy-table-sort-active-fg);
+  }
+
+  .data-table__select-cell {
+    width: 2.75rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .data-table__checkbox {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin: 0;
+    accent-color: var(--psy-color-secondary-lime);
+  }
+
+  .data-table-wrap--sticky-header .data-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 2px 0 var(--psy-table-sticky-shadow);
+  }
+
+  .data-table-wrap--sticky-col {
+    overflow-x: auto;
+  }
+
+  .data-table-wrap--sticky-col .data-table th:first-child,
+  .data-table-wrap--sticky-col .data-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    box-shadow: 2px 0 0 var(--psy-table-sticky-shadow);
+  }
+
+  .data-table-wrap--sticky-col .data-table thead th:first-child {
+    z-index: 3;
+  }
+
+  .data-table-wrap--empty .data-table tbody:only-child .data-table__empty,
+  .data-table__empty {
+    padding: var(--psy-space-9) var(--psy-space-7);
+    text-align: center;
+    font-size: var(--psy-font-size-body);
+    color: var(--psy-text-muted-on-light);
+    background: var(--psy-table-row-bg);
+  }
+
+  .data-table-wrap--empty .data-table {
+    min-height: 10rem;
+  }
+
+  .data-table__empty-title {
+    margin: 0 0 var(--psy-space-2);
+    font-family: var(--psy-font-family-display);
+    font-size: var(--psy-font-size-subtitle);
+    font-weight: 800;
+    color: var(--psy-text-on-light);
+  }
+}

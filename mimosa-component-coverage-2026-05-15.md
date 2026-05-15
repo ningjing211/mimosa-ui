@@ -96,7 +96,7 @@
 - **Table 展示**：一表一狀態；清單用 `--uniform-rows`；空態勿與資料列同表
 - **Form 配對**：深紫頁 `.form-label` / `.form-hint`；淺底加 `--on-light`（hint 修飾類須在 base 之後）
 - **Input group / OTP**：單一 `.input-group`／`.otp-input` 外框；金額用 `.input-group--amount`；OTP 勿每格獨立 shadow
-- **Table（Nuxt 語意）**：head highlighted / body muted；`.data-table__sort-button`；hover/selected 淡底；`--uniform-rows`
+- **Table（Untitled 節奏）**：`tables.css` — `.table-card`、Divider（`--uniform-rows`+hover）、Striped（`--striped`）、`--sm`；表頭 muted 灰帶、排序僅圖示
 
 ---
 

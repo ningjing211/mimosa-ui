@@ -15,10 +15,11 @@
  *  11. avatar.css        — .avatar / .avatar-stack (raw overlay)
  *  12. forms-extended.css — .range / .file-upload (raw overlay)
  *  13. data-display.css  — .timeline / .stat-card (raw overlay)
- *  14. chrome.css        — .site-header / .data-table / … (raw overlay)
- *  15. component-variants.css — button / input / table variants
- *  16. navigation-mobile.css — hamburger / mega / bottom nav
- *  17. flow-page.css     — .psy-flow-* (raw overlay)
+ *  14. tables.css         — .table-card / .data-table（Untitled 節奏 + brutal 外框）
+ *  15. chrome.css        — .site-header / … (raw overlay)
+ *  16. component-variants.css — button / input / OTP variants
+ *  17. navigation-mobile.css — hamburger / mega / bottom nav
+ *  18. flow-page.css     — .psy-flow-* (raw overlay)
  *
  * Peer dependency: tailwindcss ^4
  */
@@ -37,5 +38,6 @@
 @import "./tailwind/data-display.css";
 @import "./tailwind/component-variants.css";
 @import "./tailwind/navigation-mobile.css";
+@import "./tailwind/tables.css";
 @import "./tailwind/chrome.css";
 @import "./tailwind/flow-page.css";

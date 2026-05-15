@@ -1771,32 +1771,33 @@ import "mimosa-design-system/tailwind.css";
             </article>
 
             <article class="ds-doc-card" id="variants-tables">
-              <h3 class="ds-doc-card__title">Table · 排序 / 選取 / 空態</h3>
+              <h3 class="ds-doc-card__title">Table · TableCard / Divider / Striped</h3>
               <p class="ds-doc-card__desc">
-                語意對齊 <a href="https://ui.nuxt.com/docs/components/table">Nuxt UI Table</a>：表頭
-                <code>highlighted</code> 字、資料格 <code>muted</code> 字、排序僅圖示、列 hover/selected 淡底。清單型加
-                <code>.data-table--uniform-rows</code>；排序欄用 <code>.data-table__sort-button</code>。一表一狀態（資料／空態分開）。
+                節奏參考
+                <a href="https://www.untitledui.com/react/components/tables" rel="noopener noreferrer">Untitled UI Tables</a>：<code>.table-card</code>
+                標題區 + <strong>Divider line</strong>（<code>--uniform-rows</code>、列線、hover）或
+                <strong>Alternating fills</strong>（<code>--striped</code>）。表頭小字 muted + 灰底帶；排序僅圖示色。一表一狀態。
               </p>
-              <p class="ds-typo-label" style="margin-top: var(--psy-space-6)">有資料 · 排序 + 列選取</p>
-              <div class="data-table-wrap data-table-wrap--sticky-header max-w-3xl">
-                <table class="data-table data-table--uniform-rows">
+              <p class="ds-typo-label" style="margin-top: var(--psy-space-6)">Divider line · 排序 + 列選取</p>
+              <div class="table-card max-w-3xl">
+                <header class="table-card__header">
+                  <div>
+                    <h4 class="table-card__title">活動列表</h4>
+                    <p class="table-card__description">2 筆 · 可排序與多選</p>
+                  </div>
+                </header>
+                <div class="table-card__body">
+                  <div class="data-table-wrap data-table-wrap--sticky-header">
+                    <table class="data-table data-table--uniform-rows">
                   <thead>
                     <tr>
                       <th scope="col" class="data-table__select-cell">
                         <input class="data-table__checkbox" type="checkbox" aria-label="全選列" />
                       </th>
                       <th scope="col" class="is-sortable is-sorted is-sorted--asc" data-sortable>
-                        <button type="button" class="data-table__sort-button">
-                          <span class="data-table__sort-label">名稱</span>
-                          <span class="data-table__sort-icon" aria-hidden="true"></span>
-                        </button>
+                        <span class="data-table__sort-label">名稱 <span class="data-table__sort-icon" aria-hidden="true"></span></span>
                       </th>
-                      <th scope="col" class="is-sortable" data-sortable>
-                        <button type="button" class="data-table__sort-button">
-                          <span class="data-table__sort-label">狀態</span>
-                          <span class="data-table__sort-icon" aria-hidden="true"></span>
-                        </button>
-                      </th>
+                      <th scope="col" class="is-sortable" data-sortable>狀態</th>
                       <th scope="col">更新</th>
                     </tr>
                   </thead>
@@ -1805,7 +1806,7 @@ import "mimosa-design-system/tailwind.css";
                       <td class="data-table__select-cell">
                         <input class="data-table__checkbox" type="checkbox" checked aria-label="選取活動 A" />
                       </td>
-                      <th scope="row">活動 A</th>
+                      <td class="data-table__cell--primary">活動 A</td>
                       <td>進行中</td>
                       <td>今天</td>
                     </tr>
@@ -1813,12 +1814,55 @@ import "mimosa-design-system/tailwind.css";
                       <td class="data-table__select-cell">
                         <input class="data-table__checkbox" type="checkbox" aria-label="選取活動 B" />
                       </td>
-                      <th scope="row">活動 B</th>
+                      <td class="data-table__cell--primary">活動 B</td>
                       <td>草稿</td>
                       <td>昨天</td>
                     </tr>
                   </tbody>
-                </table>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <p class="ds-typo-label" style="margin-top: var(--psy-space-8)">
+                Alternating fills · 斑馬紋（清單列用 <code>td</code> + <code>.data-table__cell--primary</code>，勿 <code>tbody th</code>）
+              </p>
+              <div class="table-card max-w-3xl">
+                <header class="table-card__header">
+                  <div>
+                    <h4 class="table-card__title">客戶</h4>
+                    <p class="table-card__description">斑馬紋輔助橫向掃描</p>
+                  </div>
+                </header>
+                <div class="table-card__body">
+                  <div class="data-table-wrap">
+                    <table class="data-table data-table--uniform-rows data-table--striped data-table--sm">
+                      <thead>
+                        <tr>
+                          <th scope="col">公司</th>
+                          <th scope="col">狀態</th>
+                          <th scope="col">更新</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="data-table__cell--primary">Stack3d Lab</td>
+                          <td>Churned</td>
+                          <td class="data-table__cell--muted">昨天</td>
+                        </tr>
+                        <tr>
+                          <td class="data-table__cell--primary">Ephemeral</td>
+                          <td>Customer</td>
+                          <td class="data-table__cell--muted">今天</td>
+                        </tr>
+                        <tr>
+                          <td class="data-table__cell--primary">Warpspeed</td>
+                          <td>Customer</td>
+                          <td class="data-table__cell--muted">3 天前</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <p class="ds-typo-label" style="margin-top: var(--psy-space-8)">空態 · 無列（獨立表）</p>
               <div class="data-table-wrap data-table-wrap--empty max-w-3xl">
@@ -2984,9 +3028,10 @@ import "mimosa-design-system/tailwind.css";
           <section class="ds-section" id="components-tables" aria-labelledby="tables-heading">
             <h2 class="ds-section__title" id="tables-heading">表格 · Tables</h2>
             <p class="ds-section__lead">
-              表格用於欄列結構化資料。互動語意參照
-              <a href="https://ui.nuxt.com/docs/components/table">Nuxt UI Table</a>（表頭/內文對比、列 hover、排序按鈕）；結構可對照
-              <a href="https://nasa.github.io/nasawds-site/components/tables/">NASA WDS Tables</a>。視覺為 Psychedelic 硬邊框。
+              節奏對齊
+              <a href="https://www.untitledui.com/react/components/tables" rel="noopener noreferrer">Untitled UI Tables</a>（TableCard、Divider line、Alternating fills、sm/md）；
+              結構與可及性參照
+              <a href="https://nasa.github.io/nasawds-site/components/tables/">NASA WDS Tables</a>。外框保留 Mimosa neo-brutal 硬陰影。
             </p>
 
             <article class="ds-doc-card" id="tables-bordered">
@@ -3077,8 +3122,9 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="tables-implementation">
               <h3 class="ds-doc-card__title">實作 · Product classes</h3>
               <p class="ds-doc-card__desc">
-                產品頁可使用 <code>data-table-wrap</code> + <code>data-table</code>；若要弱化格線用
-                <code>data-table data-table--borderless</code>。保留 <code>caption</code> 與 <code>scope</code> 以確保可及性。
+                清單：<code>table-card</code> + <code>data-table data-table--uniform-rows</code>；斑馬紋加
+                <code>data-table--striped</code>；緊湊列高 <code>data-table--sm</code>。矩陣表（列標在
+                <code>tbody th</code>）勿加 <code>--uniform-rows</code>。保留 <code>caption</code> 與 <code>scope</code>。
               </p>
             </article>
           </section>

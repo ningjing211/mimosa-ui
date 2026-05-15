@@ -50,6 +50,7 @@ async function build() {
     "data-display.css",
     "component-variants.css",
     "navigation-mobile.css",
+    "tables.css",
     "chrome.css",
     "flow-page.css"
   ];

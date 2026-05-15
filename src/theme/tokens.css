@@ -379,19 +379,26 @@
   --psy-control-min-height: 2.85rem;
   --psy-table-min-width: 560px;
   /*
-   * Table（elevated）— 對齊 Nuxt UI Table 語意：
-   * - thead：highlighted 字 + semibold；排序僅指示器變色，不整欄色洗
-   * - tbody td：muted 字；列 hover/selected 用淡 elevated（非整欄螢光底）
-   * - 清單型 .data-table--uniform-rows；矩陣表 tbody th 用 rowhead
+   * Table（對齊 Untitled UI Divider line / Alternating fills + TableCard）
+   * - .table-card + .data-table--uniform-rows（清單）或矩陣（tbody th rowhead）
+   * - .data-table--striped 斑馬紋；.data-table--sm 緊湊列高
+   * - 排序僅圖示色，勿整欄色洗；空態勿與資料列同 tbody
    */
-  --psy-table-row-bg: var(--psy-surface-card);
-  --psy-table-body-fg: var(--psy-text-muted-on-light);
-  --psy-table-body-fg-emphasis: var(--psy-text-on-light);
-  --psy-table-row-hover-bg: color-mix(in srgb, var(--psy-color-base) 5%, var(--psy-table-row-bg));
-  --psy-table-row-selected-bg: color-mix(in srgb, var(--psy-color-base) 9%, var(--psy-table-row-bg));
-  --psy-table-sort-indicator: var(--psy-color-secondary-lime);
+  --psy-table-wrap-bg: var(--psy-surface-card);
+  --psy-table-surface: var(--psy-primitive-white);
+  --psy-table-row-bg: var(--psy-table-surface);
+  --psy-table-row-bg-alt: color-mix(in srgb, var(--psy-color-base) 7%, var(--psy-table-surface));
+  --psy-table-row-hover-bg: color-mix(in srgb, var(--psy-color-base) 6%, var(--psy-table-surface));
+  --psy-table-row-selected-bg: color-mix(in srgb, var(--psy-color-secondary-cyan) 12%, var(--psy-table-surface));
   --psy-table-sort-active-fg: var(--psy-text-on-light);
   --psy-table-sticky-shadow: color-mix(in srgb, var(--psy-color-base) 18%, transparent);
+  --psy-table-head-font-weight: 600;
+  --psy-table-head-padding-block: var(--psy-space-3);
+  --psy-table-head-padding-inline: var(--psy-space-5);
+  --psy-table-cell-padding-block-md: var(--psy-space-4);
+  --psy-table-cell-padding-inline-md: var(--psy-space-5);
+  --psy-table-cell-padding-block-sm: var(--psy-space-3);
+  --psy-table-cell-padding-inline-sm: var(--psy-space-4);
   --psy-input-group-bg: var(--psy-surface-card);
   --psy-input-group-fg: var(--psy-text-on-light);
   --psy-input-group-addon-bg: color-mix(in srgb, var(--psy-primitive-white) 90%, var(--psy-color-bg-panel-muted));
@@ -419,16 +426,14 @@
   --psy-link-demo-dark-bg: color-mix(in srgb, var(--psy-primitive-white) 12%, transparent);
   --psy-link-demo-dark-text: var(--psy-text-primary);
 
-  /* Data table */
-  --psy-table-bg: color-mix(in srgb, var(--psy-primitive-white) 92%, var(--psy-color-secondary-cyan));
-  --psy-table-caption-bg: color-mix(in srgb, var(--psy-color-secondary-magenta) 16%, var(--psy-primitive-white));
-  /* 表頭帶：略深於列底 + highlighted 字（參考 Nuxt UI th: text-highlighted font-semibold） */
-  --psy-table-head-bg: color-mix(in srgb, var(--psy-color-base) 10%, var(--psy-surface-card));
-  --psy-table-head-fg: var(--psy-text-on-light);
-  --psy-table-head-hover-bg: color-mix(in srgb, var(--psy-color-base) 14%, var(--psy-surface-card));
-  --psy-table-sort-hover-bg: var(--psy-table-head-hover-bg);
-  --psy-table-rowhead-bg: color-mix(in srgb, var(--psy-color-secondary-lime) 18%, var(--psy-primitive-white));
-  --psy-table-row-divider: color-mix(in srgb, var(--psy-color-base) 22%, transparent);
+  /* Data table surfaces */
+  --psy-table-bg: var(--psy-table-wrap-bg);
+  --psy-table-caption-bg: color-mix(in srgb, var(--psy-color-base) 5%, var(--psy-table-surface));
+  --psy-table-head-bg: color-mix(in srgb, var(--psy-color-base) 12%, var(--psy-table-surface));
+  --psy-table-head-fg: var(--psy-text-muted-on-light);
+  --psy-table-head-hover-bg: color-mix(in srgb, var(--psy-color-base) 12%, var(--psy-table-surface));
+  --psy-table-rowhead-bg: color-mix(in srgb, var(--psy-color-base) 5%, var(--psy-table-surface));
+  --psy-table-row-divider: color-mix(in srgb, var(--psy-color-base) 12%, transparent);
 
   /* Accordion */
   --psy-accordion-button-bg: color-mix(in srgb, var(--psy-primitive-white) 90%, var(--psy-color-secondary-cyan));
