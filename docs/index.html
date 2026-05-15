@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mimosa Design System</title>
+    <meta
+      name="description"
+      content="Mimosa design system 文件首頁，包含套件定位、快速安裝方式與文件入口。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dist/mimosa.css" />
+    <link rel="stylesheet" href="./assets/docs.css" />
+  </head>
+  <body class="ds-page">
+    <a class="ds-skip" href="#home-main">跳至主內容</a>
+
+    <header class="ds-top psy-brutal-block">
+      <a class="ds-top__brand" href="#home-landing">Mimosa</a>
+      <nav class="ds-top__nav" aria-label="站內連結">
+        <a class="psy-brutal ds-nav-chip psy-chip psy-focus-ring" href="./design-system.html">文件</a>
+        <a class="psy-brutal ds-nav-chip psy-chip psy-focus-ring" href="#package-entry">套件</a>
+        <a class="psy-brutal ds-nav-chip psy-chip psy-focus-ring" href="#adoption-path">整合</a>
+      </nav>
+    </header>
+
+    <section class="ds-landing" id="home-landing" aria-labelledby="home-landing-title">
+      <div class="ds-landing__bg" aria-hidden="true"></div>
+      <div class="ds-landing__inner">
+        <p class="ds-landing__eyebrow">Design system · documentation first</p>
+        <h1 id="home-landing-title" class="ds-landing__title">
+          把 token、樣式契約與元件規則收斂成同一份文件。
+        </h1>
+        <p class="ds-landing__subtitle">
+          Mimosa 是一個以 CSS token、Tailwind bridge 與 product primitives 為核心的前端樣式套件。本站作為 GitHub
+          Pages 文件首頁，提供安裝方式、公開入口與元件規則入口。
+        </p>
+        <div class="ds-landing__actions">
+          <a class="psy-brutal ds-landing__btn psy-btn psy-btn--primary psy-focus-ring" href="./design-system.html">進入完整文件</a>
+          <a class="psy-brutal ds-landing__btn ds-landing__btn--ghost psy-btn psy-focus-ring" href="#package-entry">查看 package 入口</a>
+        </div>
+        <div class="ds-landing__panel psy-brutal-block" aria-label="Quick start">
+          <div class="ds-landing__panel-head">
+            <span class="ds-landing__panel-label">Quick start</span>
+            <span class="ds-landing__panel-pill psy-brutal-block psy-chip">npm</span>
+          </div>
+          <pre class="ds-landing__code"><code>npm install mimosa-design-system
+
+import "mimosa-design-system/tokens.css";</code></pre>
+        </div>
+        <ul class="ds-landing__features">
+          <li class="ds-landing__feature">
+            <span class="ds-landing__feature-title">Foundation</span>
+            <span class="ds-landing__feature-desc">tokens、語意映射與視覺基底</span>
+          </li>
+          <li class="ds-landing__feature">
+            <span class="ds-landing__feature-title">Primitives</span>
+            <span class="ds-landing__feature-desc">按鈕、面板、badge、表單與 state pattern</span>
+          </li>
+          <li class="ds-landing__feature">
+            <span class="ds-landing__feature-title">Reference</span>
+            <span class="ds-landing__feature-desc">文件頁說明 package 入口與元件實作對照</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <main id="home-main" class="ds-shell">
+      <section class="ds-section" id="package-entry" aria-labelledby="package-entry-heading">
+        <h2 class="ds-section__title" id="package-entry-heading">Package 入口</h2>
+        <p class="ds-section__lead">
+          現階段 package 對外提供穩定的 token 與 Tailwind bridge 入口；文件站本身不再作為 package CSS 輸出的一部分。
+        </p>
+        <article class="ds-doc-card">
+          <h3 class="ds-doc-card__title">建議使用順序</h3>
+          <div class="ds-table-wrap">
+            <table class="ds-table">
+              <thead>
+                <tr>
+                  <th scope="col">入口</th>
+                  <th scope="col">用途</th>
+                  <th scope="col">適合場景</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><code>tokens.css</code></th>
+                  <td>提供設計 token 與 CSS 變數</td>
+                  <td>靜態頁、文件頁、非 Tailwind 專案</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>tailwind.css</code></th>
+                  <td>供建置流程解析的 Tailwind bridge 入口</td>
+                  <td>Vite / Tailwind v4 host app</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>tokens.json</code></th>
+                  <td>給文件、工具鏈或 JS 讀取 token</td>
+                  <td>生成 reference、同步設計資料</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="ds-section" id="adoption-path" aria-labelledby="adoption-path-heading">
+        <h2 class="ds-section__title" id="adoption-path-heading">文件與整合</h2>
+        <p class="ds-section__lead">
+          GitHub Pages 站點優先服務文件與規則查閱；完整元件範例、token 對照與實作說明集中在同一份文件頁。
+        </p>
+        <article class="ds-doc-card">
+          <h3 class="ds-doc-card__title">下一步閱讀</h3>
+          <ul class="ds-prose-list">
+            <li><a href="./design-system.html#overview">文件介紹與套件使用方式</a></li>
+            <li><a href="./design-system.html#colors">Color tokens 與 semantic mapping</a></li>
+            <li><a href="./design-system.html#components-buttons">Buttons、forms、alerts 等元件規則</a></li>
+            <li><a href="./design-system.html#aliases">Component aliases 與實作對照</a></li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

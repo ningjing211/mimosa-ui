@@ -1,0 +1,2688 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mimosa — v16 Psychedelic Design System</title>
+    <meta
+      name="description"
+      content="Mimosa v16 Psychedelic：設計 token、元件準則與 mimosa-design-system npm 套件文件。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dist/mimosa.css" />
+    <link rel="stylesheet" href="./assets/docs.css" />
+  </head>
+  <body class="ds-page">
+    <a class="ds-skip" href="#ds-main-content">跳至主內容</a>
+
+    <header class="ds-top psy-brutal-block">
+      <a class="ds-top__brand" href="#ds-landing">Mimosa</a>
+      <nav class="ds-top__nav" aria-label="站內連結">
+        <a class="psy-brutal ds-nav-chip psy-chip psy-focus-ring" href="./index.html">首頁</a>
+        <a class="psy-brutal ds-nav-chip psy-chip psy-focus-ring" href="#overview">文件</a>
+        <a class="psy-brutal ds-nav-chip psy-chip psy-focus-ring" href="#colors">Tokens</a>
+        <a class="psy-brutal ds-nav-chip psy-chip psy-focus-ring" href="#components-buttons">元件</a>
+      </nav>
+    </header>
+
+    <section class="ds-landing" id="ds-landing" aria-labelledby="ds-landing-title">
+      <div class="ds-landing__bg" aria-hidden="true"></div>
+      <div class="ds-landing__inner">
+        <p class="ds-landing__eyebrow">Design system · v16 Psychedelic</p>
+        <h1 id="ds-landing-title" class="ds-landing__title">
+          用 token 與元件準則，<br />把介面一次對齊。
+        </h1>
+        <p class="ds-landing__subtitle">
+          本頁為靜態文件與展示：色彩、字體、版面、動效與元件狀態；並與 npm 套件
+          <code>mimosa-design-system</code> 同源。靈感來自現代文件站（例如
+          <a href="https://tailwindcss.com/" rel="noreferrer noopener">Tailwind CSS</a>、
+          <a href="https://ui.shadcn.com/" rel="noreferrer noopener">shadcn/ui</a>）的資訊層級，視覺仍維持
+          Psychedelic 語彙。
+        </p>
+        <div class="ds-landing__actions">
+          <a class="psy-brutal ds-landing__btn ds-landing__btn--ghost psy-btn psy-focus-ring" href="./index.html">回到首頁</a>
+          <a class="psy-brutal ds-landing__btn psy-btn psy-btn--primary psy-focus-ring" href="#overview">瀏覽文件</a>
+        </div>
+        <div class="ds-landing__panel psy-brutal-block" aria-label="Quick start">
+          <div class="ds-landing__panel-head">
+            <span class="ds-landing__panel-label">Quick start</span>
+            <span class="ds-landing__panel-pill psy-brutal-block psy-chip">npm</span>
+          </div>
+          <pre class="ds-landing__code"><code>npm install mimosa-design-system
+
+import "mimosa-design-system/tokens.css";</code></pre>
+        </div>
+        <ul class="ds-landing__features">
+          <li class="ds-landing__feature">
+            <span class="ds-landing__feature-title">Foundation</span>
+            <span class="ds-landing__feature-desc">語意色、字階、間距與動效 token 一覽</span>
+          </li>
+          <li class="ds-landing__feature">
+            <span class="ds-landing__feature-title">Components</span>
+            <span class="ds-landing__feature-desc">按鈕、表單、表格等狀態與無障礙說明</span>
+          </li>
+          <li class="ds-landing__feature">
+            <span class="ds-landing__feature-title">Ship</span>
+            <span class="ds-landing__feature-desc">純 CSS 輸出，可進 host 專案或 GitHub Pages</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="ds-shell">
+      <div class="ds-layout">
+        <aside class="ds-sidenav" aria-label="本頁章節目錄">
+          <p class="ds-sidenav__label">目錄 · Contents</p>
+          <ul class="ds-sidenav__list">
+            <li class="ds-sidenav__group">
+              <span class="ds-sidenav__group-label">概覽 · Overview</span>
+              <ul class="ds-sidenav__group-list">
+                <li><a href="#ds-landing">首頁</a></li>
+                <li><a href="#overview">文件介紹</a></li>
+              </ul>
+            </li>
+
+            <li class="ds-sidenav__group">
+              <span class="ds-sidenav__group-label">基礎 · Foundation</span>
+              <ul class="ds-sidenav__group-list">
+                <li>
+                  <a href="#colors">色彩 · Colors</a>
+                  <p class="ds-sidenav__micro">調色板 · Palette</p>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#colors-palette-primary">Primary</a></li>
+                    <li><a href="#colors-palette-secondary">Secondary</a></li>
+                    <li><a href="#colors-palette-background">Background</a></li>
+                    <li><a href="#colors-palette-tertiary">Tertiary</a></li>
+                    <li><a href="#colors-palette-state">Special state</a></li>
+                    <li><a href="#colors-gradients">Gradients</a></li>
+                  </ul>
+                  <p class="ds-sidenav__micro">對照 · Mapping</p>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#colors-semantic-map">介面語意對照表</a></li>
+                    <li><a href="#colors-primitives">Primitive 原料</a></li>
+                  </ul>
+                  <p class="ds-sidenav__micro">可及性 · A11y</p>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#colors-a11y">Text accessibility</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#typography">字體 · Typography</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#typography-typefaces">字體家族</a></li>
+                    <li><a href="#typography-hierarchy">字階層級</a></li>
+                    <li><a href="#typography-typesetting">排版節奏</a></li>
+                    <li><a href="#typography-vertical-rhythm">Vertical rhythm 準則</a></li>
+                    <li><a href="#typography-links-lists">連結與清單</a></li>
+                    <li><a href="#typography-implementation">實作</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#grids">版面 · Grids</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#grids-scale">12 欄比例</a></li>
+                    <li><a href="#grids-examples">版型示例</a></li>
+                    <li><a href="#grids-a11y">可訪問性</a></li>
+                    <li><a href="#grids-usability">可用性</a></li>
+                    <li><a href="#grids-implementation">實作</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#layout-tokens">空間 · Space &amp; shadow</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#spacing-scale">間距尺度</a></li>
+                    <li><a href="#shadow-sample">陰影</a></li>
+                  </ul>
+                </li>
+                <li><a href="#motion">動效 · Motion</a></li>
+              </ul>
+            </li>
+
+            <li class="ds-sidenav__group">
+              <span class="ds-sidenav__group-label">元件 · Components</span>
+              <ul class="ds-sidenav__group-list">
+                <li>
+                  <a href="#components-buttons">按鈕 · Buttons</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#buttons-primary">主要按鈕</a></li>
+                    <li><a href="#buttons-secondary">次要按鈕</a></li>
+                    <li><a href="#buttons-on-dark">深底按鈕</a></li>
+                    <li><a href="#buttons-big">大尺寸</a></li>
+                    <li><a href="#buttons-implementation">實作說明</a></li>
+                    <li><a href="#buttons-a11y">可訪問性</a></li>
+                    <li><a href="#buttons-usability">可用性</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-labels">標籤 · Labels</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#labels-variants">樣式變體</a></li>
+                    <li><a href="#labels-a11y">可訪問性</a></li>
+                    <li><a href="#labels-usability">可用性</a></li>
+                    <li><a href="#labels-implementation">實作</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-tables">表格 · Tables</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#tables-bordered">框線表格</a></li>
+                    <li><a href="#tables-borderless">無框表格</a></li>
+                    <li><a href="#tables-a11y">可訪問性</a></li>
+                    <li><a href="#tables-usability">可用性</a></li>
+                    <li><a href="#tables-implementation">實作</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-alerts">提示 · Alerts</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#alerts-variants">狀態列</a></li>
+                    <li><a href="#alerts-on-dark">深底示例</a></li>
+                    <li><a href="#alerts-implementation">實作</a></li>
+                    <li><a href="#alerts-a11y">可訪問性</a></li>
+                    <li><a href="#alerts-usability">可用性</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-accordions">手風琴 · Accordions</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#accordions-borderless">無框樣式</a></li>
+                    <li><a href="#accordions-bordered">框線樣式</a></li>
+                    <li><a href="#accordions-a11y">可訪問性</a></li>
+                    <li><a href="#accordions-usability">可用性</a></li>
+                    <li><a href="#accordions-implementation">實作</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-form-controls">表單 · Form controls</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#form-a11y-intro">可訪問性總覽</a></li>
+                    <li><a href="#form-text-inputs">文字欄／多行</a></li>
+                    <li><a href="#form-dropdown">下拉選單</a></li>
+                    <li><a href="#form-checkboxes">核取方塊</a></li>
+                    <li><a href="#form-radio">選項按鈕</a></li>
+                    <li><a href="#form-date">日期欄位</a></li>
+                    <li><a href="#form-validation">即時驗證</a></li>
+                    <li><a href="#form-on-dark">深底示例</a></li>
+                    <li><a href="#form-implementation">實作</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-form-templates">表單範本 · Form templates</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#form-templates-a11y">可訪問性總覽</a></li>
+                    <li><a href="#form-template-name">姓名表單</a></li>
+                    <li><a href="#form-template-address">地址表單</a></li>
+                    <li><a href="#form-template-signin">登入表單</a></li>
+                    <li><a href="#form-template-reset">重設密碼</a></li>
+                    <li><a href="#form-templates-implementation">實作</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-search-bar">搜尋列 · Search bar</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#search-bar-variants">尺寸變體</a></li>
+                    <li><a href="#search-bar-a11y">可訪問性</a></li>
+                    <li><a href="#search-bar-usability">可用性</a></li>
+                    <li><a href="#search-bar-implementation">實作</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-side-navigation">側邊導覽 · Side navigation</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#sidenav-single">單層</a></li>
+                    <li><a href="#sidenav-two-levels">雙層</a></li>
+                    <li><a href="#sidenav-three-levels">三層</a></li>
+                    <li><a href="#sidenav-a11y">可訪問性</a></li>
+                    <li><a href="#sidenav-usability">可用性</a></li>
+                    <li><a href="#sidenav-implementation">實作</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-headers">頁首 · Headers</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#headers-basic">基本頁首</a></li>
+                    <li><a href="#headers-extended">延伸頁首</a></li>
+                    <li><a href="#headers-dark">深底頁首</a></li>
+                    <li><a href="#headers-a11y">可訪問性</a></li>
+                    <li><a href="#headers-usability">可用性</a></li>
+                    <li><a href="#headers-implementation">實作</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-footers">頁尾 · Footers</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#footers-big">Big footer</a></li>
+                    <li><a href="#footers-medium">Medium footer</a></li>
+                    <li><a href="#footers-slim">Slim footer</a></li>
+                    <li><a href="#footers-a11y">可訪問性</a></li>
+                    <li><a href="#footers-usability">可用性</a></li>
+                    <li><a href="#footers-implementation">實作</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="ds-sidenav__group">
+              <span class="ds-sidenav__group-label">參照 · Reference</span>
+              <ul class="ds-sidenav__group-list">
+                <li><a href="#aliases">元件別名 · Aliases</a></li>
+              </ul>
+            </li>
+          </ul>
+        </aside>
+
+        <main id="ds-main-content" class="ds-content">
+          <header class="ds-page-header" id="overview">
+            <h1>文件與 token 總覽</h1>
+            <p class="ds-lead">
+              以下章節將 <code>tokens.css</code> 與元件準則分區展示；側欄目錄對應各錨點。文件結構主要參考
+              <a href="https://nasa.github.io/nasawds-site/components/colors/">NASA WDS</a>
+              各元件頁的分層方式；首頁與導覽則整理於
+              <a href="./index.html">docs 首頁</a>。
+            </p>
+          </header>
+
+          <article class="ds-doc-card" id="package-usage">
+            <h3 class="ds-doc-card__title">Mimosa 套件使用方式</h3>
+            <p class="ds-doc-card__desc">
+              本設計系統已整合為 repo root 的 <code>mimosa-design-system</code> 套件，可直接安裝並匯入公開入口。
+            </p>
+            <pre class="ds-code-block"><code>npm install mimosa-design-system
+
+// 僅匯入 tokens
+import "mimosa-design-system/tokens.css";</code></pre>
+          </article>
+
+          <!-- ========== Colors ========== -->
+          <section class="ds-section" id="colors" aria-labelledby="colors-heading">
+            <h2 class="ds-section__title" id="colors-heading">色彩 · Color tokens</h2>
+            <p class="ds-section__lead">
+              分層方式對齊
+              <a href="https://nasa.github.io/nasawds-site/components/colors/">NASA WDS — Colors</a>
+             ：<strong>Primary</strong>（主結構與內文於深底）、<strong>Secondary</strong>（螢光重點）、<strong>Background</strong>（大面積表面）、<strong>Tertiary</strong>（列表與次要區塊）、<strong>Special
+              state</strong>（焦點、造訪過連結等）。其下再以 <code>--psy-surface-*</code>／<code>--psy-text-*</code> 等介面語意引用。唯一
+              hex 仍只寫在 <strong>Primitive</strong> 層。
+            </p>
+
+            <article class="ds-doc-card" id="colors-palette-primary">
+              <h3 class="ds-doc-card__title">Primary colors</h3>
+              <p class="ds-doc-card__desc">
+                對應 NASA 文件中「主色＋base＋white」角色：邊框／筆墨感 <code>--psy-color-base</code>、頁面主紫階、以及深底上的內文色。元件應優先使用此層或下述
+                Semantic，避免直接寫 primitive 名稱。
+              </p>
+              <div class="ds-grid">
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-base)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">base</span>
+                    <span class="ds-swatch__token">--psy-color-base</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-white)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">white</span>
+                    <span class="ds-swatch__token">--psy-color-white</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-primary-darkest)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">primary-darkest</span>
+                    <span class="ds-swatch__token">--psy-color-primary-darkest</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-primary-darker)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">primary-darker</span>
+                    <span class="ds-swatch__token">--psy-color-primary-darker</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-primary)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">primary</span>
+                    <span class="ds-swatch__token">--psy-color-primary</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-primary-light)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">primary-light</span>
+                    <span class="ds-swatch__token">--psy-color-primary-light</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-primary-on-dark)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">on-dark</span>
+                    <span class="ds-swatch__token">--psy-color-primary-on-dark</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-primary-on-dark-muted)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">on-dark-muted</span>
+                    <span class="ds-swatch__token">--psy-color-primary-on-dark-muted</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="colors-palette-secondary">
+              <h3 class="ds-doc-card__title">Secondary colors</h3>
+              <p class="ds-doc-card__desc">
+                對應 NASA「輔助／強調色」：用於按鈕、導覽漸層、標籤等；應節制使用，避免同一視野多個同等強度焦點。
+              </p>
+              <div class="ds-grid">
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-secondary-amber)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">amber</span>
+                    <span class="ds-swatch__token">--psy-color-secondary-amber</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-secondary-lime)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">lime</span>
+                    <span class="ds-swatch__token">--psy-color-secondary-lime</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-secondary-magenta)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">magenta</span>
+                    <span class="ds-swatch__token">--psy-color-secondary-magenta</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-secondary-orange)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">orange</span>
+                    <span class="ds-swatch__token">--psy-color-secondary-orange</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="colors-palette-background">
+              <h3 class="ds-doc-card__title">Background colors</h3>
+              <p class="ds-doc-card__desc">大面積區塊與半透明洗色；相鄰區塊須維持可辨的對比（參考 NASA background 段落）。</p>
+              <div class="ds-grid">
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-bg-page-top)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">page top</span>
+                    <span class="ds-swatch__token">--psy-color-bg-page-top</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-bg-page-bottom)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">page bottom</span>
+                    <span class="ds-swatch__token">--psy-color-bg-page-bottom</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-bg-panel)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">panel</span>
+                    <span class="ds-swatch__token">--psy-color-bg-panel</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-bg-panel-muted)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">panel muted</span>
+                    <span class="ds-swatch__token">--psy-color-bg-panel-muted</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-bg-wash-neutral)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">wash neutral</span>
+                    <span class="ds-swatch__token">--psy-color-bg-wash-neutral</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-bg-wash-orange)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">wash orange</span>
+                    <span class="ds-swatch__token">--psy-color-bg-wash-orange</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-bg-wash-lime)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">wash lime</span>
+                    <span class="ds-swatch__token">--psy-color-bg-wash-lime</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-bg-wash-magenta)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">wash magenta</span>
+                    <span class="ds-swatch__token">--psy-color-bg-wash-magenta</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="colors-palette-tertiary">
+              <h3 class="ds-doc-card__title">Tertiary colors</h3>
+              <p class="ds-doc-card__desc">
+                對應 NASA tertiary：列表列、次要資訊區，不應壓過 Primary／Secondary 層級。
+              </p>
+              <div class="ds-grid">
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-tertiary-row-city)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">city row</span>
+                    <span class="ds-swatch__token">--psy-color-tertiary-row-city</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-tertiary-row-feed-1)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">feed 1</span>
+                    <span class="ds-swatch__token">--psy-color-tertiary-row-feed-1</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-tertiary-row-feed-2)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">feed 2</span>
+                    <span class="ds-swatch__token">--psy-color-tertiary-row-feed-2</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-tertiary-row-feed-3)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">feed 3</span>
+                    <span class="ds-swatch__token">--psy-color-tertiary-row-feed-3</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="colors-palette-state">
+              <h3 class="ds-doc-card__title">Special state colors</h3>
+              <p class="ds-doc-card__desc">對應 NASA <em>Special state colors</em>：焦點環、造訪過連結、互動遮罩。</p>
+              <div class="ds-grid">
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-focus)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">focus</span>
+                    <span class="ds-swatch__token">--psy-color-focus</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-visited)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">visited</span>
+                    <span class="ds-swatch__token">--psy-color-visited</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-hover-overlay)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">hover overlay</span>
+                    <span class="ds-swatch__token">--psy-color-hover-overlay</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-active-overlay)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">active overlay</span>
+                    <span class="ds-swatch__token">--psy-color-active-overlay</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="colors-semantic-map">
+              <h3 class="ds-doc-card__title">介面語意對照（Semantic map）</h3>
+              <p class="ds-doc-card__desc">
+                舊有 <code>--psy-surface-*</code>、<code>--psy-text-*</code>、<code>--psy-action-*</code> 等均改為引用上列 Color system，實作時可擇一慣用命名（建議新稿以
+                <code>--psy-color-*</code> 理解角色，元件仍可用語意別名）。
+              </p>
+              <div class="ds-table-wrap">
+                <table class="ds-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">介面語意</th>
+                      <th scope="col">Token</th>
+                      <th scope="col">主要引用</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>頁面上／下背景</td>
+                      <td><code>--psy-surface-page-base</code>／<code>deep</code></td>
+                      <td><code>--psy-color-bg-page-top</code>／<code>bottom</code></td>
+                    </tr>
+                    <tr>
+                      <td>卡片／列表列底</td>
+                      <td>
+                        <code>--psy-surface-container-lowest</code> → <code>low</code> → <code>container</code> → <code>high</code> → <code>highest</code>
+                      </td>
+                      <td>同頁面用「低/中/高」分層；其中 <code>low</code> 使用 <code>color-mix(in srgb, #676278 88%, var(--psy-color-bg-panel-muted))</code> 作為過渡層</td>
+                    </tr>
+                    <tr>
+                      <td>流程型內容卡片</td>
+                      <td><code>--psy-surface-container</code>（預設）</td>
+                      <td>同一流程步驟（如 01~04）維持同層；僅警示/危險區塊（如刪除）使用語意強化底色</td>
+                    </tr>
+                    <tr>
+                      <td>Epic 主標題區（Hero）</td>
+                      <td><code>--psy-surface-hero-epic</code></td>
+                      <td>所有 Epic 分頁（account/event/pair/chat/security/admin/game/coin）主標題區統一使用此底色，避免跨頁語意不一致</td>
+                    </tr>
+                    <tr>
+                      <td>活動列表列底色（Event list item）</td>
+                      <td><code>--psy-surface-event-list-item</code></td>
+                      <td>活動系統頁的列表列使用固定底色 <code>#f6b07f</code>，確保事件資訊列與一般卡片底有明顯區隔</td>
+                    </tr>
+                    <tr>
+                      <td>活動狀態標記（US-009）</td>
+                      <td><code>--psy-status-going-*</code>／<code>--psy-status-interested-*</code>／<code>--psy-status-clear-*</code></td>
+                      <td>Going / Interested / 取消標記需使用獨立語意色，不可共用單一預設 chip 樣式</td>
+                    </tr>
+                    <tr>
+                      <td>聊天列表列（display vs controls）</td>
+                      <td><code>--psy-surface-chat-room-item</code>／<code>--psy-surface-chat-push-item</code></td>
+                      <td>聊天室列表屬 display/notice；推播通知屬可設定 controls，需使用不同底色與可操作元素（如 pill/switch）區分語意</td>
+                    </tr>
+                    <tr>
+                      <td>聊天訊息氣泡（Outgoing）</td>
+                      <td><code>--psy-surface-chat-bubble-outgoing</code></td>
+                      <td>發送方訊息氣泡使用固定底色 <code>#f39f9f</code>，需與 incoming 氣泡有清楚區隔</td>
+                    </tr>
+                    <tr>
+                      <td>代幣商店一般清單列底色</td>
+                      <td><code>--psy-surface-coin-list-item</code></td>
+                      <td>代幣商店的說明/流程清單列使用固定底色 <code>#fdfdfd</code>，與可購買方案列做視覺區分</td>
+                    </tr>
+                    <tr>
+                      <td>管理處置按鈕語意</td>
+                      <td><code>--psy-action-warning-*</code>／<code>--psy-action-restrict-*</code>／<code>--psy-action-success-*</code>／<code>--psy-action-info-*</code>／<code>--psy-action-neutral-*</code></td>
+                      <td>管理後台需按風險層級分色：danger=不可逆處置、warning=警示、restrict=暫時禁聊（#ae3d3d）、success=恢復、info=標記狀態（#e7de5f）、neutral=解除限制</td>
+                    </tr>
+                    <tr>
+                      <td>內文</td>
+                      <td><code>--psy-text-primary</code></td>
+                      <td><code>--psy-color-primary-on-dark</code></td>
+                    </tr>
+                    <tr>
+                      <td>邊框／硬陰影</td>
+                      <td><code>--psy-border-strong</code></td>
+                      <td><code>--psy-color-base</code></td>
+                    </tr>
+                    <tr>
+                      <td>主要／次要行為底色</td>
+                      <td><code>--psy-action-primary-bg</code> 等</td>
+                      <td>主要：<code>--psy-color-secondary-lime</code>；次要：<code>--psy-color-secondary-amber</code></td>
+                    </tr>
+                    <tr>
+                      <td>造訪過連結</td>
+                      <td><code>--psy-text-link-visited</code></td>
+                      <td><code>--psy-color-visited</code></td>
+                    </tr>
+                    <tr>
+                      <td>提示區塊（Alerts）</td>
+                      <td><code>--psy-alert-success-bg</code> 等</td>
+                      <td>萊姆／琥珀／洋紅／橘 + panel 混色</td>
+                    </tr>
+                    <tr>
+                      <td>表單欄位（Form controls）</td>
+                      <td><code>--psy-form-input-bg</code>／<code>--psy-form-input-border</code> 等</td>
+                      <td>深底欄位底與字色；錯誤／成功外框沿用 <code>--psy-alert-error-accent</code>／<code>success</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="colors-primitives">
+              <h3 class="ds-doc-card__title">Primitive 原料（底層 hex）</h3>
+              <p class="ds-doc-card__desc">僅在此層維護色值；調色時改 primitive，上層 <code>--psy-color-*</code> 與語意 token 會一併連動。</p>
+              <div class="ds-grid">
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-void)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#16001e</span>
+                    <span class="ds-swatch__token">--psy-primitive-void</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-deep-base)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#18002d</span>
+                    <span class="ds-swatch__token">--psy-primitive-deep-base</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-deep-purple)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#2a0146</span>
+                    <span class="ds-swatch__token">--psy-primitive-deep-purple</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-panel)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#5c1578</span>
+                    <span class="ds-swatch__token">--psy-primitive-panel</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-panel-soft)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#772589</span>
+                    <span class="ds-swatch__token">--psy-primitive-panel-soft</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-text)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#fff6ff</span>
+                    <span class="ds-swatch__token">--psy-primitive-text</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-text-muted)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#fff2f9</span>
+                    <span class="ds-swatch__token">--psy-primitive-text-muted</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-amber)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#ffcc00</span>
+                    <span class="ds-swatch__token">--psy-primitive-amber</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-lime)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#ccff00</span>
+                    <span class="ds-swatch__token">--psy-primitive-lime</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-magenta)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#ff3399</span>
+                    <span class="ds-swatch__token">--psy-primitive-magenta</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-orange)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#ff6600</span>
+                    <span class="ds-swatch__token">--psy-primitive-orange</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-white)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#ffffff</span>
+                    <span class="ds-swatch__token">--psy-primitive-white</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="colors-gradients">
+              <h3 class="ds-doc-card__title">語意漸層（Semantic gradients）</h3>
+              <p class="ds-doc-card__desc">導覽、hero、面板洗色、日期塊與頭像等區塊用；數值定義於 <code>tokens.css</code>。</p>
+              <div class="ds-gradient-grid">
+                <figure class="ds-gradient-item">
+                  <div class="ds-gradient-item__bar" style="--psy-gradient-demo: var(--psy-gradient-nav)"></div>
+                  <figcaption class="ds-gradient-item__cap"><code>--psy-gradient-nav</code></figcaption>
+                </figure>
+                <figure class="ds-gradient-item">
+                  <div class="ds-gradient-item__bar" style="--psy-gradient-demo: var(--psy-gradient-hero-panel)"></div>
+                  <figcaption class="ds-gradient-item__cap"><code>--psy-gradient-hero-panel</code></figcaption>
+                </figure>
+                <figure class="ds-gradient-item">
+                  <div
+                    class="ds-gradient-item__bar"
+                    style="--psy-gradient-demo: var(--psy-gradient-panel-wash), var(--psy-surface-panel)"
+                  ></div>
+                  <figcaption class="ds-gradient-item__cap"><code>--psy-gradient-panel-wash</code> + panel</figcaption>
+                </figure>
+                <figure class="ds-gradient-item">
+                  <div class="ds-gradient-item__bar" style="--psy-gradient-demo: var(--psy-gradient-date-block)"></div>
+                  <figcaption class="ds-gradient-item__cap"><code>--psy-gradient-date-block</code></figcaption>
+                </figure>
+                <figure class="ds-gradient-item">
+                  <div class="ds-gradient-item__bar" style="--psy-gradient-demo: var(--psy-gradient-avatar)"></div>
+                  <figcaption class="ds-gradient-item__cap"><code>--psy-gradient-avatar</code></figcaption>
+                </figure>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="colors-a11y">
+              <h3 class="ds-doc-card__title">Text accessibility</h3>
+              <p class="ds-doc-card__desc">
+                對齊 NASA 文件
+                <a href="https://nasa.github.io/nasawds-site/components/colors/#text-accessibility">Text accessibility</a>
+                段落：內文與可點擊元件應維持足夠對比；下列為本主題預設的「前景／背景」組合 token，自訂時請以對比工具複驗。
+              </p>
+              <div class="ds-table-wrap">
+                <table class="ds-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">用途</th>
+                      <th scope="col">Token</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>深紫底上的主內文</td>
+                      <td><code>--psy-a11y-fg-default-on-page</code></td>
+                    </tr>
+                    <tr>
+                      <td>深紫底上的次要內文</td>
+                      <td><code>--psy-a11y-fg-muted-on-page</code></td>
+                    </tr>
+                    <tr>
+                      <td>螢光／淺飽和底上的字</td>
+                      <td><code>--psy-a11y-fg-on-accent</code>（同 <code>--psy-text-on-dark</code>）</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="ds-note">
+                <span class="ds-note__title">實作備註</span>
+                <p>
+                  WCAG 建議一般內文對比至少約 4.5:1。鍵盤焦點請使用 <code>:focus-visible</code> 與
+                  <code>--psy-color-focus</code>／<code>--psy-focus-ring-*</code>。造訪過連結使用
+                  <code>--psy-text-link-visited</code>。設計系統文件頁使用中性 <code>--ds-doc-*</code>，與產品 token 分離。
+                </p>
+              </div>
+            </article>
+          </section>
+
+          <!-- ========== Typography ========== -->
+          <section class="ds-section" id="typography" aria-labelledby="typography-heading">
+            <h2 class="ds-section__title" id="typography-heading">字體與字階 · Typography</h2>
+            <p class="ds-section__lead">
+              目標是建立「可讀、可掃描、可維護」的排版系統。字族沿用現有 Psychedelic 主題（Display：<strong>Baloo 2</strong>；Body/UI：<strong>Noto Sans TC</strong>），
+              並吸收 NASA Typography 的類型分工、line length 與 vertical rhythm 概念。
+            </p>
+
+            <article class="ds-doc-card" id="typography-typefaces">
+              <h3 class="ds-doc-card__title">字體家族 · Typefaces</h3>
+              <div class="ds-typeface-grid">
+                <div class="ds-typeface-card">
+                  <h4>Baloo 2</h4>
+                  <p class="ds-doc-card__desc">用於 display / heading / CTA，傳達節奏感與記憶點。</p>
+                  <p class="ds-sample-display" style="font-size: 2.4rem">Aa 123</p>
+                </div>
+                <div class="ds-typeface-card">
+                  <h4>Noto Sans TC</h4>
+                  <p class="ds-doc-card__desc">用於段落、導航、表單與說明，優先可讀性與多語穩定性。</p>
+                  <p class="ds-sample-body">Aa 123 這是一段介面內文示例。</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="typography-hierarchy">
+              <h3 class="ds-doc-card__title">字階層級 · Hierarchy</h3>
+              <div class="ds-panel">
+                <div class="ds-typo-block">
+                  <div class="ds-typo-label">Display · <code>--psy-font-size-display</code></div>
+                  <div class="ds-sample-display">Events, taste, discovery.</div>
+                </div>
+                <div class="ds-typo-block">
+                  <div class="ds-typo-label">H2 · <code>--psy-font-size-h2</code></div>
+                  <div class="ds-sample-h2">Featured events</div>
+                </div>
+                <div class="ds-typo-block">
+                  <div class="ds-typo-label">H3 · <code>--psy-font-size-h3</code></div>
+                  <div class="ds-sample-h3">Warehouse Resonance</div>
+                </div>
+                <div class="ds-typo-block">
+                  <div class="ds-typo-label">Subtitle · <code>--psy-font-size-subtitle</code></div>
+                  <p class="ds-sample-subtitle">延續硬派卡片分區，螢光色塊拼貼與深紫層次並存。</p>
+                </div>
+                <div class="ds-typo-block">
+                  <div class="ds-typo-label">Body · <code>--psy-font-size-body</code></div>
+                  <p class="ds-sample-body">內文段落：活動地點、簡短描述、列表次要資訊。</p>
+                </div>
+                <div class="ds-typo-block">
+                  <div class="ds-typo-label">Kicker · <code>--psy-font-size-small</code> + letter-spacing</div>
+                  <p class="ds-sample-kicker">PSYCHEDELIC PALETTE / NEO-BRUTALISM BLOCKS</p>
+                </div>
+                <div class="ds-typo-block">
+                  <div class="ds-typo-label">Caption · <code>--psy-font-size-caption</code></div>
+                  <p class="ds-sample-caption">MAY · 11px 範例</p>
+                </div>
+                <div class="ds-typo-block">
+                  <div class="ds-typo-label">Button 字級 / Brand</div>
+                  <div class="ds-sample-row">
+                    <span class="ds-sample-btn-text">Browse events</span>
+                    <span class="ds-sample-brand">BassLink</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="typography-typesetting">
+              <h3 class="ds-doc-card__title">排版節奏 · Typesetting &amp; Vertical rhythm</h3>
+              <p class="ds-doc-card__desc">內文容器建議控制在 66ch（NASA 建議 50–75 字元）。標題/段落採固定節奏間距，減少頁面密度跳動。</p>
+              <div class="ds-panel">
+                <div class="ds-prose-content ds-rhythm-stack">
+                  <h3>段落對齊：預設左對齊</h3>
+                  <p>
+                    可讀性優先。長文請維持一致起點，讓眼睛能快速回到下一行。若是說明型內容，避免過窄欄寬造成換行噪音，也避免過寬欄造成視線迷航。
+                  </p>
+                  <h4>行長建議：50–75 字元（理想約 66）</h4>
+                  <p>
+                    這段文字示範 `max-width: 66ch` 的閱讀節奏。當內容較長時，行長與行高會直接影響理解效率；適當白空間可降低閱讀疲勞。
+                  </p>
+                  <p class="ds-sample-caption">建議：長文段落以 `line-height` 1.6–1.8，短訊息可略緊。</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="typography-vertical-rhythm">
+              <h3 class="ds-doc-card__title">Vertical rhythm 準則（設計語言）</h3>
+              <p class="ds-doc-card__desc">
+                參考近期排版實務：網站不必硬套 baseline grid；優先使用可重複的 spacing scale，並依內容型態使用不同節奏。
+              </p>
+              <ul class="ds-prose-list">
+                <li>
+                  <strong>原則 1：以間距尺度為主，不迷信 baseline。</strong> baseline grid 能幫助對齊，但不會自動帶來和諧；真正的節奏來自對比、層級與重複距離。
+                </li>
+                <li>
+                  <strong>原則 2：雙尺度策略。</strong> 本專案使用同一 token 系統下的雙節奏：<code>內容閱讀節奏</code>（長文區塊，偏寬鬆）與
+                  <code>介面模組節奏</code>（卡片/表單，偏緊湊）。
+                </li>
+                <li>
+                  <strong>原則 3：長文以行高倍數建立 rhythm。</strong> 內文行高為 1.5 時，段落與小節間距優先採
+                  <code>1x / 1.5x / 2x line-height</code> 對應值，避免任意像素。
+                </li>
+                <li>
+                  <strong>原則 4：UI 元件採 8pt/4pt 軟格線。</strong> 模組高度與內距優先落在 <code>4/8/12/16/24/32</code> 類型級距；允許例外，但需能對應既有 token。
+                </li>
+                <li>
+                  <strong>原則 5：跨平台容忍測量差異。</strong> Web 以 line-height 為自然度量；若與原生 baseline 略有誤差，以可維護一致性優先，不做脆弱微調。
+                </li>
+              </ul>
+              <p class="ds-doc-card__desc" style="margin-top: var(--psy-space-5)">
+                建議檢核：同層級區塊是否使用同一組垂直間距？長文段落是否維持 66ch 與穩定行高？文字是否能放大至 200% 仍保持節奏？
+              </p>
+            </article>
+
+            <article class="ds-doc-card" id="typography-links-lists">
+              <h3 class="ds-doc-card__title">連結與清單 · Links &amp; lists</h3>
+              <div class="ds-panel ds-rhythm-stack">
+                <p class="ds-link-demo">這是一般連結：<a href="#">Explore events</a></p>
+                <p class="ds-link-demo">這是造訪過連結示例：<a class="ds-link-visited" href="#">Visited link</a></p>
+                <div class="ds-dark-stage">
+                  <p class="ds-link-demo" style="margin: 0">深底連結示例：<a class="ds-link-on-dark" href="#">Link on dark surface</a></p>
+                </div>
+                <div class="ds-list-demo">
+                  <ul>
+                    <li>無序清單：資訊點列舉</li>
+                    <li>維持句首大寫與一致標點</li>
+                    <li>避免過長敘事型單點</li>
+                  </ul>
+                  <ol>
+                    <li>有序清單：步驟或排名</li>
+                    <li>每步驟具體可執行</li>
+                    <li>避免混入不相關描述</li>
+                  </ol>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="typography-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                產品頁可使用 `prose-content`（66ch 內容寬度）與 `rhythm-stack`（垂直節奏容器）。連結狀態沿用 `--psy-text-link-*`；
+                深底內容區可搭配 `link-on-dark`。原生 `ul/ol` 即可，避免同頁混用過多列表樣式。長文區優先採閱讀節奏（line-height 倍數）；
+                卡片/表單區優先採 token 尺度（4/8pt 家族）。
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Buttons（對齊 NASA WDS Buttons） ========== -->
+          <section class="ds-section" id="components-buttons" aria-labelledby="buttons-heading">
+            <h2 class="ds-section__title" id="buttons-heading">按鈕 · Buttons</h2>
+            <p class="ds-section__lead">
+              用按鈕標示<strong>可執行的動作</strong>。版面與狀態矩陣對齊
+              <a href="https://nasa.github.io/nasawds-site/components/buttons/">NASA Web Design System — Buttons</a>；樣式使用本主題
+              token（<code>--psy-button-*</code>、<code>--psy-focus-ring-*</code>）。**主要行為色為萊姆綠**（綠燈／確認、good to go），**次要為琥珀黃**。下方
+              <code>ds-btn--demo-*</code> 僅供文件靜態預覽，實際互動仍以
+              <code>:hover</code>／<code>:active</code>／<code>:focus-visible</code> 為準。
+            </p>
+
+            <article class="ds-doc-card" id="buttons-primary">
+              <h3 class="ds-doc-card__title">主要按鈕 · Primary（萊姆綠）</h3>
+              <p class="ds-doc-card__desc">預設、懸停、按下、焦點、停用。焦點列為示意 class，實際請以鍵盤聚焦真實按鈕驗證。</p>
+              <div class="ds-button-matrix">
+                <div class="ds-button-matrix__cell">
+                  <p class="ds-button-matrix__cap">Default</p>
+                  <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary">Default</button>
+                </div>
+                <div class="ds-button-matrix__cell">
+                  <p class="ds-button-matrix__cap">Hover</p>
+                  <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-btn--demo-hover" tabindex="-1">Hover</button>
+                </div>
+                <div class="ds-button-matrix__cell">
+                  <p class="ds-button-matrix__cap">Active</p>
+                  <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-btn--demo-active" tabindex="-1">Active</button>
+                </div>
+                <div class="ds-button-matrix__cell">
+                  <p class="ds-button-matrix__cap">Focus</p>
+                  <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-btn--demo-focus" tabindex="-1">Focus</button>
+                </div>
+                <div class="ds-button-matrix__cell">
+                  <p class="ds-button-matrix__cap">Disabled</p>
+                  <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary" disabled>Disabled</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="buttons-secondary">
+              <h3 class="ds-doc-card__title">次要按鈕 · Secondary（琥珀黃）</h3>
+              <p class="ds-doc-card__desc">同一頁面上的次要行為（對齊 NASA：primary 帶往下一步、secondary 留在當前脈絡）。</p>
+              <div class="ds-button-matrix">
+                <div class="ds-button-matrix__cell">
+                  <p class="ds-button-matrix__cap">Default</p>
+                  <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--secondary">Default</button>
+                </div>
+                <div class="ds-button-matrix__cell">
+                  <p class="ds-button-matrix__cap">Hover</p>
+                  <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--secondary ds-btn--demo-hover" tabindex="-1">Hover</button>
+                </div>
+                <div class="ds-button-matrix__cell">
+                  <p class="ds-button-matrix__cap">Active</p>
+                  <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--secondary ds-btn--demo-active" tabindex="-1">Active</button>
+                </div>
+                <div class="ds-button-matrix__cell">
+                  <p class="ds-button-matrix__cap">Focus</p>
+                  <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--secondary ds-btn--demo-focus" tabindex="-1">Focus</button>
+                </div>
+                <div class="ds-button-matrix__cell">
+                  <p class="ds-button-matrix__cap">Disabled</p>
+                  <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--secondary" disabled>Disabled</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="buttons-on-dark">
+              <h3 class="ds-doc-card__title">深底上的按鈕 · On dark</h3>
+              <p class="ds-doc-card__desc">
+                對齊 NASA「Buttons on a dark background」：在產品紫底上使用<strong>線框反色</strong>變體（<code>.ds-btn--inverse</code>），避免與螢光填色按鈕搶眼。
+                實作時亦可沿用填色 primary／secondary，須注意對比。
+              </p>
+              <div class="ds-dark-stage">
+                <div class="ds-button-matrix">
+                  <div class="ds-button-matrix__cell">
+                    <p class="ds-button-matrix__cap">Default</p>
+                    <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--inverse">Default</button>
+                  </div>
+                  <div class="ds-button-matrix__cell">
+                    <p class="ds-button-matrix__cap">Hover</p>
+                    <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--inverse ds-btn--demo-hover" tabindex="-1">Hover</button>
+                  </div>
+                  <div class="ds-button-matrix__cell">
+                    <p class="ds-button-matrix__cap">Active</p>
+                    <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--inverse ds-btn--demo-active" tabindex="-1">Active</button>
+                  </div>
+                  <div class="ds-button-matrix__cell">
+                    <p class="ds-button-matrix__cap">Focus</p>
+                    <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--inverse ds-btn--demo-focus" tabindex="-1">Focus</button>
+                  </div>
+                  <div class="ds-button-matrix__cell">
+                    <p class="ds-button-matrix__cap">Disabled</p>
+                    <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--inverse" disabled>Disabled</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="buttons-big">
+              <h3 class="ds-doc-card__title">大尺寸按鈕 · Big</h3>
+              <p class="ds-doc-card__desc">對齊 NASA big button：全頁唯一或最優先行為時可加 <code>.ds-btn--lg</code>（產品頁可視需要併入 <code>.button</code>）。</p>
+              <div class="ds-btn-row">
+                <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-btn--lg">主要行動</button>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="buttons-implementation">
+              <h3 class="ds-doc-card__title">實作說明 · Implementation</h3>
+              <p class="ds-doc-card__desc">
+                範例以 <code>&lt;button&gt;</code> 為主；若為連結套用按鈕外觀，可加上與按鈕相同的 class（對齊 NASA：在
+                <code>&lt;a&gt;</code> 上使用 button class）。目前 package 的完整樣式入口為 <code>mimosa.css</code>，對應 legacy
+                <code>.button</code>／<code>.button.primary</code>；文件示例則以 package primitives
+                <code>psy-btn</code>／<code>psy-btn--primary</code> 為主，再由 <code>ds-btn--demo-*</code> 補足靜態狀態展示。
+              </p>
+              <pre class="ds-code-block"><code>&lt;button type="button" class="psy-brutal psy-btn psy-btn--primary"&gt;主要&lt;/button&gt;
+&lt;button type="button" class="psy-brutal psy-btn"&gt;次要&lt;/button&gt;
+&lt;a href="/path" class="psy-brutal psy-btn psy-btn--primary"&gt;連結長得像按鈕&lt;/a&gt;</code></pre>
+            </article>
+
+            <article class="ds-doc-card" id="buttons-a11y">
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
+              <p class="ds-doc-card__desc">節錄並中譯 NASA Buttons 文件要點。</p>
+              <ul class="ds-prose-list">
+                <li>使用者以 <kbd>Tab</kbd> 聚焦時，按鈕須有<strong>可見的焦點狀態</strong>（本主題：<code>:focus-visible</code> + lime ring）。</li>
+                <li>勿用 <code>&lt;div&gt;</code> 或純圖片冒充按鈕；螢幕閱讀器未必能辨識為可操作控制項。</li>
+                <li>連結做成按鈕外觀時，記住：<strong>空白鍵</strong>觸發按鈕、<strong>Enter</strong> 觸發連結，行為與公告應一致。</li>
+                <li>按鈕群組需補償硬陰影高度（8px）設定垂直間距，避免多排按鈕或上下群組互相遮擋。</li>
+                <li>按鈕群組若後接一般文字或清單（如狀態紀錄），需額外保留 <code>base spacing + 8px</code> 的底部間距，避免陰影壓到下一段內容。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="buttons-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <p class="ds-doc-card__desc">節錄 NASA「When to use / When to consider something else」。</p>
+              <p class="ds-doc-card__desc" style="margin-bottom: var(--psy-space-3)"><strong>適合使用按鈕</strong></p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li>全頁或區塊內<strong>最重要</strong>的動作（下載、註冊、送出等）。</li>
+                <li>主要行為與次要行為並列時，以樣式區分（primary / secondary / inverse）。</li>
+                <li>狀態切換型操作（如 Going / Interested / 取消標記）需用語意化 status chips，並明確區分 selected / default。</li>
+                <li>管理後台同列處置按鈕不得僅有單一 danger；需依風險等級採用 warning/restrict/success/info/neutral/danger 分層，且警示與暫時禁聊不可同色。</li>
+              </ul>
+              <p class="ds-doc-card__desc" style="margin: var(--psy-space-6) 0 var(--psy-space-3)"><strong>可改用連結</strong></p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li>主要目的是<strong>帶使用者到另一頁</strong>、而非提交或觸發同一頁行為時。</li>
+                <li>次要、低優先動作可做成文字連結，避免滿版按鈕。</li>
+              </ul>
+              <p class="ds-doc-card__desc" style="margin: var(--psy-space-6) 0 var(--psy-space-3)"><strong>用字</strong></p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li>標籤盡量短，採句首大寫或句子大小寫一致慣例；以<strong>動詞開頭</strong>（例如「瀏覽活動」而非冗長名詞片語）。</li>
+                <li>同一視野避免過多顆按鈕，以免層級不清。</li>
+              </ul>
+            </article>
+          </section>
+
+          <!-- ========== Alerts（對齊 NASA WDS Alerts） ========== -->
+          <section class="ds-section" id="components-alerts" aria-labelledby="alerts-heading">
+            <h2 class="ds-section__title" id="alerts-heading">提示 · Alerts</h2>
+            <p class="ds-section__lead">
+              用來告知使用者<strong>重要或具時效</strong>的系統／表單狀態。結構與角色對齊
+              <a href="https://nasa.github.io/nasawds-site/components/alerts/">NASA Web Design System — Alerts</a>；樣式沿用 Neo-Brutalism
+              粗框與硬陰影，狀態色對應 <code>--psy-alert-*</code>。完整樣式 bundle 可使用 <code>mimosa.css</code> 的 <code>.alert</code> 系列 class。
+            </p>
+
+            <article class="ds-doc-card" id="alerts-variants">
+              <h3 class="ds-doc-card__title">狀態列 · Success / Warning / Error / Info</h3>
+              <p class="ds-doc-card__desc">
+                成功（萊姆）、警告（琥珀）、錯誤（洋紅）、資訊（橘）。錯誤且非互動內容時可設 <code>role="alert"</code>（見可訪問性小節）。
+              </p>
+              <div class="ds-alert-stack">
+                <div class="ds-alert alert alert-success ds-alert--success" role="status">
+                  <span class="ds-alert__icon alert__icon" aria-hidden="true">✓</span>
+                  <div class="ds-alert__body alert__body">
+                    <h4 class="ds-alert__heading alert__heading">Success Status</h4>
+                    <p class="ds-alert__text alert__text">
+                      操作已完成。如需說明可附 <a href="#">連結範例</a>。
+                    </p>
+                  </div>
+                </div>
+                <div class="ds-alert alert alert-warning ds-alert--warning" role="status">
+                  <span class="ds-alert__icon alert__icon" aria-hidden="true">!</span>
+                  <div class="ds-alert__body alert__body">
+                    <h4 class="ds-alert__heading alert__heading">Warning Status</h4>
+                    <p class="ds-alert__text alert__text">
+                      請留意：此變更可能影響既有設定，建議先備份。
+                    </p>
+                  </div>
+                </div>
+                <div class="ds-alert alert alert-error ds-alert--error" role="alert">
+                  <span class="ds-alert__icon alert__icon" aria-hidden="true">!</span>
+                  <div class="ds-alert__body alert__body">
+                    <h4 class="ds-alert__heading alert__heading">Error Status</h4>
+                    <p class="ds-alert__text alert__text">
+                      無法完成請求。請檢查網路或 <a href="#">稍後再試</a>。
+                    </p>
+                  </div>
+                </div>
+                <div class="ds-alert alert alert-info ds-alert--info" role="status">
+                  <span class="ds-alert__icon alert__icon" aria-hidden="true">i</span>
+                  <div class="ds-alert__body alert__body">
+                    <h4 class="ds-alert__heading alert__heading">Information Status</h4>
+                    <p class="ds-alert__text alert__text">
+                      系統將於維護時段短暫停用，時程已公告於最新消息。
+                    </p>
+                  </div>
+                </div>
+                <div class="ds-alert alert alert-info alert-paragraph ds-alert--info ds-alert--paragraph" role="status">
+                  <span class="ds-alert__icon alert__icon" aria-hidden="true">i</span>
+                  <div class="ds-alert__body alert__body">
+                    <h4 class="ds-alert__heading alert__heading">Information Status — Paragraph width</h4>
+                    <p class="ds-alert__text alert__text">
+                      多行說明：對齊 NASA 的 paragraph width 變體，限制內文欄寬以利長篇可讀性。Neque porro quisquam est
+                      qui dolorem ipsum quia dolor sit amet，實務上應改寫為簡短中文，並在必要時提供復原步驟或聯絡方式。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="alerts-on-dark">
+              <h3 class="ds-doc-card__title">深底上的提示 · On dark</h3>
+              <p class="ds-doc-card__desc">與產品頁相同的紫底；深底版改用「淺底卡 + 左側色條 + 黑底圖示」提高辨識度。</p>
+              <div class="ds-dark-stage">
+                <div class="ds-alert-stack">
+                  <div class="ds-alert alert alert-success alert-on-dark ds-alert--success ds-alert--on-dark" role="status">
+                    <span class="ds-alert__icon alert__icon" aria-hidden="true">✓</span>
+                    <div class="ds-alert__body alert__body">
+                      <h4 class="ds-alert__heading alert__heading">Success</h4>
+                      <p class="ds-alert__text alert__text">已同步至雲端。</p>
+                    </div>
+                  </div>
+                  <div class="ds-alert alert alert-warning alert-on-dark ds-alert--warning ds-alert--on-dark" role="status">
+                    <span class="ds-alert__icon alert__icon" aria-hidden="true">!</span>
+                    <div class="ds-alert__body alert__body">
+                      <h4 class="ds-alert__heading alert__heading">Warning</h4>
+                      <p class="ds-alert__text alert__text">名額即將額滿。</p>
+                    </div>
+                  </div>
+                  <div class="ds-alert alert alert-error alert-on-dark ds-alert--error ds-alert--on-dark" role="alert">
+                    <span class="ds-alert__icon alert__icon" aria-hidden="true">!</span>
+                    <div class="ds-alert__body alert__body">
+                      <h4 class="ds-alert__heading alert__heading">Error</h4>
+                      <p class="ds-alert__text alert__text">表單仍有欄位未通過驗證。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="alerts-implementation">
+              <h3 class="ds-doc-card__title">實作 · Implementation</h3>
+              <p class="ds-doc-card__desc">
+                文件頁使用 <code>ds-alert</code>；產品頁建議使用 <code>alert</code> + 狀態修飾 class，與下列標記對等。
+              </p>
+              <pre class="ds-code-block"><code>&lt;div class="alert alert-success" role="status"&gt;
+  &lt;span class="alert__icon" aria-hidden="true"&gt;✓&lt;/span&gt;
+  &lt;div class="alert__body"&gt;
+    &lt;h4 class="alert__heading"&gt;Success&lt;/h4&gt;
+    &lt;p class="alert__text"&gt;…&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-error" role="alert"&gt;…&lt;/div&gt;</code></pre>
+            </article>
+
+            <article class="ds-doc-card" id="alerts-a11y">
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
+              <p class="ds-doc-card__desc">節錄並中譯 NASA Alerts 文件。</p>
+              <ul class="ds-prose-list">
+                <li>
+                  時效性高、且<strong>非互動</strong>的重要訊息可使用 ARIA <code>role="alert"</code>，讓輔助科技及時朗讀；若為需操作的可互動對話，改用
+                  <code>alertdialog</code>。
+                </li>
+                <li>勿將提示在視覺上完全隱藏後才動態顯示給部分使用者——舊版輔助科技仍可能讀到被隱藏的內容。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="alerts-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <p class="ds-doc-card__desc">節錄 NASA Alerts — When to use / Guidance。</p>
+              <p class="ds-doc-card__desc" style="margin-bottom: var(--psy-space-3)"><strong>適合使用</strong></p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li>通知使用者系統狀態（錯誤、警告、一般更新），不一定需要回應。</li>
+                <li>表單送出後的驗證摘要，或成功完成的確認訊息。</li>
+              </ul>
+              <p class="ds-doc-card__desc" style="margin: var(--psy-space-6) 0 var(--psy-space-3)"><strong>可改用其他型態</strong></p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li>長表單應搭配<strong>欄位旁內聯錯誤</strong>，勿僅依賴頁頂一則 alert。</li>
+                <li>會<strong>破壞性刪除</strong>等行為，請用確認對話框等更強介入，而非僅文字提示。</li>
+              </ul>
+              <p class="ds-doc-card__desc" style="margin: var(--psy-space-6) 0 var(--psy-space-3)"><strong>撰寫要點</strong></p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li>說明使用者<strong>下一步可做什麼</strong>，語氣簡潔、避免責備使用者。</li>
+                <li>通知數量適中；可關閉時提供關閉，避免無關訊息干擾當前任務。</li>
+              </ul>
+            </article>
+          </section>
+
+          <!-- ========== Accordions（對齊 NASA WDS Accordions） ========== -->
+          <section class="ds-section" id="components-accordions" aria-labelledby="accordions-heading">
+            <h2 class="ds-section__title" id="accordions-heading">手風琴 · Accordions</h2>
+            <p class="ds-section__lead">
+              手風琴用於在有限空間中分段顯示資訊。結構參照
+              <a href="https://nasa.github.io/nasawds-site/components/accordions/">NASA Web Design System — Accordions</a>，
+              並延伸 Psychedelic 的粗框與高對比展開狀態。
+            </p>
+
+            <article class="ds-doc-card" id="accordions-borderless">
+              <h3 class="ds-doc-card__title">無框樣式 · Borderless</h3>
+              <ul class="ds-accordion accordion" data-accordion>
+                <li>
+                  <button class="ds-accordion__button accordion__button" aria-expanded="true" aria-controls="ds-acc-a1">配對結果如何計算？</button>
+                  <div id="ds-acc-a1" class="ds-accordion__content accordion__content">
+                    以音樂品味相似度、地理距離與近期互動權重組合計分，並保留探索新風格的隨機性。
+                  </div>
+                </li>
+                <li>
+                  <button class="ds-accordion__button accordion__button" aria-expanded="false" aria-controls="ds-acc-a2">為什麼有人看不到我的檔案？</button>
+                  <div id="ds-acc-a2" class="ds-accordion__content accordion__content" hidden>
+                    可能是距離範圍、年齡篩選或封鎖條件所致；請檢查設定頁中的可見性選項。
+                  </div>
+                </li>
+                <li>
+                  <button class="ds-accordion__button accordion__button" aria-expanded="false" aria-controls="ds-acc-a3">如何提高配對品質？</button>
+                  <div id="ds-acc-a3" class="ds-accordion__content accordion__content" hidden>
+                    補齊音樂偏好標籤、近期常聽清單與活動參與紀錄，系統能更快收斂推薦結果。
+                  </div>
+                </li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="accordions-bordered">
+              <h3 class="ds-doc-card__title">框線樣式 · Bordered</h3>
+              <ul class="ds-accordion ds-accordion--bordered accordion accordion--bordered" data-accordion>
+                <li>
+                  <button class="ds-accordion__button accordion__button" aria-expanded="true" aria-controls="ds-acc-b1">帳號安全與隱私</button>
+                  <div id="ds-acc-b1" class="ds-accordion__content accordion__content">
+                    支援封鎖、檢舉與可見度控管；敏感資料採分級存取，並在操作流程中給予提示。
+                  </div>
+                </li>
+                <li>
+                  <button class="ds-accordion__button accordion__button" aria-expanded="false" aria-controls="ds-acc-b2">活動報名與取消</button>
+                  <div id="ds-acc-b2" class="ds-accordion__content accordion__content" hidden>
+                    活動開演前可依主辦規則取消；逾時可能不退回名額，詳見活動條款說明。
+                  </div>
+                </li>
+                <li>
+                  <button class="ds-accordion__button accordion__button" aria-expanded="false" aria-controls="ds-acc-b3">通知與推播設定</button>
+                  <div id="ds-acc-b3" class="ds-accordion__content accordion__content" hidden>
+                    可分別控制配對通知、活動提醒與系統公告，避免高頻訊息干擾。
+                  </div>
+                </li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="accordions-a11y">
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
+              <ul class="ds-prose-list">
+                <li>標題列必須是 <code>&lt;button&gt;</code>，確保鍵盤與輔助科技可操作。</li>
+                <li>按鈕需使用 <code>aria-expanded</code> 表示展開狀態，並以 <code>aria-controls</code> 對應內容區 <code>id</code>。</li>
+                <li>內容區的可見狀態應與按鈕狀態一致；避免在 JS 失效時直接把內容永久隱藏。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="accordions-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <ul class="ds-prose-list">
+                <li>適合使用者只需要少數段落資訊、且版面空間受限時。</li>
+                <li>若使用者通常要讀完整內容，應改為直接展開的段落排版。</li>
+                <li>標題列點擊區要夠大，並與內容內可點擊元素保持距離，避免誤收合。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="accordions-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                產品頁可使用 <code>accordion</code>、<code>accordion--bordered</code>、<code>accordion__button</code>、<code>accordion__content</code>，
+                並沿用同樣的 <code>aria-expanded</code> / <code>aria-controls</code> 結構。
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Form controls（對齊 NASA WDS Form controls） ========== -->
+          <section class="ds-section" id="components-form-controls" aria-labelledby="form-controls-heading">
+            <h2 class="ds-section__title" id="form-controls-heading">表單控制元件 · Form controls</h2>
+            <p class="ds-section__lead">
+              讓使用者在頁面上輸入與選取資訊。結構與可訪問性要點對齊
+              <a href="https://nasa.github.io/nasawds-site/components/form-controls/">NASA Web Design System — Form controls</a>；外觀沿用 Neo-Brutalism
+              粗框與硬陰影，錯誤／成功態沿用 <code>--psy-alert-*</code>。本頁示範為 <code>ds-*</code>；完整樣式 bundle 可使用 <code>mimosa.css</code> 的 <code>form-*</code>（見實作一節）。
+            </p>
+
+            <article class="ds-doc-card" id="form-a11y-intro">
+              <h3 class="ds-doc-card__title">可訪問性（總覽）</h3>
+              <p class="ds-doc-card__desc">節錄 NASA Form controls — Accessibility。</p>
+              <ul class="ds-prose-list">
+                <li>表單控制項在 HTML 中的順序須與畫面閱讀順序一致，勿僅以 CSS 重排而讓螢幕報讀順序錯亂。</li>
+                <li>驗證訊息須與對應欄位在視覺上對齊，方便放大鏡使用者掃讀。</li>
+                <li>主題相關的控制項請以 <code>&lt;fieldset&gt;</code> 分組，並以單一 <code>&lt;legend&gt;</code> 說明（例如一題搭配多個選項按鈕）。</li>
+                <li>表單區塊盡量維持<strong>垂直排列</strong>，對視野受限使用者較友善。</li>
+                <li>
+                  部分螢幕報讀器對 <code>fieldset</code>／<code>legend</code> 或 <code>aria-describedby</code> 支援不一；必要時可改以
+                  <code>aria-labelledby</code> 串連標籤、說明與提示（詳見原文 Known issues）。
+                </li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="form-text-inputs">
+              <h3 class="ds-doc-card__title">文字欄與多行 · Text input &amp; textarea</h3>
+              <p class="ds-doc-card__desc">
+                單行文字、焦點環示意、錯誤（<code>role="alert"</code> 訊息 + <code>aria-describedby</code>／<code>aria-invalid</code>）、成功外觀、多行文字區。
+              </p>
+              <form class="ds-form-demo ds-form-stack" novalidate>
+                <div>
+                  <label class="ds-label" for="ds-in-text">文字欄標籤</label>
+                  <input class="ds-input form-input" id="ds-in-text" name="ds-in-text" type="text" autocomplete="off" />
+                </div>
+                <div>
+                  <label class="ds-label" for="ds-in-focus">焦點狀態（示意）</label>
+                  <input
+                    class="ds-input form-input ds-input--demo-focus"
+                    id="ds-in-focus"
+                    name="ds-in-focus"
+                    type="text"
+                    autocomplete="off"
+                    tabindex="-1"
+                  />
+                </div>
+                <div class="ds-input-error-group">
+                  <label class="ds-label form-label form-label--error ds-label--error" for="ds-in-err">錯誤狀態</label>
+                  <span class="ds-input-error-msg" id="ds-in-err-msg" role="alert">請輸入有效內容。</span>
+                  <input
+                    class="ds-input form-input form-input--error ds-input--error"
+                    id="ds-in-err"
+                    name="ds-in-err"
+                    type="text"
+                    aria-describedby="ds-in-err-msg"
+                    aria-invalid="true"
+                    autocomplete="off"
+                  />
+                </div>
+                <div>
+                  <label class="ds-label" for="ds-in-ok">成功狀態（外觀）</label>
+                  <input class="ds-input form-input form-input--success ds-input--success" id="ds-in-ok" name="ds-in-ok" type="text" autocomplete="off" />
+                </div>
+                <div>
+                  <label class="ds-label" for="ds-ta">多行文字</label>
+                  <textarea class="ds-textarea form-textarea" id="ds-ta" name="ds-ta" rows="4"></textarea>
+                </div>
+              </form>
+              <p class="ds-doc-card__desc" style="margin-top: var(--psy-space-6); margin-bottom: var(--psy-space-3)">
+                <strong>撰寫要點（節錄）</strong>
+              </p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li>避免以 placeholder 取代標籤（對比與認知負擔）。</li>
+                <li>placeholder 文字使用 <code>--psy-form-placeholder-text</code> 並維持較輕字重，需「可讀但低於已填值」的視覺層級。</li>
+                <li>任何帶硬陰影輸入控制項（input / select / textarea）後若緊接下一個標籤，需加上 <code>base spacing + 4px</code>（陰影高度）補償，避免遮擋下一段標籤文字。</li>
+                <li>標籤群組（如音樂標籤 chips）作為一段內容時，容器底部需保留至少 <code>--psy-space-4</code>，再進入下一個欄位標題。</li>
+                <li>摘要型清單（如照片／音樂品味／活動歷史）若後接動作按鈕，清單底部需保留至少 <code>--psy-space-5</code>，避免資訊段落與操作區黏連。</li>
+                <li>電話、卡號等勿任意拆成多個欄位；必要時仍應有清楚群組與標籤。</li>
+                <li>僅在使用者互動過該欄後再顯示驗證錯誤樣式或訊息。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="form-dropdown">
+              <h3 class="ds-doc-card__title">下拉選單 · Dropdown</h3>
+              <p class="ds-doc-card__desc">
+                選項約 7～15 個、版面有限時較適合；選項極少可改選項按鈕，極多可改可搜尋輸入。勿在選取後自動送出表單（干擾螢幕報讀）。
+              </p>
+              <form class="ds-form-demo ds-form-stack ds-form-stack--tight" novalidate>
+                <div>
+                  <label class="ds-label" for="ds-select-demo">下拉標籤</label>
+                  <select class="ds-select form-select" id="ds-select-demo" name="ds-select-demo">
+                    <option value="">— 請選擇 —</option>
+                    <option value="a">選項 A</option>
+                    <option value="b">選項 B</option>
+                    <option value="c">選項 C</option>
+                  </select>
+                </div>
+              </form>
+            </article>
+
+            <article class="ds-doc-card" id="form-checkboxes">
+              <h3 class="ds-doc-card__title">核取方塊 · Checkboxes</h3>
+              <p class="ds-doc-card__desc">同一主題的多選以 <code>fieldset</code> 包覆；單一開關可用單一核取方塊。</p>
+              <form class="ds-form-demo ds-form-stack ds-form-stack--tight" novalidate>
+                <fieldset class="ds-fieldset">
+                  <legend class="ds-legend">興趣主題（可複選）</legend>
+                  <ul class="ds-choice-list">
+                    <li>
+                      <label class="ds-choice">
+                        <input id="ds-ch-a" type="checkbox" name="ds-ch" value="a" checked />
+                        <span>現場演出</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="ds-choice">
+                        <input id="ds-ch-b" type="checkbox" name="ds-ch" value="b" />
+                        <span>錄音室作品</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="ds-choice">
+                        <input id="ds-ch-c" type="checkbox" name="ds-ch" value="c" disabled />
+                        <span>即將開放（停用）</span>
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </form>
+            </article>
+
+            <article class="ds-doc-card" id="form-radio">
+              <h3 class="ds-doc-card__title">選項按鈕 · Radio</h3>
+              <p class="ds-doc-card__desc">互斥單選；不確定預設值是否合宜時，可維持「未選」為預設。</p>
+              <form class="ds-form-demo ds-form-stack ds-form-stack--tight" novalidate>
+                <fieldset class="ds-fieldset">
+                  <legend class="ds-legend">通知偏好（單選）</legend>
+                  <ul class="ds-choice-list">
+                    <li>
+                      <label class="ds-choice">
+                        <input id="ds-rd-a" type="radio" name="ds-rd" value="email" checked />
+                        <span>電子郵件</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="ds-choice">
+                        <input id="ds-rd-b" type="radio" name="ds-rd" value="push" />
+                        <span>推播</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="ds-choice">
+                        <input id="ds-rd-c" type="radio" name="ds-rd" value="off" />
+                        <span>不要通知</span>
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </form>
+            </article>
+
+            <article class="ds-doc-card" id="form-date">
+              <h3 class="ds-doc-card__title">日期欄位 · Date（分段輸入）</h3>
+              <p class="ds-doc-card__desc">
+                多數「記得的日期」以月／日／年三欄輸入較直覺。勿用 JS 自動跳欄（鍵盤使用者不易修正）。年份上下限請依表單情境調整。
+              </p>
+              <form class="ds-form-demo ds-form-stack ds-form-stack--tight" novalidate>
+                <fieldset class="ds-fieldset">
+                  <legend class="ds-legend">出生日期</legend>
+                  <span class="ds-hint" id="ds-dob-hint">範例：04　28　1986</span>
+                  <div class="ds-date-row">
+                    <div class="ds-date-field">
+                      <label class="ds-label" for="ds-dob-m">月</label>
+                      <input
+                        class="ds-input form-input"
+                        id="ds-dob-m"
+                        name="ds-dob-m"
+                        type="number"
+                        inputmode="numeric"
+                        min="1"
+                        max="12"
+                        aria-describedby="ds-dob-hint"
+                        autocomplete="bday-month"
+                      />
+                    </div>
+                    <div class="ds-date-field">
+                      <label class="ds-label" for="ds-dob-d">日</label>
+                      <input
+                        class="ds-input form-input"
+                        id="ds-dob-d"
+                        name="ds-dob-d"
+                        type="number"
+                        inputmode="numeric"
+                        min="1"
+                        max="31"
+                        aria-describedby="ds-dob-hint"
+                        autocomplete="bday-day"
+                      />
+                    </div>
+                    <div class="ds-date-field">
+                      <label class="ds-label" for="ds-dob-y">年</label>
+                      <input
+                        class="ds-input form-input"
+                        id="ds-dob-y"
+                        name="ds-dob-y"
+                        type="number"
+                        inputmode="numeric"
+                        min="1900"
+                        max="2100"
+                        aria-describedby="ds-dob-hint"
+                        autocomplete="bday-year"
+                      />
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </article>
+
+            <article class="ds-doc-card" id="form-validation">
+              <h3 class="ds-doc-card__title">驗證與規則清單 · Validation</h3>
+              <p class="ds-doc-card__desc">
+                事先列出規則並即時回饋，減少猜測。下列清單會隨輸入更新（僅示意用戶端邏輯）；正式環境須在伺服端重複驗證。
+              </p>
+              <form class="ds-form-demo ds-form-stack ds-form-stack--tight" novalidate>
+                <fieldset class="ds-fieldset">
+                  <legend class="ds-legend">輸入通關碼</legend>
+                  <div class="ds-checklist-box">
+                    <p class="ds-doc-card__desc" style="margin: 0 0 var(--psy-space-2)"><strong>通關碼必須：</strong></p>
+                    <ul class="ds-checklist" id="ds-validate-checklist" aria-live="polite">
+                      <li data-validator="uppercase">至少 1 個大寫英文字母</li>
+                      <li data-validator="numerical">至少 1 個數字</li>
+                    </ul>
+                  </div>
+                  <label class="ds-label" for="ds-code-validate">通關碼</label>
+                  <input
+                    class="ds-input form-input"
+                    id="ds-code-validate"
+                    name="ds-code-validate"
+                    type="text"
+                    autocomplete="off"
+                    aria-describedby="ds-validate-checklist"
+                    data-validate-uppercase="[A-Z]"
+                    data-validate-numerical="\d"
+                  />
+                  <div class="ds-btn-row" style="margin-top: var(--psy-space-5)">
+                    <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary">送出（示意，不會送出）</button>
+                  </div>
+                </fieldset>
+              </form>
+            </article>
+
+            <article class="ds-doc-card" id="form-on-dark">
+              <h3 class="ds-doc-card__title">深底表單示例 · On dark</h3>
+              <p class="ds-doc-card__desc">與產品深紫底接近的欄位配色（<code>--psy-form-*</code>）。</p>
+              <div class="ds-dark-stage">
+                <form class="ds-form-demo ds-form-stack ds-form-stack--tight ds-form-demo-on-dark" novalidate>
+                  <div>
+                    <label class="ds-label" for="ds-dark-name">顯示名稱</label>
+                    <input class="ds-input form-input" id="ds-dark-name" name="ds-dark-name" type="text" autocomplete="off" />
+                  </div>
+                  <div>
+                    <label class="ds-label" for="ds-dark-note">簡介</label>
+                    <textarea class="ds-textarea form-textarea" id="ds-dark-note" name="ds-dark-note" rows="3"></textarea>
+                  </div>
+                </form>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="form-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                使用完整樣式 bundle 時請載入 <code>mimosa.css</code>（其內已引用 <code>tokens.css</code>）。對應關係：<code>ds-label</code> → <code>form-label</code>、<code>ds-input</code> →
+                <code>form-input</code>、<code>ds-textarea</code> → <code>form-textarea</code>、<code>ds-select</code> → <code>form-select</code>、<code>ds-hint</code> →
+                <code>form-hint</code>、錯誤群組 <code>form-error-group</code>／<code>form-error-msg</code>／<code>form-input--error</code>、<code>ds-fieldset</code> →
+                <code>form-fieldset</code>、<code>ds-legend</code> → <code>form-legend</code>、選項清單 <code>form-choice-list</code> + <code>form-choice</code>、日期列
+                <code>form-date-row</code>／<code>form-date-field</code>、規則清單 <code>form-checklist-box</code>／<code>form-checklist</code> 與條目 class <code>is-met</code>。
+              </p>
+              <pre class="ds-code-block"><code>&lt;div class="form-stack"&gt;
+  &lt;div class="form-error-group"&gt;
+    &lt;label class="form-label form-label--error" for="email"&gt;電子郵件&lt;/label&gt;
+    &lt;span class="form-error-msg" id="email-err" role="alert"&gt;格式不正確。&lt;/span&gt;
+    &lt;input class="form-input form-input--error" id="email" aria-describedby="email-err" aria-invalid="true" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </article>
+          </section>
+
+          <!-- ========== Form templates（對齊 NASA WDS Form templates） ========== -->
+          <section class="ds-section" id="components-form-templates" aria-labelledby="form-templates-heading">
+            <h2 class="ds-section__title" id="form-templates-heading">表單範本 · Form templates</h2>
+            <p class="ds-section__lead">
+              常見流程表單的組合範本：Name / Address / Sign-in / Password reset。結構參照
+              <a href="https://nasa.github.io/nasawds-site/components/form-templates/">NASA Web Design System — Form templates</a>，
+              視覺則沿用 Psychedelic + Neo-Brutalism（粗框、硬陰影、螢光行為色）。
+            </p>
+
+            <article class="ds-doc-card" id="form-templates-a11y">
+              <h3 class="ds-doc-card__title">可訪問性（總覽）</h3>
+              <ul class="ds-prose-list">
+                <li>控制項的 HTML 順序要與視覺順序一致，避免僅用 CSS 重排。</li>
+                <li>相關欄位以 <code>fieldset</code> + 單一 <code>legend</code> 分組，並維持垂直掃讀節奏。</li>
+                <li>驗證訊息與欄位視覺對齊，必要時補 <code>aria-describedby</code> 或 <code>aria-labelledby</code>。</li>
+                <li>顯示密碼、忘記帳號/密碼等輔助動作，需保留鍵盤可操作性與明確焦點樣式。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="form-template-name">
+              <h3 class="ds-doc-card__title">姓名表單 · Name form</h3>
+              <p class="ds-doc-card__desc">當資料庫需要分欄儲存姓名時使用；若不需拆分，可退回單一文字欄位。</p>
+              <form class="ds-form-demo ds-form-stack ds-form-stack--tight" novalidate>
+                <fieldset class="ds-fieldset">
+                  <legend class="ds-legend">姓名</legend>
+                  <div class="ds-form-grid">
+                    <div class="ds-form-col-sm">
+                      <label class="ds-label" for="ds-name-title">稱謂（選填）</label>
+                      <input class="ds-input form-input" id="ds-name-title" name="ds-name-title" type="text" autocomplete="honorific-prefix" />
+                    </div>
+                    <div class="ds-form-col-md">
+                      <label class="ds-label" for="ds-name-first">名字</label>
+                      <input class="ds-input form-input" id="ds-name-first" name="ds-name-first" type="text" required aria-required="true" autocomplete="given-name" />
+                    </div>
+                    <div class="ds-form-col-md">
+                      <label class="ds-label" for="ds-name-middle">中間名（選填）</label>
+                      <input class="ds-input form-input" id="ds-name-middle" name="ds-name-middle" type="text" autocomplete="additional-name" />
+                    </div>
+                    <div class="ds-form-col-md">
+                      <label class="ds-label" for="ds-name-last">姓氏</label>
+                      <input class="ds-input form-input" id="ds-name-last" name="ds-name-last" type="text" required aria-required="true" autocomplete="family-name" />
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </article>
+
+            <article class="ds-doc-card" id="form-template-address">
+              <h3 class="ds-doc-card__title">地址表單 · Address form</h3>
+              <p class="ds-doc-card__desc">示範可拆分地址欄位；若不需解析地址，可改單一多行欄位。</p>
+              <form class="ds-form-demo ds-form-stack ds-form-stack--tight" novalidate>
+                <fieldset class="ds-fieldset">
+                  <legend class="ds-legend">郵寄地址</legend>
+                  <label class="ds-label" for="ds-addr-1">地址第 1 行</label>
+                  <input class="ds-input form-input" id="ds-addr-1" name="ds-addr-1" type="text" autocomplete="address-line1" />
+
+                  <label class="ds-label" for="ds-addr-2">地址第 2 行（選填）</label>
+                  <input class="ds-input form-input" id="ds-addr-2" name="ds-addr-2" type="text" autocomplete="address-line2" />
+
+                  <div class="ds-form-grid">
+                    <div class="ds-form-col-md">
+                      <label class="ds-label" for="ds-city">城市</label>
+                      <input class="ds-input form-input" id="ds-city" name="ds-city" type="text" autocomplete="address-level2" />
+                    </div>
+                    <div class="ds-form-col-sm">
+                      <label class="ds-label" for="ds-state">縣市</label>
+                      <select class="ds-select form-select" id="ds-state" name="ds-state" autocomplete="address-level1">
+                        <option value="">— 請選擇 —</option>
+                        <option value="taipei">台北市</option>
+                        <option value="newtaipei">新北市</option>
+                        <option value="taichung">台中市</option>
+                        <option value="kaohsiung">高雄市</option>
+                      </select>
+                    </div>
+                    <div class="ds-form-col-sm">
+                      <label class="ds-label" for="ds-zip">郵遞區號</label>
+                      <input class="ds-input form-input" id="ds-zip" name="ds-zip" type="text" inputmode="numeric" pattern="[0-9]{3,6}" autocomplete="postal-code" />
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </article>
+
+            <article class="ds-doc-card" id="form-template-signin">
+              <h3 class="ds-doc-card__title">登入表單 · Sign-in form</h3>
+              <p class="ds-doc-card__desc">精簡欄位，保留顯示密碼與忘記帳密捷徑，降低登入摩擦。</p>
+              <form class="ds-form-demo ds-form-stack ds-form-stack--tight" novalidate>
+                <fieldset class="ds-fieldset ds-form-stack ds-form-stack--tight">
+                  <legend class="ds-legend">登入</legend>
+                  <p class="ds-form-note">或 <a href="#">建立新帳號</a></p>
+
+                  <label class="ds-label" for="ds-signin-id">電子郵件或帳號</label>
+                  <input class="ds-input form-input" id="ds-signin-id" name="ds-signin-id" type="text" autocapitalize="off" autocorrect="off" autocomplete="username" />
+
+                  <label class="ds-label" for="ds-signin-password">密碼</label>
+                  <input class="ds-input form-input" id="ds-signin-password" name="ds-signin-password" type="password" autocomplete="current-password" />
+                  <p class="ds-form-note"><a href="#" aria-controls="ds-signin-password">顯示密碼</a></p>
+
+                  <div class="ds-btn-row" style="margin-top: var(--psy-space-4)">
+                    <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary">登入</button>
+                  </div>
+                  <p class="ds-form-note"><a href="#">忘記帳號？</a></p>
+                  <p class="ds-form-note"><a href="#">忘記密碼？</a></p>
+                </fieldset>
+              </form>
+            </article>
+
+            <article class="ds-doc-card" id="form-template-reset">
+              <h3 class="ds-doc-card__title">重設密碼 · Password reset form</h3>
+              <p class="ds-doc-card__desc">先揭露密碼規則，再讓使用者輸入與確認，避免「填完才被擋」。</p>
+              <form class="ds-form-demo ds-form-stack ds-form-stack--tight" novalidate>
+                <fieldset class="ds-fieldset ds-form-stack ds-form-stack--tight">
+                  <legend class="ds-legend">重設密碼</legend>
+                  <p class="ds-form-note">請輸入新的密碼</p>
+
+                  <div class="ds-alert alert alert-info ds-alert--info" role="status">
+                    <span class="ds-alert__icon alert__icon" aria-hidden="true">i</span>
+                    <div class="ds-alert__body alert__body">
+                      <h4 class="ds-alert__heading alert__heading">密碼規則</h4>
+                      <p class="ds-alert__text alert__text">至少 8 碼，包含 1 個大寫英文字母與 1 個數字。</p>
+                    </div>
+                  </div>
+
+                  <label class="ds-label" for="ds-reset-password">新密碼</label>
+                  <input class="ds-input form-input" id="ds-reset-password" name="ds-reset-password" type="password" autocomplete="new-password" />
+
+                  <label class="ds-label" for="ds-reset-confirm">確認密碼</label>
+                  <input class="ds-input form-input" id="ds-reset-confirm" name="ds-reset-confirm" type="password" autocomplete="new-password" />
+                  <p class="ds-form-note"><a href="#" aria-controls="ds-reset-password ds-reset-confirm">顯示輸入內容</a></p>
+
+                  <div class="ds-btn-row" style="margin-top: var(--psy-space-4)">
+                    <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary">重設密碼</button>
+                  </div>
+                </fieldset>
+              </form>
+            </article>
+
+            <article class="ds-doc-card" id="form-templates-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                元件沿用 `form-*`（Form controls 章），範本新增版型輔助：`form-grid`、`form-col-sm`、`form-col-md`、`form-note`，可組 Name / Address / Sign-in /
+                Reset password 四種常見流程。
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Search bar（對齊 NASA WDS Search bar） ========== -->
+          <section class="ds-section" id="components-search-bar" aria-labelledby="search-bar-heading">
+            <h2 class="ds-section__title" id="search-bar-heading">搜尋列 · Search bar</h2>
+            <p class="ds-section__lead">
+              提供使用者快速定位內容；結構參照
+              <a href="https://nasa.github.io/nasawds-site/components/search-bar/">NASA Web Design System — Search bar</a>，
+              視覺沿用 Psychedelic 主色按鈕、粗邊框與硬陰影。
+            </p>
+
+            <article class="ds-doc-card" id="search-bar-variants">
+              <h3 class="ds-doc-card__title">尺寸變體 · Big / Medium / Small</h3>
+              <div class="ds-search-wrap ds-form-stack ds-form-stack--tight">
+                <div role="search">
+                  <label class="ds-label" for="ds-search-big">Search big</label>
+                  <form class="ds-search ds-search--big search-bar search-bar--big" action="#" method="get">
+                    <input class="ds-input form-input ds-search__input search-bar__input" id="ds-search-big" type="search" name="search" />
+                    <button class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-search__btn search-bar__submit" type="submit">Search</button>
+                  </form>
+                </div>
+
+                <div role="search">
+                  <label class="ds-label" for="ds-search-medium">Search medium</label>
+                  <form class="ds-search ds-search--medium search-bar" action="#" method="get">
+                    <input class="ds-input form-input ds-search__input search-bar__input" id="ds-search-medium" type="search" name="search" />
+                    <button class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-search__btn search-bar__submit" type="submit">Search</button>
+                  </form>
+                </div>
+
+                <div role="search">
+                  <label class="ds-label" for="ds-search-small">Search small</label>
+                  <form class="ds-search ds-search--small search-bar search-bar--small" action="#" method="get">
+                    <input class="ds-input form-input ds-search__input search-bar__input" id="ds-search-small" type="search" name="search" />
+                    <button class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-search__btn search-bar__submit" type="submit">
+                      <span class="ds-search__icon search-bar__icon" aria-hidden="true">🔍</span>
+                      <span class="ds-sr-only sr-only">Search</span>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="search-bar-a11y">
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
+              <ul class="ds-prose-list">
+                <li>搜尋按鈕必須包含「Search」文字（可視覺隱藏），以供螢幕報讀器辨識。</li>
+                <li>即使視覺上簡化，欄位仍需保有 label 或等效可讀名稱。</li>
+                <li>按鈕應維持 <code>type="submit"</code>，減少鍵盤操作成本。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="search-bar-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <ul class="ds-prose-list">
+                <li>搜尋欄位盡量保留足夠寬度（建議至少可視 27 字元），方便檢查關鍵字。</li>
+                <li>放大鏡圖示通常可獨立辨識；若小尺寸只顯示圖示，務必保留 sr-only 文字。</li>
+                <li>首頁建議直接顯示搜尋框，不用隱藏在連結後方。</li>
+                <li>避免預設進階搜尋，先提供簡單輸入再逐步揭露進階條件。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="search-bar-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                產品頁可沿用 `form-input` 與 `button button-primary`，搭配 `search-bar`／`search-bar--big`／`search-bar--small`、`search-bar__input`、`search-bar__submit`、
+                `search-bar__icon`、`sr-only` 形成一致版型。
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Side navigation（對齊 NASA WDS Side navigation） ========== -->
+          <section class="ds-section" id="components-side-navigation" aria-labelledby="sidenav-heading">
+            <h2 class="ds-section__title" id="sidenav-heading">側邊導覽 · Side navigation</h2>
+            <p class="ds-section__lead">
+              用於呈現 1～3 層導覽階層。結構參照
+              <a href="https://nasa.github.io/nasawds-site/components/sidenav/">NASA Web Design System — Side navigation</a>，
+              視覺沿用 Psychedelic 粗框與螢光 active 指示。
+            </p>
+
+            <article class="ds-doc-card" id="sidenav-single">
+              <h3 class="ds-doc-card__title">單層 · Single level</h3>
+              <nav class="ds-side-nav-demo" aria-label="單層側邊導覽">
+                <ul class="ds-side-nav side-nav">
+                  <li><a class="is-current" href="#">目前頁面</a></li>
+                  <li><a href="#">父層連結</a></li>
+                  <li><a href="#">父層連結</a></li>
+                </ul>
+              </nav>
+            </article>
+
+            <article class="ds-doc-card" id="sidenav-two-levels">
+              <h3 class="ds-doc-card__title">雙層 · Two levels</h3>
+              <nav class="ds-side-nav-demo" aria-label="雙層側邊導覽">
+                <ul class="ds-side-nav side-nav">
+                  <li><a href="#">父層連結</a></li>
+                  <li>
+                    <a class="is-current" href="#">目前頁面</a>
+                    <ul class="ds-side-nav__sub side-nav__sub">
+                      <li><a href="#">子層連結</a></li>
+                      <li><a href="#">子層連結</a></li>
+                      <li><a class="is-current" href="#">子層目前頁</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">父層連結</a></li>
+                </ul>
+              </nav>
+            </article>
+
+            <article class="ds-doc-card" id="sidenav-three-levels">
+              <h3 class="ds-doc-card__title">三層 · Three levels</h3>
+              <nav class="ds-side-nav-demo" aria-label="三層側邊導覽">
+                <ul class="ds-side-nav side-nav">
+                  <li><a href="#">父層連結</a></li>
+                  <li>
+                    <a class="is-current" href="#">目前頁面</a>
+                    <ul class="ds-side-nav__sub side-nav__sub">
+                      <li><a href="#">子層連結</a></li>
+                      <li>
+                        <a href="#">子層連結</a>
+                        <ul class="ds-side-nav__sub side-nav__sub">
+                          <li><a href="#">孫層連結</a></li>
+                          <li><a class="is-current" href="#">孫層目前頁</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">子層連結</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">父層連結</a></li>
+                </ul>
+              </nav>
+            </article>
+
+            <article class="ds-doc-card" id="sidenav-a11y">
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
+              <ul class="ds-prose-list">
+                <li>所有導覽項目需可透過鍵盤 Tab 逐項聚焦與操作。</li>
+                <li>目前頁面狀態需可辨識（視覺 active + 語意標示）。</li>
+                <li>避免過深層級造成導覽迷航，必要時改為拆分資訊架構。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="sidenav-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <ul class="ds-prose-list">
+                <li>導覽文案要短、可掃描，建議為頁名的精簡版。</li>
+                <li>適合 1～3 層；若層級過深，使用者容易漏看底部項目。</li>
+                <li>若整站頁面很少（少於 5），通常不需要側邊導覽。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="sidenav-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                產品頁可使用 <code>side-nav</code>、<code>side-nav__sub</code> 與 <code>is-current</code>；可維持同一 HTML 結構在不同頁面重複使用。
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Headers（對齊 NASA WDS Headers） ========== -->
+          <section class="ds-section" id="components-headers" aria-labelledby="headers-heading">
+            <h2 class="ds-section__title" id="headers-heading">頁首 · Headers</h2>
+            <p class="ds-section__lead">
+              Header 的核心是「品牌識別 + 導覽分層 + 目前位置感」。
+              結構精神參照 <a href="https://nasa.github.io/nasawds-site/components/headers/">NASA Web Design System — Headers</a>，
+              風格則轉為 Psychedelic 的高對比漸層、粗邊框與可掃描導覽。預設採單一 header surface（品牌列與導覽列同底），避免同層資訊出現雙底色誤導；品牌名稱與導覽文字統一使用
+              <code>--psy-header-text</code>（對應首頁深色字），不可在子頁改成另一套文字色。
+            </p>
+
+            <article class="ds-doc-card" id="headers-basic">
+              <h3 class="ds-doc-card__title">基本頁首 · Basic header</h3>
+              <header class="ds-site-header site-header" role="banner">
+                <a class="ds-skipnav skipnav" href="#ds-main-content">跳到主要內容</a>
+                <div class="ds-site-header__brand site-header__brand">
+                  <a href="#" class="ds-site-header__logo site-header__logo">Psychedelic Match</a>
+                  <p class="ds-site-header__tagline site-header__tagline">音樂品味 × 社交距離</p>
+                </div>
+                <nav class="ds-site-header__nav site-header__nav" role="navigation" aria-label="主要導覽">
+                  <ul>
+                    <li><a class="psy-brutal psy-chip psy-focus-ring is-current" href="#">首頁</a></li>
+                    <li><a class="psy-brutal psy-chip psy-focus-ring" href="#">探索活動</a></li>
+                    <li><a class="psy-brutal psy-chip psy-focus-ring" href="#">媒合清單</a></li>
+                    <li><a class="psy-brutal psy-chip psy-focus-ring" href="#">個人檔案</a></li>
+                  </ul>
+                </nav>
+              </header>
+            </article>
+
+            <article class="ds-doc-card" id="headers-extended">
+              <h3 class="ds-doc-card__title">延伸頁首 · Extended header</h3>
+              <header class="ds-site-header ds-site-header--extended site-header site-header--extended" role="banner">
+                <div class="ds-site-header__brand site-header__brand">
+                  <a href="#" class="ds-site-header__logo site-header__logo">Psychedelic Match</a>
+                  <p class="ds-site-header__tagline site-header__tagline">Find Your Groove Nearby</p>
+                </div>
+                <div class="ds-site-header__meta site-header__meta">
+                  <form class="ds-search ds-search--small search-bar search-bar--small" role="search" action="#">
+                    <label class="ds-sr-only sr-only" for="ds-header-search">Search</label>
+                    <input class="ds-input form-input ds-search__input search-bar__input" id="ds-header-search" type="search" name="search" />
+                    <button class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-search__btn search-bar__submit" type="submit">
+                      <span class="ds-search__icon search-bar__icon" aria-hidden="true">🔍</span>
+                      <span class="ds-sr-only sr-only">Search</span>
+                    </button>
+                  </form>
+                  <a class="ds-site-header__utility site-header__utility psy-brutal psy-chip psy-focus-ring" href="#">登入</a>
+                  <a class="ds-site-header__utility site-header__utility psy-brutal psy-chip psy-focus-ring" href="#">註冊</a>
+                </div>
+                <nav class="ds-site-header__nav site-header__nav" role="navigation" aria-label="主要導覽">
+                  <ul>
+                    <li><a class="psy-brutal psy-chip psy-focus-ring" href="#">活動總覽</a></li>
+                    <li><a class="psy-brutal psy-chip psy-focus-ring" href="#">演出地圖</a></li>
+                    <li><a class="psy-brutal psy-chip psy-focus-ring is-current" href="#">推薦配對</a></li>
+                    <li><a class="psy-brutal psy-chip psy-focus-ring" href="#">訊息中心</a></li>
+                    <li><a class="psy-brutal psy-chip psy-focus-ring" href="#">設定</a></li>
+                  </ul>
+                </nav>
+              </header>
+            </article>
+
+            <article class="ds-doc-card" id="headers-dark">
+              <h3 class="ds-doc-card__title">深底頁首 · Dark option</h3>
+              <div class="ds-dark-stage">
+                <header class="ds-site-header ds-site-header--dark site-header site-header--dark" role="banner">
+                  <div class="ds-site-header__brand site-header__brand">
+                    <a href="#" class="ds-site-header__logo site-header__logo">Psychedelic Match</a>
+                    <p class="ds-site-header__tagline site-header__tagline">Tonight's Best Matches</p>
+                  </div>
+                  <nav class="ds-site-header__nav site-header__nav" role="navigation" aria-label="主要導覽">
+                    <ul>
+                      <li><a class="psy-brutal psy-chip psy-focus-ring" href="#">首頁</a></li>
+                      <li><a class="psy-brutal psy-chip psy-focus-ring is-current" href="#">附近活動</a></li>
+                      <li><a class="psy-brutal psy-chip psy-focus-ring" href="#">聊天室</a></li>
+                      <li><a class="psy-brutal psy-chip psy-focus-ring" href="#">設定</a></li>
+                    </ul>
+                  </nav>
+                </header>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="headers-a11y">
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
+              <ul class="ds-prose-list">
+                <li>提供 Skip link，讓鍵盤與輔助科技可直接略過長導覽。</li>
+                <li>使用語意化 <code>header</code> 與 <code>nav</code>，並以 list 組織導覽項目。</li>
+                <li>導覽項目需可 Tab 聚焦，展開子選單時以 click / Enter / Space 觸發，不依賴 hover。</li>
+                <li>目前所在頁應有可視覺辨識的 current 狀態，而非僅靠顏色差異。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="headers-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <ul class="ds-prose-list">
+                <li>主導覽請依任務優先順序排列：高需求功能靠左（或最前）。</li>
+                <li>連結文案需用使用者語言，不以內部組織架構命名。</li>
+                <li>頁首不宜過高，避免擠壓主要內容；資訊量增加時優先使用 extended 版型。</li>
+                <li>同一頁首層級預設使用單一底色 token（<code>--psy-header-bg</code>）；僅在有明確層級差異時才增加次底色。</li>
+                <li>若需展示主導覽與模組捷徑，應拆成兩層導覽列：第一層主導覽（主要任務），第二層次導覽（模組入口），避免同列競爭注意力。</li>
+                <li>次導覽 chips 應使用專屬 token（<code>--psy-header-subnav-chip-bg</code>，目前為 <code>#80dcb3</code>），避免與主導覽 chips 混用同色。</li>
+                <li>大型資訊架構可考慮 mega menu 或側邊導覽，但先驗證是否真的需要。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="headers-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                產品頁可使用 `site-header`、`site-header__brand`、`site-header__logo`、`site-header__tagline`、`site-header__nav`、`site-header__meta`、`site-header__utility`，
+                並搭配 `site-header--extended` / `site-header--dark` 與 `skipnav` 完成可及導覽。
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Footers（對齊 NASA WDS Footers） ========== -->
+          <section class="ds-section" id="components-footers" aria-labelledby="footers-heading">
+            <h2 class="ds-section__title" id="footers-heading">頁尾 · Footers</h2>
+            <p class="ds-section__lead">
+              Footer 服務的是「滑到頁尾仍未找到答案」的使用者。結構參照
+              <a href="https://nasa.github.io/nasawds-site/components/footers/">NASA Web Design System — Footers</a>，
+              風格轉為 Psychedelic 的高對比色塊與明確群組。
+            </p>
+
+            <article class="ds-doc-card" id="footers-big">
+              <h3 class="ds-doc-card__title">Big footer</h3>
+              <footer class="ds-site-footer ds-site-footer--big site-footer site-footer--big" role="contentinfo">
+                <a class="ds-site-footer__top site-footer__top psy-brutal psy-chip psy-focus-ring" href="#overview">回到頂部 ↑</a>
+                <div class="ds-site-footer__primary site-footer__primary">
+                  <nav class="ds-site-footer__grid site-footer__grid" aria-label="頁尾主連結">
+                    <ul><li><strong>探索</strong></li><li><a href="#">熱門活動</a></li><li><a href="#">附近場館</a></li><li><a href="#">音樂類型</a></li></ul>
+                    <ul><li><strong>配對</strong></li><li><a href="#">推薦機制</a></li><li><a href="#">安全守則</a></li><li><a href="#">檢舉與封鎖</a></li></ul>
+                    <ul><li><strong>支援</strong></li><li><a href="#">FAQ</a></li><li><a href="#">服務條款</a></li><li><a href="#">隱私政策</a></li></ul>
+                  </nav>
+                  <form class="ds-site-footer__signup site-footer__signup" novalidate>
+                    <label class="ds-label" for="ds-footer-email">訂閱活動快報</label>
+                    <div class="ds-search ds-search--small search-bar search-bar--small">
+                      <input class="ds-input form-input ds-search__input search-bar__input" id="ds-footer-email" type="email" placeholder="name@email.com" />
+                      <button class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-search__btn search-bar__submit" type="button">訂閱</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="ds-site-footer__secondary site-footer__secondary">
+                  <p class="ds-site-footer__brand site-footer__brand">Psychedelic Match</p>
+                  <address>客服專線：<a href="tel:+886-2-1234-5678">02-1234-5678</a> ・ <a href="mailto:support@example.com">support@example.com</a></address>
+                </div>
+              </footer>
+            </article>
+
+            <article class="ds-doc-card" id="footers-medium">
+              <h3 class="ds-doc-card__title">Medium footer</h3>
+              <footer class="ds-site-footer ds-site-footer--medium site-footer site-footer--medium" role="contentinfo">
+                <a class="ds-site-footer__top site-footer__top psy-brutal psy-chip psy-focus-ring" href="#overview">回到頂部 ↑</a>
+                <nav class="ds-site-footer__links site-footer__links" aria-label="頁尾導覽">
+                  <a href="#">關於我們</a><a href="#">隱私</a><a href="#">條款</a><a href="#">合作提案</a><a href="#">聯絡我們</a>
+                </nav>
+                <div class="ds-site-footer__secondary site-footer__secondary">
+                  <p class="ds-site-footer__brand site-footer__brand">Psychedelic Match</p>
+                  <address><a href="mailto:hello@example.com">hello@example.com</a></address>
+                </div>
+              </footer>
+            </article>
+
+            <article class="ds-doc-card" id="footers-slim">
+              <h3 class="ds-doc-card__title">Slim footer</h3>
+              <footer class="ds-site-footer ds-site-footer--slim site-footer site-footer--slim" role="contentinfo">
+                <a class="ds-site-footer__top site-footer__top psy-brutal psy-chip psy-focus-ring" href="#overview">回到頂部 ↑</a>
+                <div class="ds-site-footer__row site-footer__row">
+                  <nav class="ds-site-footer__links site-footer__links" aria-label="頁尾導覽">
+                    <a href="#">隱私</a><a href="#">條款</a><a href="#">聯絡</a>
+                  </nav>
+                  <p class="ds-site-footer__brand site-footer__brand">Psychedelic Match</p>
+                </div>
+              </footer>
+            </article>
+
+            <article class="ds-doc-card" id="footers-a11y">
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
+              <ul class="ds-prose-list">
+                <li>頁尾導覽以 `nav` + list/link 組織，Tab 應可逐項聚焦。</li>
+                <li>小螢幕若改成可收合群組，需符合 Accordion 的鍵盤與 ARIA 規則。</li>
+                <li>電話、Email 等聯絡方式建議做成可點擊連結，便於行動裝置使用。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="footers-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <ul class="ds-prose-list">
+                <li>Big footer 適合補充導覽 + 訂閱行動；Medium 適合少量常用連結；Slim 適合最小資訊量。</li>
+                <li>Footer 不必完全複製 Header 資訊架構，優先放常被查詢的收尾資訊。</li>
+                <li>避免「免責聲明膨脹」：保留必要法律連結即可，其餘交給專頁。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="footers-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                產品頁可使用 `site-footer` + `site-footer--big/--medium/--slim`，並搭配 `site-footer__top`、`site-footer__primary`、`site-footer__grid`、
+                `site-footer__signup`、`site-footer__links`、`site-footer__secondary`、`site-footer__brand`、`site-footer__row`。
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Labels（對齊 NASA WDS Labels） ========== -->
+          <section class="ds-section" id="components-labels" aria-labelledby="labels-heading">
+            <h2 class="ds-section__title" id="labels-heading">標籤 · Labels</h2>
+            <p class="ds-section__lead">
+              Label 用來凸顯新內容或重要狀態。結構參照
+              <a href="https://nasa.github.io/nasawds-site/components/labels/">NASA Web Design System — Labels</a>，
+              並延伸為 Psychedelic 的高飽和狀態標籤。
+            </p>
+
+            <article class="ds-doc-card" id="labels-variants">
+              <h3 class="ds-doc-card__title">樣式變體 · New / Info / Warning / Hot</h3>
+              <p class="ds-doc-card__desc">預設為非互動元素（`span`），僅用於標示，不作為按鈕。</p>
+              <div class="ds-label-row">
+                <span class="ds-label label psy-brutal-block psy-chip">New</span>
+                <span class="ds-label ds-label--info label label--info psy-brutal-block psy-chip">Info</span>
+                <span class="ds-label ds-label--warning label label--warning psy-brutal-block psy-chip">Warning</span>
+                <span class="ds-label ds-label--hot label label--hot psy-brutal-block psy-chip">Hot</span>
+                <span class="ds-label ds-label--soft label label--soft psy-brutal-block psy-chip">Unread 12</span>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="labels-a11y">
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
+              <ul class="ds-prose-list">
+                <li>若 label 對應的是動態新增內容，請用 ARIA live region 通知螢幕報讀器。</li>
+                <li>非互動 label 應避免 hover/focus/active 行為，以免誤認為可點擊。</li>
+                <li>狀態不可只靠顏色區分；可搭配文字（如 New、Warning、Unread 12）。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="labels-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <ul class="ds-prose-list">
+                <li>用於提醒容易被忽略的重要資訊，避免整頁過度標示。</li>
+                <li>不要混用「可點擊」與「不可點擊」兩種 label 行為，需保持一致。</li>
+                <li>當內容本身已頻繁更新時，可先用排序與版位處理，不一定要加 label。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="labels-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                產品頁可使用 `label`、`label--info`、`label--warning`、`label--hot`、`label--soft`。若需可互動 tag，
+                請另建獨立元件（例如 filter chips），不要直接重用靜態 label。
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Tables（對齊 NASA WDS Tables） ========== -->
+          <section class="ds-section" id="components-tables" aria-labelledby="tables-heading">
+            <h2 class="ds-section__title" id="tables-heading">表格 · Tables</h2>
+            <p class="ds-section__lead">
+              表格用於欄列結構化資料。結構參照
+              <a href="https://nasa.github.io/nasawds-site/components/tables/">NASA Web Design System — Tables</a>，
+              視覺沿用 Psychedelic 的高對比框線與清楚欄頭層級。
+            </p>
+
+            <article class="ds-doc-card" id="tables-bordered">
+              <h3 class="ds-doc-card__title">框線表格 · Bordered table</h3>
+              <div class="ds-data-table-wrap data-table-wrap">
+                <table class="ds-data-table data-table">
+                  <caption>活動資料表（框線）</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">活動名稱</th>
+                      <th scope="col">說明</th>
+                      <th scope="col">年份</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Neon Warehouse</th>
+                      <td>以合成器與工業節奏為主題的夜間派對，提供即時配對卡片。</td>
+                      <td>2026</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Cosmic Rooftop</th>
+                      <td>露天場景與 chill 電子樂，適合低壓社交互動。</td>
+                      <td>2026</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Indie Social Lab</th>
+                      <td>獨立音樂導向的主題社交場，含偏好標籤篩選。</td>
+                      <td>2027</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="tables-borderless">
+              <h3 class="ds-doc-card__title">無框表格 · Borderless table</h3>
+              <p class="ds-doc-card__desc">需要與段落內容融合時，可減少格線干擾。</p>
+              <div class="ds-data-table-wrap data-table-wrap">
+                <table class="ds-data-table ds-data-table--borderless data-table data-table--borderless">
+                  <caption>活動資料表（無框）</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">活動名稱</th>
+                      <th scope="col">說明</th>
+                      <th scope="col">年份</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Neon Warehouse</th>
+                      <td>以合成器與工業節奏為主題的夜間派對，提供即時配對卡片。</td>
+                      <td>2026</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Cosmic Rooftop</th>
+                      <td>露天場景與 chill 電子樂，適合低壓社交互動。</td>
+                      <td>2026</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Indie Social Lab</th>
+                      <td>獨立音樂導向的主題社交場，含偏好標籤篩選。</td>
+                      <td>2027</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="tables-a11y">
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
+              <ul class="ds-prose-list">
+                <li>簡單表格使用 <code>scope="col"</code> / <code>scope="row"</code> 明確標頭關係。</li>
+                <li>複雜表格（多層標頭）需改用 <code>id</code> + <code>headers</code> 對應。</li>
+                <li>表格標題放在 <code>&lt;caption&gt;</code>，不要只在外部段落描述。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="tables-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <ul class="ds-prose-list">
+                <li>僅在真正欄列資料使用表格；敘事內容可改清單或段落。</li>
+                <li>框線表格適合高密度比較；無框表格適合貼近文章內文。</li>
+                <li>最小必要樣式即可，避免裝飾壓過資料本身。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="tables-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                產品頁可使用 <code>data-table-wrap</code> + <code>data-table</code>；若要弱化格線用
+                <code>data-table data-table--borderless</code>。保留 <code>caption</code> 與 <code>scope</code> 以確保可及性。
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Grids（對齊 NASA WDS Grids） ========== -->
+          <section class="ds-section" id="grids" aria-labelledby="grids-heading">
+            <h2 class="ds-section__title" id="grids-heading">版面系統 · Grids</h2>
+            <p class="ds-section__lead">
+              採 12 欄響應式格線，維持內容對齊與掃讀節奏。結構精神參照
+              <a href="https://nasa.github.io/nasawds-site/components/grids/">NASA Web Design System — Grids</a>，
+              視覺延伸為 Psychedelic 的粗框卡片分欄。
+            </p>
+
+            <article class="ds-doc-card" id="grids-scale">
+              <h3 class="ds-doc-card__title">12 欄比例</h3>
+              <div class="ds-grid-demo ds-grid-demo--12">
+                <div class="ds-grid-cell ds-col-12">1/1</div>
+                <div class="ds-grid-cell ds-col-6">1/2</div><div class="ds-grid-cell ds-col-6">1/2</div>
+                <div class="ds-grid-cell ds-col-4">1/3</div><div class="ds-grid-cell ds-col-4">1/3</div><div class="ds-grid-cell ds-col-4">1/3</div>
+                <div class="ds-grid-cell ds-col-3">1/4</div><div class="ds-grid-cell ds-col-3">1/4</div><div class="ds-grid-cell ds-col-3">1/4</div><div class="ds-grid-cell ds-col-3">1/4</div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="grids-examples">
+              <h3 class="ds-doc-card__title">版型示例 · Layout examples</h3>
+              <div class="ds-grid-demo">
+                <div class="ds-grid-cell ds-col-8">8/12 主要內容</div>
+                <div class="ds-grid-cell ds-col-4">4/12 側欄</div>
+                <div class="ds-grid-cell ds-col-6">6/12 活動卡片 A</div>
+                <div class="ds-grid-cell ds-col-6">6/12 活動卡片 B</div>
+                <div class="ds-grid-cell ds-col-4">4/12 篩選</div>
+                <div class="ds-grid-cell ds-col-4">4/12 推薦</div>
+                <div class="ds-grid-cell ds-col-4">4/12 即時訊息</div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="grids-a11y">
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
+              <ul class="ds-prose-list">
+                <li>放大到 200% 時仍需可讀、不破版；避免固定高度與硬塞內容。</li>
+                <li>欄位順序要符合語意閱讀順序，不以 CSS 變更語意順序。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="grids-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <ul class="ds-prose-list">
+                <li>全站採單一 12 欄系統，避免混用多種 grid 規則。</li>
+                <li>文字區塊建議控制在約 75 字元內，提高長文可讀性。</li>
+                <li>小螢幕預設堆疊成單欄，優先保障掃讀與點擊精準度。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="grids-implementation">
+              <h3 class="ds-doc-card__title">實作 · Product classes</h3>
+              <p class="ds-doc-card__desc">
+                產品頁使用 `grid-12` + `col-12/8/6/4/3` 組版；RWD 會在中小螢幕自動滿欄。若需無左右留白容器可另加 `grid-12--full`。
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Spacing / Border / Shadow ========== -->
+          <section class="ds-section" id="layout-tokens" aria-labelledby="layout-heading">
+            <h2 class="ds-section__title" id="layout-heading">間距 · 邊框 · 陰影</h2>
+            <p class="ds-section__lead">
+              間距為 <code>--psy-space-*</code>；區塊邊框 <code>--psy-border-width-block</code>；Neo-Brutalism 硬陰影
+              <code>--psy-shadow-hard</code>。
+            </p>
+
+            <article class="ds-doc-card" id="spacing-scale">
+              <h3 class="ds-doc-card__title">間距尺度表</h3>
+              <p class="ds-doc-card__desc">Token、數值與長條預覽並列，便於掃描與對照實作。</p>
+              <div class="ds-table-wrap">
+                <table class="ds-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Token</th>
+                      <th scope="col">數值</th>
+                      <th scope="col">預覽</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>--psy-space-1</code></td>
+                      <td>4px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-1)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-2</code></td>
+                      <td>8px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-2)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-3</code></td>
+                      <td>10px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-3)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-4</code></td>
+                      <td>12px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-4)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-5</code></td>
+                      <td>14px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-5)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-6</code></td>
+                      <td>16px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-6)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-7</code></td>
+                      <td>18px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-7)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-8</code></td>
+                      <td>22px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-8)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-9</code></td>
+                      <td>24px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-9)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-10</code></td>
+                      <td>26px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-10)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-11</code></td>
+                      <td>28px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-11)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-12</code></td>
+                      <td>32px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-12)"></div></td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-space-13</code></td>
+                      <td>60px</td>
+                      <td><div class="ds-space-preview" style="width: var(--psy-space-13); max-width: 100%"></div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="shadow-sample">
+              <h3 class="ds-doc-card__title">陰影範例</h3>
+              <p class="ds-doc-card__desc">產品卡片與主導區塊使用同一硬陰影，並以 container / high / highest 分層（對齊 surface hierarchy）。</p>
+              <div class="ds-shadow-demo">
+                <div>
+                  <div class="ds-shadow-box" style="--psy-shadow-demo: var(--psy-shadow-hard); background: var(--psy-surface-container)"></div>
+                  <p class="ds-muted-cap"><code>--psy-surface-container</code> + <code>--psy-shadow-hard</code></p>
+                </div>
+                <div>
+                  <div class="ds-shadow-box" style="--psy-shadow-demo: var(--psy-shadow-hard); background: var(--psy-surface-container-high)"></div>
+                  <p class="ds-muted-cap"><code>--psy-surface-container-high</code> + <code>--psy-shadow-hard</code></p>
+                </div>
+                <div>
+                  <div class="ds-shadow-box" style="--psy-shadow-demo: var(--psy-shadow-hard); background: var(--psy-surface-container-highest)"></div>
+                  <p class="ds-muted-cap"><code>--psy-surface-container-highest</code> + <code>--psy-shadow-hard</code></p>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- ========== Motion ========== -->
+          <section class="ds-section" id="motion" aria-labelledby="motion-heading">
+            <h2 class="ds-section__title" id="motion-heading">動效 · Motion</h2>
+            <p class="ds-section__lead">僅以 token 定義時間與曲線，由元件引用。</p>
+            <article class="ds-doc-card">
+              <div class="ds-table-wrap">
+                <table class="ds-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Token</th>
+                      <th scope="col">值</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>--psy-motion-duration-fast</code></td>
+                      <td>120ms</td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-motion-duration-normal</code></td>
+                      <td>200ms</td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-motion-duration-slow</code></td>
+                      <td>280ms</td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-motion-easing-standard</code></td>
+                      <td><code>cubic-bezier(0.2, 0, 0, 1)</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="ds-doc-card">
+              <h3 class="ds-doc-card__title">可視化範例 · How aliases look</h3>
+              <p class="ds-doc-card__desc">
+                下列示例對應上表 token，方便快速理解「改 token 會影響哪裡」。
+              </p>
+
+              <div style="margin-bottom: var(--psy-space-6)">
+                <div
+                  style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: var(--psy-space-3);
+                    padding: var(--psy-space-3) var(--psy-space-5);
+                    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+                    box-shadow: var(--psy-shadow-hard);
+                    background: var(--psy-gradient-nav);
+                    color: var(--psy-nav-text);
+                    font-weight: 800;
+                  "
+                >
+                  <span style="font-size: var(--psy-font-size-small)">HOME</span>
+                  <span style="font-size: var(--psy-font-size-small)">EVENTS</span>
+                  <span style="font-size: var(--psy-font-size-small)">MATCHES</span>
+                </div>
+                <p class="ds-doc-card__desc" style="margin-top: var(--psy-space-3); margin-bottom: 0">
+                  <code>--psy-nav-text</code> 是給「亮色導覽底」用的前景色，不適用深紫底主內容文字。
+                </p>
+              </div>
+
+              <p class="ds-sample-kicker" style="margin: 0 0 var(--psy-space-6)">
+                <code>--psy-kicker-text</code>：THIS IS A KICKER SAMPLE
+              </p>
+
+              <div class="ds-btn-row" style="margin-bottom: var(--psy-space-6)">
+                <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-btn--demo-hover" tabindex="-1">
+                  Primary Hover
+                </button>
+                <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-btn--demo-active" tabindex="-1">
+                  Primary Active
+                </button>
+                <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--secondary ds-btn--demo-hover" tabindex="-1">
+                  Secondary Hover
+                </button>
+                <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--secondary ds-btn--demo-active" tabindex="-1">
+                  Secondary Active
+                </button>
+              </div>
+
+              <div class="ds-btn-row" style="margin-bottom: var(--psy-space-6)">
+                <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-btn--demo-focus" tabindex="-1">
+                  <code>--psy-focus-ring-*</code> Focus Ring
+                </button>
+              </div>
+
+              <pre class="ds-code-block"><code>/* alias 實際使用範例 */
+.top-nav a { color: var(--psy-nav-text); }
+.hero-kicker { color: var(--psy-kicker-text); }
+
+.button.primary:hover { background: var(--psy-button-primary-bg-hover); }
+.button.primary:active { background: var(--psy-button-primary-bg-active); }
+.button.secondary:hover { background: var(--psy-button-secondary-bg-hover); }
+.button.secondary:active { background: var(--psy-button-secondary-bg-active); }
+
+.button:focus-visible {
+  outline: var(--psy-focus-ring-width) solid var(--psy-focus-ring-color);
+  outline-offset: var(--psy-focus-ring-offset);
+}</code></pre>
+            </article>
+          </section>
+
+          <!-- ========== Aliases ========== -->
+          <section class="ds-section" id="aliases" aria-labelledby="aliases-heading">
+            <h2 class="ds-section__title" id="aliases-heading">元件別名摘錄 · Component aliases</h2>
+            <p class="ds-section__lead">節錄 <code>tokens.css</code> 底部與導航、按鈕、焦點相關之別名。</p>
+            <article class="ds-doc-card">
+              <div class="ds-table-wrap">
+                <table class="ds-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Token</th>
+                      <th scope="col">用途</th>
+                      <th scope="col">範例</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>--psy-nav-text</code></td>
+                      <td>導覽列前景（螢光漸層上）</td>
+                      <td>
+                        <span
+                          style="
+                            display: inline-flex;
+                            align-items: center;
+                            gap: var(--psy-space-2);
+                            padding: 6px var(--psy-space-3);
+                            border: 2px solid var(--psy-border-strong);
+                            box-shadow: 3px 3px 0 var(--psy-color-base);
+                            background: var(--psy-gradient-nav);
+                            color: var(--psy-nav-text);
+                            font-size: 11px;
+                            font-weight: 800;
+                            letter-spacing: 0.06em;
+                          "
+                        >
+                          NAV
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-kicker-text</code></td>
+                      <td>標題上方標語</td>
+                      <td>
+                        <span class="ds-sample-kicker" style="margin: 0">KICKER</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-button-primary-bg-hover</code> / <code>active</code></td>
+                      <td>主要按鈕狀態</td>
+                      <td>
+                        <div class="ds-btn-row" style="gap: var(--psy-space-2)">
+                          <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-btn--demo-hover" tabindex="-1">Hover</button>
+                          <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-btn--demo-active" tabindex="-1">Active</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-button-secondary-bg-hover</code> / <code>active</code></td>
+                      <td>次要按鈕狀態</td>
+                      <td>
+                        <div class="ds-btn-row" style="gap: var(--psy-space-2)">
+                          <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--secondary ds-btn--demo-hover" tabindex="-1">Hover</button>
+                          <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--secondary ds-btn--demo-active" tabindex="-1">Active</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-focus-ring-*</code></td>
+                      <td>對焦環（可及性）</td>
+                      <td>
+                        <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--secondary ds-btn--demo-focus" tabindex="-1">Focus</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var input = document.getElementById("ds-code-validate");
+        if (input) {
+          var items = document.querySelectorAll("#ds-validate-checklist [data-validator]");
+          function update() {
+            var v = input.value;
+            items.forEach(function (li) {
+              var name = li.getAttribute("data-validator");
+              var reAttr = input.getAttribute("data-validate-" + name);
+              if (!reAttr) return;
+              try {
+                li.classList.toggle("is-met", new RegExp(reAttr).test(v));
+              } catch (e) {
+                li.classList.remove("is-met");
+              }
+            });
+          }
+          input.addEventListener("input", update);
+          input.addEventListener("change", update);
+        }
+      })();
+
+      (function () {
+        var accordions = document.querySelectorAll("[data-accordion]");
+        accordions.forEach(function (accordion) {
+          var buttons = accordion.querySelectorAll(".accordion__button, .ds-accordion__button");
+          buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+              var isExpanded = button.getAttribute("aria-expanded") === "true";
+              button.setAttribute("aria-expanded", String(!isExpanded));
+              var contentId = button.getAttribute("aria-controls");
+              var panel = contentId ? document.getElementById(contentId) : null;
+              if (panel) panel.hidden = isExpanded;
+            });
+          });
+        });
+      })();
+
+      (function () {
+        var headerSection = document.getElementById("components-headers");
+        if (!headerSection) return;
+        headerSection.querySelectorAll("a, button").forEach(function (el) {
+          el.addEventListener("click", function (e) {
+            e.preventDefault();
+          });
+        });
+        headerSection.querySelectorAll("form").forEach(function (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
