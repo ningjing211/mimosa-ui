@@ -90,8 +90,7 @@ npm run build
 npm run dev:docs
 ```
 
-- `http://localhost:5173/index.html` — Tailwind 編譯後的 `docs.bundle.css`
-- `design-system.html` — 仍使用 `mimosa.css` + `docs.css`（Phase 2 遷移）
+- `http://localhost:5173/` — `index.html` 與 `design-system.html` 皆使用編譯後的 `docs.bundle.css`
 
 此指令會產生：
 

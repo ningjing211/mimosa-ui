@@ -12,22 +12,13 @@ const siteRoot = path.resolve(projectRoot, ".site");
 
 const htmlFiles = ["index.html", "design-system.html"];
 
-function normalizeDocsHtml(html, fileName) {
-  let out = html.replaceAll("../dist/", "./dist/");
+const LEGACY_STYLESHEETS =
+  /<link rel="stylesheet" href="\.\.\/dist\/mimosa\.css" \/>\s*\n\s*<link rel="stylesheet" href="\.\/assets\/docs\.css" \/>/;
 
-  if (fileName === "index.html") {
-    out = out
-      .replace(
-        /<link rel="stylesheet" href="\.\.\/dist\/mimosa\.css" \/>\s*\n\s*<link rel="stylesheet" href="\.\/assets\/docs\.css" \/>/,
-        '<link rel="stylesheet" href="./assets/docs.bundle.css" />'
-      )
-      .replace(
-        /<link rel="stylesheet" href="\.\/assets\/docs\.bundle\.css" \/>/,
-        '<link rel="stylesheet" href="./assets/docs.bundle.css" />'
-      );
-  }
-
-  return out;
+function normalizeDocsHtml(html) {
+  return html
+    .replaceAll("../dist/", "./dist/")
+    .replace(LEGACY_STYLESHEETS, '<link rel="stylesheet" href="./assets/docs.bundle.css" />');
 }
 
 async function buildDocs() {
@@ -46,7 +37,7 @@ async function buildDocs() {
       const sourcePath = path.resolve(docsRoot, file);
       const targetPath = path.resolve(siteRoot, file);
       const html = await readFile(sourcePath, "utf8");
-      await writeFile(targetPath, normalizeDocsHtml(html, file), "utf8");
+      await writeFile(targetPath, normalizeDocsHtml(html), "utf8");
     })
   );
 

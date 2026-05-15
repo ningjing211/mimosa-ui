@@ -5,8 +5,11 @@
 @import "../../src/theme/tokens.css";
 @import "tailwindcss";
 @source "../index.html";
+@source "../design-system.html";
 
 @import "../../src/theme/tailwind/theme.css";
 @import "../../src/theme/tailwind/base.css";
 @import "../../src/theme/tailwind/components.css";
+/* Legacy product classes used in design-system demos (.alert, .form-*, .button) */
+@import "../../src/theme/mimosa.css";
 @import "./docs-overrides.css";
