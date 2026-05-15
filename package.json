@@ -18,6 +18,7 @@
     "./tailwind/components.css": "./dist/tailwind/components.css",
     "./tailwind/flow-page.css": "./dist/tailwind/flow-page.css",
     "./tailwind/product.css": "./dist/tailwind/product.css",
+    "./tailwind/cards.css": "./dist/tailwind/cards.css",
     "./tailwind/chrome.css": "./dist/tailwind/chrome.css",
     "./tokens.json": "./dist/tokens.json"
   },

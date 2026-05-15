@@ -24,7 +24,7 @@
 | **Typography** | H1–H3、Subtitle、Kicker、Brand、Muted、Prose / Rhythm stack | ✅ |
 | **無障礙** | Skip nav、`.sr-only` | ✅ |
 | **Avatar** | 單一 Avatar 佔位 | ⚠️ 僅佔位圖 |
-| **Card** | Panel（主系統）、Card（僅存在於 page-specific CSS）| ⚠️ 未納入核心 |
+| **Card** | `.card` / `.card__header|body|footer`、`.well`（`tailwind/cards.css`）| ✅ 基礎完整 |
 
 ---
 

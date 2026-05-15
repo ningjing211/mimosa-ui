@@ -1,0 +1,105 @@
+/**
+ * Cards & wells — layout shells aligned with Tailwind UI Cards.
+ * https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards
+ *
+ * Base: flex column + overflow (compose with Tailwind utilities for grid/gap).
+ * Mimosa skin: brutal border, hard shadow, panel wash (raw overlay).
+ */
+@layer components {
+  .card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--psy-gradient-panel-wash), var(--psy-surface-panel);
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-hard);
+    color: var(--psy-text-on-light);
+  }
+
+  .card__header {
+    flex-shrink: 0;
+    padding: var(--psy-space-5) var(--psy-space-7);
+    border-bottom: var(--psy-border-width-block) solid var(--psy-border-strong);
+    background: var(--psy-surface-panel-prominent);
+  }
+
+  .card__title {
+    margin: 0;
+    font-family: var(--psy-font-family-display);
+    font-size: var(--psy-font-size-h3);
+    font-weight: var(--psy-font-weight-h3);
+    line-height: 1.25;
+    color: var(--psy-text-on-light);
+  }
+
+  .card__subtitle {
+    margin: var(--psy-space-2) 0 0;
+    font-size: var(--psy-font-size-small);
+    line-height: var(--psy-line-height-body);
+    color: var(--psy-text-secondary);
+  }
+
+  .card__body {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: var(--psy-space-7);
+  }
+
+  .card__body > :first-child {
+    margin-top: 0;
+  }
+
+  .card__body > :last-child {
+    margin-bottom: 0;
+  }
+
+  .card__footer {
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--psy-space-4);
+    padding: var(--psy-space-5) var(--psy-space-7);
+    border-top: var(--psy-border-width-block) solid var(--psy-border-strong);
+    background: var(--psy-surface-panel);
+  }
+
+  .card--body-muted .card__body {
+    background: var(--psy-surface-panel-soft);
+  }
+
+  .card--footer-muted .card__footer {
+    background: var(--psy-surface-panel-soft);
+  }
+
+  @media (max-width: 639px) {
+    .card--mobile-flush {
+      margin-inline: calc(-1 * var(--psy-space-5));
+      border-left-width: 0;
+      border-right-width: 0;
+    }
+  }
+
+  .well {
+    display: flex;
+    flex-direction: column;
+    gap: var(--psy-space-4);
+    overflow: hidden;
+    padding: var(--psy-space-7);
+    background: var(--psy-surface-panel-soft);
+    border: 2px solid var(--psy-border-strong);
+    color: var(--psy-text-on-light);
+  }
+
+  .well--on-muted {
+    background: var(--psy-surface-container);
+  }
+
+  @media (max-width: 639px) {
+    .well--mobile-flush {
+      margin-inline: calc(-1 * var(--psy-space-5));
+      border-left-width: 0;
+      border-right-width: 0;
+    }
+  }
+}

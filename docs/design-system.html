@@ -164,6 +164,16 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                   </ul>
                 </li>
                 <li>
+                  <a href="#components-cards">卡片 · Cards</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#cards-basic">基本卡片</a></li>
+                    <li><a href="#cards-header-footer">頁首／頁尾</a></li>
+                    <li><a href="#cards-muted">灰底區塊</a></li>
+                    <li><a href="#cards-well">Well</a></li>
+                    <li><a href="#cards-implementation">實作說明</a></li>
+                  </ul>
+                </li>
+                <li>
                   <a href="#components-labels">標籤 · Labels</a>
                   <ul class="ds-sidenav__sub">
                     <li><a href="#labels-variants">樣式變體</a></li>
@@ -1118,6 +1128,139 @@ import "mimosa-design-system/tailwind.css";
                 <li>標籤盡量短，採句首大寫或句子大小寫一致慣例；以<strong>動詞開頭</strong>（例如「瀏覽活動」而非冗長名詞片語）。</li>
                 <li>同一視野避免過多顆按鈕，以免層級不清。</li>
               </ul>
+            </article>
+          </section>
+
+          <!-- ========== Cards（對齊 Tailwind UI Application UI / Cards） ========== -->
+          <section class="ds-section" id="components-cards" aria-labelledby="cards-heading">
+            <h2 class="ds-section__title" id="cards-heading">卡片 · Cards</h2>
+            <p class="ds-section__lead">
+              將儀表板、設定頁或表單拆成較小的內容區塊。結構對齊
+              <a href="https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards">Tailwind UI — Cards</a>：
+              外層 <code>.card</code> 負責 flex 欄式版面與 overflow；區塊內距與 Mimosa 粗框／硬陰影在
+              <code>tailwind/cards.css</code>（raw 疊加）。版面間距、響應式欄位請用 Tailwind utility（如
+              <code>grid gap-psy-6</code>、<code>max-w-psy-prose</code>）。
+            </p>
+
+            <article class="ds-doc-card" id="cards-basic">
+              <h3 class="ds-doc-card__title">基本卡片 · Basic card</h3>
+              <p class="ds-doc-card__desc">單一 <code>.card__body</code>；適合圖表、表格或短表單容器。</p>
+              <div class="ds-card-showcase max-w-xl">
+                <article class="card">
+                  <div class="card__body">
+                    <h4 class="card__title">活動報名趨勢</h4>
+                    <p class="card__subtitle">過去 7 日 · 台北場次</p>
+                    <p style="margin: var(--psy-space-5) 0 0">
+                      內容區可放圖表、表格或表單。外層用 utility 控制寬度與外距，例如
+                      <code>class="card max-w-lg w-full"</code>。
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="cards-header-footer">
+              <h3 class="ds-doc-card__title">含頁首／頁尾 · Header &amp; footer</h3>
+              <p class="ds-doc-card__desc">
+                <code>.card__header</code>、<code>.card__body</code>、<code>.card__footer</code> 可任意組合；頁尾常用
+                <code>flex gap-psy-4</code> 排列按鈕。
+              </p>
+              <div class="ds-card-showcase max-w-xl flex flex-col gap-psy-7">
+                <article class="card">
+                  <header class="card__header">
+                    <h4 class="card__title">帳號設定</h4>
+                    <p class="card__subtitle">更新顯示名稱與通知偏好</p>
+                  </header>
+                  <div class="card__body">
+                    <p style="margin: 0">主內容區。表單欄位可搭配 <code>.form-field</code> 系列。</p>
+                  </div>
+                  <footer class="card__footer">
+                    <button type="button" class="psy-brutal psy-btn psy-btn--primary">儲存</button>
+                    <button type="button" class="psy-brutal psy-btn">取消</button>
+                  </footer>
+                </article>
+
+                <article class="card">
+                  <div class="card__body">
+                    <h4 class="card__title">僅內文 + 頁尾</h4>
+                    <p style="margin: var(--psy-space-3) 0 0">對齊 Tailwind UI「Card with footer」變體。</p>
+                  </div>
+                  <footer class="card__footer">
+                    <a href="#" class="psy-brutal psy-btn psy-btn--primary psy-focus-ring">查看詳情</a>
+                  </footer>
+                </article>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="cards-muted">
+              <h3 class="ds-doc-card__title">灰底區塊 · Muted body / footer</h3>
+              <p class="ds-doc-card__desc">
+                修飾 class <code>card--body-muted</code>、<code>card--footer-muted</code> 對應 Tailwind UI 的 gray body／gray footer。
+              </p>
+              <div class="ds-card-showcase max-w-xl flex flex-col gap-psy-7">
+                <article class="card card--body-muted">
+                  <header class="card__header">
+                    <h4 class="card__title">Gray body</h4>
+                  </header>
+                  <div class="card__body">
+                    <p style="margin: 0">內文區使用較淺的 <code>--psy-surface-panel-soft</code>，與頁首區塊對比。</p>
+                  </div>
+                </article>
+                <article class="card card--footer-muted">
+                  <div class="card__body">
+                    <h4 class="card__title">Gray footer</h4>
+                    <p style="margin: var(--psy-space-3) 0 0">頁尾區塊採 muted 背景，適合次要動作列。</p>
+                  </div>
+                  <footer class="card__footer">
+                    <button type="button" class="psy-brutal psy-btn">關閉</button>
+                  </footer>
+                </article>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="cards-well">
+              <h3 class="ds-doc-card__title">Well · 內凹區塊</h3>
+              <p class="ds-doc-card__desc">
+                <code>.well</code> 用於卡片內的子區塊或灰底頁面上的次要容器；無硬陰影，邊框較細。可加
+                <code>well--on-muted</code> 放在灰底舞台。
+              </p>
+              <div class="ds-card-muted-stage">
+                <div class="well well--on-muted max-w-xl">
+                  <p style="margin: 0"><strong>Well on gray</strong> — 適合篩選列、輔助說明或次要表單群組。</p>
+                </div>
+              </div>
+              <div class="ds-card-showcase max-w-xl" style="margin-top: var(--psy-space-7)">
+                <article class="card">
+                  <div class="card__body flex flex-col gap-psy-5">
+                    <h4 class="card__title">卡片內的 Well</h4>
+                    <div class="well">
+                      <p style="margin: 0">巢狀 well：比外層卡片更輕，不搶主視覺。</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="cards-implementation">
+              <h3 class="ds-doc-card__title">實作 · Implementation</h3>
+              <p class="ds-doc-card__desc">
+                載入 <code>tailwind.css</code>（已含 <code>cards.css</code>）。與 <code>.psy-panel</code> 不同：card 提供 header／body／footer
+                結構；單純色塊面板仍可用 <code>.psy-brutal-block.psy-panel</code>。
+              </p>
+              <pre class="ds-code-block"><code>&lt;!-- Tailwind 管版面；card 管結構與 Mimosa 皮膚 --&gt;
+&lt;div class="grid gap-psy-6 lg:grid-cols-2"&gt;
+  &lt;article class="card w-full"&gt;
+    &lt;header class="card__header"&gt;
+      &lt;h3 class="card__title"&gt;標題&lt;/h3&gt;
+    &lt;/header&gt;
+    &lt;div class="card__body"&gt;…&lt;/div&gt;
+    &lt;footer class="card__footer flex gap-psy-4"&gt;
+      &lt;button type="button" class="psy-brutal psy-btn psy-btn--primary"&gt;確定&lt;/button&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+&lt;/div&gt;
+
+&lt;div class="well max-w-psy-prose"&gt;次要區塊&lt;/div&gt;</code></pre>
             </article>
           </section>
 

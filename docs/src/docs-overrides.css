@@ -812,6 +812,19 @@ body {
   color: var(--ds-doc-text-muted);
 }
 
+.ds-card-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--psy-space-7);
+}
+
+.ds-card-muted-stage {
+  padding: var(--psy-space-7);
+  border: 1px solid var(--ds-doc-border);
+  border-radius: 8px;
+  background: var(--ds-doc-bg);
+}
+
 .ds-dark-stage {
   padding: var(--psy-space-9);
   border-radius: 8px;
