@@ -816,6 +816,14 @@ import "mimosa-design-system/tailwind.css";
                       <td><code>--psy-a11y-fg-muted-on-page</code></td>
                     </tr>
                     <tr>
+                      <td>淺色卡片／表格／手風琴上的主內文</td>
+                      <td><code>--psy-a11y-fg-default-on-card</code>（同 <code>--psy-text-on-light</code>）</td>
+                    </tr>
+                    <tr>
+                      <td>淺色卡片上的次要內文</td>
+                      <td><code>--psy-a11y-fg-muted-on-card</code>（同 <code>--psy-text-muted-on-light</code>）</td>
+                    </tr>
+                    <tr>
                       <td>螢光／淺飽和底上的字</td>
                       <td><code>--psy-a11y-fg-on-accent</code>（同 <code>--psy-text-on-dark</code>）</td>
                     </tr>
@@ -1137,8 +1145,9 @@ import "mimosa-design-system/tailwind.css";
             <p class="ds-section__lead">
               將儀表板、設定頁或表單拆成較小的內容區塊。結構對齊
               <a href="https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards">Tailwind UI — Cards</a>：
-              外層 <code>.card</code> 負責 flex 欄式版面與 overflow；區塊內距與 Mimosa 粗框／硬陰影在
-              <code>tailwind/cards.css</code>（raw 疊加）。版面間距、響應式欄位請用 Tailwind utility（如
+              外層 <code>.card</code> 負責 flex 欄式版面與 overflow；底色為洗白 elevated surface（<code>--psy-surface-card*</code>），內文請用
+              <code>--psy-text-on-light</code>／<code>--psy-text-muted-on-light</code>，勿與深紫頁面的 <code>--psy-text-primary</code> 混用。粗框／硬陰影見
+              <code>tailwind/cards.css</code>。版面間距、響應式欄位請用 Tailwind utility（如
               <code>grid gap-psy-6</code>、<code>max-w-psy-prose</code>）。
             </p>
 
@@ -1203,7 +1212,7 @@ import "mimosa-design-system/tailwind.css";
                     <h4 class="card__title">Gray body</h4>
                   </header>
                   <div class="card__body">
-                    <p style="margin: 0">內文區使用較淺的 <code>--psy-surface-panel-soft</code>，與頁首區塊對比。</p>
+                    <p style="margin: 0">內文區使用較淺的 <code>--psy-surface-card-muted</code>，與頁首區塊對比。</p>
                   </div>
                 </article>
                 <article class="card card--footer-muted">

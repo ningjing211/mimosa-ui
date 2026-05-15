@@ -2,15 +2,15 @@
  * Cards & wells — layout shells aligned with Tailwind UI Cards.
  * https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards
  *
- * Base: flex column + overflow (compose with Tailwind utilities for grid/gap).
- * Mimosa skin: brutal border, hard shadow, panel wash (raw overlay).
+ * Surfaces use light washed tokens (--psy-surface-card*) with dark foreground
+ * (--psy-text-on-light), same pattern as .data-table / .accordion (not page-purple panels).
  */
 @layer components {
   .card {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: var(--psy-gradient-panel-wash), var(--psy-surface-panel);
+    background: var(--psy-gradient-card-wash), var(--psy-surface-card);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
     color: var(--psy-text-on-light);
@@ -20,7 +20,7 @@
     flex-shrink: 0;
     padding: var(--psy-space-5) var(--psy-space-7);
     border-bottom: var(--psy-border-width-block) solid var(--psy-border-strong);
-    background: var(--psy-surface-panel-prominent);
+    background: var(--psy-surface-card-header);
   }
 
   .card__title {
@@ -36,7 +36,7 @@
     margin: var(--psy-space-2) 0 0;
     font-size: var(--psy-font-size-small);
     line-height: var(--psy-line-height-body);
-    color: var(--psy-text-secondary);
+    color: var(--psy-text-muted-on-light);
   }
 
   .card__body {
@@ -61,15 +61,15 @@
     gap: var(--psy-space-4);
     padding: var(--psy-space-5) var(--psy-space-7);
     border-top: var(--psy-border-width-block) solid var(--psy-border-strong);
-    background: var(--psy-surface-panel);
+    background: var(--psy-surface-card);
   }
 
   .card--body-muted .card__body {
-    background: var(--psy-surface-panel-soft);
+    background: var(--psy-surface-card-muted);
   }
 
   .card--footer-muted .card__footer {
-    background: var(--psy-surface-panel-soft);
+    background: var(--psy-surface-card-muted);
   }
 
   @media (max-width: 639px) {
@@ -86,13 +86,13 @@
     gap: var(--psy-space-4);
     overflow: hidden;
     padding: var(--psy-space-7);
-    background: var(--psy-surface-panel-soft);
+    background: var(--psy-surface-well);
     border: 2px solid var(--psy-border-strong);
     color: var(--psy-text-on-light);
   }
 
   .well--on-muted {
-    background: var(--psy-surface-container);
+    background: var(--psy-surface-well-on-muted);
   }
 
   @media (max-width: 639px) {

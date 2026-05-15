@@ -111,6 +111,12 @@
   --psy-surface-panel: var(--psy-surface-container-lowest);
   --psy-surface-panel-soft: var(--psy-surface-container);
   --psy-surface-panel-prominent: var(--psy-surface-container-highest);
+  /* Card / well — 淺色 elevated 區塊（對齊 table、accordion；可置於深紫頁面上） */
+  --psy-surface-card: color-mix(in srgb, var(--psy-primitive-white) 94%, var(--psy-color-bg-panel-muted));
+  --psy-surface-card-muted: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-secondary-cyan));
+  --psy-surface-card-header: color-mix(in srgb, var(--psy-primitive-white) 90%, var(--psy-color-secondary-amber));
+  --psy-surface-well: color-mix(in srgb, var(--psy-primitive-white) 84%, var(--psy-color-bg-panel-muted));
+  --psy-surface-well-on-muted: color-mix(in srgb, var(--psy-primitive-white) 78%, var(--psy-color-bg-panel-muted));
   --psy-surface-hero-epic: color-mix(in srgb, #fcffdf 10%, #639d77);
   --psy-surface-hero-account: var(--psy-surface-hero-epic);
   --psy-surface-event-list-item: #f6b07f;
@@ -122,7 +128,9 @@
   --psy-text-primary: var(--psy-color-primary-on-dark);
   --psy-text-secondary: var(--psy-color-primary-on-dark-muted);
   --psy-text-on-dark: var(--psy-color-base);
+  /* 淺色／洗白 elevated surface（卡片、表格、手風琴等） */
   --psy-text-on-light: var(--psy-color-base);
+  --psy-text-muted-on-light: color-mix(in srgb, var(--psy-color-base) 72%, transparent);
   --psy-text-on-bright: var(--psy-color-base);
   --psy-text-link-visited: var(--psy-color-visited);
 
@@ -139,6 +147,12 @@
     color-mix(in srgb, var(--psy-color-secondary-orange) 45%, transparent),
     color-mix(in srgb, var(--psy-color-secondary-magenta) 40%, transparent),
     color-mix(in srgb, var(--psy-color-secondary-lime) 28%, transparent)
+  );
+  --psy-gradient-card-wash: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--psy-color-secondary-orange) 10%, transparent),
+    color-mix(in srgb, var(--psy-color-secondary-magenta) 8%, transparent),
+    color-mix(in srgb, var(--psy-color-secondary-lime) 6%, transparent)
   );
   --psy-gradient-panel-wash: linear-gradient(
     135deg,
@@ -219,6 +233,8 @@
   /* 建議對比組合（文件／審查；與 NASA「permitted combinations」概念對齊） */
   --psy-a11y-fg-default-on-page: var(--psy-text-primary);
   --psy-a11y-fg-muted-on-page: var(--psy-text-secondary);
+  --psy-a11y-fg-default-on-card: var(--psy-text-on-light);
+  --psy-a11y-fg-muted-on-card: var(--psy-text-muted-on-light);
   --psy-a11y-fg-on-accent: var(--psy-text-on-dark);
 
   /* =========================
