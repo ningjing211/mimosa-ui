@@ -34,11 +34,19 @@
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
+    transition-property: transform, box-shadow, background-color, border-color, color;
+    transition-duration: var(--psy-motion-duration-fast);
+    transition-timing-function: var(--psy-motion-easing-standard);
   }
 
-  .tabs__tab:hover {
-    color: var(--psy-tab-fg);
-    background: color-mix(in srgb, var(--psy-primitive-white) 40%, transparent);
+  .tabs__tab:hover:not([aria-selected="true"]):not(.is-active),
+  .tabs__tab:focus-visible:not([aria-selected="true"]):not(.is-active) {
+    border-color: var(--psy-tab-hover-border);
+    background: var(--psy-tab-hover-bg);
+    color: var(--psy-tab-hover-fg);
+    box-shadow: var(--psy-tab-hover-shadow);
+    transform: translate(-1px, -1px);
+    outline: none;
   }
 
   .tabs__tab[aria-selected="true"],
@@ -46,7 +54,17 @@
     border-color: var(--psy-tab-indicator);
     background: var(--psy-tab-active-bg);
     color: var(--psy-tab-active-fg);
-    box-shadow: 3px 3px 0 var(--psy-tab-indicator);
+    box-shadow: var(--psy-tab-active-shadow);
+  }
+
+  .tabs__tab[aria-selected="true"]:hover,
+  .tabs__tab[aria-selected="true"]:focus-visible,
+  .tabs__tab.is-active:hover,
+  .tabs__tab.is-active:focus-visible {
+    background: var(--psy-tab-active-hover-bg);
+    box-shadow: var(--psy-tab-active-hover-shadow);
+    transform: translate(-1px, -1px);
+    outline: none;
   }
 
   .tabs__panel {
