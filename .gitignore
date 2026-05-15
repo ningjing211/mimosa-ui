@@ -1,6 +1,10 @@
 node_modules/
 dist/
+
+# OS / editor
 .DS_Store
 *.log
+
+# Secrets (never commit)
 .env
 .env.*
