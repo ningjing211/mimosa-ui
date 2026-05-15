@@ -1,0 +1,14 @@
+{
+  "name": "mimosa-ui",
+  "private": true,
+  "workspaces": [
+    "shared/mimosa-ui",
+    "examples/mimosa-consumer",
+    "examples/v16-mock-preview"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w mimosa-consumer",
+    "dev:mock": "npm run dev -w v16-mock-preview",
+    "build": "npm run build -w mimosa-design-system && npm run build -w mimosa-consumer"
+  }
+}

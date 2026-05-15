@@ -1,0 +1,22 @@
+{
+  "name": "mimosa-design-system",
+  "version": "0.1.0",
+  "description": "Mimosa design system package for web UI.",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "style": "./dist/mimosa.css",
+  "exports": {
+    ".": "./dist/mimosa.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./docs.css": "./dist/docs.css",
+    "./tokens.json": "./dist/tokens.json"
+  },
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "prepare": "npm run build"
+  }
+}

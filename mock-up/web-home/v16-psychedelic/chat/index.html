@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BassLink Chat Flow Mockup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./chat.css" />
+  </head>
+  <body>
+    <header class="chat-topbar">
+      <a class="brand" href="../index.html">BassLink</a>
+      <a class="utility-link" href="../index.html" aria-label="回到上一頁" title="回到上一頁">↩</a>
+    </header>
+
+    <main class="chat-shell">
+      <section class="hero">
+        <p class="kicker">EPIC 4 / 即時聊天 / P0</p>
+        <h1>Realtime chat flow</h1>
+        <p>
+          本頁對應 US-016～US-018，整合聊天室列表、一對一即時訊息、推播通知與聊天室安全控制，並標示 MVP 邊界。
+        </p>
+      </section>
+
+      <section class="flow-grid">
+        <article class="card">
+          <div class="card-head">
+            <h2>1) 聊天室列表</h2>
+            <span class="tag">US-016</span>
+          </div>
+          <p class="muted">依最新訊息時間由新到舊排序，顯示摘要、時間與未讀數。</p>
+          <ul class="room-list">
+            <li>
+              <div class="avatar">N</div>
+              <div>
+                <strong>Nova</strong>
+                <p>最新訊息：[圖片]</p>
+              </div>
+              <div class="meta">
+                <span>23:58</span>
+                <span class="badge">3</span>
+              </div>
+            </li>
+            <li>
+              <div class="avatar">O</div>
+              <div>
+                <strong>Orbit</strong>
+                <p>收到一則新訊息</p>
+              </div>
+              <div class="meta">
+                <span>22:46</span>
+                <span class="badge">1</span>
+              </div>
+            </li>
+            <li>
+              <div class="avatar">K</div>
+              <div>
+                <strong>Kai</strong>
+                <p>今晚見，場館 11 點開門。</p>
+              </div>
+              <div class="meta">
+                <span>20:11</span>
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h2>2) 一對一即時訊息</h2>
+            <span class="tag">US-017</span>
+          </div>
+          <p class="muted">支援文字、emoji、圖片，需顯示發送狀態與失敗重試。</p>
+          <div class="thread">
+            <div class="bubble incoming">
+              <p>今晚你也去 Warehouse Resonance 嗎？</p>
+              <time>23:31</time>
+            </div>
+            <div class="bubble outgoing">
+              <p>會！我 11:30 左右到 😎</p>
+              <time>23:32 · 已送達</time>
+            </div>
+            <div class="bubble outgoing">
+              <p>[圖片]</p>
+              <time>23:33 · 發送失敗</time>
+              <button type="button" class="chip retry-chip">重試</button>
+            </div>
+          </div>
+          <form class="composer">
+            <input class="input" type="text" placeholder="輸入訊息..." />
+            <button type="button" class="btn">🙂</button>
+            <button type="button" class="btn">圖片</button>
+            <button type="button" class="btn btn-primary">送出</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h2>3) 推播通知</h2>
+            <span class="tag">US-018</span>
+          </div>
+          <p class="muted">背景/關閉時觸發推播；當前聊天室前景中不觸發。</p>
+          <ul class="push-list">
+            <li>
+              <strong>觸發條件</strong>
+              <span>App 在背景或關閉，且收到新訊息</span>
+              <button type="button" class="control-pill on">啟用</button>
+            </li>
+            <li>
+              <strong>通知文案</strong>
+              <span>收到一則新訊息</span>
+              <button type="button" class="control-pill">預設</button>
+            </li>
+            <li>
+              <strong>點擊行為</strong>
+              <span>直接導向對應聊天室</span>
+              <button type="button" class="control-pill on">啟用</button>
+            </li>
+          </ul>
+        </article>
+
+        <article class="card danger">
+          <div class="card-head">
+            <h2>4) 聊天室安全控制</h2>
+            <span class="tag">US-018-SAFE</span>
+          </div>
+          <p class="muted">聊天室內可檢舉/封鎖；解除配對與封鎖行為限制不同。</p>
+          <div class="button-row">
+            <button type="button" class="btn">檢舉對象</button>
+            <button type="button" class="btn btn-danger">封鎖對象</button>
+          </div>
+          <div class="state-box">
+            <p><strong>解除配對：</strong>聊天室保留可見，但輸入框停用不可發新訊息。</p>
+            <p><strong>封鎖：</strong>雙方聊天室完全不可見。</p>
+            <p><strong>禁聊：</strong>顯示限制提示，輸入功能停用。</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="boundary">
+        <h2>MVP 邊界說明</h2>
+        <ul>
+          <li>聊天僅限配對成功雙方，未配對不得互傳訊息。</li>
+          <li>MVP 不支援語音、影片與非圖片檔案傳送。</li>
+          <li>聊天資料儲存於 Firebase Realtime Database，紀錄預設永久保存。</li>
+          <li>推播內容不顯示訊息原文，僅顯示「收到一則新訊息」。</li>
+          <li>解除配對與封鎖限制不同：解除後可見但不可傳；封鎖後完全不可見。</li>
+        </ul>
+      </section>
+
+      <section class="module-links">
+        <h2>跨模組導覽</h2>
+        <p>聊天流程依賴配對與安全機制，並連動後台治理。</p>
+        <div class="link-row">
+          <a href="../pair/index.html">Epic 3 配對</a>
+          <a href="../security/index.html">Epic 5 安全</a>
+          <a href="../admin/index.html">Epic 6 後台</a>
+          <a href="../event/index.html">Epic 2 活動</a>
+          <a href="../game/index.html">Epic 7 遊戲化</a>
+          <a href="../coin/index.html">Epic 8 代幣購買</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

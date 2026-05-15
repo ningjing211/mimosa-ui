@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BassLink Security Flow Mockup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./security.css" />
+  </head>
+  <body>
+    <header class="security-topbar">
+      <a class="brand" href="../index.html">BassLink</a>
+      <a class="utility-link" href="../index.html" aria-label="回到上一頁" title="回到上一頁">↩</a>
+    </header>
+
+    <main class="security-shell">
+      <section class="hero">
+        <p class="kicker">EPIC 5 / 安全機制 / P0</p>
+        <h1>Safety and moderation flow</h1>
+        <p>本頁對應 US-019～US-021，涵蓋使用者舉報、活動舉報、封鎖機制與自動限制處置。</p>
+      </section>
+
+      <section class="flow-grid">
+        <article class="card">
+          <div class="card-head">
+            <h2>1) 使用者舉報</h2>
+            <span class="tag">US-019</span>
+          </div>
+          <p class="muted">使用者可舉報騷擾、詐騙、不當內容等違規行為。</p>
+          <form class="form-stack">
+            <label class="label" for="report-user-target">舉報對象</label>
+            <input class="input" id="report-user-target" type="text" placeholder="輸入使用者名稱" />
+
+            <label class="label" for="report-user-type">舉報類型</label>
+            <select class="input" id="report-user-type">
+              <option>騷擾</option>
+              <option>詐騙</option>
+              <option>不當內容</option>
+              <option>其他違規</option>
+            </select>
+
+            <label class="label" for="report-user-note">補充說明</label>
+            <textarea class="input textarea" id="report-user-note" rows="3" placeholder="請填寫具體情況"></textarea>
+
+            <button type="button" class="btn btn-primary">提交舉報</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h2>2) 活動舉報</h2>
+            <span class="tag">US-020</span>
+          </div>
+          <p class="muted">舉報處理對象為活動內容本身，不直接自動處罰建立者帳號。</p>
+          <ul class="security-list">
+            <li><strong>活動名稱：</strong>Warehouse Resonance</li>
+            <li><strong>目前舉報數：</strong>49</li>
+            <li><strong>門檻規則：</strong>達 50 次自動下架</li>
+          </ul>
+          <div class="button-row">
+            <button type="button" class="btn">查看活動詳情</button>
+            <button type="button" class="btn btn-danger">提交活動舉報</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h2>3) 封鎖機制</h2>
+            <span class="tag">US-021</span>
+          </div>
+          <p class="muted">封鎖後雙方完全不可見，立即中止後續互動。</p>
+          <div class="state-box">
+            <p><strong>封鎖生效範圍：</strong>配對卡片、聊天室、個人檔案、活動參加者頭像與其他入口。</p>
+            <p><strong>封鎖結果：</strong>雙方完全不可見，且不可再互動。</p>
+            <p><strong>解除配對差異：</strong>雙方仍可見，但不可再互動。</p>
+          </div>
+          <div class="button-row">
+            <button type="button" class="btn btn-danger">封鎖對象</button>
+          </div>
+        </article>
+
+        <article class="card danger">
+          <div class="card-head">
+            <h2>4) 自動限制處置</h2>
+            <span class="tag">US-021-AUTO</span>
+          </div>
+          <p class="muted">達風險門檻時，自動觸發禁聊或下架，並保留稽核紀錄。</p>
+          <ul class="security-list">
+            <li><strong>帳號門檻：</strong>24 小時內 3 次有效舉報 → 暫時禁聊</li>
+            <li><strong>活動門檻：</strong>活動舉報達 50 次 → 自動下架</li>
+            <li><strong>禁聊附加限制：</strong>限制滑卡配對與建立活動功能</li>
+            <li><strong>聊天室影響：</strong>停用輸入功能並顯示限制提示</li>
+            <li><strong>稽核資料：</strong>保存舉報、封鎖、禁聊、下架紀錄</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="boundary">
+        <h2>MVP 邊界說明</h2>
+        <ul>
+          <li>封鎖生效後雙方於所有互動入口完全不可見。</li>
+          <li>解除配對與封鎖邏輯不同：解除後可見但不可互動，封鎖後完全不可見。</li>
+          <li>活動檢舉達 50 次自動下架；帳號 24 小時內 3 次有效舉報自動禁聊。</li>
+          <li>禁聊同時限制滑卡配對與建立活動，聊天室輸入需停用並顯示提示。</li>
+          <li>舉報、封鎖、禁聊與下架紀錄需完整保存供稽核。</li>
+        </ul>
+      </section>
+
+      <section class="module-links">
+        <h2>跨模組導覽</h2>
+        <p>安全機制與聊天、配對、活動與後台治理共同構成閉環。</p>
+        <div class="link-row">
+          <a href="../chat/index.html">Epic 4 聊天</a>
+          <a href="../pair/index.html">Epic 3 配對</a>
+          <a href="../event/index.html">Epic 2 活動</a>
+          <a href="../admin/index.html">Epic 6 後台</a>
+          <a href="../game/index.html">Epic 7 遊戲化</a>
+          <a href="../coin/index.html">Epic 8 代幣購買</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

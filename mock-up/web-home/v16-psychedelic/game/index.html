@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BassLink Gamification Mockup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./game.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../index.html">BassLink</a>
+      <a class="utility-link" href="../index.html" aria-label="回到上一頁" title="回到上一頁">↩</a>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <p class="kicker">EPIC 7 / 遊戲化系統 / P0</p>
+        <h1>Gamification system</h1>
+        <p>每日登入獎勵、成就系統與代幣解鎖進階功能。</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <div class="head"><h2>1) 每日登入獎勵</h2><span class="tag">US-025</span></div>
+          <p class="muted">每日首次登入發放固定代幣（UTC+8 自然日重置）。</p>
+          <div class="token-box">
+            <p><strong>今日登入獎勵：</strong>+20 代幣</p>
+            <p><strong>今日狀態：</strong>已領取</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="head"><h2>2) 成就系統</h2><span class="tag">US-026</span></div>
+          <ul class="list">
+            <li><strong>活動參與 10 場</strong><span>獎勵 +100 代幣 · 徽章：Night Runner</span></li>
+            <li><strong>配對成功 20 次</strong><span>獎勵 +120 代幣 · 徽章：Groove Connector</span></li>
+            <li><strong>連續登入 7 天</strong><span>獎勵 +80 代幣 · 徽章：On Fire</span></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="head"><h2>3) 代幣功能解鎖</h2><span class="tag">US-027</span></div>
+          <p class="muted">單次代幣消耗解鎖進階功能，餘額需即時顯示。</p>
+          <p class="balance">目前餘額：<strong>340 代幣</strong></p>
+          <div class="actions">
+            <button type="button" class="btn">無限滑卡（80）</button>
+            <button type="button" class="btn">查看誰喜歡你（120）</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="boundary">
+        <h2>MVP 邊界說明</h2>
+        <ul>
+          <li>代幣不可轉讓、不可兌換現金。</li>
+          <li>免費來源僅每日登入與成就，其他免費渠道列 P2。</li>
+          <li>進階功能以單次代幣解鎖為主，訂閱制 Premium 列 P2。</li>
+          <li>成就代幣即時入帳，已領取成就不可重複領取。</li>
+          <li>代幣付費購買屬 P1，不在 MVP 範圍。</li>
+        </ul>
+      </section>
+
+      <section class="module-links">
+        <h2>跨模組導覽</h2>
+        <p>遊戲化代幣與配對、活動、付費購買場景直接連動。</p>
+        <div class="link-row">
+          <a href="../account/index.html">Epic 1 帳號</a>
+          <a href="../event/index.html">Epic 2 活動</a>
+          <a href="../pair/index.html">Epic 3 配對</a>
+          <a href="../coin/index.html">Epic 8 代幣購買</a>
+          <a href="../admin/index.html">Epic 6 後台</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
