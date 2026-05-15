@@ -1,4 +1,7 @@
-/* Header, footer, nav, tables, accordion, grid — layout chrome */
+/**
+ * Raw overlay: site chrome (header, footer, table, accordion, grid-12).
+ * Loaded after tailwindcss in tailwind.css / docs-app.css.
+ */
 @layer components {
 .skipnav {
   position: absolute;

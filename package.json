@@ -13,8 +13,6 @@
     ".": "./dist/tailwind.css",
     "./tokens.css": "./dist/tokens.css",
     "./tailwind.css": "./dist/tailwind.css",
-    "./mimosa.css": "./dist/mimosa.css",
-    "./legacy.css": "./dist/mimosa.css",
     "./tailwind/theme.css": "./dist/tailwind/theme.css",
     "./tailwind/base.css": "./dist/tailwind/base.css",
     "./tailwind/components.css": "./dist/tailwind/components.css",

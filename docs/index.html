@@ -79,7 +79,7 @@ import "mimosa-design-system/tailwind.css";</code></pre>
       <section class="ds-section" id="package-entry" aria-labelledby="package-entry-heading">
         <h2 class="ds-section__title" id="package-entry-heading">Package 入口</h2>
         <p class="ds-section__lead">
-          建議以 <code>tailwind.css</code> 作為預設入口；<code>tokens.css</code> 與 legacy <code>mimosa.css</code> 仍可供非 Tailwind 或舊專案使用。
+          請載入 <code>tailwind.css</code>（或套件預設 <code>.</code> 入口），並在專案中啟用 Tailwind v4 建置。
         </p>
         <article class="ds-doc-card">
           <h3 class="ds-doc-card__title">建議使用順序</h3>
@@ -102,11 +102,6 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                   <th scope="row"><code>tokens.css</code></th>
                   <td>僅 <code>--psy-*</code> CSS 變數</td>
                   <td>靜態頁、非 Tailwind 專案</td>
-                </tr>
-                <tr>
-                  <th scope="row"><code>mimosa.css</code></th>
-                  <td>Legacy 完整 raw（<code>.form-*</code>、<code>.alert</code> 等）</td>
-                  <td>既有專案過渡；新專案請避免</td>
                 </tr>
                 <tr>
                   <th scope="row"><code>tokens.json</code></th>

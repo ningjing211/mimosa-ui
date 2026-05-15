@@ -1,5 +1,5 @@
 /**
- * Docs site CSS entry: tokens → Tailwind → Mimosa components → doc raw overrides.
+ * Docs site CSS — same stack as src/theme/tailwind.css + docs-overrides.
  * Built to docs/assets/docs.bundle.css via scripts/build-docs-css.mjs
  */
 @import "../../src/theme/tokens.css";

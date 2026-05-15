@@ -1,6 +1,17 @@
 /**
- * Mimosa + Tailwind entry for host apps (Vite + @tailwindcss/vite).
- * Peer dependencies: tailwindcss, @tailwindcss/vite
+ * Mimosa design system — single CSS entry.
+ *
+ * Stack (in order):
+ *   1. tokens.css        — --psy-* source of truth
+ *   2. tailwindcss       — utilities (layout/spacing/typography in host HTML)
+ *   3. theme.css         — @theme bridge (gap-psy-*, text-psy-*, …)
+ *   4. base.css          — minimal reset
+ *   5. components.css    — .psy-* primitives (raw @layer components)
+ *   6. product.css       — .form-* / .alert / .search-bar (raw overlay)
+ *   7. chrome.css        — .site-header / .data-table / … (raw overlay)
+ *   8. flow-page.css     — .psy-flow-* (raw overlay)
+ *
+ * Peer dependency: tailwindcss ^4
  */
 @import "./tokens.css";
 @import "tailwindcss";

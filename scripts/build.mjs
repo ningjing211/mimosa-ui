@@ -9,7 +9,6 @@ const srcRoot = path.resolve(packageRoot, "src/theme");
 const distDir = path.resolve(packageRoot, "dist");
 
 const tokenSourcePath = path.resolve(srcRoot, "tokens.css");
-const mimosaSourcePath = path.resolve(srcRoot, "mimosa.css");
 
 function extractTokenMap(cssText) {
   const tokenMap = {};
@@ -28,9 +27,8 @@ async function build() {
   await rm(distDir, { recursive: true, force: true });
   await mkdir(distDir, { recursive: true });
 
-  const [tokensCss, mimosaCss, tailwindCss] = await Promise.all([
+  const [tokensCss, tailwindCss] = await Promise.all([
     readFile(tokenSourcePath, "utf8"),
-    readFile(mimosaSourcePath, "utf8"),
     readFile(path.resolve(srcRoot, "tailwind.css"), "utf8")
   ]);
 
@@ -40,20 +38,17 @@ async function build() {
   const tailwindSourceDir = path.resolve(srcRoot, "tailwind");
   const tailwindPartials = [
     "theme.css",
-    "theme-compat.css",
     "base.css",
     "components.css",
     "product.css",
     "chrome.css",
-    "flow-page.css",
-    "legacy-aliases.css"
+    "flow-page.css"
   ];
 
   await mkdir(distTailwindDir, { recursive: true });
 
   await Promise.all([
     writeFile(path.resolve(distDir, "tokens.css"), tokensCss, "utf8"),
-    writeFile(path.resolve(distDir, "mimosa.css"), mimosaCss, "utf8"),
     writeFile(path.resolve(distDir, "tokens.json"), tokenJson, "utf8"),
     writeFile(path.resolve(distDir, "tailwind.css"), tailwindCss, "utf8"),
     ...tailwindPartials.map((file) =>

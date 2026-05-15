@@ -1,4 +1,7 @@
-/* Forms, alerts, search, labels — raw product primitives */
+/**
+ * Raw overlay: forms, alerts, search — not expressible as utilities alone.
+ * Loaded after tailwindcss in tailwind.css / docs-app.css.
+ */
 @layer components {
 .alert {
   margin: 0 0 var(--psy-space-6);

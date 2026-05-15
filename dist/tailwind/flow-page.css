@@ -9,10 +9,10 @@
     justify-content: space-between;
     gap: var(--psy-space-4);
     padding: var(--psy-space-5) var(--psy-space-7);
-    border-width: var(--border-width-psy-block);
+    border-width: var(--psy-border-width-block);
     border-style: solid;
-    border-color: var(--color-psy-border-strong);
-    box-shadow: var(--shadow-psy-hard);
+    border-color: var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-hard);
     background: var(--psy-header-bg);
     color: var(--psy-nav-text);
   }
@@ -31,7 +31,7 @@
     min-height: 2.1rem;
     padding: 0 var(--psy-space-3);
     border: 2px solid var(--psy-border-strong);
-    box-shadow: var(--shadow-psy-hard);
+    box-shadow: var(--psy-shadow-hard);
     background: var(--psy-chip-bg);
     color: var(--psy-chip-text);
     font-size: var(--psy-font-size-chip);
@@ -42,10 +42,10 @@
   .psy-flow-hero {
     margin-bottom: var(--psy-space-9);
     padding: var(--psy-space-8);
-    border-width: var(--border-width-psy-block);
+    border-width: var(--psy-border-width-block);
     border-style: solid;
-    border-color: var(--color-psy-border-strong);
-    box-shadow: var(--shadow-psy-hard);
+    border-color: var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-hard);
     background: var(--psy-surface-hero-epic);
   }
 
@@ -171,10 +171,10 @@
   .psy-flow-module-links {
     margin-top: var(--psy-space-9);
     padding: var(--psy-space-7);
-    border-width: var(--border-width-psy-block);
+    border-width: var(--psy-border-width-block);
     border-style: solid;
-    border-color: var(--color-psy-border-strong);
-    box-shadow: var(--shadow-psy-hard);
+    border-color: var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-hard);
     background: var(--psy-surface-container-low);
   }
 

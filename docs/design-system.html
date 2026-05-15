@@ -305,8 +305,7 @@ import "mimosa-design-system/tailwind.css";
 // 僅 tokens
 // import "mimosa-design-system/tokens.css";
 
-// Legacy raw
-// import "mimosa-design-system/mimosa.css";</code></pre>
+// 細分 partial：product.css、components.css 等</code></pre>
           </article>
 
           <!-- ========== Colors ========== -->
@@ -1068,7 +1067,7 @@ import "mimosa-design-system/tailwind.css";
 
             <article class="ds-doc-card" id="buttons-big">
               <h3 class="ds-doc-card__title">大尺寸按鈕 · Big</h3>
-              <p class="ds-doc-card__desc">對齊 NASA big button：全頁唯一或最優先行為時可加 <code>.ds-btn--lg</code>（產品頁可視需要併入 <code>.button</code>）。</p>
+              <p class="ds-doc-card__desc">對齊 NASA big button：全頁唯一或最優先行為時可加 <code>.ds-btn--lg</code> 或 <code>.psy-btn--lg</code>。</p>
               <div class="ds-btn-row">
                 <button type="button" class="ds-btn psy-brutal psy-btn ds-btn--primary psy-btn--primary ds-btn--lg">主要行動</button>
               </div>
@@ -1078,9 +1077,9 @@ import "mimosa-design-system/tailwind.css";
               <h3 class="ds-doc-card__title">實作說明 · Implementation</h3>
               <p class="ds-doc-card__desc">
                 範例以 <code>&lt;button&gt;</code> 為主；若為連結套用按鈕外觀，可加上與按鈕相同的 class（對齊 NASA：在
-                <code>&lt;a&gt;</code> 上使用 button class）。建議入口為 <code>tailwind.css</code>（<code>.psy-btn</code>）；完整 raw 包為 legacy <code>mimosa.css</code>，對應
-                <code>.button</code>／<code>.button.primary</code>；文件示例則以 package primitives
-                <code>psy-btn</code>／<code>psy-btn--primary</code> 為主，再由 <code>ds-btn--demo-*</code> 補足靜態狀態展示。
+                <code>&lt;a&gt;</code> 上使用相同 class）。請載入 <code>tailwind.css</code>，元件使用
+                <code>.psy-btn</code>、<code>.psy-brutal</code>、<code>.psy-btn--primary</code>；文件示例另加
+                <code>ds-btn</code>／<code>ds-btn--demo-*</code> 補足靜態狀態展示。
               </p>
               <pre class="ds-code-block"><code>&lt;button type="button" class="psy-brutal psy-btn psy-btn--primary"&gt;主要&lt;/button&gt;
 &lt;button type="button" class="psy-brutal psy-btn"&gt;次要&lt;/button&gt;
@@ -1128,7 +1127,7 @@ import "mimosa-design-system/tailwind.css";
             <p class="ds-section__lead">
               用來告知使用者<strong>重要或具時效</strong>的系統／表單狀態。結構與角色對齊
               <a href="https://nasa.github.io/nasawds-site/components/alerts/">NASA Web Design System — Alerts</a>；樣式沿用 Neo-Brutalism
-              粗框與硬陰影，狀態色對應 <code>--psy-alert-*</code>。產品 class 為 <code>.alert</code> 系列（本文件站已編入 <code>docs.bundle.css</code>；套件內見 <code>mimosa.css</code>）。
+              粗框與硬陰影，狀態色對應 <code>--psy-alert-*</code>。產品 class 為 <code>.alert</code> 系列（raw 疊加層，已編入 <code>tailwind/product.css</code> 與本頁 bundle）。
             </p>
 
             <article class="ds-doc-card" id="alerts-variants">
@@ -1618,7 +1617,7 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="form-implementation">
               <h3 class="ds-doc-card__title">實作 · Product classes</h3>
               <p class="ds-doc-card__desc">
-                Host 專案請載入 <code>tailwind.css</code> 或 legacy <code>mimosa.css</code>（皆含 <code>tokens.css</code>）。對應關係：<code>ds-label</code> → <code>form-label</code>、<code>ds-input</code> →
+                Host 專案請載入 <code>tailwind.css</code>（含 <code>tokens.css</code>）。對應關係：<code>ds-label</code> → <code>form-label</code>、<code>ds-input</code> →
                 <code>form-input</code>、<code>ds-textarea</code> → <code>form-textarea</code>、<code>ds-select</code> → <code>form-select</code>、<code>ds-hint</code> →
                 <code>form-hint</code>、錯誤群組 <code>form-error-group</code>／<code>form-error-msg</code>／<code>form-input--error</code>、<code>ds-fieldset</code> →
                 <code>form-fieldset</code>、<code>ds-legend</code> → <code>form-legend</code>、選項清單 <code>form-choice-list</code> + <code>form-choice</code>、日期列
@@ -2545,16 +2544,16 @@ import "mimosa-design-system/tailwind.css";
                 </button>
               </div>
 
-              <pre class="ds-code-block"><code>/* alias 實際使用範例 */
+              <pre class="ds-code-block"><code>/* token 別名實際使用範例 */
 .top-nav a { color: var(--psy-nav-text); }
 .hero-kicker { color: var(--psy-kicker-text); }
 
-.button.primary:hover { background: var(--psy-button-primary-bg-hover); }
-.button.primary:active { background: var(--psy-button-primary-bg-active); }
-.button.secondary:hover { background: var(--psy-button-secondary-bg-hover); }
-.button.secondary:active { background: var(--psy-button-secondary-bg-active); }
+.psy-btn--primary:hover { background: var(--psy-button-primary-bg-hover); }
+.psy-btn--primary:active { background: var(--psy-button-primary-bg-active); }
+.psy-btn:hover { background: var(--psy-button-secondary-bg-hover); }
+.psy-btn:active { background: var(--psy-button-secondary-bg-active); }
 
-.button:focus-visible {
+.psy-btn:focus-visible {
   outline: var(--psy-focus-ring-width) solid var(--psy-focus-ring-color);
   outline-offset: var(--psy-focus-ring-offset);
 }</code></pre>
