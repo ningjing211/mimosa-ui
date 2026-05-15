@@ -622,7 +622,12 @@ import "mimosa-design-system/tailwind.css";
                     <tr>
                       <td>頁面上／下背景</td>
                       <td><code>--psy-surface-page-base</code>／<code>deep</code></td>
-                      <td><code>--psy-color-bg-page-top</code>／<code>bottom</code></td>
+                      <td><code>--psy-color-bg-page-top</code>／<code>bottom</code>（漸層最底偏黑，小元件勿單用 deep）</td>
+                    </tr>
+                    <tr>
+                      <td>深底區塊（kicker／hero）</td>
+                      <td><code>--psy-surface-on-dark</code>／<code>elevated</code></td>
+                      <td><code>primary-darker</code> 混 <code>primary</code> 約 26%；配 <code>.psy-kicker-on-dark</code></td>
                     </tr>
                     <tr>
                       <td>卡片／列表列底</td>
@@ -920,8 +925,9 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="typography-hierarchy">
               <h3 class="ds-doc-card__title">字階層級 · Hierarchy</h3>
               <p class="ds-doc-card__desc">
-                Kicker 在淺底請用 <code>--psy-kicker-text-on-light</code> 或 <code>.psy-kicker</code>；深紫 hero／頁面才用
-                <code>psy-kicker-on-dark</code>（萊姆螢光）。勿在卡片、文件白底上直接用 <code>--psy-kicker-text</code>。
+                Kicker 在淺底請用 <code>.psy-kicker</code>；深紫區塊用 <code>.psy-kicker-on-dark</code> + 底
+                <code>--psy-surface-on-dark</code>（標準深紫，勿用 <code>page-deep</code> 近黑紫）。勿在淺底卡片上直接用
+                <code>--psy-kicker-text</code>。
               </p>
               <div class="ds-panel">
                 <div class="ds-typo-block">
@@ -946,7 +952,7 @@ import "mimosa-design-system/tailwind.css";
                 </div>
                 <div class="ds-typo-block">
                   <div class="ds-typo-label">Kicker · <code>--psy-font-size-small</code> + letter-spacing</div>
-                  <p class="ds-sample-kicker">PSYCHEDELIC PALETTE / NEO-BRUTALISM BLOCKS</p>
+                  <p class="psy-kicker ds-sample-kicker">PSYCHEDELIC PALETTE / NEO-BRUTALISM BLOCKS</p>
                 </div>
                 <div class="ds-typo-block">
                   <div class="ds-typo-label">Caption · <code>--psy-font-size-caption</code></div>
@@ -1622,26 +1628,34 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="extended-stat-card">
               <h3 class="ds-doc-card__title">Stat / metric card</h3>
               <p class="ds-doc-card__desc">
-                獨立 <code>.stat-card</code>（亦可與 <code>.card</code> 組合）。增減色對齊數據圖表慣例：升=
-                <code>--psy-semantic-trend-up</code>（綠）、降=<code>--psy-semantic-trend-down</code>（紅），
-                <strong>勿</strong>用高比例 <code>color-mix(base, lime)</code> 取代（會變褐綠、語意不清）。元件別名見
-                <code>--psy-stat-delta-*</code>。
+                獨立 <code>.stat-card</code>（亦可與 <code>.card</code> 組合）。卡片底為暖黃
+                <code>--psy-stat-surface*</code>（中性數據，避開洋紅 card wash）；漲跌 pill 用
+                <code>--psy-semantic-trend-*-fg</code>／<code>*-bg</code>，期間用
+                <code>.stat-card__delta-context</code>（muted）。
               </p>
               <div class="grid gap-psy-5 sm:grid-cols-3 max-w-3xl">
                 <article class="stat-card">
                   <p class="stat-card__label">活躍使用者</p>
                   <p class="stat-card__value">12,480</p>
-                  <p class="stat-card__delta stat-card__delta--positive">+8.2% 較上週</p>
+                  <p class="stat-card__delta stat-card__delta--positive">
+                    <span class="stat-card__delta-main">+8.2%</span>
+                    <span class="stat-card__delta-context">較上週</span>
+                  </p>
                 </article>
                 <article class="stat-card">
                   <p class="stat-card__label">轉換率</p>
                   <p class="stat-card__value">3.4%</p>
-                  <p class="stat-card__delta stat-card__delta--negative">−0.3% 較上月</p>
+                  <p class="stat-card__delta stat-card__delta--negative">
+                    <span class="stat-card__delta-main">−0.3%</span>
+                    <span class="stat-card__delta-context">較上月</span>
+                  </p>
                 </article>
                 <article class="stat-card">
                   <p class="stat-card__label">平均停留</p>
                   <p class="stat-card__value">4m 12s</p>
-                  <p class="stat-card__delta stat-card__delta--positive">+12s</p>
+                  <p class="stat-card__delta stat-card__delta--positive">
+                    <span class="stat-card__delta-main">+12s</span>
+                  </p>
                 </article>
               </div>
             </article>
@@ -3054,7 +3068,7 @@ import "mimosa-design-system/tailwind.css";
                 </p>
               </div>
 
-              <p class="ds-sample-kicker" style="margin: 0 0 var(--psy-space-6)">
+              <p class="psy-kicker ds-sample-kicker" style="margin: 0 0 var(--psy-space-6)">
                 <code>--psy-kicker-text-on-light</code>：THIS IS A KICKER SAMPLE
               </p>
 
@@ -3138,14 +3152,14 @@ import "mimosa-design-system/tailwind.css";
                       <td><code>--psy-kicker-text-on-light</code></td>
                       <td>淺底 kicker／eyebrow</td>
                       <td>
-                        <span class="ds-sample-kicker" style="margin: 0">KICKER</span>
+                        <span class="psy-kicker ds-sample-kicker" style="margin: 0">KICKER</span>
                       </td>
                     </tr>
                     <tr>
                       <td><code>--psy-kicker-text-on-dark</code></td>
-                      <td>深紫底 kicker（螢光萊姆）</td>
+                      <td>深紫底 kicker（<code>--psy-surface-on-dark</code> + 萊姆）</td>
                       <td>
-                        <span class="ds-sample-kicker psy-kicker-on-dark" style="margin: 0; display: inline-block; padding: var(--psy-space-2) var(--psy-space-3); background: var(--psy-surface-page-base); border-radius: 4px">KICKER</span>
+                        <span class="psy-kicker-on-dark ds-sample-kicker" style="margin: 0; display: inline-block; padding: var(--psy-space-2) var(--psy-space-3); background: var(--psy-surface-on-dark); border-radius: 4px">KICKER</span>
                       </td>
                     </tr>
                     <tr>

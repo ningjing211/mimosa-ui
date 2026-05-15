@@ -70,7 +70,7 @@
     flex-direction: column;
     gap: var(--psy-space-2);
     padding: var(--psy-space-6) var(--psy-space-7);
-    background: var(--psy-gradient-card-wash), var(--psy-surface-card);
+    background: var(--psy-stat-surface-wash), var(--psy-stat-surface);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
     color: var(--psy-stat-label-color);
@@ -86,7 +86,7 @@
   }
 
   .stat-card__value {
-    margin: 0;
+    margin: 0 0 var(--psy-space-3);
     font-family: var(--psy-font-family-display);
     font-size: clamp(1.75rem, 4vw, 2.25rem);
     font-weight: 800;
@@ -95,29 +95,60 @@
     color: var(--psy-stat-value-color);
   }
 
+  /* 漲跌 pill：中性淺底 + 深綠/深紅字 + 方向箭頭（常見金融儀表板模式） */
   .stat-card__delta {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--psy-space-2) var(--psy-space-3);
     align-self: flex-start;
-    margin: var(--psy-space-1) 0 0;
-    padding: var(--psy-space-1) var(--psy-space-3);
+    margin: var(--psy-space-2) 0 0;
+    padding: var(--psy-space-2) var(--psy-space-4);
     font-size: var(--psy-font-size-small);
     font-weight: 800;
     line-height: 1.35;
     font-variant-numeric: tabular-nums;
+    border: 1px solid color-mix(in srgb, var(--psy-color-base) 12%, transparent);
     border-radius: 2px;
+  }
+
+  .stat-card__delta-main {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--psy-space-1);
+  }
+
+  .stat-card__delta-context {
+    font-weight: 600;
+    color: var(--psy-text-muted-on-light);
   }
 
   .stat-card__delta--positive {
     color: var(--psy-stat-delta-positive);
     background: var(--psy-stat-delta-positive-bg);
+    border-color: color-mix(in srgb, var(--psy-stat-delta-positive) 28%, transparent);
+  }
+
+  .stat-card__delta--positive .stat-card__delta-main::before {
+    content: "▲";
+    font-size: 0.7em;
+    line-height: 1;
   }
 
   .stat-card__delta--negative {
     color: var(--psy-stat-delta-negative);
     background: var(--psy-stat-delta-negative-bg);
+    border-color: color-mix(in srgb, var(--psy-stat-delta-negative) 28%, transparent);
+  }
+
+  .stat-card__delta--negative .stat-card__delta-main::before {
+    content: "▼";
+    font-size: 0.7em;
+    line-height: 1;
   }
 
   .stat-card__delta--neutral {
     color: var(--psy-semantic-trend-neutral);
-    background: color-mix(in srgb, var(--psy-color-base) 6%, transparent);
+    background: var(--psy-stat-delta-neutral-bg);
   }
 }

@@ -31,6 +31,12 @@
 
   --psy-primitive-white: #ffffff;
 
+  /* 指標漲跌（金融儀表板可讀色；與螢光萊姆 accent 分離） */
+  --psy-primitive-trend-up-fg: #157811;
+  --psy-primitive-trend-up-bg: #f1f5f1;
+  --psy-primitive-trend-down-fg: #be1e5a;
+  --psy-primitive-trend-down-bg: #f6f1f3;
+
   --psy-primitive-glow-orange-mix: color-mix(in srgb, var(--psy-primitive-orange) 28%, transparent);
   --psy-primitive-glow-magenta-mix: color-mix(in srgb, var(--psy-primitive-magenta) 26%, transparent);
 
@@ -93,6 +99,19 @@
      ========================= */
   --psy-surface-page-base: var(--psy-color-bg-page-top);
   --psy-surface-page-deep: var(--psy-color-bg-page-bottom);
+  /*
+   * 深底 surface 階層（配 --psy-kicker-text-on-dark、--psy-text-primary 等淺/螢光字）
+   * - page-deep：全頁漸層最底，近黑紫，勿作小塊 kicker 示範底
+   * - on-dark：hero／kicker 標準深紫（略提亮，萊姆可讀）
+   * - on-dark-elevated：panel 級更亮紫區塊
+   */
+  --psy-surface-on-dark-deep: var(--psy-surface-page-deep);
+  --psy-surface-on-dark: color-mix(
+    in srgb,
+    var(--psy-color-primary) 26%,
+    var(--psy-color-primary-darker)
+  );
+  --psy-surface-on-dark-elevated: var(--psy-color-primary);
   /* Surface hierarchy（參考 Material 3 container 階層概念） */
   --psy-surface-container-lowest: var(--psy-color-bg-panel);
   --psy-surface-container-low: color-mix(in srgb, #676278 88%, var(--psy-color-bg-panel-muted));
@@ -319,8 +338,14 @@
      Component aliases
      ========================= */
   --psy-nav-text: var(--psy-text-on-dark);
-  /* Kicker：深底可用螢光萊姆；淺底／卡片上改深紫混色（萊姆在小字上對比不足） */
+  /*
+   * Kicker 前景（依底色配對，勿混用）
+   * - on-dark：深紫底（--psy-surface-on-dark，非 page-deep）→ 螢光萊姆（.psy-kicker-on-dark）
+   * - on-light：卡片／文件白底 → 深紫混色（.psy-kicker）
+   * 元件請用 class，勿僅設 color: var(--psy-kicker-text)（legacy 指向 on-dark）。
+   */
   --psy-kicker-text-on-dark: var(--psy-color-secondary-lime);
+  --psy-kicker-surface-on-dark: var(--psy-surface-on-dark);
   --psy-kicker-text-on-light: color-mix(
     in srgb,
     var(--psy-color-primary-darker) 82%,
@@ -411,12 +436,15 @@
 
   /*
    * Data trend semantics — 指標／圖表增減（升=綠、降=紅）
-   * 與 --psy-color-secondary-lime 品牌螢光 accent 分離：螢光萊姆用於按鈕／焦點／色條，
-   * 勿以高比例 --psy-color-base 混入萊姆當「上漲文字色」（會變橄欖褐、語意不明）。
-   * 專為淺底 elevated（--psy-surface-card）調可讀對比。
+   * 對齊常見股市／分析 UI：中性淺灰底 pill + 高對比深綠／深紅字（非螢光萊姆底+萊姆字）。
+   * fg/bg 成對使用；--psy-semantic-trend-up 為 fg 別名（向後相容）。
    */
-  --psy-semantic-trend-up: color-mix(in srgb, var(--psy-color-base) 22%, var(--psy-color-secondary-lime));
-  --psy-semantic-trend-down: color-mix(in srgb, var(--psy-color-base) 12%, var(--psy-color-secondary-magenta));
+  --psy-semantic-trend-up-fg: var(--psy-primitive-trend-up-fg);
+  --psy-semantic-trend-up-bg: var(--psy-primitive-trend-up-bg);
+  --psy-semantic-trend-down-fg: var(--psy-primitive-trend-down-fg);
+  --psy-semantic-trend-down-bg: var(--psy-primitive-trend-down-bg);
+  --psy-semantic-trend-up: var(--psy-semantic-trend-up-fg);
+  --psy-semantic-trend-down: var(--psy-semantic-trend-down-fg);
   --psy-semantic-trend-neutral: var(--psy-text-muted-on-light);
 
   /* Form controls（對齊 NASA WDS Form controls） */
@@ -561,11 +589,23 @@
   --psy-timeline-line: var(--psy-divider-color);
   --psy-timeline-marker-bg: var(--psy-color-secondary-lime);
 
-  /* Stat / metric card */
+  /*
+   * Stat / metric card — 淡橘淺底（中性數據區，非狀態色）
+   * - 勿用 --psy-gradient-card-wash（洋紅）或 amber 暖黃（易與 --psy-alert-warning-bg 混淆）
+   * - 勿與 --psy-alert-info-bg 同色階：info 為左條+icon+較濃 orange wash；stat 僅大面積低飽和 peach
+   * - 與 error（magenta）、warning（amber）語意分離
+   */
+  --psy-stat-surface: color-mix(in srgb, var(--psy-primitive-white) 90%, var(--psy-color-secondary-orange));
+  --psy-stat-surface-wash: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--psy-color-secondary-orange) 10%, var(--psy-primitive-white)),
+    color-mix(in srgb, var(--psy-primitive-white) 94%, var(--psy-color-secondary-orange))
+  );
   --psy-stat-value-color: var(--psy-text-on-light);
   --psy-stat-label-color: var(--psy-text-muted-on-light);
-  --psy-stat-delta-positive: var(--psy-semantic-trend-up);
-  --psy-stat-delta-negative: var(--psy-semantic-trend-down);
-  --psy-stat-delta-positive-bg: color-mix(in srgb, var(--psy-semantic-trend-up) 16%, transparent);
-  --psy-stat-delta-negative-bg: color-mix(in srgb, var(--psy-semantic-trend-down) 14%, transparent);
+  --psy-stat-delta-positive: var(--psy-semantic-trend-up-fg);
+  --psy-stat-delta-negative: var(--psy-semantic-trend-down-fg);
+  --psy-stat-delta-positive-bg: var(--psy-semantic-trend-up-bg);
+  --psy-stat-delta-negative-bg: var(--psy-semantic-trend-down-bg);
+  --psy-stat-delta-neutral-bg: color-mix(in srgb, var(--psy-color-base) 5%, var(--psy-primitive-white));
 }

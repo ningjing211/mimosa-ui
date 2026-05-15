@@ -88,7 +88,9 @@
 - **Raw CSS**：`avatar.css`、`forms-extended.css`、`data-display.css` 等 partial；token 定義於 `tokens.css`
 - **Surface 原則**：elevated 元件使用 `--psy-surface-card` + `--psy-text-on-light`，勿混用 `--psy-text-primary`（頁面深紫底用）
 - **Elevated hover**：`--psy-elevated-hover-*` 用於 file-upload、tab、menu 等淺底互動
-- **Data trend**：`--psy-semantic-trend-up/down` 用於指標增減（綠／紅）；品牌螢光萊姆（`--psy-color-secondary-lime`）不作為 stat 文字色
+- **Data trend**：`--psy-semantic-trend-*-fg` + 中性 `*-bg`（金融儀表板 pill）；勿用螢光萊姆底+萊姆字
+- **Stat card 底**：`--psy-stat-surface*` 暖黃中性（勿用含洋紅的 `--psy-gradient-card-wash`，避免與 error／跌語意混淆）
+- **Kicker 配對**：淺底 `.psy-kicker`；深紫底 `.psy-kicker-on-dark` + `--psy-surface-on-dark`（勿用 `page-deep`）
 
 ---
 

@@ -572,6 +572,7 @@ body {
   color: var(--ds-doc-text);
 }
 
+/* 文件示範用排版；前景色交給 .psy-kicker / .psy-kicker-on-dark（勿在此寫死 color，避免蓋掉 on-dark 萊姆） */
 .ds-sample-kicker {
   margin: 0;
   font-size: var(--psy-font-size-small);
@@ -579,7 +580,6 @@ body {
   letter-spacing: var(--psy-letter-spacing-kicker);
   line-height: var(--psy-line-height-ui-tight);
   text-transform: uppercase;
-  color: var(--psy-kicker-text-on-light);
 }
 
 .ds-sample-caption {

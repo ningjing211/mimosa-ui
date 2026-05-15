@@ -18,13 +18,21 @@
     background: var(--psy-gradient-hero-panel);
   }
 
-  .psy-kicker {
+  /*
+   * Kicker：淺底 .psy-kicker；深紫底 .psy-kicker-on-dark（萊姆）。
+   * 深底請用 --psy-surface-on-dark／--psy-kicker-surface-on-dark，勿用 --psy-surface-page-deep（過黑）。
+   */
+  .psy-kicker,
+  .psy-kicker-on-dark {
     margin: 0;
     font-size: var(--psy-font-size-small);
     font-weight: var(--psy-font-weight-kicker);
     letter-spacing: var(--psy-letter-spacing-kicker);
     line-height: var(--psy-line-height-ui-tight);
     text-transform: uppercase;
+  }
+
+  .psy-kicker {
     color: var(--psy-kicker-text-on-light);
   }
 
