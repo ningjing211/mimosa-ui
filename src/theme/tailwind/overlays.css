@@ -1,0 +1,174 @@
+/**
+ * Modal & drawer — overlay shells (Tailwind utilities for layout in host HTML).
+ * Panel uses elevated surface tokens; open/close is host JS (hidden attribute / class).
+ */
+@layer components {
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--psy-overlay-z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--psy-space-7);
+  }
+
+  .modal[hidden] {
+    display: none;
+  }
+
+  .modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--psy-overlay-backdrop);
+  }
+
+  .modal__panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: var(--psy-modal-max-width);
+    max-height: var(--psy-modal-max-height);
+    overflow: hidden;
+    background: var(--psy-gradient-card-wash), var(--psy-overlay-surface);
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-hard);
+    color: var(--psy-overlay-fg);
+  }
+
+  .modal__header {
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--psy-space-4);
+    padding: var(--psy-space-5) var(--psy-space-7);
+    border-bottom: var(--psy-border-width-block) solid var(--psy-border-strong);
+    background: var(--psy-surface-card-header);
+  }
+
+  .modal__title {
+    margin: 0;
+    font-family: var(--psy-font-family-display);
+    font-size: var(--psy-font-size-h3);
+    font-weight: var(--psy-font-weight-h3);
+    line-height: 1.25;
+    color: var(--psy-overlay-fg);
+  }
+
+  .modal__close {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 2px solid var(--psy-border-strong);
+    background: var(--psy-surface-card);
+    color: var(--psy-overlay-fg);
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .modal__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    padding: var(--psy-space-7);
+    color: var(--psy-overlay-fg-muted);
+  }
+
+  .modal__footer {
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--psy-space-4);
+    padding: var(--psy-space-5) var(--psy-space-7);
+    border-top: var(--psy-border-width-block) solid var(--psy-border-strong);
+    background: var(--psy-overlay-surface);
+  }
+
+  .drawer {
+    position: fixed;
+    inset: 0;
+    z-index: var(--psy-overlay-z-drawer);
+    display: flex;
+  }
+
+  .drawer[hidden] {
+    display: none;
+  }
+
+  .drawer--right {
+    justify-content: flex-end;
+  }
+
+  .drawer--left {
+    justify-content: flex-start;
+  }
+
+  .drawer__backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--psy-overlay-backdrop);
+  }
+
+  .drawer__panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: var(--psy-drawer-width);
+    max-width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--psy-gradient-card-wash), var(--psy-overlay-surface);
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-hard);
+    color: var(--psy-overlay-fg);
+  }
+
+  .drawer--right .drawer__panel {
+    border-right-width: var(--psy-border-width-block);
+  }
+
+  .drawer--left .drawer__panel {
+    border-left-width: var(--psy-border-width-block);
+  }
+
+  .drawer__header {
+    flex-shrink: 0;
+    padding: var(--psy-space-5) var(--psy-space-7);
+    border-bottom: var(--psy-border-width-block) solid var(--psy-border-strong);
+    background: var(--psy-surface-card-header);
+  }
+
+  .drawer__title {
+    margin: 0;
+    font-family: var(--psy-font-family-display);
+    font-size: var(--psy-font-size-h3);
+    font-weight: var(--psy-font-weight-h3);
+    color: var(--psy-overlay-fg);
+  }
+
+  .drawer__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    padding: var(--psy-space-7);
+    color: var(--psy-overlay-fg-muted);
+  }
+
+  .drawer__footer {
+    flex-shrink: 0;
+    padding: var(--psy-space-5) var(--psy-space-7);
+    border-top: var(--psy-border-width-block) solid var(--psy-border-strong);
+  }
+}

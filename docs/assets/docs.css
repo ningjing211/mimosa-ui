@@ -1137,6 +1137,48 @@ body {
   gap: var(--psy-space-3);
 }
 
+/* 文件站：覆疊層靜態展示（非 position:fixed） */
+.ds-overlay-stage {
+  position: relative;
+  min-height: 18rem;
+  padding: var(--psy-space-7);
+  border: 1px solid var(--ds-doc-border);
+  border-radius: 8px;
+  background: var(--ds-doc-bg);
+  overflow: hidden;
+}
+
+.ds-overlay-stage .modal,
+.ds-overlay-stage .drawer {
+  position: absolute;
+  inset: 0;
+  padding: var(--psy-space-5);
+}
+
+.ds-overlay-stage .toast-stack {
+  position: absolute;
+  right: var(--psy-space-4);
+  bottom: var(--psy-space-4);
+}
+
+.ds-toast-demo-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--psy-space-4);
+  max-width: 24rem;
+}
+
+.ds-feedback-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--psy-space-7);
+}
+
+.ds-skeleton-demo {
+  max-width: 20rem;
+}
+
 .ds-grid-demo {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));

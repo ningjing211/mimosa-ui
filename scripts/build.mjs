@@ -42,6 +42,9 @@ async function build() {
     "components.css",
     "product.css",
     "cards.css",
+    "overlays.css",
+    "feedback.css",
+    "navigation-ui.css",
     "chrome.css",
     "flow-page.css"
   ];

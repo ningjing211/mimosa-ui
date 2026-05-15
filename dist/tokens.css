@@ -429,4 +429,63 @@
   --psy-label-bg-warning: var(--psy-color-secondary-amber);
   --psy-label-bg-hot: var(--psy-color-secondary-magenta);
   --psy-label-bg-soft: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-secondary-lime));
+
+  /* Overlays（modal / drawer / toast）— elevated 淺底 + 深色內文 */
+  --psy-overlay-backdrop: color-mix(in srgb, var(--psy-color-base) 58%, transparent);
+  --psy-overlay-z-drawer: 45;
+  --psy-overlay-z-modal: 50;
+  --psy-overlay-z-toast: 60;
+  --psy-overlay-surface: var(--psy-surface-card);
+  --psy-overlay-fg: var(--psy-text-on-light);
+  --psy-overlay-fg-muted: var(--psy-text-muted-on-light);
+  --psy-modal-max-width: 32rem;
+  --psy-modal-max-height: min(90vh, 40rem);
+  --psy-drawer-width: min(22rem, 92vw);
+
+  /* Toast */
+  --psy-toast-max-width: 24rem;
+  --psy-toast-bg: var(--psy-overlay-surface);
+  --psy-toast-fg: var(--psy-overlay-fg);
+  --psy-toast-fg-muted: var(--psy-overlay-fg-muted);
+
+  /* Spinner / progress / skeleton */
+  --psy-spinner-size: 2.5rem;
+  --psy-spinner-track: color-mix(in srgb, var(--psy-color-base) 14%, transparent);
+  --psy-spinner-accent: var(--psy-color-secondary-lime);
+  --psy-progress-height: 0.75rem;
+  --psy-progress-track: color-mix(in srgb, var(--psy-color-base) 12%, var(--psy-surface-card));
+  --psy-progress-fill: var(--psy-color-secondary-lime);
+  --psy-skeleton-bg: color-mix(in srgb, var(--psy-color-base) 10%, var(--psy-surface-card));
+  --psy-skeleton-shine: color-mix(in srgb, var(--psy-primitive-white) 55%, var(--psy-surface-card));
+
+  /* Tabs / menu / breadcrumb / pagination */
+  --psy-tabs-bg: var(--psy-surface-card-muted);
+  --psy-tab-fg: var(--psy-text-on-light);
+  --psy-tab-fg-muted: var(--psy-text-muted-on-light);
+  --psy-tab-active-bg: var(--psy-color-secondary-lime);
+  --psy-tab-active-fg: var(--psy-text-on-dark);
+  --psy-tab-indicator: var(--psy-color-base);
+  --psy-menu-bg: var(--psy-overlay-surface);
+  --psy-menu-shadow: var(--psy-shadow-hard);
+  --psy-menu-item-hover: color-mix(in srgb, var(--psy-color-secondary-cyan) 18%, var(--psy-surface-card));
+  --psy-breadcrumb-fg: var(--psy-text-muted-on-light);
+  --psy-breadcrumb-fg-current: var(--psy-text-on-light);
+  --psy-pagination-bg: var(--psy-surface-card);
+  --psy-pagination-active-bg: var(--psy-color-secondary-lime);
+
+  /* Toggle switch */
+  --psy-switch-width: 2.75rem;
+  --psy-switch-height: 1.5rem;
+  --psy-switch-off-bg: color-mix(in srgb, var(--psy-color-base) 18%, var(--psy-surface-card));
+  --psy-switch-on-bg: var(--psy-color-secondary-lime);
+  --psy-switch-thumb: var(--psy-primitive-white);
+  --psy-switch-ring: var(--psy-color-base);
+
+  /* Tooltip */
+  --psy-tooltip-bg: var(--psy-color-base);
+  --psy-tooltip-fg: var(--psy-primitive-text);
+  --psy-tooltip-max-width: 16rem;
+
+  /* Divider */
+  --psy-divider-color: color-mix(in srgb, var(--psy-color-base) 22%, transparent);
 }

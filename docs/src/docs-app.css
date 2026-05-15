@@ -13,5 +13,8 @@
 /* Product + layout chrome (same modules as package tailwind stack) */
 @import "../../src/theme/tailwind/product.css";
 @import "../../src/theme/tailwind/cards.css";
+@import "../../src/theme/tailwind/overlays.css";
+@import "../../src/theme/tailwind/feedback.css";
+@import "../../src/theme/tailwind/navigation-ui.css";
 @import "../../src/theme/tailwind/chrome.css";
 @import "./docs-overrides.css";
