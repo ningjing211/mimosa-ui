@@ -1,6 +1,6 @@
 /**
  * Raw overlay: site chrome (header, footer, table, accordion, grid-12).
- * Loaded after tailwindcss in tailwind.css / docs-app.css.
+ * Loaded via tailwind.css.
  */
 @layer components {
 .skipnav {

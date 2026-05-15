@@ -11,11 +11,10 @@ on:
     branches: [main, master]
     paths:
       - "docs/**"
+      - "docs/mimosa-entry.css"
       - "src/theme/**"
       - "scripts/build.mjs"
       - "scripts/build-docs.mjs"
-      - "scripts/build-docs-css.mjs"
-      - "docs/src/**"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/deploy-github-pages.yml"
@@ -47,6 +46,8 @@ jobs:
       - run: npm ci
 
       - run: npm run build
+
+      - run: node ./scripts/build-docs.mjs
 
       - uses: actions/configure-pages@v5
 

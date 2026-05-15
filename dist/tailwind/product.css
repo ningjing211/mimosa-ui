@@ -1,6 +1,6 @@
 /**
  * Raw overlay: forms, alerts, search — not expressible as utilities alone.
- * Loaded after tailwindcss in tailwind.css / docs-app.css.
+ * Loaded via tailwind.css.
  */
 @layer components {
 .alert {

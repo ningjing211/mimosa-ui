@@ -11,6 +11,7 @@
   "style": "./dist/tailwind.css",
   "exports": {
     ".": "./dist/tailwind.css",
+    "./mimosa.css": "./dist/mimosa.css",
     "./tokens.css": "./dist/tokens.css",
     "./tailwind.css": "./dist/tailwind.css",
     "./tailwind/theme.css": "./dist/tailwind/theme.css",
@@ -34,16 +35,8 @@
   "peerDependencies": {
     "tailwindcss": "^4.0.0"
   },
-  "devDependencies": {
-    "@tailwindcss/cli": "^4.0.0",
-    "tailwindcss": "^4.0.0"
-  },
   "scripts": {
-    "build:package": "node ./scripts/build.mjs",
-    "build:docs:css": "node ./scripts/build-docs-css.mjs",
-    "build:docs": "node ./scripts/build-docs.mjs",
-    "build": "npm run build:package && npm run build:docs",
-    "dev:docs": "node ./scripts/dev-docs.mjs",
-    "prepare": "npm run build:package"
+    "build": "node ./scripts/build.mjs",
+    "prepare": "node ./scripts/build.mjs"
   }
 }
