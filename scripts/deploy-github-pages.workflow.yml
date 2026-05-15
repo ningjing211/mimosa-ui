@@ -2,7 +2,7 @@
 # (GitHub PAT push 若無 `workflow` scope，無法直接推送 workflows 目錄；可於網頁 New file 貼上。)
 #
 # After enable: Repo → Settings → Pages → Source: GitHub Actions.
-# Site: https://<owner>.github.io/<repo>/design-system.html
+# Site: https://<owner>.github.io/<repo>/
 
 name: Deploy design system (GitHub Pages)
 
@@ -10,7 +10,12 @@ on:
   push:
     branches: [main, master]
     paths:
-      - "mock-up/web-home/v16-psychedelic/**"
+      - "docs/**"
+      - "src/theme/**"
+      - "scripts/build.mjs"
+      - "scripts/build-docs.mjs"
+      - "package.json"
+      - "package-lock.json"
       - ".github/workflows/deploy-github-pages.yml"
   workflow_dispatch:
 
@@ -32,11 +37,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: mock-up/web-home/v16-psychedelic
+          path: .site
 
       - id: deployment
         uses: actions/deploy-pages@v4
