@@ -376,8 +376,16 @@
   /* Alerts（淺底 elevated + 左側色條；前景用 --psy-text-on-light，勿用 text-primary） */
   --psy-alert-fg: var(--psy-text-on-light);
   --psy-alert-fg-muted: var(--psy-text-muted-on-light);
-  --psy-alert-icon-bg: var(--psy-color-base);
-  --psy-alert-icon-fg: var(--psy-primitive-white);
+  /* Icon：螢光底 + 高對比符號；勿 inherit 自 alert 內文色 */
+  --psy-alert-icon-ring: var(--psy-color-base);
+  --psy-alert-success-icon-bg: var(--psy-alert-success-accent);
+  --psy-alert-success-icon-fg: var(--psy-color-base);
+  --psy-alert-warning-icon-bg: var(--psy-alert-warning-accent);
+  --psy-alert-warning-icon-fg: var(--psy-color-base);
+  --psy-alert-error-icon-bg: var(--psy-alert-error-accent);
+  --psy-alert-error-icon-fg: var(--psy-primitive-white);
+  --psy-alert-info-icon-bg: var(--psy-alert-info-accent);
+  --psy-alert-info-icon-fg: var(--psy-primitive-white);
   --psy-alert-success-accent: var(--psy-color-secondary-lime);
   --psy-alert-success-bg: color-mix(in srgb, var(--psy-color-secondary-lime) 22%, var(--psy-surface-card));
   --psy-alert-warning-accent: var(--psy-color-secondary-amber);

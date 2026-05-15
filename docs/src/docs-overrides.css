@@ -879,9 +879,7 @@ body {
   margin: 0;
 }
 
-.ds-alert__icon {
-  color: inherit;
-}
+/* 圖示色由 .alert__icon + 狀態 token 決定，勿 inherit */
 
 .ds-alert__body {
   min-width: 0;

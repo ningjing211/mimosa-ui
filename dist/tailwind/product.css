@@ -17,12 +17,11 @@
 }
 
 .alert__icon {
+  flex-shrink: 0;
   width: 2.7rem;
   height: 2.7rem;
   border-radius: 999px;
-  border: 2px solid var(--psy-alert-icon-bg);
-  background: var(--psy-alert-icon-bg);
-  color: var(--psy-alert-icon-fg);
+  border: 2px solid var(--psy-alert-icon-ring);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -30,6 +29,27 @@
   font-size: 1.3rem;
   font-weight: 800;
   line-height: 1;
+  /* 獨立前景／背景配對；禁止 color: inherit（會吃到 --psy-alert-fg 導致符號消失） */
+}
+
+.alert-success .alert__icon {
+  background: var(--psy-alert-success-icon-bg);
+  color: var(--psy-alert-success-icon-fg);
+}
+
+.alert-warning .alert__icon {
+  background: var(--psy-alert-warning-icon-bg);
+  color: var(--psy-alert-warning-icon-fg);
+}
+
+.alert-error .alert__icon {
+  background: var(--psy-alert-error-icon-bg);
+  color: var(--psy-alert-error-icon-fg);
+}
+
+.alert-info .alert__icon {
+  background: var(--psy-alert-info-icon-bg);
+  color: var(--psy-alert-info-icon-fg);
 }
 
 .alert__body {
