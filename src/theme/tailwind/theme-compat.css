@@ -1,0 +1,21 @@
+/**
+ * Maps Tailwind @theme token names to --psy-* for partials used outside Tailwind compile
+ * (legacy mimosa.css standalone, or direct partial imports).
+ */
+:root {
+  --color-psy-text-primary: var(--psy-text-primary);
+  --color-psy-text-secondary: var(--psy-text-secondary);
+  --color-psy-text-on-dark: var(--psy-text-on-dark);
+  --color-psy-kicker: var(--psy-kicker-text);
+  --color-psy-border-strong: var(--psy-border-strong);
+  --color-psy-action-primary-bg: var(--psy-action-primary-bg);
+  --color-psy-action-primary-text: var(--psy-action-primary-text);
+  --color-psy-action-secondary-bg: var(--psy-action-secondary-bg);
+  --color-psy-action-secondary-text: var(--psy-action-secondary-text);
+  --color-psy-chip-bg: var(--psy-chip-bg);
+  --color-psy-chip-text: var(--psy-chip-text);
+  --color-psy-nav-text: var(--psy-nav-text);
+  --border-width-psy-block: var(--psy-border-width-block);
+  --shadow-psy-hard: var(--psy-shadow-hard);
+  --ease-psy-standard: var(--psy-motion-easing-standard);
+}

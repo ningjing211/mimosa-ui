@@ -38,7 +38,16 @@ async function build() {
 
   const distTailwindDir = path.resolve(distDir, "tailwind");
   const tailwindSourceDir = path.resolve(srcRoot, "tailwind");
-  const tailwindPartials = ["theme.css", "base.css", "components.css", "flow-page.css"];
+  const tailwindPartials = [
+    "theme.css",
+    "theme-compat.css",
+    "base.css",
+    "components.css",
+    "product.css",
+    "chrome.css",
+    "flow-page.css",
+    "legacy-aliases.css"
+  ];
 
   await mkdir(distTailwindDir, { recursive: true });
 

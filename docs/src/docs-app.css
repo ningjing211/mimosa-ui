@@ -10,6 +10,7 @@
 @import "../../src/theme/tailwind/theme.css";
 @import "../../src/theme/tailwind/base.css";
 @import "../../src/theme/tailwind/components.css";
-/* Product demos in design-system (.alert, .form-*, .search-bar, .label) */
-@import "./docs-product-demos.css";
+/* Product + layout chrome (same modules as package tailwind stack) */
+@import "../../src/theme/tailwind/product.css";
+@import "../../src/theme/tailwind/chrome.css";
 @import "./docs-overrides.css";

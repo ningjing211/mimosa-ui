@@ -19,6 +19,8 @@
     "./tailwind/base.css": "./dist/tailwind/base.css",
     "./tailwind/components.css": "./dist/tailwind/components.css",
     "./tailwind/flow-page.css": "./dist/tailwind/flow-page.css",
+    "./tailwind/product.css": "./dist/tailwind/product.css",
+    "./tailwind/chrome.css": "./dist/tailwind/chrome.css",
     "./tokens.json": "./dist/tokens.json"
   },
   "peerDependencies": {

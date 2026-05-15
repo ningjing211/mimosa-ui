@@ -7,4 +7,6 @@
 @import "./tailwind/theme.css";
 @import "./tailwind/base.css";
 @import "./tailwind/components.css";
+@import "./tailwind/product.css";
+@import "./tailwind/chrome.css";
 @import "./tailwind/flow-page.css";

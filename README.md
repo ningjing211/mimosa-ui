@@ -113,8 +113,14 @@ npm run dev:docs
 src/theme/
   tokens.css              # --psy-* 唯一真相
   tailwind.css            # Tailwind 入口（對外預設）
-  tailwind/               # @theme、.psy-* components、flow-page
-  mimosa.css              # legacy raw 產品樣式
+  tailwind/
+    theme.css             # @theme 映射
+    components.css        # .psy-* 薄元件
+    product.css           # .alert / .form-* / .search-bar（raw 疊加）
+    chrome.css            # header / footer / table / accordion…
+    flow-page.css         # 流程頁 .psy-flow-*
+    legacy-aliases.css    # .button / .chip 舊名（僅 mimosa 包）
+  mimosa.css              # legacy 入口（@import 上列層，無 utility）
 
 docs/                     # 靜態文件站（docs.bundle.css 為 build 產物）
 scripts/
