@@ -1,16 +1,29 @@
 {
-  "name": "mimosa-ui",
-  "private": true,
-  "workspaces": [
-    "shared/mimosa-ui",
-    "examples/mimosa-consumer",
-    "examples/v16-mock-preview",
-    "examples/design-system-site"
+  "name": "mimosa-design-system",
+  "version": "0.1.0",
+  "description": "Mimosa design system package for web UI.",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
   ],
+  "style": "./dist/mimosa.css",
+  "exports": {
+    ".": "./dist/mimosa.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./tailwind.css": "./dist/tailwind.css",
+    "./tailwind/theme.css": "./dist/tailwind/theme.css",
+    "./tailwind/components.css": "./dist/tailwind/components.css",
+    "./tokens.json": "./dist/tokens.json"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
   "scripts": {
-    "dev": "npm run dev -w mimosa-consumer",
-    "dev:mock": "npm run dev -w v16-mock-preview",
-    "dev:docs": "npm run dev -w design-system-site",
-    "build": "npm run build -w mimosa-design-system && npm run build -w mimosa-consumer && npm run build -w design-system-site"
+    "build:package": "node ./scripts/build.mjs",
+    "build:docs": "node ./scripts/build-docs.mjs",
+    "build": "npm run build:package && npm run build:docs",
+    "prepare": "npm run build:package"
   }
 }

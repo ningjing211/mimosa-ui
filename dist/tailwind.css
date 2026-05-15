@@ -1,0 +1,10 @@
+/**
+ * Mimosa + Tailwind entry for host apps (Vite + @tailwindcss/vite).
+ * Peer dependencies: tailwindcss, @tailwindcss/vite
+ */
+@import "./tokens.css";
+@import "tailwindcss";
+@import "./tailwind/theme.css";
+@import "./tailwind/base.css";
+@import "./tailwind/components.css";
+@import "./tailwind/flow-page.css";
