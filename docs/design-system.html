@@ -1622,7 +1622,10 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="extended-stat-card">
               <h3 class="ds-doc-card__title">Stat / metric card</h3>
               <p class="ds-doc-card__desc">
-                獨立 <code>.stat-card</code>（亦可與 <code>.card</code> 組合）；數值與增減色見 <code>--psy-stat-*</code>。
+                獨立 <code>.stat-card</code>（亦可與 <code>.card</code> 組合）。增減色對齊數據圖表慣例：升=
+                <code>--psy-semantic-trend-up</code>（綠）、降=<code>--psy-semantic-trend-down</code>（紅），
+                <strong>勿</strong>用高比例 <code>color-mix(base, lime)</code> 取代（會變褐綠、語意不清）。元件別名見
+                <code>--psy-stat-delta-*</code>。
               </p>
               <div class="grid gap-psy-5 sm:grid-cols-3 max-w-3xl">
                 <article class="stat-card">

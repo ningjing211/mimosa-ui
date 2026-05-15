@@ -88,6 +88,7 @@
 - **Raw CSS**：`avatar.css`、`forms-extended.css`、`data-display.css` 等 partial；token 定義於 `tokens.css`
 - **Surface 原則**：elevated 元件使用 `--psy-surface-card` + `--psy-text-on-light`，勿混用 `--psy-text-primary`（頁面深紫底用）
 - **Elevated hover**：`--psy-elevated-hover-*` 用於 file-upload、tab、menu 等淺底互動
+- **Data trend**：`--psy-semantic-trend-up/down` 用於指標增減（綠／紅）；品牌螢光萊姆（`--psy-color-secondary-lime`）不作為 stat 文字色
 
 ---
 

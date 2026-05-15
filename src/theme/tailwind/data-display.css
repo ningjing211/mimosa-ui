@@ -91,20 +91,33 @@
     font-size: clamp(1.75rem, 4vw, 2.25rem);
     font-weight: 800;
     line-height: 1.1;
+    font-variant-numeric: tabular-nums;
     color: var(--psy-stat-value-color);
   }
 
   .stat-card__delta {
-    margin: 0;
+    align-self: flex-start;
+    margin: var(--psy-space-1) 0 0;
+    padding: var(--psy-space-1) var(--psy-space-3);
     font-size: var(--psy-font-size-small);
-    font-weight: 700;
+    font-weight: 800;
+    line-height: 1.35;
+    font-variant-numeric: tabular-nums;
+    border-radius: 2px;
   }
 
   .stat-card__delta--positive {
     color: var(--psy-stat-delta-positive);
+    background: var(--psy-stat-delta-positive-bg);
   }
 
   .stat-card__delta--negative {
     color: var(--psy-stat-delta-negative);
+    background: var(--psy-stat-delta-negative-bg);
+  }
+
+  .stat-card__delta--neutral {
+    color: var(--psy-semantic-trend-neutral);
+    background: color-mix(in srgb, var(--psy-color-base) 6%, transparent);
   }
 }

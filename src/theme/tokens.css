@@ -409,6 +409,16 @@
   --psy-alert-error-bg-on-dark: color-mix(in srgb, var(--psy-color-secondary-magenta) 14%, var(--psy-primitive-white));
   --psy-alert-info-bg-on-dark: color-mix(in srgb, var(--psy-color-secondary-orange) 14%, var(--psy-primitive-white));
 
+  /*
+   * Data trend semantics — 指標／圖表增減（升=綠、降=紅）
+   * 與 --psy-color-secondary-lime 品牌螢光 accent 分離：螢光萊姆用於按鈕／焦點／色條，
+   * 勿以高比例 --psy-color-base 混入萊姆當「上漲文字色」（會變橄欖褐、語意不明）。
+   * 專為淺底 elevated（--psy-surface-card）調可讀對比。
+   */
+  --psy-semantic-trend-up: color-mix(in srgb, var(--psy-color-base) 22%, var(--psy-color-secondary-lime));
+  --psy-semantic-trend-down: color-mix(in srgb, var(--psy-color-base) 12%, var(--psy-color-secondary-magenta));
+  --psy-semantic-trend-neutral: var(--psy-text-muted-on-light);
+
   /* Form controls（對齊 NASA WDS Form controls） */
   --psy-form-input-bg: color-mix(in srgb, var(--psy-primitive-white) 12%, var(--psy-color-bg-panel-muted));
   --psy-form-input-border: var(--psy-border-strong);
@@ -554,6 +564,8 @@
   /* Stat / metric card */
   --psy-stat-value-color: var(--psy-text-on-light);
   --psy-stat-label-color: var(--psy-text-muted-on-light);
-  --psy-stat-delta-positive: color-mix(in srgb, var(--psy-color-base) 70%, var(--psy-color-secondary-lime));
-  --psy-stat-delta-negative: var(--psy-alert-error-accent);
+  --psy-stat-delta-positive: var(--psy-semantic-trend-up);
+  --psy-stat-delta-negative: var(--psy-semantic-trend-down);
+  --psy-stat-delta-positive-bg: color-mix(in srgb, var(--psy-semantic-trend-up) 16%, transparent);
+  --psy-stat-delta-negative-bg: color-mix(in srgb, var(--psy-semantic-trend-down) 14%, transparent);
 }
