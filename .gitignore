@@ -1,5 +1,6 @@
 node_modules
 .site
+docs/assets/docs.bundle.css
 
 # OS / editor
 .DS_Store

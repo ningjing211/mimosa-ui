@@ -14,24 +14,29 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../dist/mimosa.css" />
-    <link rel="stylesheet" href="./assets/docs.css" />
+    <link rel="stylesheet" href="./assets/docs.bundle.css" />
   </head>
-  <body class="ds-page">
+  <body class="ds-page min-h-screen">
     <a class="ds-skip" href="#home-main">跳至主內容</a>
 
-    <header class="ds-top psy-brutal-block">
-      <a class="ds-top__brand" href="#home-landing">Mimosa</a>
-      <nav class="ds-top__nav" aria-label="站內連結">
+    <header
+      class="ds-top psy-brutal-block sticky top-0 z-20 flex flex-wrap items-center justify-between gap-psy-4 bg-[var(--ds-doc-surface)] px-psy-8 py-psy-6 text-[var(--ds-doc-text)]"
+    >
+      <a class="ds-top__brand font-psy-display text-psy-brand font-extrabold no-underline" href="#home-landing">Mimosa</a>
+      <nav class="ds-top__nav flex flex-wrap gap-psy-3" aria-label="站內連結">
         <a class="psy-brutal ds-nav-chip psy-chip psy-focus-ring" href="./design-system.html">文件</a>
         <a class="psy-brutal ds-nav-chip psy-chip psy-focus-ring" href="#package-entry">套件</a>
         <a class="psy-brutal ds-nav-chip psy-chip psy-focus-ring" href="#adoption-path">整合</a>
       </nav>
     </header>
 
-    <section class="ds-landing" id="home-landing" aria-labelledby="home-landing-title">
-      <div class="ds-landing__bg" aria-hidden="true"></div>
-      <div class="ds-landing__inner">
+    <section
+      class="ds-landing relative overflow-hidden px-psy-8 pb-psy-12 pt-psy-13 scroll-mt-[var(--ds-sticky-top)]"
+      id="home-landing"
+      aria-labelledby="home-landing-title"
+    >
+      <div class="ds-landing__bg pointer-events-none absolute inset-0 z-0" aria-hidden="true"></div>
+      <div class="ds-landing__inner relative z-10 mx-auto max-w-[1100px]">
         <p class="ds-landing__eyebrow">Design system · documentation first</p>
         <h1 id="home-landing-title" class="ds-landing__title">
           把 token、樣式契約與元件規則收斂成同一份文件。
@@ -40,7 +45,7 @@
           Mimosa 是一個以 CSS token、Tailwind bridge 與 product primitives 為核心的前端樣式套件。本站作為 GitHub
           Pages 文件首頁，提供安裝方式、公開入口與元件規則入口。
         </p>
-        <div class="ds-landing__actions">
+        <div class="ds-landing__actions flex flex-wrap gap-psy-4 mb-psy-10">
           <a class="psy-brutal ds-landing__btn psy-btn psy-btn--primary psy-focus-ring" href="./design-system.html">進入完整文件</a>
           <a class="psy-brutal ds-landing__btn ds-landing__btn--ghost psy-btn psy-focus-ring" href="#package-entry">查看 package 入口</a>
         </div>
@@ -70,7 +75,7 @@ import "mimosa-design-system/tokens.css";</code></pre>
       </div>
     </section>
 
-    <main id="home-main" class="ds-shell">
+    <main id="home-main" class="ds-shell mx-auto max-w-[1280px] px-psy-8 pb-psy-13 pt-psy-9">
       <section class="ds-section" id="package-entry" aria-labelledby="package-entry-heading">
         <h2 class="ds-section__title" id="package-entry-heading">Package 入口</h2>
         <p class="ds-section__lead">

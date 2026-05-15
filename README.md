@@ -84,6 +84,15 @@ npm install
 npm run build
 ```
 
+### 本地預覽文件站
+
+```bash
+npm run dev:docs
+```
+
+- `http://localhost:5173/index.html` — Tailwind 編譯後的 `docs.bundle.css`
+- `design-system.html` — 仍使用 `mimosa.css` + `docs.css`（Phase 2 遷移）
+
 此指令會產生：
 
 - `dist/tokens.css`

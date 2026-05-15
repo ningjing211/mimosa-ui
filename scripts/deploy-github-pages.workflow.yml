@@ -14,6 +14,8 @@ on:
       - "src/theme/**"
       - "scripts/build.mjs"
       - "scripts/build-docs.mjs"
+      - "scripts/build-docs-css.mjs"
+      - "docs/src/**"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/deploy-github-pages.yml"
