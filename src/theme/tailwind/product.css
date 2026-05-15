@@ -306,7 +306,23 @@
   margin: var(--psy-space-4) 0;
   padding: var(--psy-space-5);
   border: var(--psy-border-width-block) solid var(--psy-border-strong);
-  background: color-mix(in srgb, var(--psy-color-secondary-orange) 14%, var(--psy-color-bg-panel-muted));
+  background: var(--psy-form-checklist-box-bg-on-dark);
+}
+
+.form-checklist-box--on-light {
+  background: var(--psy-form-checklist-box-bg);
+}
+
+.form-checklist__title {
+  margin: 0 0 var(--psy-space-2);
+  font-size: var(--psy-font-size-small);
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--psy-form-label-text);
+}
+
+.form-checklist-box--on-light .form-checklist__title {
+  color: var(--psy-form-label-text-on-light);
 }
 
 .form-checklist {
@@ -320,23 +336,35 @@
   padding-left: var(--psy-space-6);
   margin-bottom: var(--psy-space-2);
   font-size: var(--psy-font-size-small);
-  color: var(--psy-text-secondary);
+  line-height: 1.45;
+  color: var(--psy-form-rule-pending-fg);
 }
 
+.form-checklist-box--on-light .form-checklist li {
+  color: var(--psy-form-rule-pending-fg-on-light);
+}
+
+/* 未達：破折號指示（非 ○／checkbox） */
 .form-checklist li::before {
-  content: "○";
+  content: "—";
   position: absolute;
   left: 0;
-  font-weight: 700;
+  top: 0;
+  font-weight: 800;
+  color: var(--psy-form-rule-indicator-pending);
 }
 
 .form-checklist li.is-met {
-  color: var(--psy-text-primary);
+  color: var(--psy-form-rule-met-fg);
+}
+
+.form-checklist-box--on-light .form-checklist li.is-met {
+  color: var(--psy-form-rule-met-fg-on-light);
 }
 
 .form-checklist li.is-met::before {
   content: "✓";
-  color: var(--psy-alert-success-accent);
+  color: var(--psy-form-rule-indicator-met);
 }
 
 .search-bar {

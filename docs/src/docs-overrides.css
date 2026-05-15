@@ -1063,44 +1063,6 @@ body {
   max-width: 100%;
 }
 
-.ds-checklist-box {
-  margin: var(--psy-space-4) 0;
-  padding: var(--psy-space-5);
-  border: var(--psy-border-width-block) solid var(--ds-doc-border);
-  background: color-mix(in srgb, var(--psy-color-secondary-orange) 8%, var(--ds-doc-surface));
-}
-
-.ds-checklist {
-  list-style: none;
-  margin: var(--psy-space-3) 0 0;
-  padding: 0;
-}
-
-.ds-checklist li {
-  position: relative;
-  padding-left: var(--psy-space-6);
-  margin-bottom: var(--psy-space-2);
-  font-family: var(--psy-font-family-body);
-  font-size: var(--psy-font-size-small);
-  color: var(--ds-doc-text-muted);
-}
-
-.ds-checklist li::before {
-  content: "○";
-  position: absolute;
-  left: 0;
-  font-weight: 700;
-}
-
-.ds-checklist li.is-met {
-  color: var(--ds-doc-text);
-}
-
-.ds-checklist li.is-met::before {
-  content: "✓";
-  color: var(--psy-alert-success-accent);
-}
-
 .ds-form-demo-on-dark .ds-label,
 .ds-form-demo-on-dark .ds-legend,
 .ds-form-demo-on-dark .ds-choice {
@@ -1115,19 +1077,6 @@ body {
 .ds-form-demo-on-dark .ds-select,
 .ds-form-demo-on-dark .ds-textarea {
   color: var(--psy-form-input-text);
-}
-
-.ds-form-demo-on-dark .ds-checklist-box {
-  border-color: var(--psy-border-strong);
-  background: color-mix(in srgb, var(--psy-color-secondary-orange) 14%, var(--psy-color-bg-panel-muted));
-}
-
-.ds-form-demo-on-dark .ds-checklist li {
-  color: var(--psy-text-secondary);
-}
-
-.ds-form-demo-on-dark .ds-checklist li.is-met {
-  color: var(--psy-text-primary);
 }
 
 .ds-search-wrap {

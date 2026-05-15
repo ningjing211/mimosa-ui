@@ -516,6 +516,22 @@
     var(--psy-text-on-light) 52%,
     var(--psy-input-group-bg)
   );
+  /*
+   * 驗證規則清單（.form-checklist）— 狀態指示，勿用 ○ 空心圓（易與 checkbox 混淆）
+   * 未達：破折號；已達：✓ + .is-met
+   */
+  --psy-form-checklist-box-bg: color-mix(in srgb, var(--psy-color-secondary-orange) 14%, var(--psy-surface-card));
+  --psy-form-checklist-box-bg-on-dark: color-mix(
+    in srgb,
+    var(--psy-color-secondary-orange) 14%,
+    var(--psy-color-bg-panel-muted)
+  );
+  --psy-form-rule-pending-fg: var(--psy-text-secondary);
+  --psy-form-rule-pending-fg-on-light: var(--psy-text-muted-on-light);
+  --psy-form-rule-met-fg: var(--psy-text-primary);
+  --psy-form-rule-met-fg-on-light: var(--psy-text-on-light);
+  --psy-form-rule-indicator-pending: var(--psy-text-muted-on-light);
+  --psy-form-rule-indicator-met: var(--psy-alert-success-accent);
 
   /* Status label / badge（非表單 label；對齊 NASA Labels / shadcn Badge 尺寸節奏） */
   --psy-label-min-height: 1.875rem;

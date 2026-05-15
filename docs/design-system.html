@@ -2401,21 +2401,22 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="form-validation">
               <h3 class="ds-doc-card__title">驗證與規則清單 · Validation</h3>
               <p class="ds-doc-card__desc">
-                事先列出規則並即時回饋，減少猜測。下列清單會隨輸入更新（僅示意用戶端邏輯）；正式環境須在伺服端重複驗證。
+                事先列出規則並即時回饋，減少猜測。使用套件 <code>form-checklist-box</code>／<code>form-checklist</code>（破折號／✓ 狀態指示，<strong>勿</strong>用空心圓以免像
+                checkbox）。下列清單會隨輸入更新（僅示意）；正式環境須在伺服端重複驗證。
               </p>
               <form class="ds-form-demo ds-form-stack ds-form-stack--tight" novalidate>
                 <fieldset class="ds-fieldset">
                   <legend class="ds-legend">輸入通關碼</legend>
-                  <div class="ds-checklist-box">
-                    <p class="ds-doc-card__desc" style="margin: 0 0 var(--psy-space-2)"><strong>通關碼必須：</strong></p>
-                    <ul class="ds-checklist" id="ds-validate-checklist" aria-live="polite">
+                  <div class="form-checklist-box form-checklist-box--on-light">
+                    <p class="form-checklist__title">通關碼必須：</p>
+                    <ul class="form-checklist" id="ds-validate-checklist" aria-live="polite">
                       <li data-validator="uppercase">至少 1 個大寫英文字母</li>
                       <li data-validator="numerical">至少 1 個數字</li>
                     </ul>
                   </div>
-                  <label class="ds-label" for="ds-code-validate">通關碼</label>
+                  <label class="form-label form-label--on-light" for="ds-code-validate">通關碼</label>
                   <input
-                    class="ds-input form-input"
+                    class="form-input"
                     id="ds-code-validate"
                     name="ds-code-validate"
                     type="text"
