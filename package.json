@@ -1,20 +1,24 @@
 {
   "name": "mimosa-design-system",
   "version": "0.1.0",
-  "description": "Mimosa design system package for web UI.",
+  "description": "Mimosa design system — Tailwind v4 tokens, utilities, and product primitives.",
   "license": "MIT",
   "type": "module",
   "files": [
     "dist",
     "README.md"
   ],
-  "style": "./dist/mimosa.css",
+  "style": "./dist/tailwind.css",
   "exports": {
-    ".": "./dist/mimosa.css",
+    ".": "./dist/tailwind.css",
     "./tokens.css": "./dist/tokens.css",
     "./tailwind.css": "./dist/tailwind.css",
+    "./mimosa.css": "./dist/mimosa.css",
+    "./legacy.css": "./dist/mimosa.css",
     "./tailwind/theme.css": "./dist/tailwind/theme.css",
+    "./tailwind/base.css": "./dist/tailwind/base.css",
     "./tailwind/components.css": "./dist/tailwind/components.css",
+    "./tailwind/flow-page.css": "./dist/tailwind/flow-page.css",
     "./tokens.json": "./dist/tokens.json"
   },
   "peerDependencies": {

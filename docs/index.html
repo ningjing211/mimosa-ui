@@ -54,9 +54,9 @@
             <span class="ds-landing__panel-label">Quick start</span>
             <span class="ds-landing__panel-pill psy-brutal-block psy-chip">npm</span>
           </div>
-          <pre class="ds-landing__code"><code>npm install mimosa-design-system
+          <pre class="ds-landing__code"><code>npm install mimosa-design-system tailwindcss
 
-import "mimosa-design-system/tokens.css";</code></pre>
+import "mimosa-design-system/tailwind.css";</code></pre>
         </div>
         <ul class="ds-landing__features">
           <li class="ds-landing__feature">
@@ -79,7 +79,7 @@ import "mimosa-design-system/tokens.css";</code></pre>
       <section class="ds-section" id="package-entry" aria-labelledby="package-entry-heading">
         <h2 class="ds-section__title" id="package-entry-heading">Package 入口</h2>
         <p class="ds-section__lead">
-          現階段 package 對外提供穩定的 token 與 Tailwind bridge 入口；文件站本身不再作為 package CSS 輸出的一部分。
+          建議以 <code>tailwind.css</code> 作為預設入口；<code>tokens.css</code> 與 legacy <code>mimosa.css</code> 仍可供非 Tailwind 或舊專案使用。
         </p>
         <article class="ds-doc-card">
           <h3 class="ds-doc-card__title">建議使用順序</h3>
@@ -94,18 +94,23 @@ import "mimosa-design-system/tokens.css";</code></pre>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row"><code>tokens.css</code></th>
-                  <td>提供設計 token 與 CSS 變數</td>
-                  <td>靜態頁、文件頁、非 Tailwind 專案</td>
+                  <th scope="row"><code>tailwind.css</code>（預設 <code>.</code>）</th>
+                  <td>tokens + Tailwind + <code>.psy-*</code> components</td>
+                  <td><strong>建議</strong>：Vite / Tailwind v4 host app</td>
                 </tr>
                 <tr>
-                  <th scope="row"><code>tailwind.css</code></th>
-                  <td>供建置流程解析的 Tailwind bridge 入口</td>
-                  <td>Vite / Tailwind v4 host app</td>
+                  <th scope="row"><code>tokens.css</code></th>
+                  <td>僅 <code>--psy-*</code> CSS 變數</td>
+                  <td>靜態頁、非 Tailwind 專案</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>mimosa.css</code></th>
+                  <td>Legacy 完整 raw（<code>.form-*</code>、<code>.alert</code> 等）</td>
+                  <td>既有專案過渡；新專案請避免</td>
                 </tr>
                 <tr>
                   <th scope="row"><code>tokens.json</code></th>
-                  <td>給文件、工具鏈或 JS 讀取 token</td>
+                  <td>給工具鏈或 JS 讀取 token</td>
                   <td>生成 reference、同步設計資料</td>
                 </tr>
               </tbody>

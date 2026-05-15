@@ -58,9 +58,9 @@
             <span class="ds-landing__panel-label">Quick start</span>
             <span class="ds-landing__panel-pill psy-brutal-block psy-chip">npm</span>
           </div>
-          <pre class="ds-landing__code"><code>npm install mimosa-design-system
+          <pre class="ds-landing__code"><code>npm install mimosa-design-system tailwindcss
 
-import "mimosa-design-system/tokens.css";</code></pre>
+import "mimosa-design-system/tailwind.css";</code></pre>
         </div>
         <ul class="ds-landing__features">
           <li class="ds-landing__feature">
@@ -297,10 +297,16 @@ import "mimosa-design-system/tokens.css";</code></pre>
             <p class="ds-doc-card__desc">
               本設計系統已整合為 repo root 的 <code>mimosa-design-system</code> 套件，可直接安裝並匯入公開入口。
             </p>
-            <pre class="ds-code-block"><code>npm install mimosa-design-system
+            <pre class="ds-code-block"><code>npm install mimosa-design-system tailwindcss
 
-// 僅匯入 tokens
-import "mimosa-design-system/tokens.css";</code></pre>
+// 建議：Tailwind v4 入口（預設 export）
+import "mimosa-design-system/tailwind.css";
+
+// 僅 tokens
+// import "mimosa-design-system/tokens.css";
+
+// Legacy raw
+// import "mimosa-design-system/mimosa.css";</code></pre>
           </article>
 
           <!-- ========== Colors ========== -->
