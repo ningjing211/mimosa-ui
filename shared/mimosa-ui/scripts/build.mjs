@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -43,11 +43,28 @@ async function build() {
   const normalizedDocsCss = normalizeImports(docsCss);
   const tokenJson = JSON.stringify(extractTokenMap(tokensCss), null, 2);
 
+  const distTailwindDir = path.resolve(distDir, "tailwind");
+  await mkdir(distTailwindDir, { recursive: true });
+
+  const tailwindPartials = ["theme.css", "base.css", "components.css", "flow-page.css"];
+  const packageSrc = path.resolve(packageRoot, "src");
+
   await Promise.all([
     writeFile(path.resolve(distDir, "tokens.css"), tokensCss, "utf8"),
     writeFile(path.resolve(distDir, "mimosa.css"), normalizedAppCss, "utf8"),
     writeFile(path.resolve(distDir, "docs.css"), normalizedDocsCss, "utf8"),
-    writeFile(path.resolve(distDir, "tokens.json"), tokenJson, "utf8")
+    writeFile(path.resolve(distDir, "tokens.json"), tokenJson, "utf8"),
+    writeFile(
+      path.resolve(distDir, "tailwind.css"),
+      await readFile(path.resolve(packageSrc, "tailwind.css"), "utf8"),
+      "utf8"
+    ),
+    ...tailwindPartials.map((file) =>
+      copyFile(
+        path.resolve(packageSrc, "tailwind", file),
+        path.resolve(distTailwindDir, file)
+      )
+    )
   ]);
 
   // eslint-disable-next-line no-console

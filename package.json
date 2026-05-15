@@ -4,11 +4,13 @@
   "workspaces": [
     "shared/mimosa-ui",
     "examples/mimosa-consumer",
-    "examples/v16-mock-preview"
+    "examples/v16-mock-preview",
+    "examples/design-system-site"
   ],
   "scripts": {
     "dev": "npm run dev -w mimosa-consumer",
     "dev:mock": "npm run dev -w v16-mock-preview",
-    "build": "npm run build -w mimosa-design-system && npm run build -w mimosa-consumer"
+    "dev:docs": "npm run dev -w design-system-site",
+    "build": "npm run build -w mimosa-design-system && npm run build -w mimosa-consumer && npm run build -w design-system-site"
   }
 }

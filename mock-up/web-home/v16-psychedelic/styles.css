@@ -16,15 +16,8 @@ body {
     linear-gradient(180deg, var(--psy-surface-page-base), var(--psy-surface-page-deep));
 }
 
-.top-nav,
-.panel,
-.event-item,
-.badge,
+/* index.html → Tailwind + mimosa-design-system/tailwind.css (see index.entry.js) */
 .button,
-.city-list li,
-.feed-list li,
-.date-block,
-.avatar,
 .chip {
   border: var(--psy-border-width-block) solid var(--psy-border-strong);
   box-shadow: var(--psy-shadow-hard);
@@ -32,24 +25,6 @@ body {
     transform var(--psy-motion-duration-fast) var(--psy-motion-easing-standard),
     box-shadow var(--psy-motion-duration-fast) var(--psy-motion-easing-standard),
     background-color var(--psy-motion-duration-normal) var(--psy-motion-easing-standard);
-}
-
-.top-nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: var(--psy-gradient-nav);
-  color: var(--psy-nav-text);
-  display: grid;
-  gap: var(--psy-space-4);
-  padding: var(--psy-space-6) var(--psy-space-8);
-}
-
-.top-nav-main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--psy-space-7);
 }
 
 .brand,
@@ -66,8 +41,6 @@ h3,
   font-weight: var(--psy-font-weight-display);
 }
 
-.nav-links,
-.nav-sub,
 .hero-actions,
 .card-actions {
   display: flex;
@@ -75,12 +48,6 @@ h3,
   gap: var(--psy-space-3);
 }
 
-.nav-sub {
-  padding-top: var(--psy-space-3);
-  border-top: 2px solid color-mix(in srgb, var(--psy-border-strong) 35%, transparent);
-}
-
-.nav-links a,
 .panel-head a {
   color: inherit;
   text-decoration: none;
@@ -93,21 +60,13 @@ h3,
   font-size: var(--psy-font-size-chip);
 }
 
-.nav-sub .chip {
-  background: var(--psy-header-subnav-chip-bg);
-}
-
 .chip:focus-visible,
-.nav-links a:focus-visible,
 .panel-head a:focus-visible {
   outline: var(--psy-focus-ring-width) solid var(--psy-focus-ring-color);
   outline-offset: var(--psy-focus-ring-offset);
 }
 
-.content {
-  width: min(1180px, calc(100% - var(--psy-space-12)));
-  margin: var(--psy-space-11) auto var(--psy-space-13);
-}
+/* .content / .hero / .kicker on index.html → Tailwind utilities */
 
 .hero {
   margin-bottom: var(--psy-space-9);
@@ -189,28 +148,7 @@ h1 {
   color: var(--psy-button-disabled-text);
 }
 
-.layout-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
-  gap: var(--psy-space-6);
-}
-
-.layout-grid.lower {
-  margin-top: var(--psy-space-6);
-}
-
-.panel {
-  padding: var(--psy-space-7);
-  background: var(--psy-gradient-panel-wash), var(--psy-surface-panel);
-}
-
-.panel-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--psy-space-4);
-  margin-bottom: var(--psy-space-5);
-}
+/* .panel / .event-list / .match-card / .city-list / .feed-list on index.html → Tailwind */
 
 h2 {
   margin: 0;
@@ -218,95 +156,11 @@ h2 {
   line-height: var(--psy-line-height-h2);
 }
 
-.event-list,
-.city-list,
-.feed-list {
-  display: grid;
-  gap: var(--psy-space-4);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.event-item {
-  display: grid;
-  grid-template-columns: 64px 1fr auto;
-  gap: var(--psy-space-4);
-  align-items: center;
-  padding: var(--psy-space-4);
-  background: var(--psy-surface-panel-soft);
-}
-
-.date-block {
-  background: var(--psy-gradient-date-block);
-  color: var(--psy-primitive-white);
-  text-align: center;
-  padding: var(--psy-space-2) var(--psy-space-1);
-}
-
-.date-block span {
-  display: block;
-  font-size: var(--psy-font-size-caption);
-}
-
-.date-block strong {
-  font-size: var(--psy-font-size-date-strong);
-  line-height: var(--psy-line-height-tight);
-}
-
-.event-info h3,
-.match-card h3 {
-  margin: 0;
-  font-size: var(--psy-font-size-h3);
-}
-
-.event-info p,
-.match-card p {
-  margin: var(--psy-space-1) 0 0;
-  font-size: var(--psy-font-size-body);
-}
-
 .badge {
   padding: var(--psy-space-2) var(--psy-space-4);
   background: var(--psy-badge-bg);
   color: var(--psy-text-on-dark);
   font-size: var(--psy-font-size-badge);
-}
-
-.match-card {
-  display: grid;
-  gap: var(--psy-space-4);
-}
-
-.avatar {
-  min-height: 240px;
-  background: var(--psy-gradient-avatar);
-}
-
-.city-list li,
-.feed-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--psy-space-4);
-  padding: var(--psy-space-4);
-  font-size: var(--psy-font-size-body);
-}
-
-.city-list li {
-  background: var(--psy-city-row-bg);
-}
-
-.feed-list li:nth-child(1) {
-  background: var(--psy-feed-row-1-bg);
-}
-
-.feed-list li:nth-child(2) {
-  background: var(--psy-feed-row-2-bg);
-  color: var(--psy-text-on-dark);
-}
-
-.feed-list li:nth-child(3) {
-  background: var(--psy-feed-row-3-bg);
 }
 
 /* Alerts（對齊 design-system／NASA Alerts） */

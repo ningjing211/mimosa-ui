@@ -12,117 +12,161 @@
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <header class="top-nav">
-      <div class="top-nav-main">
-        <div class="brand">BassLink</div>
-        <nav class="nav-links" aria-label="主要導覽">
-          <a class="chip" href="#">EVENTS</a>
-          <a class="chip" href="#">CLUBS</a>
-          <a class="chip" href="#">MIXES</a>
-          <a class="chip" href="#">MATCHES</a>
+  <body class="min-h-screen psy-page-bg font-psy-body text-psy-text-primary">
+    <header
+      class="psy-nav-gradient psy-brutal sticky top-0 z-10 grid gap-psy-4 px-psy-8 py-psy-6 text-psy-nav-text"
+    >
+      <div class="flex flex-wrap items-center justify-between gap-psy-7">
+        <div class="font-psy-display text-psy-brand font-extrabold">BassLink</div>
+        <nav class="flex flex-wrap gap-psy-3" aria-label="主要導覽">
+          <a class="psy-brutal psy-chip psy-focus-ring no-underline" href="#">EVENTS</a>
+          <a class="psy-brutal psy-chip psy-focus-ring no-underline" href="#">CLUBS</a>
+          <a class="psy-brutal psy-chip psy-focus-ring no-underline" href="#">MIXES</a>
+          <a class="psy-brutal psy-chip psy-focus-ring no-underline" href="#">MATCHES</a>
         </nav>
       </div>
-      <nav class="nav-sub" aria-label="模組導覽">
-        <a class="chip" href="./account/index.html">ACCOUNT</a>
-        <a class="chip" href="./event/index.html">EVENT</a>
-        <a class="chip" href="./pair/index.html">PAIR</a>
-        <a class="chip" href="./chat/index.html">CHAT</a>
-        <a class="chip" href="./security/index.html">SECURITY</a>
-        <a class="chip" href="./admin/index.html">ADMIN</a>
-        <a class="chip" href="./game/index.html">GAME</a>
-        <a class="chip" href="./coin/index.html">COIN</a>
+      <nav
+        class="flex flex-wrap gap-psy-3 border-t-2 border-[color-mix(in_srgb,var(--psy-border-strong)_35%,transparent)] pt-psy-3"
+        aria-label="模組導覽"
+      >
+        <a class="psy-brutal psy-chip psy-chip--subnav psy-focus-ring no-underline" href="./account/index.html">ACCOUNT</a>
+        <a class="psy-brutal psy-chip psy-chip--subnav psy-focus-ring no-underline" href="./event/index.html">EVENT</a>
+        <a class="psy-brutal psy-chip psy-chip--subnav psy-focus-ring no-underline" href="./pair/index.html">PAIR</a>
+        <a class="psy-brutal psy-chip psy-chip--subnav psy-focus-ring no-underline" href="./chat/index.html">CHAT</a>
+        <a class="psy-brutal psy-chip psy-chip--subnav psy-focus-ring no-underline" href="./security/index.html">SECURITY</a>
+        <a class="psy-brutal psy-chip psy-chip--subnav psy-focus-ring no-underline" href="./admin/index.html">ADMIN</a>
+        <a class="psy-brutal psy-chip psy-chip--subnav psy-focus-ring no-underline" href="./game/index.html">GAME</a>
+        <a class="psy-brutal psy-chip psy-chip--subnav psy-focus-ring no-underline" href="./coin/index.html">COIN</a>
       </nav>
     </header>
 
-    <main class="content">
-      <section class="hero panel">
-        <p class="kicker">PSYCHEDELIC PALETTE / NEO-BRUTALISM BLOCKS</p>
-        <h1>Events, taste, and social discovery.</h1>
-        <p class="subtitle">
+    <main class="mx-auto mb-psy-13 mt-psy-11 w-[min(1180px,calc(100%-var(--psy-space-12)))]">
+      <section class="psy-brutal psy-hero-gradient mb-psy-9 p-psy-10">
+        <p
+          class="mb-psy-3 text-psy-small font-bold tracking-[var(--psy-letter-spacing-kicker)] text-psy-kicker uppercase"
+        >
+          PSYCHEDELIC PALETTE / NEO-BRUTALISM BLOCKS
+        </p>
+        <h1 class="font-psy-display text-psy-h1 font-extrabold leading-[var(--psy-line-height-display)]">
+          Events, taste, and social discovery.
+        </h1>
+        <p class="mt-psy-4 max-w-[760px] text-psy-subtitle leading-relaxed text-psy-text-secondary">
           延續 v2 的內容節奏與硬派卡片分區，但將 v13 的紫、橘、粉、萊姆綠轉成更有重量的螢光色塊拼貼。
         </p>
-        <div class="hero-actions">
-          <a class="button primary" href="#">Browse events</a>
-          <a class="button" href="#">Open matching</a>
+        <div class="mt-psy-8 flex flex-wrap gap-psy-3">
+          <a class="psy-brutal psy-btn psy-btn--primary psy-focus-ring" href="#">Browse events</a>
+          <a class="psy-brutal psy-btn psy-focus-ring" href="#">Open matching</a>
         </div>
       </section>
 
-      <section class="layout-grid">
-        <article class="panel">
-          <div class="panel-head">
-            <h2>Featured events</h2>
-            <a class="chip" href="#">VIEW ALL</a>
+      <section
+        class="grid grid-cols-1 gap-psy-6 lg:grid-cols-[minmax(0,2fr)_minmax(300px,1fr)]"
+      >
+        <article class="psy-brutal-block psy-panel">
+          <div class="mb-psy-5 flex flex-wrap items-center justify-between gap-psy-4">
+            <h2 class="m-0 font-psy-display text-psy-h2 font-extrabold leading-[var(--psy-line-height-h2)]">
+              Featured events
+            </h2>
+            <a class="psy-brutal psy-chip psy-focus-ring no-underline" href="#">VIEW ALL</a>
           </div>
-          <div class="event-list">
-            <div class="event-item">
-              <div class="date-block"><span>MAY</span><strong>17</strong></div>
-              <div class="event-info">
-                <h3>Warehouse Resonance</h3>
-                <p>Taipei · Hidden Club</p>
+          <div class="grid gap-psy-4">
+            <div class="psy-brutal-block psy-event-item">
+              <div class="psy-date-block"><span>MAY</span><strong>17</strong></div>
+              <div>
+                <h3 class="m-0 font-psy-display text-psy-h3 font-extrabold">Warehouse Resonance</h3>
+                <p class="mt-psy-1 text-psy-body text-psy-text-secondary">Taipei · Hidden Club</p>
               </div>
-              <span class="badge">GOING 126</span>
+              <span class="psy-brutal-block psy-badge">GOING 126</span>
             </div>
-            <div class="event-item">
-              <div class="date-block"><span>MAY</span><strong>18</strong></div>
-              <div class="event-info">
-                <h3>Sub Terrain Voltage</h3>
-                <p>Taichung · District 8</p>
+            <div class="psy-brutal-block psy-event-item">
+              <div class="psy-date-block"><span>MAY</span><strong>18</strong></div>
+              <div>
+                <h3 class="m-0 font-psy-display text-psy-h3 font-extrabold">Sub Terrain Voltage</h3>
+                <p class="mt-psy-1 text-psy-body text-psy-text-secondary">Taichung · District 8</p>
               </div>
-              <span class="badge">GOING 84</span>
+              <span class="psy-brutal-block psy-badge">GOING 84</span>
             </div>
-            <div class="event-item">
-              <div class="date-block"><span>MAY</span><strong>19</strong></div>
-              <div class="event-info">
-                <h3>After Hours Protocol</h3>
-                <p>Kaohsiung · Basement K</p>
+            <div class="psy-brutal-block psy-event-item">
+              <div class="psy-date-block"><span>MAY</span><strong>19</strong></div>
+              <div>
+                <h3 class="m-0 font-psy-display text-psy-h3 font-extrabold">After Hours Protocol</h3>
+                <p class="mt-psy-1 text-psy-body text-psy-text-secondary">Kaohsiung · Basement K</p>
               </div>
-              <span class="badge">GOING 57</span>
+              <span class="psy-brutal-block psy-badge">GOING 57</span>
             </div>
           </div>
         </article>
 
-        <article class="panel">
-          <div class="panel-head">
-            <h2>Matching preview</h2>
-            <a class="chip" href="#">OPEN CARDS</a>
+        <article class="psy-brutal-block psy-panel">
+          <div class="mb-psy-5 flex flex-wrap items-center justify-between gap-psy-4">
+            <h2 class="m-0 font-psy-display text-psy-h2 font-extrabold leading-[var(--psy-line-height-h2)]">
+              Matching preview
+            </h2>
+            <a class="psy-brutal psy-chip psy-focus-ring no-underline" href="#">OPEN CARDS</a>
           </div>
-          <div class="match-card">
-            <div class="avatar"></div>
-            <h3>Nova, 26</h3>
-            <p class="muted">Techno · House · Acid</p>
-            <p class="muted">最近常去：Warehouse Resonance</p>
-            <div class="card-actions">
-              <a class="button" href="#">略過</a>
-              <a class="button primary" href="#">喜歡</a>
+          <div class="grid gap-psy-4">
+            <div class="psy-brutal-block psy-avatar"></div>
+            <h3 class="m-0 font-psy-display text-psy-h3 font-extrabold">Nova, 26</h3>
+            <p class="m-0 mt-psy-1 text-psy-body text-psy-text-secondary">Techno · House · Acid</p>
+            <p class="m-0 mt-psy-1 text-psy-body text-psy-text-secondary">最近常去：Warehouse Resonance</p>
+            <div class="flex flex-wrap gap-psy-3">
+              <a class="psy-brutal psy-btn psy-focus-ring" href="#">略過</a>
+              <a class="psy-brutal psy-btn psy-btn--primary psy-focus-ring" href="#">喜歡</a>
             </div>
           </div>
         </article>
       </section>
 
-      <section class="layout-grid lower">
-        <article class="panel">
-          <div class="panel-head">
-            <h2>Top cities</h2>
-          </div>
-          <ul class="city-list">
-            <li><span>Taipei</span><strong>38 活動</strong></li>
-            <li><span>Taichung</span><strong>14 活動</strong></li>
-            <li><span>Kaohsiung</span><strong>12 活動</strong></li>
+      <section
+        class="mt-psy-6 grid grid-cols-1 gap-psy-6 lg:grid-cols-[minmax(0,2fr)_minmax(300px,1fr)]"
+      >
+        <article class="psy-brutal-block psy-panel">
+          <h2 class="mb-psy-5 m-0 font-psy-display text-psy-h2 font-extrabold leading-[var(--psy-line-height-h2)]">
+            Top cities
+          </h2>
+          <ul class="m-0 grid list-none gap-psy-4 p-0">
+            <li
+              class="psy-brutal-block psy-city-row flex justify-between gap-psy-4 p-psy-4 text-psy-body"
+            >
+              <span>Taipei</span><strong class="font-psy-display">38 活動</strong>
+            </li>
+            <li
+              class="psy-brutal-block psy-city-row flex justify-between gap-psy-4 p-psy-4 text-psy-body"
+            >
+              <span>Taichung</span><strong class="font-psy-display">14 活動</strong>
+            </li>
+            <li
+              class="psy-brutal-block psy-city-row flex justify-between gap-psy-4 p-psy-4 text-psy-body"
+            >
+              <span>Kaohsiung</span><strong class="font-psy-display">12 活動</strong>
+            </li>
           </ul>
         </article>
 
-        <article class="panel">
-          <div class="panel-head">
-            <h2>Latest updates</h2>
-          </div>
-          <ul class="feed-list">
-            <li><span>你和 Orbit 配對成功</span><strong>NEW</strong></li>
-            <li><span>Warehouse Resonance 新增 22 位參加者</span><strong>LIVE</strong></li>
-            <li><span>Nova 傳來一則新訊息</span><strong>DM</strong></li>
+        <article class="psy-brutal-block psy-panel">
+          <h2 class="mb-psy-5 m-0 font-psy-display text-psy-h2 font-extrabold leading-[var(--psy-line-height-h2)]">
+            Latest updates
+          </h2>
+          <ul class="m-0 grid list-none gap-psy-4 p-0">
+            <li
+              class="psy-brutal-block psy-feed-row-1 flex justify-between gap-psy-4 p-psy-4 text-psy-body"
+            >
+              <span>你和 Orbit 配對成功</span><strong class="font-psy-display">NEW</strong>
+            </li>
+            <li
+              class="psy-brutal-block psy-feed-row-2 flex justify-between gap-psy-4 p-psy-4 text-psy-body"
+            >
+              <span>Warehouse Resonance 新增 22 位參加者</span><strong class="font-psy-display">LIVE</strong>
+            </li>
+            <li
+              class="psy-brutal-block psy-feed-row-3 flex justify-between gap-psy-4 p-psy-4 text-psy-body"
+            >
+              <span>Nova 傳來一則新訊息</span><strong class="font-psy-display">DM</strong>
+            </li>
           </ul>
         </article>
       </section>
     </main>
+    <script type="module" src="./index.entry.js"></script>
   </body>
 </html>

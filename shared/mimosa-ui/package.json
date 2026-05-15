@@ -13,7 +13,18 @@
     ".": "./dist/mimosa.css",
     "./tokens.css": "./dist/tokens.css",
     "./docs.css": "./dist/docs.css",
+    "./tailwind.css": "./dist/tailwind.css",
+    "./tailwind/theme.css": "./dist/tailwind/theme.css",
+    "./tailwind/components.css": "./dist/tailwind/components.css",
     "./tokens.json": "./dist/tokens.json"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@tailwindcss/vite": {
+      "optional": true
+    }
   },
   "scripts": {
     "build": "node ./scripts/build.mjs",

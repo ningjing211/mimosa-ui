@@ -22,6 +22,18 @@ import "mimosa-design-system";
 import "mimosa-design-system/tokens.css";
 ```
 
+### Tailwind v4 (recommended for new UI)
+
+Host app needs `tailwindcss` (^4) and `@tailwindcss/vite` (Vite). Tokens stay on `--psy-*`; Tailwind only maps them.
+
+```js
+import "mimosa-design-system/tailwind.css";
+```
+
+Optional partial imports: `mimosa-design-system/tailwind/theme.css`, `tailwind/components.css`, `tailwind/flow-page.css` (Epic mock-up forms/cards; after `tokens.css` + `tailwindcss` in your entry).
+
+Epic flow pages (e.g. `account/`): add `<script type="module" src="./account.entry.js">` importing `mimosa-design-system/tailwind.css`, use `.psy-flow-*` classes.
+
 ### Import documentation styles
 
 ```js
@@ -45,6 +57,7 @@ This command regenerates:
 - `dist/tokens.css`
 - `dist/mimosa.css`
 - `dist/docs.css`
+- `dist/tailwind.css` (+ `dist/tailwind/*` partials)
 - `dist/tokens.json`
 
 ## Local preview (localhost)
@@ -58,6 +71,7 @@ npm run dev
 
 - **`npm run dev`** — Vite 開發伺服器載入套件樣式（`examples/mimosa-consumer`），預設 <http://localhost:5173>，並會嘗試自動開啟瀏覽器。
 - **`npm run dev:mock`** — 直接預覽 `mock-up/web-home/v16-psychedelic` 靜態稿（`examples/v16-mock-preview`），預設 <http://localhost:5174>。
+- **`npm run dev:docs`** — 設計系統文件站 + Tailwind（`examples/design-system-site`），預設 <http://localhost:5175/design-system.html>。
 
 ## Consumer example (local verification)
 
