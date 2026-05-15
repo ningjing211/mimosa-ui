@@ -2303,20 +2303,22 @@ import "mimosa-design-system/tailwind.css";
           <section class="ds-section" id="components-labels" aria-labelledby="labels-heading">
             <h2 class="ds-section__title" id="labels-heading">標籤 · Labels</h2>
             <p class="ds-section__lead">
-              Label 用來凸顯新內容或重要狀態。結構參照
-              <a href="https://nasa.github.io/nasawds-site/components/labels/">NASA Web Design System — Labels</a>，
-              並延伸為 Psychedelic 的高飽和狀態標籤。
+              本節為<strong>狀態標籤</strong>（<code>.label</code>，類似
+              <a href="https://ui.shadcn.com/docs/components/radix/badge">shadcn Badge</a>），用來凸顯 New／Warning 等狀態。表單欄位關聯文字請用
+              <code>.form-label</code>（類似
+              <a href="https://ui.shadcn.com/docs/components/radix/label">shadcn Label</a>），勿與 <code>.label</code> 混用 class。視覺參照
+              <a href="https://nasa.github.io/nasawds-site/components/labels/">NASA Web Design System — Labels</a>。
             </p>
 
             <article class="ds-doc-card" id="labels-variants">
               <h3 class="ds-doc-card__title">樣式變體 · New / Info / Warning / Hot</h3>
               <p class="ds-doc-card__desc">預設為非互動元素（`span`），僅用於標示，不作為按鈕。</p>
               <div class="ds-label-row">
-                <span class="ds-label label psy-brutal-block psy-chip">New</span>
-                <span class="ds-label ds-label--info label label--info psy-brutal-block psy-chip">Info</span>
-                <span class="ds-label ds-label--warning label label--warning psy-brutal-block psy-chip">Warning</span>
-                <span class="ds-label ds-label--hot label label--hot psy-brutal-block psy-chip">Hot</span>
-                <span class="ds-label ds-label--soft label label--soft psy-brutal-block psy-chip">Unread 12</span>
+                <span class="label">New</span>
+                <span class="label label--info">Info</span>
+                <span class="label label--warning">Warning</span>
+                <span class="label label--hot">Hot</span>
+                <span class="label label--soft">Unread 12</span>
               </div>
             </article>
 
@@ -2341,9 +2343,13 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="labels-implementation">
               <h3 class="ds-doc-card__title">實作 · Product classes</h3>
               <p class="ds-doc-card__desc">
-                產品頁可使用 `label`、`label--info`、`label--warning`、`label--hot`、`label--soft`。若需可互動 tag，
-                請另建獨立元件（例如 filter chips），不要直接重用靜態 label。
+                產品頁使用 <code>label</code>、<code>label--info</code> 等；內距由 <code>--psy-label-padding-*</code> 控制。表單請用
+                <code>form-label</code>。可互動 tag 請用 <code>.psy-chip</code> 另建，勿堆在 <code>.label</code> 上。
               </p>
+              <pre class="ds-code-block"><code>&lt;span class="label label--warning"&gt;Warning&lt;/span&gt;
+
+&lt;label class="form-label" for="email"&gt;電子郵件&lt;/label&gt;
+&lt;input id="email" class="form-input" type="email" /&gt;</code></pre>
             </article>
           </section>
 

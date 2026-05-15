@@ -411,4 +411,22 @@
   );
   --psy-form-label-text: var(--psy-text-primary);
   --psy-form-hint-text: var(--psy-text-secondary);
+
+  /* Status label / badge（非表單 label；對齊 NASA Labels / shadcn Badge 尺寸節奏） */
+  --psy-label-min-height: 1.875rem;
+  --psy-label-padding-block: var(--psy-space-1);
+  --psy-label-padding-inline: var(--psy-space-4);
+  --psy-label-font-size: var(--psy-font-size-chip);
+  --psy-label-font-weight: 800;
+  --psy-label-line-height: 1.25;
+  --psy-label-letter-spacing: 0.04em;
+  --psy-label-ring: var(--psy-color-base);
+  --psy-label-shadow: 3px 3px 0 var(--psy-color-base);
+  --psy-label-fg: var(--psy-text-on-dark);
+  --psy-label-fg-on-hot: var(--psy-primitive-white);
+  --psy-label-bg: var(--psy-color-secondary-lime);
+  --psy-label-bg-info: var(--psy-color-secondary-cyan);
+  --psy-label-bg-warning: var(--psy-color-secondary-amber);
+  --psy-label-bg-hot: var(--psy-color-secondary-magenta);
+  --psy-label-bg-soft: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-secondary-lime));
 }

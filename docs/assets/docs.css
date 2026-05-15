@@ -941,12 +941,14 @@ body {
   color: var(--ds-doc-text-muted);
 }
 
-.ds-label {
+/* 表單關聯標籤（對齊 shadcn Label）；勿與狀態 badge .label 混用 class */
+.ds-label:not(.label) {
   display: block;
   margin-bottom: var(--psy-space-3);
   font-family: var(--psy-font-family-body);
   font-size: var(--psy-font-size-small);
   font-weight: 700;
+  line-height: var(--psy-line-height-body);
   color: var(--ds-doc-text);
 }
 
@@ -973,9 +975,9 @@ body {
   resize: vertical;
 }
 
-.ds-input + .ds-label,
-.ds-select + .ds-label,
-.ds-textarea + .ds-label {
+.ds-input + .ds-label:not(.label),
+.ds-select + .ds-label:not(.label),
+.ds-textarea + .ds-label:not(.label) {
   margin-top: calc(var(--psy-space-3) + 4px);
 }
 

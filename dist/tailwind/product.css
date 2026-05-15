@@ -375,37 +375,4 @@
   white-space: nowrap;
   border: 0;
 }
-.label {
-  display: inline-flex;
-  align-items: center;
-  min-height: 1.75rem;
-  padding: 0 var(--psy-space-3);
-  border: 2px solid var(--psy-color-base);
-  border-radius: 999px;
-  background: var(--psy-color-secondary-lime);
-  color: var(--psy-color-base);
-  font-family: var(--psy-font-family-body);
-  font-size: var(--psy-font-size-chip);
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-.label--info {
-  background: var(--psy-color-secondary-cyan);
-}
-
-.label--warning {
-  background: var(--psy-color-secondary-amber);
-}
-
-.label--hot {
-  background: var(--psy-color-secondary-magenta);
-  color: var(--psy-text-primary);
-}
-
-.label--soft {
-  background: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-secondary-lime));
-}
 }

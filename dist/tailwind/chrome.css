@@ -212,38 +212,44 @@
   background: color-mix(in srgb, var(--psy-primitive-white) 90%, var(--psy-color-secondary-magenta));
 }
 
+/* Status badge（≠ .form-label 表單關聯標籤） */
 .label {
   display: inline-flex;
   align-items: center;
-  min-height: 1.75rem;
-  padding: 0 var(--psy-space-3);
-  border: 2px solid var(--psy-color-base);
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: var(--psy-label-min-height);
+  padding: var(--psy-label-padding-block) var(--psy-label-padding-inline);
+  border: 2px solid var(--psy-label-ring);
   border-radius: 999px;
-  background: var(--psy-color-secondary-lime);
-  color: var(--psy-color-base);
+  box-shadow: var(--psy-label-shadow);
+  background: var(--psy-label-bg);
+  color: var(--psy-label-fg);
   font-family: var(--psy-font-family-body);
-  font-size: var(--psy-font-size-chip);
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  font-size: var(--psy-label-font-size);
+  font-weight: var(--psy-label-font-weight);
+  line-height: var(--psy-label-line-height);
+  letter-spacing: var(--psy-label-letter-spacing);
   text-transform: uppercase;
-  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
 .label--info {
-  background: var(--psy-color-secondary-cyan);
+  background: var(--psy-label-bg-info);
 }
 
 .label--warning {
-  background: var(--psy-color-secondary-amber);
+  background: var(--psy-label-bg-warning);
 }
 
 .label--hot {
-  background: var(--psy-color-secondary-magenta);
-  color: var(--psy-text-primary);
+  background: var(--psy-label-bg-hot);
+  color: var(--psy-label-fg-on-hot);
 }
 
 .label--soft {
-  background: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-secondary-lime));
+  background: var(--psy-label-bg-soft);
 }
 
 .grid-12 {
