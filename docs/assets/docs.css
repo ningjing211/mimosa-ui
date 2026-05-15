@@ -573,10 +573,13 @@ body {
 }
 
 .ds-sample-kicker {
+  margin: 0;
   font-size: var(--psy-font-size-small);
   font-weight: var(--psy-font-weight-kicker);
   letter-spacing: var(--psy-letter-spacing-kicker);
-  color: var(--psy-kicker-text);
+  line-height: var(--psy-line-height-ui-tight);
+  text-transform: uppercase;
+  color: var(--psy-kicker-text-on-light);
 }
 
 .ds-sample-caption {

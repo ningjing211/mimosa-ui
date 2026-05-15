@@ -858,6 +858,14 @@ import "mimosa-design-system/tailwind.css";
                       <td><code>--psy-alert-*-icon-bg</code> + <code>--psy-alert-*-icon-fg</code></td>
                     </tr>
                     <tr>
+                      <td>淺底 kicker／eyebrow</td>
+                      <td><code>--psy-a11y-fg-kicker-on-light</code></td>
+                    </tr>
+                    <tr>
+                      <td>深紫底 kicker</td>
+                      <td><code>--psy-a11y-fg-kicker-on-dark</code>（螢光萊姆，僅深底）</td>
+                    </tr>
+                    <tr>
                       <td>螢光／淺飽和底上的字</td>
                       <td><code>--psy-a11y-fg-on-accent</code>（同 <code>--psy-text-on-dark</code>）</td>
                     </tr>
@@ -901,6 +909,10 @@ import "mimosa-design-system/tailwind.css";
 
             <article class="ds-doc-card" id="typography-hierarchy">
               <h3 class="ds-doc-card__title">字階層級 · Hierarchy</h3>
+              <p class="ds-doc-card__desc">
+                Kicker 在淺底請用 <code>--psy-kicker-text-on-light</code> 或 <code>.psy-kicker</code>；深紫 hero／頁面才用
+                <code>psy-kicker-on-dark</code>（萊姆螢光）。勿在卡片、文件白底上直接用 <code>--psy-kicker-text</code>。
+              </p>
               <div class="ds-panel">
                 <div class="ds-typo-block">
                   <div class="ds-typo-label">Display · <code>--psy-font-size-display</code></div>
@@ -2905,7 +2917,7 @@ import "mimosa-design-system/tailwind.css";
               </div>
 
               <p class="ds-sample-kicker" style="margin: 0 0 var(--psy-space-6)">
-                <code>--psy-kicker-text</code>：THIS IS A KICKER SAMPLE
+                <code>--psy-kicker-text-on-light</code>：THIS IS A KICKER SAMPLE
               </p>
 
               <div class="ds-btn-row" style="margin-bottom: var(--psy-space-6)">
@@ -2931,7 +2943,8 @@ import "mimosa-design-system/tailwind.css";
 
               <pre class="ds-code-block"><code>/* token 別名實際使用範例 */
 .top-nav a { color: var(--psy-nav-text); }
-.hero-kicker { color: var(--psy-kicker-text); }
+.hero-kicker { color: var(--psy-kicker-text-on-dark); }
+.kicker { color: var(--psy-kicker-text-on-light); }
 
 .psy-btn--primary:hover { background: var(--psy-button-primary-bg-hover); }
 .psy-btn--primary:active { background: var(--psy-button-primary-bg-active); }
@@ -2984,10 +2997,17 @@ import "mimosa-design-system/tailwind.css";
                       </td>
                     </tr>
                     <tr>
-                      <td><code>--psy-kicker-text</code></td>
-                      <td>標題上方標語</td>
+                      <td><code>--psy-kicker-text-on-light</code></td>
+                      <td>淺底 kicker／eyebrow</td>
                       <td>
                         <span class="ds-sample-kicker" style="margin: 0">KICKER</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>--psy-kicker-text-on-dark</code></td>
+                      <td>深紫底 kicker（螢光萊姆）</td>
+                      <td>
+                        <span class="ds-sample-kicker psy-kicker-on-dark" style="margin: 0; display: inline-block; padding: var(--psy-space-2) var(--psy-space-3); background: var(--psy-surface-page-base); border-radius: 4px">KICKER</span>
                       </td>
                     </tr>
                     <tr>

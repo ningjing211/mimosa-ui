@@ -237,6 +237,8 @@
   --psy-a11y-fg-muted-on-card: var(--psy-text-muted-on-light);
   --psy-a11y-fg-on-alert: var(--psy-alert-fg);
   --psy-a11y-fg-muted-on-alert: var(--psy-alert-fg-muted);
+  --psy-a11y-fg-kicker-on-light: var(--psy-kicker-text-on-light);
+  --psy-a11y-fg-kicker-on-dark: var(--psy-kicker-text-on-dark);
   --psy-a11y-fg-on-accent: var(--psy-text-on-dark);
 
   /* =========================
@@ -317,7 +319,14 @@
      Component aliases
      ========================= */
   --psy-nav-text: var(--psy-text-on-dark);
-  --psy-kicker-text: var(--psy-color-secondary-lime);
+  /* Kicker：深底可用螢光萊姆；淺底／卡片上改深紫混色（萊姆在小字上對比不足） */
+  --psy-kicker-text-on-dark: var(--psy-color-secondary-lime);
+  --psy-kicker-text-on-light: color-mix(
+    in srgb,
+    var(--psy-color-primary-darker) 82%,
+    var(--psy-color-secondary-magenta)
+  );
+  --psy-kicker-text: var(--psy-kicker-text-on-dark);
 
   --psy-button-primary-bg: var(--psy-action-primary-bg);
   --psy-button-primary-bg-hover: color-mix(in srgb, var(--psy-action-primary-bg) 88%, var(--psy-color-base));

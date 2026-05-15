@@ -18,6 +18,20 @@
     background: var(--psy-gradient-hero-panel);
   }
 
+  .psy-kicker {
+    margin: 0;
+    font-size: var(--psy-font-size-small);
+    font-weight: var(--psy-font-weight-kicker);
+    letter-spacing: var(--psy-letter-spacing-kicker);
+    line-height: var(--psy-line-height-ui-tight);
+    text-transform: uppercase;
+    color: var(--psy-kicker-text-on-light);
+  }
+
+  .psy-kicker-on-dark {
+    color: var(--psy-kicker-text-on-dark);
+  }
+
   .psy-brutal {
     border-width: var(--psy-border-width-block);
     border-style: solid;

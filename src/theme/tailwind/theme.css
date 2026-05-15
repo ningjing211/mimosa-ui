@@ -5,7 +5,8 @@
   --color-psy-text-primary: var(--psy-text-primary);
   --color-psy-text-secondary: var(--psy-text-secondary);
   --color-psy-text-on-dark: var(--psy-text-on-dark);
-  --color-psy-kicker: var(--psy-kicker-text);
+  --color-psy-kicker: var(--psy-kicker-text-on-light);
+  --color-psy-kicker-on-dark: var(--psy-kicker-text-on-dark);
   --color-psy-border-strong: var(--psy-border-strong);
   --color-psy-action-primary-bg: var(--psy-action-primary-bg);
   --color-psy-action-primary-text: var(--psy-action-primary-text);
