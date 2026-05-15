@@ -210,6 +210,17 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                   </ul>
                 </li>
                 <li>
+                  <a href="#components-variants">元件變體 · Variants</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#variants-buttons">Buttons</a></li>
+                    <li><a href="#variants-forms-input-group">Input group</a></li>
+                    <li><a href="#variants-forms-otp">OTP</a></li>
+                    <li><a href="#variants-tables">Tables</a></li>
+                    <li><a href="#variants-nav">Navigation</a></li>
+                    <li><a href="#variants-overlays">Overlays</a></li>
+                  </ul>
+                </li>
+                <li>
                   <a href="#components-labels">標籤 · Labels</a>
                   <ul class="ds-sidenav__sub">
                     <li><a href="#labels-variants">樣式變體</a></li>
@@ -1554,6 +1565,22 @@ import "mimosa-design-system/tailwind.css";
                   oninput="document.getElementById('ds-range-value').textContent = this.value"
                 />
               </div>
+              <p class="ds-doc-card__desc mt-psy-7">雙端區間（兩支 <code>.range</code>）+ 刻度 <code>.range-ticks</code>：</p>
+              <div class="range-dual range-field max-w-md">
+                <div class="range-field__header">
+                  <span class="form-label">預算區間</span>
+                  <span class="range-field__value">$20 – $80</span>
+                </div>
+                <div class="range-dual__inputs">
+                  <input class="range" type="range" min="0" max="100" value="20" aria-label="下限" />
+                  <input class="range" type="range" min="0" max="100" value="80" aria-label="上限" />
+                </div>
+                <ol class="range-ticks" aria-hidden="true">
+                  <li class="range-ticks__mark">$0</li>
+                  <li class="range-ticks__mark">$50</li>
+                  <li class="range-ticks__mark">$100</li>
+                </ol>
+              </div>
             </article>
 
             <article class="ds-doc-card" id="extended-file-upload">
@@ -1592,6 +1619,17 @@ import "mimosa-design-system/tailwind.css";
                 <li class="avatar-stack__item"><span class="avatar" title="Cy">CY</span></li>
                 <li class="avatar-stack__item"><span class="avatar-stack__more">+4</span></li>
               </ul>
+              <p class="ds-doc-card__desc mt-psy-7">線上狀態 <code>.avatar__status--online</code>、可點擊 <code>.avatar-wrap--link</code>：</p>
+              <div class="flex flex-wrap items-center gap-psy-7 mt-psy-4">
+                <span class="avatar-wrap">
+                  <span class="avatar">ON</span>
+                  <span class="avatar__status avatar__status--online" aria-label="線上"></span>
+                </span>
+                <a href="#" class="avatar-wrap avatar-wrap--link">
+                  <span class="avatar">LK</span>
+                  <span class="avatar__status avatar__status--busy" aria-label="忙碌"></span>
+                </a>
+              </div>
             </article>
 
             <article class="ds-doc-card" id="extended-timeline">
@@ -1628,8 +1666,8 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="extended-stat-card">
               <h3 class="ds-doc-card__title">Stat / metric card</h3>
               <p class="ds-doc-card__desc">
-                獨立 <code>.stat-card</code>（亦可與 <code>.card</code> 組合）。卡片底為暖黃
-                <code>--psy-stat-surface*</code>（中性數據，避開洋紅 card wash）；漲跌 pill 用
+                獨立 <code>.stat-card</code>（亦可與 <code>.card</code> 組合）。卡片底為淡橘
+                <code>--psy-stat-surface*</code>（中性數據；非 warning 黃、非 info 色條橙）；漲跌 pill 用
                 <code>--psy-semantic-trend-*-fg</code>／<code>*-bg</code>，期間用
                 <code>.stat-card__delta-context</code>（muted）。
               </p>
@@ -1657,6 +1695,215 @@ import "mimosa-design-system/tailwind.css";
                     <span class="stat-card__delta-main">+12s</span>
                   </p>
                 </article>
+              </div>
+            </article>
+          </section>
+
+          <!-- ========== Component variants ========== -->
+          <section class="ds-section" id="components-variants" aria-labelledby="variants-heading">
+            <h2 class="ds-section__title" id="variants-heading">元件變體 · Variants</h2>
+            <p class="ds-section__lead">
+              補齊常用變體；版面用 Tailwind（<code>flex</code>、<code>gap-psy-*</code>），皮膚在
+              <code>component-variants.css</code>、<code>navigation-mobile.css</code> 等。Modal 焦點陷阱、Toast
+              自動關閉與佇列需 host JS（class 如 <code>modal--animated</code>、<code>toast.is-leaving</code>）。淺底表單請配對
+              <code>.form-label--on-light</code>；舊 <code>#variants-forms</code> 已拆為
+              <a href="#variants-forms-input-group">input-group</a> 與 <a href="#variants-forms-otp">OTP</a>。
+            </p>
+
+            <article class="ds-doc-card" id="variants-buttons">
+              <h3 class="ds-doc-card__title">Button · Ghost / Icon / Group / Split</h3>
+              <div class="flex flex-wrap items-center gap-psy-5">
+                <button type="button" class="psy-brutal psy-btn psy-btn--ghost">Ghost</button>
+                <button type="button" class="psy-brutal psy-btn psy-btn--primary psy-btn--icon" aria-label="新增">
+                  <span class="psy-btn__icon" aria-hidden="true">+</span>
+                </button>
+                <div class="btn-group" role="group" aria-label="檢視模式">
+                  <button type="button" class="psy-brutal psy-btn psy-btn--primary">清單</button>
+                  <button type="button" class="psy-brutal psy-btn">格狀</button>
+                  <button type="button" class="psy-brutal psy-btn">地圖</button>
+                </div>
+                <div class="split-btn">
+                  <button type="button" class="psy-brutal psy-btn psy-btn--primary split-btn__main">儲存</button>
+                  <button type="button" class="psy-brutal psy-btn psy-btn--primary split-btn__toggle" aria-label="更多儲存選項">▾</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="variants-forms-input-group">
+              <h3 class="ds-doc-card__title">Input group · 前後綴</h3>
+              <p class="ds-doc-card__desc">
+                單一 <code>.input-group</code> 外框（<code>--psy-input-group-*</code>）。金額／票價加
+                <code>.input-group--amount</code>（<code>--psy-input-group-amount-*</code>）：僅幣別前綴 + 右對齊短欄，勿
+                <code>max-w-md</code> 三欄拉寬。淺底標籤用 <code>.form-label--on-light</code>。
+              </p>
+              <label class="form-label form-label--on-light" for="ds-amount">金額</label>
+              <div class="input-group input-group--amount">
+                <span class="input-group__addon input-group__addon--prefix">NT$</span>
+                <input
+                  class="form-input"
+                  id="ds-amount"
+                  type="text"
+                  inputmode="decimal"
+                  placeholder="1,200"
+                  autocomplete="off"
+                />
+              </div>
+              <p class="form-hint form-hint--on-light" style="margin-top: var(--psy-space-2)">
+                小數位由驗證或格式化處理；勿再拆獨立 <code>.00</code> 後綴欄。
+              </p>
+            </article>
+
+            <article class="ds-doc-card" id="variants-forms-otp">
+              <h3 class="ds-doc-card__title">OTP / PIN · 六位驗證碼</h3>
+              <p class="ds-doc-card__desc">
+                六格為<strong>同一</strong> <code>.otp-input</code>（一個外框 + 內部分隔線），不是六個帶獨立硬陰影的
+                <code>.form-input</code>。標籤同樣用 <code>.form-label--on-light</code>。
+              </p>
+              <label class="form-label form-label--on-light" id="ds-otp-label">驗證碼</label>
+              <div class="otp-input mt-psy-3" role="group" aria-labelledby="ds-otp-label">
+                <input class="otp-input__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 1 碼" />
+                <input class="otp-input__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 2 碼" />
+                <input class="otp-input__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 3 碼" />
+                <input class="otp-input__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 4 碼" />
+                <input class="otp-input__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 5 碼" />
+                <input class="otp-input__cell" type="text" inputmode="numeric" maxlength="1" aria-label="第 6 碼" />
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="variants-tables">
+              <h3 class="ds-doc-card__title">Table · 排序 / 選取 / 空態</h3>
+              <p class="ds-doc-card__desc">
+                語意對齊 <a href="https://ui.nuxt.com/docs/components/table">Nuxt UI Table</a>：表頭
+                <code>highlighted</code> 字、資料格 <code>muted</code> 字、排序僅圖示、列 hover/selected 淡底。清單型加
+                <code>.data-table--uniform-rows</code>；排序欄用 <code>.data-table__sort-button</code>。一表一狀態（資料／空態分開）。
+              </p>
+              <p class="ds-typo-label" style="margin-top: var(--psy-space-6)">有資料 · 排序 + 列選取</p>
+              <div class="data-table-wrap data-table-wrap--sticky-header max-w-3xl">
+                <table class="data-table data-table--uniform-rows">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="data-table__select-cell">
+                        <input class="data-table__checkbox" type="checkbox" aria-label="全選列" />
+                      </th>
+                      <th scope="col" class="is-sortable is-sorted is-sorted--asc" data-sortable>
+                        <button type="button" class="data-table__sort-button">
+                          <span class="data-table__sort-label">名稱</span>
+                          <span class="data-table__sort-icon" aria-hidden="true"></span>
+                        </button>
+                      </th>
+                      <th scope="col" class="is-sortable" data-sortable>
+                        <button type="button" class="data-table__sort-button">
+                          <span class="data-table__sort-label">狀態</span>
+                          <span class="data-table__sort-icon" aria-hidden="true"></span>
+                        </button>
+                      </th>
+                      <th scope="col">更新</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="is-selected">
+                      <td class="data-table__select-cell">
+                        <input class="data-table__checkbox" type="checkbox" checked aria-label="選取活動 A" />
+                      </td>
+                      <th scope="row">活動 A</th>
+                      <td>進行中</td>
+                      <td>今天</td>
+                    </tr>
+                    <tr>
+                      <td class="data-table__select-cell">
+                        <input class="data-table__checkbox" type="checkbox" aria-label="選取活動 B" />
+                      </td>
+                      <th scope="row">活動 B</th>
+                      <td>草稿</td>
+                      <td>昨天</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="ds-typo-label" style="margin-top: var(--psy-space-8)">空態 · 無列（獨立表）</p>
+              <div class="data-table-wrap data-table-wrap--empty max-w-3xl">
+                <table class="data-table data-table--uniform-rows">
+                  <thead>
+                    <tr>
+                      <th scope="col">名稱</th>
+                      <th scope="col">狀態</th>
+                      <th scope="col">更新</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="3" class="data-table__empty">
+                        <p class="data-table__empty-title">尚無資料</p>
+                        <p style="margin: 0">建立第一筆紀錄以開始。</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="variants-nav">
+              <h3 class="ds-doc-card__title">Navigation · Mobile</h3>
+              <div class="flex flex-wrap items-start gap-psy-7">
+                <button type="button" class="nav-hamburger" aria-label="開啟選單">
+                  <span class="nav-hamburger__bar"></span>
+                  <span class="nav-hamburger__bar"></span>
+                  <span class="nav-hamburger__bar"></span>
+                </button>
+                <nav class="mega-menu" aria-label="產品選單">
+                  <button type="button" class="psy-brutal psy-btn">產品 ▾</button>
+                  <div class="mega-menu__panel" hidden>
+                    <div>
+                      <p class="mega-menu__title">探索</p>
+                      <a class="mega-menu__link" href="#">活動</a>
+                      <a class="mega-menu__link" href="#">社群</a>
+                    </div>
+                    <div>
+                      <p class="mega-menu__title">帳戶</p>
+                      <a class="mega-menu__link" href="#">設定</a>
+                    </div>
+                    <div>
+                      <p class="mega-menu__title">支援</p>
+                      <a class="mega-menu__link" href="#">說明中心</a>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+              <nav class="bottom-nav mt-psy-7 max-w-lg relative" aria-label="行動底部導覽" style="position: relative; inset: auto">
+                <a href="#" class="bottom-nav__item is-active" aria-current="page"><span class="bottom-nav__icon" aria-hidden="true">⌂</span>首頁</a>
+                <a href="#" class="bottom-nav__item"><span class="bottom-nav__icon" aria-hidden="true">◎</span>探索</a>
+                <a href="#" class="bottom-nav__item"><span class="bottom-nav__icon" aria-hidden="true">✉</span>訊息</a>
+                <a href="#" class="bottom-nav__item"><span class="bottom-nav__icon" aria-hidden="true">☺</span>我的</a>
+              </nav>
+            </article>
+
+            <article class="ds-doc-card" id="variants-overlays">
+              <h3 class="ds-doc-card__title">Modal sizes / Toast 動畫</h3>
+              <p class="ds-doc-card__desc">
+                尺寸：<code>modal__panel--sm|lg|xl</code>、<code>drawer__panel--sm|lg</code>。開啟時加
+                <code>modal--animated</code>；Toast 堆疊加 <code>toast-stack--animated</code>，關閉前加
+                <code>toast.is-leaving</code>。焦點陷阱請 host 實作（focusin 循環於 panel）。
+              </p>
+              <div class="ds-overlay-stage" aria-label="大尺寸 Modal">
+                <div class="modal modal--animated" role="dialog" aria-modal="true" aria-labelledby="ds-modal-lg-title">
+                  <div class="modal__backdrop" aria-hidden="true"></div>
+                  <div class="modal__panel modal__panel--lg">
+                    <header class="modal__header">
+                      <h4 class="modal__title" id="ds-modal-lg-title">Large modal</h4>
+                      <button type="button" class="modal__close" aria-label="關閉">×</button>
+                    </header>
+                    <div class="modal__body"><p style="margin: 0">寬版表單或預覽內容。</p></div>
+                  </div>
+                </div>
+              </div>
+              <div class="toast-stack toast-stack--animated ds-toast-demo-row mt-psy-7" style="position: relative; inset: auto">
+                <div class="toast toast--success" role="status">
+                  <div>
+                    <p class="toast__title">佇列動畫</p>
+                    <p class="toast__text">進場 class 由 CSS 處理。</p>
+                  </div>
+                  <button type="button" class="toast__dismiss" aria-label="關閉">×</button>
+                </div>
               </div>
             </article>
           </section>
@@ -2737,9 +2984,9 @@ import "mimosa-design-system/tailwind.css";
           <section class="ds-section" id="components-tables" aria-labelledby="tables-heading">
             <h2 class="ds-section__title" id="tables-heading">表格 · Tables</h2>
             <p class="ds-section__lead">
-              表格用於欄列結構化資料。結構參照
-              <a href="https://nasa.github.io/nasawds-site/components/tables/">NASA Web Design System — Tables</a>，
-              視覺沿用 Psychedelic 的高對比框線與清楚欄頭層級。
+              表格用於欄列結構化資料。互動語意參照
+              <a href="https://ui.nuxt.com/docs/components/table">Nuxt UI Table</a>（表頭/內文對比、列 hover、排序按鈕）；結構可對照
+              <a href="https://nasa.github.io/nasawds-site/components/tables/">NASA WDS Tables</a>。視覺為 Psychedelic 硬邊框。
             </p>
 
             <article class="ds-doc-card" id="tables-bordered">

@@ -127,4 +127,40 @@
     font-size: var(--psy-font-size-small);
     line-height: var(--psy-line-height-body);
   }
+
+  .range-dual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--psy-space-4);
+  }
+
+  .range-dual__inputs {
+    display: grid;
+    gap: var(--psy-space-5);
+  }
+
+  .range-ticks {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--psy-space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--psy-font-size-caption);
+    font-weight: 700;
+    color: var(--psy-text-muted-on-light);
+  }
+
+  .range-ticks__mark {
+    flex: 1 1 0;
+    text-align: center;
+  }
+
+  .range-ticks__mark:first-child {
+    text-align: start;
+  }
+
+  .range-ticks__mark:last-child {
+    text-align: end;
+  }
 }

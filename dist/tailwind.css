@@ -16,7 +16,9 @@
  *  12. forms-extended.css — .range / .file-upload (raw overlay)
  *  13. data-display.css  — .timeline / .stat-card (raw overlay)
  *  14. chrome.css        — .site-header / .data-table / … (raw overlay)
- *  15. flow-page.css     — .psy-flow-* (raw overlay)
+ *  15. component-variants.css — button / input / table variants
+ *  16. navigation-mobile.css — hamburger / mega / bottom nav
+ *  17. flow-page.css     — .psy-flow-* (raw overlay)
  *
  * Peer dependency: tailwindcss ^4
  */
@@ -33,5 +35,7 @@
 @import "./tailwind/avatar.css";
 @import "./tailwind/forms-extended.css";
 @import "./tailwind/data-display.css";
+@import "./tailwind/component-variants.css";
+@import "./tailwind/navigation-mobile.css";
 @import "./tailwind/chrome.css";
 @import "./tailwind/flow-page.css";

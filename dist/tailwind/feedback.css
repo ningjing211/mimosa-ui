@@ -19,6 +19,14 @@
     pointer-events: auto;
   }
 
+  .toast-stack--animated .toast {
+    animation: psy-toast-enter var(--psy-motion-duration-normal) var(--psy-motion-easing-standard);
+  }
+
+  .toast.is-leaving {
+    animation: psy-toast-leave var(--psy-motion-duration-fast) var(--psy-motion-easing-standard) forwards;
+  }
+
   .toast {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -191,5 +199,36 @@
     max-width: var(--psy-content-max-readable);
     font-size: var(--psy-font-size-body);
     line-height: var(--psy-line-height-body);
+  }
+
+  @keyframes psy-toast-enter {
+    from {
+      opacity: 0;
+      transform: translateX(1rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes psy-toast-leave {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateX(1rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toast-stack--animated .toast,
+    .toast.is-leaving {
+      animation: none;
+    }
   }
 }

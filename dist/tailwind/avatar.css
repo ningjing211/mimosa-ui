@@ -71,6 +71,50 @@
     margin-inline-start: 0;
   }
 
+  .avatar-wrap {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+  }
+
+  .avatar-wrap--link {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .avatar-wrap--link:focus-visible {
+    outline: var(--psy-focus-ring-width) solid var(--psy-focus-ring-color);
+    outline-offset: var(--psy-focus-ring-offset);
+    border-radius: 999px;
+  }
+
+  .avatar__status {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: var(--psy-avatar-status-size);
+    height: var(--psy-avatar-status-size);
+    border: 2px solid var(--psy-border-strong);
+    border-radius: 999px;
+    box-shadow: 1px 1px 0 var(--psy-color-base);
+  }
+
+  .avatar__status--online {
+    background: var(--psy-avatar-status-online);
+  }
+
+  .avatar__status--offline {
+    background: var(--psy-avatar-status-offline);
+  }
+
+  .avatar__status--busy {
+    background: var(--psy-avatar-status-busy);
+  }
+
   .avatar-stack__more {
     display: inline-flex;
     align-items: center;

@@ -48,6 +48,8 @@ async function build() {
     "avatar.css",
     "forms-extended.css",
     "data-display.css",
+    "component-variants.css",
+    "navigation-mobile.css",
     "chrome.css",
     "flow-page.css"
   ];

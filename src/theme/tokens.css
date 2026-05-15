@@ -363,6 +363,12 @@
 
   --psy-button-disabled-bg: color-mix(in srgb, var(--psy-color-bg-panel-muted) 55%, var(--psy-color-base));
   --psy-button-disabled-text: var(--psy-text-secondary);
+  --psy-button-ghost-bg: transparent;
+  --psy-button-ghost-fg: var(--psy-text-on-light);
+  --psy-button-ghost-border: var(--psy-border-strong);
+  --psy-button-ghost-bg-hover: var(--psy-elevated-hover-bg);
+  --psy-button-ghost-bg-active: color-mix(in srgb, var(--psy-color-base) 8%, var(--psy-elevated-hover-bg));
+  --psy-button-icon-size: 2.75rem;
 
   --psy-focus-ring-color: var(--psy-state-focus-ring-color);
   --psy-focus-ring-width: var(--psy-state-focus-ring-width);
@@ -372,6 +378,34 @@
   --psy-content-max-readable: 66ch;
   --psy-control-min-height: 2.85rem;
   --psy-table-min-width: 560px;
+  /*
+   * Table（elevated）— 對齊 Nuxt UI Table 語意：
+   * - thead：highlighted 字 + semibold；排序僅指示器變色，不整欄色洗
+   * - tbody td：muted 字；列 hover/selected 用淡 elevated（非整欄螢光底）
+   * - 清單型 .data-table--uniform-rows；矩陣表 tbody th 用 rowhead
+   */
+  --psy-table-row-bg: var(--psy-surface-card);
+  --psy-table-body-fg: var(--psy-text-muted-on-light);
+  --psy-table-body-fg-emphasis: var(--psy-text-on-light);
+  --psy-table-row-hover-bg: color-mix(in srgb, var(--psy-color-base) 5%, var(--psy-table-row-bg));
+  --psy-table-row-selected-bg: color-mix(in srgb, var(--psy-color-base) 9%, var(--psy-table-row-bg));
+  --psy-table-sort-indicator: var(--psy-color-secondary-lime);
+  --psy-table-sort-active-fg: var(--psy-text-on-light);
+  --psy-table-sticky-shadow: color-mix(in srgb, var(--psy-color-base) 18%, transparent);
+  --psy-input-group-bg: var(--psy-surface-card);
+  --psy-input-group-fg: var(--psy-text-on-light);
+  --psy-input-group-addon-bg: color-mix(in srgb, var(--psy-primitive-white) 90%, var(--psy-color-bg-panel-muted));
+  --psy-input-group-addon-fg: var(--psy-text-muted-on-light);
+  --psy-input-group-border: var(--psy-border-strong);
+  --psy-input-group-divider: color-mix(in srgb, var(--psy-color-base) 14%, transparent);
+  /* 金額／數量：前綴幣別 + 右對齊欄；上限約 8 位 + 千分位，勿 max-w-md 三欄拉滿 */
+  --psy-input-group-amount-max-width: 18rem;
+  --psy-input-group-amount-field-min: 9ch;
+  --psy-input-group-addon-padding-inline: var(--psy-space-3);
+  --psy-table-head-border-bottom: var(--psy-border-strong);
+  --psy-otp-cell-size: 2.75rem;
+  --psy-nav-hamburger-size: 2.75rem;
+  --psy-mobile-nav-width: 20rem;
   --psy-line-height-ui-tight: 1.35;
   --psy-line-height-ui-normal: 1.45;
   --psy-line-height-ui-relaxed: 1.6;
@@ -388,7 +422,11 @@
   /* Data table */
   --psy-table-bg: color-mix(in srgb, var(--psy-primitive-white) 92%, var(--psy-color-secondary-cyan));
   --psy-table-caption-bg: color-mix(in srgb, var(--psy-color-secondary-magenta) 16%, var(--psy-primitive-white));
-  --psy-table-head-bg: color-mix(in srgb, var(--psy-color-secondary-amber) 24%, var(--psy-primitive-white));
+  /* 表頭帶：略深於列底 + highlighted 字（參考 Nuxt UI th: text-highlighted font-semibold） */
+  --psy-table-head-bg: color-mix(in srgb, var(--psy-color-base) 10%, var(--psy-surface-card));
+  --psy-table-head-fg: var(--psy-text-on-light);
+  --psy-table-head-hover-bg: color-mix(in srgb, var(--psy-color-base) 14%, var(--psy-surface-card));
+  --psy-table-sort-hover-bg: var(--psy-table-head-hover-bg);
   --psy-table-rowhead-bg: color-mix(in srgb, var(--psy-color-secondary-lime) 18%, var(--psy-primitive-white));
   --psy-table-row-divider: color-mix(in srgb, var(--psy-color-base) 22%, transparent);
 
@@ -427,6 +465,7 @@
   --psy-alert-error-accent: var(--psy-color-secondary-magenta);
   --psy-alert-error-bg: color-mix(in srgb, var(--psy-color-secondary-magenta) 18%, var(--psy-surface-card));
   --psy-alert-info-accent: var(--psy-color-secondary-orange);
+  /* info 色洗較濃；中性指標卡大底見 --psy-stat-surface*（更淡 peach，非狀態列） */
   --psy-alert-info-bg: color-mix(in srgb, var(--psy-color-secondary-orange) 16%, var(--psy-surface-card));
   /* 深紫頁面上可略提高色條色洗濃度（仍為淺底） */
   --psy-alert-success-bg-on-dark: color-mix(in srgb, var(--psy-color-secondary-lime) 18%, var(--psy-primitive-white));
@@ -447,7 +486,14 @@
   --psy-semantic-trend-down: var(--psy-semantic-trend-down-fg);
   --psy-semantic-trend-neutral: var(--psy-text-muted-on-light);
 
-  /* Form controls（對齊 NASA WDS Form controls） */
+  /*
+   * Form controls（對齊 NASA WDS Form controls）
+   * 前景配對（同 kicker／table）：
+   * - 深紫頁／panel：預設 --psy-form-*-text（淺色字）+ .form-label
+   * - 淺底 elevated（card、modal、input-group）：--psy-form-*-on-light + .form-label--on-light
+   * 勿在淺底使用 .form-label alone（會套用 --psy-text-primary 幾乎看不見）。
+   * .form-hint--on-light 須寫在 .form-hint 之後（product.css），否則 hint 會沿用深紫頁淺色字。
+   */
   --psy-form-input-bg: color-mix(in srgb, var(--psy-primitive-white) 12%, var(--psy-color-bg-panel-muted));
   --psy-form-input-border: var(--psy-border-strong);
   --psy-form-input-text: var(--psy-text-primary);
@@ -458,6 +504,13 @@
   );
   --psy-form-label-text: var(--psy-text-primary);
   --psy-form-hint-text: var(--psy-text-secondary);
+  --psy-form-label-text-on-light: var(--psy-text-on-light);
+  --psy-form-hint-text-on-light: color-mix(in srgb, var(--psy-text-on-light) 70%, var(--psy-surface-card));
+  --psy-form-placeholder-text-on-light: color-mix(
+    in srgb,
+    var(--psy-text-on-light) 52%,
+    var(--psy-input-group-bg)
+  );
 
   /* Status label / badge（非表單 label；對齊 NASA Labels / shadcn Badge 尺寸節奏） */
   --psy-label-min-height: 1.875rem;
@@ -486,8 +539,13 @@
   --psy-overlay-fg: var(--psy-text-on-light);
   --psy-overlay-fg-muted: var(--psy-text-muted-on-light);
   --psy-modal-max-width: 32rem;
+  --psy-modal-max-width-sm: 24rem;
+  --psy-modal-max-width-lg: 42rem;
+  --psy-modal-max-width-xl: 56rem;
   --psy-modal-max-height: min(90vh, 40rem);
   --psy-drawer-width: min(22rem, 92vw);
+  --psy-drawer-width-sm: 18rem;
+  --psy-drawer-width-lg: 28rem;
 
   /* Toast */
   --psy-toast-max-width: 24rem;
@@ -571,6 +629,10 @@
   --psy-avatar-font-size-xl: 1.25rem;
   --psy-avatar-fg: var(--psy-primitive-white);
   --psy-avatar-stack-overlap: 0.65rem;
+  --psy-avatar-status-size: 0.65rem;
+  --psy-avatar-status-online: var(--psy-semantic-trend-up-fg);
+  --psy-avatar-status-offline: color-mix(in srgb, var(--psy-color-base) 35%, var(--psy-primitive-white));
+  --psy-avatar-status-busy: var(--psy-color-secondary-magenta);
 
   /* Range / slider（淺底表單；track 用 card 系 neutral） */
   --psy-range-track-bg: color-mix(in srgb, var(--psy-color-base) 12%, var(--psy-surface-card));
@@ -590,15 +652,16 @@
   --psy-timeline-marker-bg: var(--psy-color-secondary-lime);
 
   /*
-   * Stat / metric card — 暖黃淺底（中性數據區）
-   * 勿沿用 --psy-gradient-card-wash（含洋紅）+ 通用 card 底：易聯想跌／錯誤語意。
-   * 與 --psy-surface-card-header（amber）同族，與 --psy-alert-error-accent（magenta）分離。
+   * Stat / metric card — 淡橘淺底（中性數據區，非狀態色）
+   * - 勿用 --psy-gradient-card-wash（洋紅）→ 易聯想 error／跌
+   * - 勿用 amber 暖黃 → 易與 --psy-alert-warning-bg 混淆
+   * - 與 --psy-alert-info-bg 分離：info 為左條+icon+較濃 orange 色洗；stat 僅低飽和 peach 大底
    */
-  --psy-stat-surface: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-secondary-amber));
+  --psy-stat-surface: color-mix(in srgb, var(--psy-primitive-white) 91%, var(--psy-color-secondary-orange));
   --psy-stat-surface-wash: linear-gradient(
     145deg,
-    color-mix(in srgb, var(--psy-color-secondary-amber) 16%, var(--psy-primitive-white)),
-    color-mix(in srgb, var(--psy-primitive-white) 92%, var(--psy-color-secondary-amber))
+    color-mix(in srgb, var(--psy-color-secondary-orange) 8%, var(--psy-primitive-white)),
+    color-mix(in srgb, var(--psy-primitive-white) 95%, var(--psy-color-secondary-orange))
   );
   --psy-stat-value-color: var(--psy-text-on-light);
   --psy-stat-label-color: var(--psy-text-muted-on-light);

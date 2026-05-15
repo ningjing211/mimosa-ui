@@ -157,6 +157,11 @@
   color: var(--psy-form-label-text);
 }
 
+/* 淺底 elevated 表單區（card / modal / input-group 旁） */
+.form-label--on-light {
+  color: var(--psy-form-label-text-on-light);
+}
+
 .form-label + .form-input,
 .form-label + .form-select,
 .form-label + .form-textarea {
@@ -174,7 +179,13 @@
   display: block;
   margin: var(--psy-space-2) 0 var(--psy-space-3);
   font-size: var(--psy-font-size-small);
+  line-height: 1.55;
   color: var(--psy-form-hint-text);
+}
+
+/* 修飾類須在 .form-hint 之後，否則會被覆寫成深紫頁淺色字 */
+.form-hint--on-light {
+  color: var(--psy-form-hint-text-on-light);
 }
 
 .form-input,

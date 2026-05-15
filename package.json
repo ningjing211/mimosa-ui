@@ -25,6 +25,8 @@
     "./tailwind/avatar.css": "./dist/tailwind/avatar.css",
     "./tailwind/forms-extended.css": "./dist/tailwind/forms-extended.css",
     "./tailwind/data-display.css": "./dist/tailwind/data-display.css",
+    "./tailwind/component-variants.css": "./dist/tailwind/component-variants.css",
+    "./tailwind/navigation-mobile.css": "./dist/tailwind/navigation-mobile.css",
     "./tailwind/chrome.css": "./dist/tailwind/chrome.css",
     "./tokens.json": "./dist/tokens.json"
   },

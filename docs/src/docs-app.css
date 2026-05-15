@@ -19,5 +19,7 @@
 @import "../../src/theme/tailwind/avatar.css";
 @import "../../src/theme/tailwind/forms-extended.css";
 @import "../../src/theme/tailwind/data-display.css";
+@import "../../src/theme/tailwind/component-variants.css";
+@import "../../src/theme/tailwind/navigation-mobile.css";
 @import "../../src/theme/tailwind/chrome.css";
 @import "./docs-overrides.css";

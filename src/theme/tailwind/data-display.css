@@ -1,5 +1,6 @@
 /**
  * Timeline, stat/metric cards — data display on elevated surfaces.
+ * Stat 大底用 --psy-stat-surface*（淡橘 peach）；狀態列見 alert tokens（warning=amber、info=orange 條）。
  */
 @layer components {
   .timeline {
