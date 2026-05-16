@@ -180,7 +180,7 @@
     gap: var(--psy-space-5);
     padding: var(--psy-space-12) var(--psy-space-7);
     text-align: center;
-    background: var(--psy-gradient-card-wash), var(--psy-overlay-surface);
+    background: var(--psy-overlay-surface);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
     color: var(--psy-overlay-fg-muted);

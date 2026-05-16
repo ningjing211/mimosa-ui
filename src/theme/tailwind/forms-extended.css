@@ -171,15 +171,34 @@
     gap: var(--psy-space-2);
   }
 
+  /* 輸入 + 切換鈕共用一組框線／陰影（淺底 elevated；同 input-group，勿用深頁 form-input-bg） */
   .combobox__control {
     position: relative;
+    z-index: 1;
     display: flex;
     align-items: stretch;
+    width: 100%;
+    min-height: var(--psy-control-min-height);
+    border: var(--psy-border-width-block) solid var(--psy-input-group-border);
+    background: var(--psy-input-group-bg);
+    color: var(--psy-input-group-fg);
+    box-shadow: 4px 4px 0 var(--psy-color-base);
   }
 
-  .combobox__input {
+  .combobox__control .combobox__input,
+  .combobox__control .form-input.combobox__input {
     flex: 1 1 auto;
     min-width: 0;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
+    color: var(--psy-input-group-fg);
+  }
+
+  .combobox__control .form-input.combobox__input::placeholder {
+    color: var(--psy-form-placeholder-text-on-light);
+    opacity: 1;
   }
 
   .combobox__toggle {
@@ -189,9 +208,9 @@
     justify-content: center;
     min-width: 2.75rem;
     padding: 0 var(--psy-space-3);
-    border: var(--psy-border-width-block) solid var(--psy-border-strong);
-    border-left: 0;
-    background: var(--psy-surface-card);
+    border: 0;
+    border-left: var(--psy-border-width-block) solid var(--psy-border-strong);
+    background: transparent;
     color: var(--psy-text-on-light);
     font-size: var(--psy-font-size-small);
     font-weight: 800;
@@ -201,15 +220,18 @@
   .combobox__listbox {
     position: absolute;
     z-index: 30;
-    top: calc(100% + var(--psy-space-2));
+    /* 避開 .combobox__control 的 4px 硬陰影，勿與輸入列重疊 */
+    top: calc(100% + var(--psy-space-2) + 4px);
     left: 0;
     right: 0;
+    width: 100%;
+    box-sizing: border-box;
     margin: 0;
     padding: var(--psy-space-2);
     list-style: none;
     max-height: 12rem;
     overflow: auto;
-    background: var(--psy-gradient-card-wash), var(--psy-combobox-list-bg);
+    background: var(--psy-combobox-list-bg);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-combobox-list-shadow);
   }

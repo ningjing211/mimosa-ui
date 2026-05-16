@@ -236,9 +236,11 @@
     left: 50%;
     transform: translateX(-50%);
     width: max-content;
+    /* 勿用 min(100%, …)：會跟觸發按鈕寬度綁死 */
+    min-width: 10rem;
     max-width: var(--psy-popover-max-width);
     padding: var(--psy-space-5) var(--psy-space-6);
-    background: var(--psy-gradient-card-wash), var(--psy-popover-bg);
+    background: var(--psy-popover-bg);
     border: var(--psy-border-width-block) solid var(--psy-popover-border);
     box-shadow: var(--psy-popover-shadow);
     color: var(--psy-popover-fg-muted);

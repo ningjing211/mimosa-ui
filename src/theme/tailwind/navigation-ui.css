@@ -87,13 +87,15 @@
   .dropdown__menu {
     position: absolute;
     z-index: 30;
-    top: calc(100% + var(--psy-space-2));
+    /* 觸發鈕常搭配 .psy-brutal（8px 硬陰影），預留陰影高度避免選單與輸入列重疊 */
+    top: calc(100% + var(--psy-space-2) + 8px);
     left: 0;
     min-width: 12rem;
     margin: 0;
     padding: var(--psy-space-2);
     list-style: none;
-    background: var(--psy-gradient-card-wash), var(--psy-menu-bg);
+    /* 中性 elevated 底；勿疊 card-wash（文件／實務易偏粉紫） */
+    background: var(--psy-menu-bg);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-menu-shadow);
   }
@@ -272,7 +274,10 @@
     bottom: calc(100% + var(--psy-space-2));
     left: 50%;
     transform: translateX(-50%);
+    /* 勿用 min(100%, …)：100% 會跟觸發元素（常僅按鈕寬）綁死 → 直條換行 */
+    width: max-content;
     max-width: var(--psy-tooltip-max-width);
+    min-width: 8rem;
     padding: var(--psy-space-2) var(--psy-space-3);
     background: var(--psy-tooltip-bg);
     color: var(--psy-tooltip-fg);
@@ -315,17 +320,23 @@
     top: calc(100% + var(--psy-space-2));
   }
 
-  .tooltip--left .tooltip__content {
+  .tooltip--left .tooltip__content,
+  .tooltip--right .tooltip__content {
     bottom: auto;
     top: 50%;
+    width: max-content;
+    min-width: 6rem;
+    max-width: min(var(--psy-tooltip-max-width), 12rem);
+    text-align: start;
+  }
+
+  .tooltip--left .tooltip__content {
     left: auto;
     right: calc(100% + var(--psy-space-2));
     transform: translateY(-50%);
   }
 
   .tooltip--right .tooltip__content {
-    bottom: auto;
-    top: 50%;
     left: calc(100% + var(--psy-space-2));
     transform: translateY(-50%);
   }

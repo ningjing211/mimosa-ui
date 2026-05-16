@@ -331,6 +331,8 @@ body {
 
 .ds-content {
   min-width: 0;
+  /* 靜態 tooltip / popover 會超出欄寬，勿裁切絕對定位子層 */
+  overflow: visible;
 }
 
 /* 頁首說明（對應 usa-font-lead 區塊） */
@@ -404,6 +406,77 @@ body {
 
 .ds-doc-card:last-child {
   margin-bottom: 0;
+}
+
+/* 下一節含向上絕對定位展示（tooltip / popover）時預留間距 */
+.ds-doc-card--spaced-next {
+  margin-bottom: calc(var(--psy-space-13) + var(--psy-space-6));
+  padding-bottom: var(--psy-space-9);
+}
+
+/* 靜態 tooltip / popover 會超出卡片框，勿裁切 */
+#nav-ui-switch {
+  margin-bottom: var(--psy-space-6);
+}
+
+#components-navigation-ui,
+#components-overlays,
+#nav-ui-tooltip,
+#overlays-popover {
+  overflow: visible;
+  scroll-margin-top: var(--ds-sticky-top);
+}
+
+#nav-ui-tooltip,
+#overlays-popover {
+  padding-top: var(--psy-space-5);
+}
+
+#nav-ui-tooltip.ds-doc-card {
+  margin-top: var(--psy-space-6);
+}
+
+/* 說明段與靜態錨點展示區之間：預留向上溢出的 tooltip / popover 空間 */
+.ds-doc-card--demo .ds-doc-card__desc + .ds-anchor-grid,
+.ds-doc-card--demo .ds-doc-card__desc + .ds-anchor-live,
+.ds-doc-card--demo .ds-doc-card__desc + .ds-dropdown-demo,
+.ds-doc-card--demo .ds-doc-card__desc + .ds-combobox-demo,
+.ds-doc-card--demo .ds-doc-card__desc + .ds-carousel-demo {
+  margin-top: var(--psy-space-12);
+}
+
+.ds-doc-card--demo,
+.ds-doc-card:has(.ds-anchor-grid),
+.ds-doc-card:has(.ds-combobox-demo),
+.ds-doc-card:has(.ds-dropdown-demo),
+.ds-doc-card:has(.ds-anchor-live),
+.ds-doc-card:has(.ds-carousel-demo),
+.ds-doc-card:has(.ds-stepper-demo),
+.ds-doc-card:has(.carousel) {
+  overflow: visible;
+}
+
+.ds-section:has(.ds-anchor-grid),
+.ds-section:has(.ds-combobox-demo),
+.ds-section:has(.ds-dropdown-demo),
+.ds-section:has(.ds-carousel-demo) {
+  overflow: visible;
+}
+
+#extended-combobox,
+#extended-stepper,
+#extended-carousel,
+#components-extended {
+  overflow: visible;
+}
+
+.ds-doc-card__desc + .ds-anchor-grid {
+  margin-top: var(--psy-space-8);
+}
+
+#nav-ui-tooltip .ds-anchor-grid,
+#overlays-popover .ds-anchor-grid {
+  margin-top: var(--psy-space-9);
 }
 
 .ds-doc-card__title {
@@ -1129,6 +1202,299 @@ body {
 
 .ds-skeleton-demo {
   max-width: 20rem;
+}
+
+/*
+ * 錨點型元件（tooltip / popover / dropdown）文件展示：
+ * 靜態常駐時預留空間，避免絕對定位與鄰近區塊重疊。
+ */
+.ds-anchor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--psy-space-9);
+  width: 100%;
+  max-width: min(56rem, 100%);
+  margin: var(--psy-space-8) auto var(--psy-space-10);
+  clear: both;
+}
+
+/* 維持 2×2：四欄在扣除側欄後欄寬不足，側向 tooltip／popover 會重疊 */
+
+.ds-anchor-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 8rem;
+  min-width: 0;
+  padding: var(--psy-space-9) var(--psy-space-5);
+  overflow: visible;
+  border: 1px dashed var(--ds-doc-border);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ds-doc-surface) 92%, var(--ds-doc-bg));
+}
+
+.ds-anchor-cell .tooltip__content,
+.ds-anchor-cell .popover__panel {
+  z-index: 20;
+}
+
+/* 勿對 .tooltip / .popover 外層設 width:100% 或 max-width:100% */
+
+.ds-anchor-cell .tooltip,
+.ds-anchor-cell .popover {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ds-anchor-cell__cap {
+  position: absolute;
+  z-index: 1;
+  top: var(--psy-space-3);
+  left: var(--psy-space-4);
+  right: var(--psy-space-4);
+  margin: 0;
+  font-size: var(--psy-font-size-caption);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ds-doc-text-muted);
+  pointer-events: none;
+}
+
+.ds-anchor-cell .tooltip__content,
+.ds-anchor-live .tooltip__content {
+  min-width: 8rem;
+  width: max-content;
+  max-width: var(--psy-tooltip-max-width);
+}
+
+.ds-anchor-cell--tooltip-side .tooltip__content {
+  white-space: nowrap;
+}
+
+.ds-anchor-cell--tooltip-top {
+  align-items: flex-end;
+  min-height: 20rem;
+  padding-top: 12.5rem;
+  padding-bottom: var(--psy-space-6);
+}
+
+.ds-anchor-cell--tooltip-bottom {
+  align-items: flex-start;
+  min-height: 18rem;
+  padding-top: var(--psy-space-6);
+  padding-bottom: 11.5rem;
+}
+
+.ds-anchor-cell--tooltip-side {
+  min-height: 10rem;
+  padding-left: var(--psy-space-5);
+  padding-right: var(--psy-space-5);
+}
+
+/* 僅在 tooltip 出現的一側預留空間（勿雙側同時加大 padding） */
+.ds-anchor-cell--tooltip-side:not(.ds-anchor-cell--end) {
+  justify-content: flex-end;
+  padding-left: var(--psy-space-5);
+  padding-right: 11rem;
+}
+
+.ds-anchor-cell--tooltip-side.ds-anchor-cell--end {
+  justify-content: flex-start;
+  padding-left: 11rem;
+  padding-right: var(--psy-space-5);
+}
+
+.ds-anchor-cell--popover-top {
+  align-items: flex-end;
+  min-height: 26rem;
+  padding-top: 17rem;
+  padding-bottom: var(--psy-space-6);
+}
+
+.ds-anchor-cell--popover-bottom {
+  align-items: flex-start;
+  min-height: 20rem;
+  padding-top: var(--psy-space-6);
+  padding-bottom: 12.5rem;
+}
+
+.ds-anchor-cell--popover-side {
+  min-height: 12rem;
+  padding-left: var(--psy-space-5);
+  padding-right: var(--psy-space-5);
+}
+
+.ds-anchor-cell .popover__panel {
+  min-width: 10rem;
+  max-width: min(var(--psy-popover-max-width), 14rem);
+}
+
+.ds-anchor-cell--popover-side:not(.ds-anchor-cell--end) {
+  justify-content: flex-end;
+  padding-left: var(--psy-space-5);
+  padding-right: 14rem;
+}
+
+.ds-anchor-cell--popover-side.ds-anchor-cell--end {
+  justify-content: flex-start;
+  padding-left: 14rem;
+  padding-right: var(--psy-space-5);
+}
+
+.ds-anchor-live {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: var(--psy-space-8) 0 var(--psy-space-10);
+  padding: 7.5rem var(--psy-space-10) var(--psy-space-8);
+  overflow: visible;
+  border: 1px dashed var(--ds-doc-border);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ds-doc-surface) 92%, var(--ds-doc-bg));
+}
+
+.ds-anchor-live .tooltip {
+  display: inline-block;
+}
+
+.ds-dropdown-demo {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 17rem;
+  margin: var(--psy-space-8) 0 var(--psy-space-10);
+  padding: var(--psy-space-6) var(--psy-space-10) 12.5rem var(--psy-space-6);
+  overflow: visible;
+  border: 1px dashed var(--ds-doc-border);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ds-doc-surface) 92%, var(--ds-doc-bg));
+}
+
+.ds-dropdown-demo .dropdown {
+  position: relative;
+  z-index: 1;
+}
+
+.ds-combobox-demo {
+  position: relative;
+  margin: var(--psy-space-8) 0 var(--psy-space-10);
+  /* 預留 listbox + control 4px 硬陰影高度 */
+  padding: var(--psy-space-7) var(--psy-space-8) 18rem;
+  overflow: visible;
+  border: 1px dashed var(--ds-doc-border);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ds-doc-surface) 92%, var(--ds-doc-bg));
+}
+
+.ds-combobox-demo .combobox {
+  position: relative;
+  margin: 0;
+  max-width: 100%;
+}
+
+.ds-combobox-demo .combobox__control {
+  position: relative;
+  z-index: 1;
+}
+
+.ds-combobox-demo .combobox__listbox {
+  z-index: 2;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-sizing: border-box;
+  /* 與套件一致：不疊 card-wash，對齊 control 寬度 */
+  background: var(--psy-combobox-list-bg);
+}
+
+.ds-combobox-demo--tags {
+  margin-top: var(--psy-space-8);
+  padding-bottom: var(--psy-space-8);
+}
+
+.ds-combobox-demo--tags .combobox__tags {
+  margin-bottom: var(--psy-space-3);
+}
+
+.ds-combobox-demo--tags .form-input {
+  max-width: 100%;
+}
+
+.ds-carousel-demo {
+  margin: var(--psy-space-8) 0 var(--psy-space-10);
+  padding: var(--psy-space-7) var(--psy-space-8) var(--psy-space-9);
+  overflow: visible;
+  border: 1px dashed var(--ds-doc-border);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ds-doc-surface) 92%, var(--ds-doc-bg));
+}
+
+.ds-carousel-demo .carousel {
+  margin: 0;
+}
+
+.ds-stepper-demo {
+  margin: var(--psy-space-7) 0 var(--psy-space-9);
+  padding: var(--psy-space-7) var(--psy-space-8);
+  overflow: visible;
+  border: 1px dashed var(--ds-doc-border);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ds-doc-surface) 92%, var(--ds-doc-bg));
+}
+
+.ds-stepper-demo + .ds-stepper-demo {
+  margin-top: var(--psy-space-8);
+}
+
+.ds-doc-card:has(.ds-stepper-demo) {
+  overflow: visible;
+}
+
+@media (max-width: 42rem) {
+  .ds-anchor-grid {
+    grid-template-columns: 1fr;
+    gap: var(--psy-space-9);
+  }
+
+  .ds-anchor-cell--tooltip-side:not(.ds-anchor-cell--end),
+  .ds-anchor-cell--popover-side:not(.ds-anchor-cell--end) {
+    justify-content: flex-end;
+    padding-left: var(--psy-space-6);
+    padding-right: 10rem;
+    min-height: 14rem;
+  }
+
+  .ds-anchor-cell--tooltip-side.ds-anchor-cell--end,
+  .ds-anchor-cell--popover-side.ds-anchor-cell--end {
+    justify-content: flex-start;
+    padding-left: 10rem;
+    padding-right: var(--psy-space-6);
+    min-height: 14rem;
+  }
+
+  .ds-anchor-cell--tooltip-top {
+    min-height: 16rem;
+    padding-top: 9.5rem;
+  }
+
+  .ds-anchor-cell--tooltip-bottom {
+    min-height: 16rem;
+    padding-bottom: 9.5rem;
+  }
+
+  .ds-anchor-cell--popover-top {
+    min-height: 22rem;
+    padding-top: 13rem;
+  }
+
+  .ds-anchor-cell--popover-bottom {
+    min-height: 18rem;
+    padding-bottom: 10rem;
+  }
 }
 
 .ds-grid-demo {

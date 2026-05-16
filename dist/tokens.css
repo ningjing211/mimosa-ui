@@ -36,6 +36,8 @@
   --psy-primitive-trend-up-bg: #f1f5f1;
   --psy-primitive-trend-down-fg: #be1e5a;
   --psy-primitive-trend-down-bg: #f6f1f3;
+  /* 中性淺綠底（內容滑塊／展示卡；非語意漲跌） */
+  --psy-primitive-surface-soft-mint: #f5faf0;
 
   --psy-primitive-glow-orange-mix: color-mix(in srgb, var(--psy-primitive-orange) 28%, transparent);
   --psy-primitive-glow-magenta-mix: color-mix(in srgb, var(--psy-primitive-magenta) 26%, transparent);
@@ -654,7 +656,7 @@
   --psy-step-label-fg: var(--psy-text-on-light);
   --psy-step-label-muted: var(--psy-text-muted-on-light);
 
-  /* Popover */
+  /* Popover（扁平 elevated 底；勿疊 --psy-gradient-card-wash） */
   --psy-popover-bg: var(--psy-overlay-surface);
   --psy-popover-fg: var(--psy-overlay-fg);
   --psy-popover-fg-muted: var(--psy-overlay-fg-muted);
@@ -663,7 +665,7 @@
   --psy-popover-max-width: 20rem;
   --psy-popover-arrow-size: 0.5rem;
 
-  /* Combobox */
+  /* Combobox（control 同 input-group 淺底；listbox 扁平 menu-bg） */
   --psy-combobox-list-bg: var(--psy-menu-bg);
   --psy-combobox-list-shadow: var(--psy-menu-shadow);
   --psy-combobox-option-hover-bg: var(--psy-menu-item-hover-bg);
@@ -673,7 +675,11 @@
   --psy-combobox-tag-bg: var(--psy-chip-bg);
   --psy-combobox-tag-fg: var(--psy-chip-text);
 
-  /* Carousel */
+  /*
+   * Carousel slide — 中性淺綠大底（勿用 --psy-gradient-card-wash）
+   * card-wash 含洋紅／橘漸層，橫向投影片易顯粉紫；與 stat-card 相同改採專用 surface。
+   */
+  --psy-carousel-slide-bg: var(--psy-primitive-surface-soft-mint);
   --psy-carousel-indicator-size: 0.5rem;
   --psy-carousel-indicator-gap: var(--psy-space-2);
   --psy-carousel-indicator-bg: color-mix(in srgb, var(--psy-color-base) 25%, transparent);

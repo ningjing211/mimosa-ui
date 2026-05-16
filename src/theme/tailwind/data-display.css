@@ -278,7 +278,7 @@
     flex: 0 0 min(85%, 20rem);
     scroll-snap-align: start;
     padding: var(--psy-space-7);
-    background: var(--psy-gradient-card-wash), var(--psy-overlay-surface);
+    background: var(--psy-carousel-slide-bg);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
     color: var(--psy-overlay-fg-muted);

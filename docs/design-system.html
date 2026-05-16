@@ -841,6 +841,13 @@ import "mimosa-design-system/tailwind.css";
                     <span class="ds-swatch__token">--psy-primitive-orange</span>
                   </div>
                 </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-surface-soft-mint)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__hex">#f5faf0</span>
+                    <span class="ds-swatch__token">--psy-primitive-surface-soft-mint</span>
+                  </div>
+                </div>
                 <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-white)">
                   <div class="ds-swatch__tone"></div>
                   <div class="ds-swatch__meta">
@@ -853,7 +860,11 @@ import "mimosa-design-system/tailwind.css";
 
             <article class="ds-doc-card" id="colors-gradients">
               <h3 class="ds-doc-card__title">語意漸層（Semantic gradients）</h3>
-              <p class="ds-doc-card__desc">導覽、hero、面板洗色、日期塊與頭像等區塊用；數值定義於 <code>tokens.css</code>。</p>
+              <p class="ds-doc-card__desc">
+                導覽、hero、面板洗色、日期塊與頭像等區塊用；數值定義於 <code>tokens.css</code>。
+                <code>--psy-gradient-card-wash</code> 含洋紅／橘色，適合一般卡片；<strong>Carousel 投影片</strong>請用
+                <code>--psy-carousel-slide-bg</code>（<code>#f5faf0</code>），勿疊 card-wash。
+              </p>
               <div class="ds-gradient-grid">
                 <figure class="ds-gradient-item">
                   <div class="ds-gradient-item__bar" style="--psy-gradient-demo: var(--psy-gradient-nav)"></div>
@@ -1415,7 +1426,7 @@ import "mimosa-design-system/tailwind.css";
               </div>
             </article>
 
-            <article class="ds-doc-card" id="overlays-drawer">
+            <article class="ds-doc-card ds-doc-card--spaced-next" id="overlays-drawer">
               <h3 class="ds-doc-card__title">抽屜 · Drawer</h3>
               <div class="ds-overlay-stage" aria-label="Drawer 靜態預覽">
                 <div class="drawer drawer--right" role="dialog" aria-modal="true" aria-labelledby="ds-drawer-title">
@@ -1435,43 +1446,54 @@ import "mimosa-design-system/tailwind.css";
               </div>
             </article>
 
-            <article class="ds-doc-card" id="overlays-popover">
+            <article class="ds-doc-card ds-doc-card--demo" id="overlays-popover">
               <h3 class="ds-doc-card__title">Popover</h3>
               <p class="ds-doc-card__desc">
                 定位資訊泡泡（非選單清單）；與 Dropdown 不同。修飾類 <code>popover--bottom</code>、
                 <code>popover--start</code>、<code>popover--end</code>。開關由 host JS（<code>hidden</code>、
-                <code>aria-expanded</code>）；關閉建議支援 Esc 與點擊外部。
+                <code>aria-expanded</code>）；關閉建議支援 Esc 與點擊外部。靜態展示同 Tooltip，使用
+                <code>.ds-anchor-grid</code> 避免面板與說明文字重疊。
               </p>
-              <div class="flex flex-wrap gap-psy-8 items-end py-psy-8">
-                <div class="popover">
-                  <button type="button" class="psy-brutal psy-btn" aria-expanded="true" aria-controls="ds-popover-1">
-                    說明
-                  </button>
-                  <div class="popover__panel" id="ds-popover-1" role="dialog" aria-labelledby="ds-popover-1-title">
-                    <p class="popover__title" id="ds-popover-1-title">活動代碼</p>
-                    <p class="popover__text">分享此代碼讓參與者快速加入場次。</p>
-                    <span class="popover__arrow" aria-hidden="true"></span>
+              <div class="ds-anchor-grid" aria-label="Popover 方向（靜態展示）">
+                <div class="ds-anchor-cell ds-anchor-cell--popover-top">
+                  <p class="ds-anchor-cell__cap">上方 · 預設</p>
+                  <div class="popover">
+                    <button type="button" class="psy-brutal psy-btn" aria-expanded="true" aria-controls="ds-popover-1">說明</button>
+                    <div class="popover__panel" id="ds-popover-1" role="dialog" aria-labelledby="ds-popover-1-title">
+                      <p class="popover__title" id="ds-popover-1-title">活動代碼</p>
+                      <p class="popover__text">分享代碼即可加入場次。</p>
+                      <span class="popover__arrow" aria-hidden="true"></span>
+                    </div>
                   </div>
                 </div>
-                <div class="popover popover--bottom">
-                  <button type="button" class="psy-brutal psy-btn psy-btn--primary" aria-expanded="true">下方</button>
-                  <div class="popover__panel" role="dialog">
-                    <p class="popover__text" style="margin: 0">修飾類 <code>popover--bottom</code>。</p>
-                    <span class="popover__arrow" aria-hidden="true"></span>
+                <div class="ds-anchor-cell ds-anchor-cell--popover-bottom">
+                  <p class="ds-anchor-cell__cap">下方 · popover--bottom</p>
+                  <div class="popover popover--bottom">
+                    <button type="button" class="psy-brutal psy-btn psy-btn--primary" aria-expanded="true">下方</button>
+                    <div class="popover__panel" role="dialog">
+                      <p class="popover__text" style="margin: 0">修飾類 <code>popover--bottom</code>。</p>
+                      <span class="popover__arrow" aria-hidden="true"></span>
+                    </div>
                   </div>
                 </div>
-                <div class="popover popover--start">
-                  <button type="button" class="psy-brutal psy-btn" aria-expanded="true">左側</button>
-                  <div class="popover__panel" role="dialog">
-                    <p class="popover__text" style="margin: 0"><code>popover--start</code></p>
-                    <span class="popover__arrow" aria-hidden="true"></span>
+                <div class="ds-anchor-cell ds-anchor-cell--popover-side">
+                  <p class="ds-anchor-cell__cap">左側 · popover--start</p>
+                  <div class="popover popover--start">
+                    <button type="button" class="psy-brutal psy-btn" aria-expanded="true">左側</button>
+                    <div class="popover__panel" role="dialog">
+                      <p class="popover__text" style="margin: 0"><code>popover--start</code></p>
+                      <span class="popover__arrow" aria-hidden="true"></span>
+                    </div>
                   </div>
                 </div>
-                <div class="popover popover--end">
-                  <button type="button" class="psy-brutal psy-btn psy-btn--ghost" aria-expanded="true">右側</button>
-                  <div class="popover__panel" role="dialog">
-                    <p class="popover__text" style="margin: 0"><code>popover--end</code></p>
-                    <span class="popover__arrow" aria-hidden="true"></span>
+                <div class="ds-anchor-cell ds-anchor-cell--popover-side ds-anchor-cell--end">
+                  <p class="ds-anchor-cell__cap">右側 · popover--end</p>
+                  <div class="popover popover--end">
+                    <button type="button" class="psy-brutal psy-btn psy-btn--ghost" aria-expanded="true">右側</button>
+                    <div class="popover__panel" role="dialog">
+                      <p class="popover__text" style="margin: 0"><code>popover--end</code></p>
+                      <span class="popover__arrow" aria-hidden="true"></span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1639,21 +1661,23 @@ import "mimosa-design-system/tailwind.css";
               </div>
             </article>
 
-            <article class="ds-doc-card" id="nav-ui-dropdown">
+            <article class="ds-doc-card ds-doc-card--demo" id="nav-ui-dropdown">
               <h3 class="ds-doc-card__title">Dropdown</h3>
               <p class="ds-doc-card__desc">
                 選單項 hover 使用 <code>--psy-elevated-hover-*</code>（中性淺底 + 黑框／硬陰影，與 tabs 相同）；基底為
                 <code>--psy-surface-card</code>，<strong>勿</strong>混 <code>--psy-surface-card-muted</code>（含 cyan）。刪除項加
                 <code>dropdown__item--danger</code>。
               </p>
-              <div class="dropdown">
-                <button type="button" class="psy-brutal psy-btn" aria-haspopup="true" aria-expanded="true">更多動作</button>
-                <ul class="dropdown__menu" role="menu">
-                  <li role="none"><button type="button" class="dropdown__item" role="menuitem">編輯</button></li>
-                  <li role="none"><button type="button" class="dropdown__item" role="menuitem">複製連結</button></li>
-                  <li role="presentation"><hr class="dropdown__divider" /></li>
-                  <li role="none"><button type="button" class="dropdown__item dropdown__item--danger" role="menuitem">刪除</button></li>
-                </ul>
+              <div class="ds-dropdown-demo">
+                <div class="dropdown">
+                  <button type="button" class="psy-brutal psy-btn" aria-haspopup="true" aria-expanded="true">更多動作</button>
+                  <ul class="dropdown__menu" role="menu">
+                    <li role="none"><button type="button" class="dropdown__item" role="menuitem">編輯</button></li>
+                    <li role="none"><button type="button" class="dropdown__item" role="menuitem">複製連結</button></li>
+                    <li role="presentation"><hr class="dropdown__divider" /></li>
+                    <li role="none"><button type="button" class="dropdown__item dropdown__item--danger" role="menuitem">刪除</button></li>
+                  </ul>
+                </div>
               </div>
             </article>
 
@@ -1682,7 +1706,7 @@ import "mimosa-design-system/tailwind.css";
               </nav>
             </article>
 
-            <article class="ds-doc-card" id="nav-ui-switch">
+            <article class="ds-doc-card ds-doc-card--spaced-next" id="nav-ui-switch">
               <h3 class="ds-doc-card__title">Toggle · Switch</h3>
               <label class="switch">
                 <input class="switch__input" type="checkbox" checked />
@@ -1691,38 +1715,54 @@ import "mimosa-design-system/tailwind.css";
               </label>
             </article>
 
-            <article class="ds-doc-card" id="nav-ui-tooltip">
+            <article class="ds-doc-card ds-doc-card--demo" id="nav-ui-tooltip">
               <h3 class="ds-doc-card__title">Tooltip</h3>
               <p class="ds-doc-card__desc">
                 簡短補充說明；見 <code>navigation-ui.css</code> 的 <code>.tooltip</code>。預設在觸發元素上方（
                 <code>tooltip--bottom</code>、<code>tooltip--left</code>、<code>tooltip--right</code> 可改方向）。
                 生產環境請以 <code>hidden</code> + hover／focus 顯示，並綁定 <code>aria-describedby</code>。
+                文件靜態展示請用下方 <code>.ds-anchor-grid</code>（<code>docs.css</code>）預留錨點空間，勿把多個
+                <code>tooltip--static</code> 直接排在同一段落。
               </p>
-              <div class="flex flex-wrap items-center gap-psy-10 py-psy-8">
-                <span class="tooltip tooltip--static">
-                  <button type="button" class="psy-brutal psy-btn" aria-describedby="ds-tooltip-top">上方</button>
-                  <span class="tooltip__content" id="ds-tooltip-top" role="tooltip">預設置於觸發元素上方</span>
-                </span>
-                <span class="tooltip tooltip--static tooltip--bottom">
-                  <button type="button" class="psy-brutal psy-btn psy-btn--primary" aria-describedby="ds-tooltip-bottom">下方</button>
-                  <span class="tooltip__content" id="ds-tooltip-bottom" role="tooltip">修飾類 tooltip--bottom</span>
-                </span>
-                <span class="tooltip tooltip--static tooltip--left">
-                  <button type="button" class="psy-brutal psy-btn" aria-describedby="ds-tooltip-left">左側</button>
-                  <span class="tooltip__content" id="ds-tooltip-left" role="tooltip">tooltip--left</span>
-                </span>
-                <span class="tooltip tooltip--static tooltip--right">
-                  <button type="button" class="psy-brutal psy-btn" aria-describedby="ds-tooltip-right">右側</button>
-                  <span class="tooltip__content" id="ds-tooltip-right" role="tooltip">tooltip--right</span>
-                </span>
+              <div class="ds-anchor-grid" aria-label="Tooltip 方向（靜態展示）">
+                <div class="ds-anchor-cell ds-anchor-cell--tooltip-top">
+                  <p class="ds-anchor-cell__cap">上方 · 預設</p>
+                  <span class="tooltip tooltip--static">
+                    <button type="button" class="psy-brutal psy-btn" aria-describedby="ds-tooltip-top">上方</button>
+                    <span class="tooltip__content" id="ds-tooltip-top" role="tooltip">預設置於觸發元素上方</span>
+                  </span>
+                </div>
+                <div class="ds-anchor-cell ds-anchor-cell--tooltip-bottom">
+                  <p class="ds-anchor-cell__cap">下方 · tooltip--bottom</p>
+                  <span class="tooltip tooltip--static tooltip--bottom">
+                    <button type="button" class="psy-brutal psy-btn psy-btn--primary" aria-describedby="ds-tooltip-bottom">下方</button>
+                    <span class="tooltip__content" id="ds-tooltip-bottom" role="tooltip">修飾類 tooltip--bottom</span>
+                  </span>
+                </div>
+                <div class="ds-anchor-cell ds-anchor-cell--tooltip-side">
+                  <p class="ds-anchor-cell__cap">左側 · tooltip--left</p>
+                  <span class="tooltip tooltip--static tooltip--left">
+                    <button type="button" class="psy-brutal psy-btn" aria-describedby="ds-tooltip-left">左側</button>
+                    <span class="tooltip__content" id="ds-tooltip-left" role="tooltip">tooltip--left</span>
+                  </span>
+                </div>
+                <div class="ds-anchor-cell ds-anchor-cell--tooltip-side ds-anchor-cell--end">
+                  <p class="ds-anchor-cell__cap">右側 · tooltip--right</p>
+                  <span class="tooltip tooltip--static tooltip--right">
+                    <button type="button" class="psy-brutal psy-btn" aria-describedby="ds-tooltip-right">右側</button>
+                    <span class="tooltip__content" id="ds-tooltip-right" role="tooltip">tooltip--right</span>
+                  </span>
+                </div>
               </div>
               <p class="ds-doc-card__desc mt-psy-4">
                 互動示範（hover／focus 顯示；生產環境預設，勿加 <code>tooltip--static</code>）：
               </p>
-              <span class="tooltip">
-                <button type="button" class="psy-brutal psy-btn psy-btn--ghost" aria-describedby="ds-tooltip-live">將滑鼠移入或聚焦</button>
-                <span class="tooltip__content" id="ds-tooltip-live" role="tooltip">生產環境預設行為</span>
-              </span>
+              <div class="ds-anchor-live">
+                <span class="tooltip">
+                  <button type="button" class="psy-brutal psy-btn psy-btn--ghost" aria-describedby="ds-tooltip-live">將滑鼠移入或聚焦</button>
+                  <span class="tooltip__content" id="ds-tooltip-live" role="tooltip">生產環境預設行為</span>
+                </span>
+              </div>
               <ul class="ds-prose-list mt-psy-6">
                 <li>觸發元素需可聚焦（<code>button</code>、<code>a</code> 或 <code>tabindex="0"</code>）。</li>
                 <li>Tooltip 內容容器使用 <code>role="tooltip"</code>；勿把重要資訊只放在 tooltip（行動裝置無 hover）。</li>
@@ -1853,45 +1893,50 @@ import "mimosa-design-system/tailwind.css";
               </label>
             </article>
 
-            <article class="ds-doc-card" id="extended-combobox">
+            <article class="ds-doc-card ds-doc-card--demo" id="extended-combobox">
               <h3 class="ds-doc-card__title">Combobox · Autocomplete</h3>
               <p class="ds-doc-card__desc">
-                帶建議下拉的輸入；見 <code>forms-extended.css</code>。與 Search bar 不同：combobox 需
+                帶建議下拉的輸入；見 <code>forms-extended.css</code>。控制列底色用
+                <code>--psy-input-group-bg</code>（淺底 elevated，與 input group 相同），勿用深頁用的
+                <code>--psy-form-input-bg</code>。與 Search bar 不同：combobox 需
                 <code>role="combobox"</code>、<code>aria-expanded</code>、<code>aria-controls</code> 綁定 listbox。
                 鍵盤導覽與 <code>aria-activedescendant</code> 由 host JS 實作。
               </p>
-              <div class="combobox max-w-md">
-                <label class="form-label form-label--on-light" id="ds-combobox-label" for="ds-combobox-input">城市</label>
-                <div class="combobox__control">
-                  <input
-                    class="form-input combobox__input"
-                    id="ds-combobox-input"
-                    type="text"
-                    role="combobox"
-                    aria-expanded="true"
-                    aria-controls="ds-combobox-list"
-                    aria-autocomplete="list"
-                    aria-labelledby="ds-combobox-label"
-                    value="台北"
-                  />
-                  <button type="button" class="combobox__toggle" aria-label="展開建議" aria-expanded="true">▾</button>
+              <div class="ds-combobox-demo">
+                <div class="combobox max-w-md">
+                  <label class="form-label form-label--on-light" id="ds-combobox-label" for="ds-combobox-input">城市</label>
+                  <div class="combobox__control">
+                    <input
+                      class="form-input combobox__input"
+                      id="ds-combobox-input"
+                      type="text"
+                      role="combobox"
+                      aria-expanded="true"
+                      aria-controls="ds-combobox-list"
+                      aria-autocomplete="list"
+                      aria-labelledby="ds-combobox-label"
+                      value="台北"
+                    />
+                    <button type="button" class="combobox__toggle" aria-label="展開建議" aria-expanded="true">▾</button>
+                    <ul class="combobox__listbox" id="ds-combobox-list" role="listbox" aria-labelledby="ds-combobox-label">
+                      <li role="presentation">
+                        <button type="button" class="combobox__option" role="option" aria-selected="true">台北</button>
+                      </li>
+                      <li role="presentation">
+                        <button type="button" class="combobox__option" role="option">台中</button>
+                      </li>
+                      <li role="presentation">
+                        <button type="button" class="combobox__option" role="option">高雄</button>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <ul class="combobox__listbox" id="ds-combobox-list" role="listbox" aria-labelledby="ds-combobox-label">
-                  <li role="presentation">
-                    <button type="button" class="combobox__option" role="option" aria-selected="true">台北</button>
-                  </li>
-                  <li role="presentation">
-                    <button type="button" class="combobox__option" role="option">台中</button>
-                  </li>
-                  <li role="presentation">
-                    <button type="button" class="combobox__option" role="option">高雄</button>
-                  </li>
-                </ul>
               </div>
               <p class="ds-doc-card__desc mt-psy-8">多選 tag 模式（已選項目 + 輸入框）：</p>
-              <div class="combobox max-w-lg">
-                <span class="form-label form-label--on-light" id="ds-combobox-tags-label">標籤</span>
-                <ul class="combobox__tags" aria-labelledby="ds-combobox-tags-label">
+              <div class="ds-combobox-demo ds-combobox-demo--tags">
+                <div class="combobox max-w-lg">
+                  <span class="form-label form-label--on-light" id="ds-combobox-tags-label">標籤</span>
+                  <ul class="combobox__tags" aria-labelledby="ds-combobox-tags-label">
                   <li class="combobox__tag">
                     音樂
                     <button type="button" class="combobox__tag-remove" aria-label="移除標籤 音樂">×</button>
@@ -1910,6 +1955,7 @@ import "mimosa-design-system/tailwind.css";
                   placeholder="新增標籤…"
                   aria-labelledby="ds-combobox-tags-label"
                 />
+                </div>
               </div>
               <ul class="ds-prose-list mt-psy-7">
                 <li>輸入使用 <code>role="combobox"</code>、<code>aria-autocomplete</code>、<code>aria-expanded</code>、<code>aria-controls</code>。</li>
@@ -2020,13 +2066,14 @@ import "mimosa-design-system/tailwind.css";
               </div>
             </article>
 
-            <article class="ds-doc-card" id="extended-stepper">
+            <article class="ds-doc-card ds-doc-card--demo" id="extended-stepper">
               <h3 class="ds-doc-card__title">Stepper · 步驟指示</h3>
               <p class="ds-doc-card__desc">
                 多步驟流程進度；見 <code>data-display.css</code>。狀態 token：<code>--psy-step-*</code>。目前步驟用
                 <code>aria-current="step"</code>；已完成用 <code>data-step-state="completed"</code>。進度變更建議搭配
                 <code>aria-live="polite"</code> 區域公告。
               </p>
+              <div class="ds-stepper-demo">
               <nav class="stepper max-w-3xl" aria-label="註冊進度">
                 <ol class="stepper__list">
                   <li class="stepper__item" data-step-state="completed">
@@ -2043,7 +2090,9 @@ import "mimosa-design-system/tailwind.css";
                   </li>
                 </ol>
               </nav>
+              </div>
               <p class="ds-doc-card__desc mt-psy-8">垂直佈局 <code>stepper--vertical</code>：</p>
+              <div class="ds-stepper-demo">
               <nav class="stepper stepper--vertical max-w-md" aria-label="結帳進度">
                 <ol class="stepper__list">
                   <li class="stepper__item" data-step-state="completed">
@@ -2060,6 +2109,7 @@ import "mimosa-design-system/tailwind.css";
                   </li>
                 </ol>
               </nav>
+              </div>
               <ul class="ds-prose-list mt-psy-7">
                 <li>使用 <code>&lt;nav&gt;</code> + <code>&lt;ol&gt;</code>；目前步驟 <code>aria-current="step"</code>，已完成 <code>data-step-state="completed"</code>。</li>
                 <li>步驟變更時以 <code>aria-live="polite"</code> 區域公告進度（host JS）。</li>
@@ -2067,12 +2117,15 @@ import "mimosa-design-system/tailwind.css";
               </ul>
             </article>
 
-            <article class="ds-doc-card" id="extended-carousel">
+            <article class="ds-doc-card ds-doc-card--demo" id="extended-carousel">
               <h3 class="ds-doc-card__title">Carousel · Content slider</h3>
               <p class="ds-doc-card__desc">
                 僅提供佈局與樣式（<code>scroll-snap</code> + indicator）；滑動與焦點管理由 host JS 實作。
-                若自動播放，須提供暫停控制（WCAG 2.2.2）。見 <code>data-display.css</code>、<code>--psy-carousel-*</code>。
+                若自動播放，須提供暫停控制（WCAG 2.2.2）。投影片底為 <code>--psy-carousel-slide-bg</code>（
+                <code>#f5faf0</code> 中性淺綠；勿用 <code>--psy-gradient-card-wash</code>，易偏粉紫）。見
+                <code>data-display.css</code>。
               </p>
+              <div class="ds-carousel-demo">
               <section class="carousel max-w-2xl" aria-roledescription="carousel" aria-label="精選活動">
                 <div class="carousel__viewport" tabindex="0">
                   <article class="carousel__slide" aria-label="1 / 3">
@@ -2099,6 +2152,7 @@ import "mimosa-design-system/tailwind.css";
                   <button type="button" class="carousel__pause psy-brutal psy-btn psy-btn--ghost">暫停自動播放</button>
                 </div>
               </section>
+              </div>
               <ul class="ds-prose-list mt-psy-7">
                 <li>容器 <code>aria-roledescription="carousel"</code>；投影片以 <code>aria-label</code> 或標題區分。</li>
                 <li>自動播放須提供暫停（WCAG 2.2.2）；尊重 <code>prefers-reduced-motion</code>（CSS 已關閉 smooth scroll）。</li>
