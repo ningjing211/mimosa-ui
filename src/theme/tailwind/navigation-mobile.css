@@ -1,6 +1,11 @@
 /**
  * Mobile / responsive navigation — hamburger, mega menu, bottom nav.
  * Open state: host toggles [hidden] or .is-open on panel.
+ *
+ * Bottom nav 選取態（樣式在此；切換由 host）：
+ * - 僅一項同時具 .is-active 或 aria-current="page"
+ * - 路由／SPA：導航時移動 class 與 aria-current，勿留多個 active
+ * - 文件展示：data-bottom-nav-demo + preventDefault（勿用裸 href="#"，會跳頁首）
  */
 @layer components {
   .nav-hamburger {
@@ -144,7 +149,8 @@
     box-shadow: 0 -4px 0 var(--psy-color-base);
   }
 
-  .bottom-nav__item {
+  a.bottom-nav__item,
+  button.bottom-nav__item {
     flex: 1 1 0;
     display: flex;
     flex-direction: column;
@@ -154,11 +160,18 @@
     min-height: 3.25rem;
     padding: var(--psy-space-2);
     border: 2px solid transparent;
+    font-family: inherit;
     font-size: var(--psy-font-size-caption);
     font-weight: 700;
     text-decoration: none;
     color: var(--psy-text-muted-on-light);
     background: transparent;
+    cursor: pointer;
+  }
+
+  button.bottom-nav__item {
+    appearance: none;
+    width: auto;
   }
 
   .bottom-nav__item.is-active,

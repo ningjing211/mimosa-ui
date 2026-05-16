@@ -32,7 +32,7 @@
     max-width: var(--psy-modal-max-width);
     max-height: var(--psy-modal-max-height);
     overflow: hidden;
-    background: var(--psy-gradient-card-wash), var(--psy-overlay-surface);
+    background: var(--psy-gradient-card-surface), var(--psy-overlay-surface);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
     color: var(--psy-overlay-fg);
@@ -157,7 +157,7 @@
     max-width: 100%;
     height: 100%;
     overflow: hidden;
-    background: var(--psy-gradient-card-wash), var(--psy-overlay-surface);
+    background: var(--psy-gradient-card-surface), var(--psy-overlay-surface);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
     color: var(--psy-overlay-fg);

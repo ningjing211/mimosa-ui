@@ -2,7 +2,7 @@
  * Cards & wells — layout shells aligned with Tailwind UI Cards.
  * https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards
  *
- * Surfaces use light washed tokens (--psy-surface-card*) with dark foreground
+ * Surfaces use light purple elevated tokens (--psy-surface-card*) with dark foreground
  * (--psy-text-on-light), same pattern as .data-table / .accordion (not page-purple panels).
  */
 @layer components {
@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: var(--psy-gradient-card-wash), var(--psy-surface-card);
+    background: var(--psy-gradient-card-surface), var(--psy-surface-card);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
     color: var(--psy-text-on-light);
@@ -64,6 +64,7 @@
     background: var(--psy-surface-card);
   }
 
+  /* 內文／頁尾次區：更淺淡紫（--psy-surface-card-muted） */
   .card--body-muted .card__body {
     background: var(--psy-surface-card-muted);
   }

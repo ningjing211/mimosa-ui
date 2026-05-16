@@ -144,10 +144,12 @@
   --psy-surface-panel: var(--psy-surface-container-lowest);
   --psy-surface-panel-soft: var(--psy-surface-container);
   --psy-surface-panel-prominent: var(--psy-surface-container-highest);
-  /* Card / well — 淺色 elevated 區塊（對齊 table、accordion；可置於深紫頁面上） */
-  --psy-surface-card: color-mix(in srgb, var(--psy-primitive-white) 94%, var(--psy-color-bg-panel-muted));
-  --psy-surface-card-muted: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-secondary-cyan));
-  --psy-surface-card-header: color-mix(in srgb, var(--psy-primitive-white) 90%, var(--psy-color-secondary-amber));
+  /* Card / well — 淺色 elevated 區塊（淡紫底；對齊 table、accordion；可置於深紫頁面上） */
+  --psy-surface-card: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-bg-panel-muted));
+  /* 卡片內文／頁尾次區：更淺淡紫（勿混 cyan，易呈藍底） */
+  --psy-surface-card-muted: color-mix(in srgb, var(--psy-primitive-white) 94%, var(--psy-color-bg-panel-muted));
+  /* 卡片頁首帶：略深淡紫（勿混 amber，易呈黃底） */
+  --psy-surface-card-header: color-mix(in srgb, var(--psy-primitive-white) 82%, var(--psy-color-bg-panel-muted));
   --psy-surface-well: color-mix(in srgb, var(--psy-primitive-white) 84%, var(--psy-color-bg-panel-muted));
   --psy-surface-well-on-muted: color-mix(in srgb, var(--psy-primitive-white) 78%, var(--psy-color-bg-panel-muted));
   --psy-surface-hero-epic: color-mix(in srgb, #fcffdf 10%, #639d77);
@@ -181,6 +183,13 @@
     color-mix(in srgb, var(--psy-color-secondary-magenta) 40%, transparent),
     color-mix(in srgb, var(--psy-color-secondary-lime) 28%, transparent)
   );
+  /* .card 預設底：淡紫 wash（勿用洋紅／橘色 card-wash，易偏粉） */
+  --psy-gradient-card-surface: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--psy-color-primary-light) 18%, transparent),
+    color-mix(in srgb, var(--psy-color-primary) 12%, transparent)
+  );
+  /* 裝飾用（mega menu、file-upload hover 等）；基本 .card 請用 --psy-gradient-card-surface */
   --psy-gradient-card-wash: linear-gradient(
     135deg,
     color-mix(in srgb, var(--psy-color-secondary-orange) 10%, transparent),
@@ -204,11 +213,13 @@
     var(--psy-color-secondary-lime)
   );
 
-  /* 主要行為＝萊姆綠（綠燈／確認感）；次要行為＝琥珀黃 */
+  /* 主要行為＝萊姆綠（送出／確認／通過）；次要＝琥珀；危險＝洋紅（刪除／不可逆） */
   --psy-action-primary-bg: var(--psy-color-secondary-lime);
   --psy-action-primary-text: var(--psy-text-on-dark);
   --psy-action-secondary-bg: var(--psy-color-secondary-amber);
   --psy-action-secondary-text: var(--psy-text-on-dark);
+  --psy-action-danger-bg: var(--psy-color-secondary-magenta);
+  --psy-action-danger-text: var(--psy-primitive-white);
 
   --psy-chip-bg: var(--psy-color-secondary-lime);
   --psy-chip-text: var(--psy-text-on-dark);
@@ -250,6 +261,8 @@
   --psy-footer-text: var(--psy-color-base);
   --psy-footer-muted: color-mix(in srgb, var(--psy-color-base) 70%, transparent);
   --psy-footer-link: color-mix(in srgb, var(--psy-color-base) 92%, var(--psy-color-secondary-magenta));
+  --psy-footer-section-padding: var(--psy-space-7);
+  --psy-footer-top-margin: var(--psy-space-6);
 
   --psy-feed-row-1-bg: var(--psy-color-tertiary-row-feed-1);
   --psy-feed-row-2-bg: var(--psy-color-tertiary-row-feed-2);
@@ -375,6 +388,10 @@
   --psy-button-secondary-bg-hover: color-mix(in srgb, var(--psy-action-secondary-bg) 88%, var(--psy-color-base));
   --psy-button-secondary-bg-active: color-mix(in srgb, var(--psy-action-secondary-bg) 78%, var(--psy-color-base));
 
+  --psy-button-danger-bg: var(--psy-action-danger-bg);
+  --psy-button-danger-bg-hover: color-mix(in srgb, var(--psy-action-danger-bg) 88%, var(--psy-color-base));
+  --psy-button-danger-bg-active: color-mix(in srgb, var(--psy-action-danger-bg) 78%, var(--psy-color-base));
+
   --psy-button-disabled-bg: color-mix(in srgb, var(--psy-color-bg-panel-muted) 55%, var(--psy-color-base));
   --psy-button-disabled-text: var(--psy-text-secondary);
   --psy-button-ghost-bg: transparent;
@@ -427,6 +444,7 @@
   --psy-otp-cell-size: 2.75rem;
   --psy-nav-hamburger-size: 2.75rem;
   --psy-mobile-nav-width: 20rem;
+  /* bottom-nav：選取態見 .bottom-nav__item.is-active／[aria-current="page"]；切換邏輯由 host（非 CSS） */
   --psy-line-height-ui-tight: 1.35;
   --psy-line-height-ui-normal: 1.45;
   --psy-line-height-ui-relaxed: 1.6;
@@ -626,7 +644,7 @@
   --psy-tabs-bg: var(--psy-surface-card-muted);
   --psy-tab-fg: var(--psy-text-on-light);
   --psy-tab-fg-muted: var(--psy-text-muted-on-light);
-  /* Elevated 淺底上的通用 hover（中性；勿混 surface-card-muted／cyan） */
+  /* Elevated 淺底上的通用 hover（中性淡紫；勿混 secondary 螢光色當底） */
   --psy-elevated-hover-bg: color-mix(in srgb, var(--psy-primitive-white) 93%, var(--psy-surface-card));
   --psy-elevated-hover-fg: var(--psy-text-on-light);
   --psy-elevated-hover-border: var(--psy-color-base);
@@ -734,7 +752,7 @@
    * | 當日已讀       | （預設，無修飾類）             | --psy-notification-read-bg（中性 card） |
    * | 昨日以前／較舊 | .notification-list__item--older  | --psy-notification-older-bg（淺橘） |
    *
-   * 禁止：--psy-surface-card-muted（cyan）、洋紅／粉紫 wash、--psy-gradient-card-wash（易像錯誤／info）
+   * 禁止：secondary 螢光色（cyan 等）當列底、洋紅 wash、--psy-gradient-card-wash（易像錯誤／info）
    * 「匯出完成」等已讀但非錯誤 → 當日用 read；時間戳昨日以前加 --older，勿用粉紅底。
    */
   --psy-notification-unread-bg: var(--psy-primitive-notification-unread-bg);
@@ -761,7 +779,11 @@
   --psy-avatar-status-offline: color-mix(in srgb, var(--psy-color-base) 35%, var(--psy-primitive-white));
   --psy-avatar-status-busy: var(--psy-color-secondary-magenta);
 
-  /* Range / slider（淺底表單；track 用 card 系 neutral） */
+  /*
+   * Range / slider（淺底表單；track 用 card 系 neutral）
+   * - 單軸：樣式 + host oninput 更新 .range-field__value
+   * - 雙端 .range-dual：兩支 input + host JS（min≤max、同步顯示）；見 forms-extended.css
+   */
   --psy-range-track-bg: color-mix(in srgb, var(--psy-color-base) 12%, var(--psy-surface-card));
   --psy-range-fill-bg: var(--psy-color-secondary-lime);
   --psy-range-thumb-bg: var(--psy-color-secondary-lime);

@@ -1,6 +1,13 @@
 /**
  * Extended form controls — range slider, file upload.
  * Pair with .form-label / .form-field; layout via Tailwind utilities.
+ *
+ * Range 行為（樣式在此；邏輯由 host）：
+ * - 單軸：一個 input.range + .range-field__value；oninput 寫入顯示即可。
+ * - 雙端：.range-dual 內兩支 input（data-range-min / data-range-max），host JS 須
+ *   1) 同步顯示 .range-field__value（建議 aria-live="polite"）
+ *   2) 約束 min ≤ max（拖過對側時推高／壓低另一支）
+ *   文件站見 design-system.html [data-range-dual] 腳本範例。
  */
 @layer components {
   .range-field {
@@ -128,6 +135,7 @@
     line-height: var(--psy-line-height-body);
   }
 
+  /* 雙端區間：兩軌堆疊；值同步非 CSS 能力，必須 host JS */
   .range-dual {
     display: flex;
     flex-direction: column;
@@ -137,6 +145,10 @@
   .range-dual__inputs {
     display: grid;
     gap: var(--psy-space-5);
+  }
+
+  .range-dual__inputs .range {
+    width: 100%;
   }
 
   .range-ticks {

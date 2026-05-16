@@ -110,8 +110,16 @@
   }
 
   .psy-flow-btn-danger {
-    background: var(--psy-alert-error-accent);
-    color: var(--psy-primitive-white);
+    background: var(--psy-button-danger-bg);
+    color: var(--psy-action-danger-text);
+  }
+
+  .psy-flow-btn-danger:hover {
+    background: var(--psy-button-danger-bg-hover);
+  }
+
+  .psy-flow-btn-danger:active {
+    background: var(--psy-button-danger-bg-active);
   }
 
   .psy-flow-btn-social {

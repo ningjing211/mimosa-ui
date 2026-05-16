@@ -171,7 +171,7 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                   <ul class="ds-sidenav__sub">
                     <li><a href="#cards-basic">基本卡片</a></li>
                     <li><a href="#cards-header-footer">頁首／頁尾</a></li>
-                    <li><a href="#cards-muted">灰底區塊</a></li>
+                    <li><a href="#cards-muted">淡紫次區塊</a></li>
                     <li><a href="#cards-well">Well</a></li>
                     <li><a href="#cards-implementation">實作說明</a></li>
                   </ul>
@@ -874,8 +874,9 @@ import "mimosa-design-system/tailwind.css";
               <h3 class="ds-doc-card__title">語意漸層（Semantic gradients）</h3>
               <p class="ds-doc-card__desc">
                 導覽、hero、面板洗色、日期塊與頭像等區塊用；數值定義於 <code>tokens.css</code>。
-                <code>--psy-gradient-card-wash</code> 含洋紅／橘色，適合一般卡片；<strong>Carousel 投影片</strong>請用
-                <code>--psy-carousel-slide-bg</code>（<code>#f5faf0</code>），勿疊 card-wash。
+                <strong>基本卡片</strong>（<code>.card</code>）用 <code>--psy-gradient-card-surface</code> + 淡紫
+                <code>--psy-surface-card</code>；<code>--psy-gradient-card-wash</code>（洋紅／橘色）僅供 mega menu、上傳區等裝飾。
+                <strong>Carousel 投影片</strong>請用 <code>--psy-carousel-slide-bg</code>（<code>#f5faf0</code>），勿疊 card-wash。
                 <strong>通知面板</strong>列底色用 <code>--psy-notification-*</code>（淺綠／中性／淺橘），勿用 card-wash 或 cyan／洋紅底。
               </p>
               <div class="ds-gradient-grid">
@@ -1246,8 +1247,9 @@ import "mimosa-design-system/tailwind.css";
                 <code>.psy-btn</code>、<code>.psy-brutal</code>、<code>.psy-btn--primary</code>；文件示例另加
                 <code>ds-btn</code>／<code>ds-btn--demo-*</code> 補足靜態狀態展示。
               </p>
-              <pre class="ds-code-block"><code>&lt;button type="button" class="psy-brutal psy-btn psy-btn--primary"&gt;主要&lt;/button&gt;
-&lt;button type="button" class="psy-brutal psy-btn"&gt;次要&lt;/button&gt;
+              <pre class="ds-code-block"><code>&lt;button type="button" class="psy-brutal psy-btn psy-btn--primary"&gt;送出／確認&lt;/button&gt;
+&lt;button type="button" class="psy-brutal psy-btn psy-btn--danger"&gt;刪除&lt;/button&gt;
+&lt;button type="button" class="psy-brutal psy-btn"&gt;取消&lt;/button&gt;
 &lt;a href="/path" class="psy-brutal psy-btn psy-btn--primary"&gt;連結長得像按鈕&lt;/a&gt;</code></pre>
             </article>
 
@@ -1292,7 +1294,8 @@ import "mimosa-design-system/tailwind.css";
             <p class="ds-section__lead">
               將儀表板、設定頁或表單拆成較小的內容區塊。結構對齊
               <a href="https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards">Tailwind UI — Cards</a>：
-              外層 <code>.card</code> 負責 flex 欄式版面與 overflow；底色為洗白 elevated surface（<code>--psy-surface-card*</code>），內文請用
+              外層 <code>.card</code> 負責 flex 欄式版面與 overflow；底色為<strong>淡紫</strong> elevated surface（
+              <code>--psy-gradient-card-surface</code> + <code>--psy-surface-card</code>），內文請用
               <code>--psy-text-on-light</code>／<code>--psy-text-muted-on-light</code>，勿與深紫頁面的 <code>--psy-text-primary</code> 混用。粗框／硬陰影見
               <code>tailwind/cards.css</code>。版面間距、響應式欄位請用 Tailwind utility（如
               <code>grid gap-psy-6</code>、<code>max-w-psy-prose</code>）。
@@ -1300,7 +1303,10 @@ import "mimosa-design-system/tailwind.css";
 
             <article class="ds-doc-card" id="cards-basic">
               <h3 class="ds-doc-card__title">基本卡片 · Basic card</h3>
-              <p class="ds-doc-card__desc">單一 <code>.card__body</code>；適合圖表、表格或短表單容器。</p>
+              <p class="ds-doc-card__desc">
+                單一 <code>.card__body</code>；適合圖表、表格或短表單容器。預設底為 Mimosa 淡紫（
+                <code>--psy-surface-card</code>），勿疊洋紅／橘色 <code>--psy-gradient-card-wash</code>。
+              </p>
               <div class="ds-card-showcase max-w-xl">
                 <article class="card">
                   <div class="card__body">
@@ -1349,23 +1355,30 @@ import "mimosa-design-system/tailwind.css";
             </article>
 
             <article class="ds-doc-card" id="cards-muted">
-              <h3 class="ds-doc-card__title">灰底區塊 · Muted body / footer</h3>
+              <h3 class="ds-doc-card__title">淡紫次區塊 · Muted body / footer</h3>
               <p class="ds-doc-card__desc">
-                修飾 class <code>card--body-muted</code>、<code>card--footer-muted</code> 對應 Tailwind UI 的 gray body／gray footer。
+                修飾 class <code>card--body-muted</code>、<code>card--footer-muted</code> 對應 Tailwind UI 的 gray body／gray
+                footer 概念，但 Mimosa 以<strong>淡紫階</strong>區分（<code>--psy-surface-card-header</code> 略深、
+                <code>--psy-surface-card-muted</code> 更淺），勿混 cyan／amber 等螢光 secondary 當底。
               </p>
               <div class="ds-card-showcase max-w-xl flex flex-col gap-psy-7">
                 <article class="card card--body-muted">
                   <header class="card__header">
-                    <h4 class="card__title">Gray body</h4>
+                    <h4 class="card__title">Muted body</h4>
                   </header>
                   <div class="card__body">
-                    <p style="margin: 0">內文區使用較淺的 <code>--psy-surface-card-muted</code>，與頁首區塊對比。</p>
+                    <p style="margin: 0">
+                      頁首 <code>--psy-surface-card-header</code>（略深淡紫）；內文
+                      <code>--psy-surface-card-muted</code>（更淺淡紫），與外層 <code>--psy-surface-card</code> 對比。
+                    </p>
                   </div>
                 </article>
                 <article class="card card--footer-muted">
                   <div class="card__body">
-                    <h4 class="card__title">Gray footer</h4>
-                    <p style="margin: var(--psy-space-3) 0 0">頁尾區塊採 muted 背景，適合次要動作列。</p>
+                    <h4 class="card__title">Muted footer</h4>
+                    <p style="margin: var(--psy-space-3) 0 0">
+                      主內文為預設淡紫底；頁尾採 <code>--psy-surface-card-muted</code>，適合次要動作列。
+                    </p>
                   </div>
                   <footer class="card__footer">
                     <button type="button" class="psy-brutal psy-btn">關閉</button>
@@ -1431,6 +1444,11 @@ import "mimosa-design-system/tailwind.css";
 
             <article class="ds-doc-card" id="overlays-modal">
               <h3 class="ds-doc-card__title">對話框 · Modal</h3>
+              <p class="ds-doc-card__desc">
+                破壞性確認（刪除等）的主動作請用 <code>psy-btn--danger</code>（洋紅／粉紅語意，對齊
+                <code>--psy-alert-error-accent</code>）；<strong>勿</strong>用 <code>psy-btn--primary</code>（萊姆綠＝送出／通過）。
+                取消維持預設 <code>psy-btn</code>（琥珀次要）即可。
+              </p>
               <div class="ds-overlay-stage" aria-label="Modal 靜態預覽">
                 <div class="modal" role="dialog" aria-modal="true" aria-labelledby="ds-modal-title">
                   <div class="modal__backdrop" aria-hidden="true"></div>
@@ -1444,7 +1462,7 @@ import "mimosa-design-system/tailwind.css";
                     </div>
                     <footer class="modal__footer">
                       <button type="button" class="psy-brutal psy-btn">取消</button>
-                      <button type="button" class="psy-brutal psy-btn psy-btn--primary">刪除</button>
+                      <button type="button" class="psy-brutal psy-btn psy-btn--danger">刪除</button>
                     </footer>
                   </div>
                 </div>
@@ -1726,7 +1744,7 @@ import "mimosa-design-system/tailwind.css";
               <h3 class="ds-doc-card__title">Dropdown</h3>
               <p class="ds-doc-card__desc">
                 選單項 hover 使用 <code>--psy-elevated-hover-*</code>（中性淺底 + 黑框／硬陰影，與 tabs 相同）；基底為
-                <code>--psy-surface-card</code>，<strong>勿</strong>混 <code>--psy-surface-card-muted</code>（含 cyan）。刪除項加
+                <code>--psy-surface-card</code>，<strong>勿</strong>混螢光 secondary 色當選單底。刪除項加
                 <code>dropdown__item--danger</code>。
               </p>
               <div class="ds-dropdown-demo">
@@ -1906,7 +1924,9 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="extended-range">
               <h3 class="ds-doc-card__title">Range · Slider</h3>
               <p class="ds-doc-card__desc">
-                原生 <code>input[type="range"]</code> + <code>.range</code>；track／thumb 由 <code>--psy-range-*</code> token 控制。
+                原生 <code>input[type="range"]</code> + <code>.range</code>；track／thumb 由 <code>--psy-range-*</code> token 控制。單軸可
+                <code>oninput</code> 更新 <code>.range-field__value</code>；<strong>雙端區間</strong>需 host JS 同步兩支
+                <code>input</code>（下限不可大於上限）並寫入顯示區，見下方 <code>data-range-dual</code> 範例。
               </p>
               <div class="range-field max-w-md">
                 <div class="range-field__header">
@@ -1924,14 +1944,37 @@ import "mimosa-design-system/tailwind.css";
                 />
               </div>
               <p class="ds-doc-card__desc mt-psy-7">雙端區間（兩支 <code>.range</code>）+ 刻度 <code>.range-ticks</code>：</p>
-              <div class="range-dual range-field max-w-md">
+              <div
+                class="range-dual range-field max-w-md"
+                id="ds-range-dual"
+                data-range-dual
+                data-value-prefix="$"
+              >
                 <div class="range-field__header">
                   <span class="form-label">預算區間</span>
-                  <span class="range-field__value">$20 – $80</span>
+                  <span class="range-field__value" id="ds-range-dual-value" aria-live="polite">$20 – $80</span>
                 </div>
                 <div class="range-dual__inputs">
-                  <input class="range" type="range" min="0" max="100" value="20" aria-label="下限" />
-                  <input class="range" type="range" min="0" max="100" value="80" aria-label="上限" />
+                  <input
+                    class="range"
+                    id="ds-range-dual-min"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="20"
+                    aria-label="下限"
+                    data-range-min
+                  />
+                  <input
+                    class="range"
+                    id="ds-range-dual-max"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="80"
+                    aria-label="上限"
+                    data-range-max
+                  />
                 </div>
                 <ol class="range-ticks" aria-hidden="true">
                   <li class="range-ticks__mark">$0</li>
@@ -2411,6 +2454,12 @@ import "mimosa-design-system/tailwind.css";
 
             <article class="ds-doc-card" id="variants-nav">
               <h3 class="ds-doc-card__title">Navigation · Mobile</h3>
+              <p class="ds-doc-card__desc">
+                底部導覽 <code>.bottom-nav</code>：同一時間僅一項具 <code>.is-active</code> 或
+                <code>aria-current="page"</code>（由 host／router 切換）。文件展示用
+                <code>data-bottom-nav-demo</code> 腳本交換選取態；<strong>勿</strong>在展示用連結使用裸
+                <code>href="#"</code>（會跳到頁首）。
+              </p>
               <div class="flex flex-wrap items-start gap-psy-7">
                 <button type="button" class="nav-hamburger" aria-label="開啟選單">
                   <span class="nav-hamburger__bar"></span>
@@ -2436,11 +2485,24 @@ import "mimosa-design-system/tailwind.css";
                   </div>
                 </nav>
               </div>
-              <nav class="bottom-nav mt-psy-7 max-w-lg relative" aria-label="行動底部導覽" style="position: relative; inset: auto">
-                <a href="#" class="bottom-nav__item is-active" aria-current="page"><span class="bottom-nav__icon" aria-hidden="true">⌂</span>首頁</a>
-                <a href="#" class="bottom-nav__item"><span class="bottom-nav__icon" aria-hidden="true">◎</span>探索</a>
-                <a href="#" class="bottom-nav__item"><span class="bottom-nav__icon" aria-hidden="true">✉</span>訊息</a>
-                <a href="#" class="bottom-nav__item"><span class="bottom-nav__icon" aria-hidden="true">☺</span>我的</a>
+              <nav
+                class="bottom-nav mt-psy-7 max-w-lg relative"
+                aria-label="行動底部導覽"
+                data-bottom-nav-demo
+                style="position: relative; inset: auto"
+              >
+                <a href="#variants-nav" class="bottom-nav__item is-active" aria-current="page" data-bottom-nav-item
+                  ><span class="bottom-nav__icon" aria-hidden="true">⌂</span>首頁</a
+                >
+                <a href="#variants-nav" class="bottom-nav__item" data-bottom-nav-item
+                  ><span class="bottom-nav__icon" aria-hidden="true">◎</span>探索</a
+                >
+                <a href="#variants-nav" class="bottom-nav__item" data-bottom-nav-item
+                  ><span class="bottom-nav__icon" aria-hidden="true">✉</span>訊息</a
+                >
+                <a href="#variants-nav" class="bottom-nav__item" data-bottom-nav-item
+                  ><span class="bottom-nav__icon" aria-hidden="true">☺</span>我的</a
+                >
               </nav>
             </article>
 
@@ -3418,7 +3480,7 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="footers-big">
               <h3 class="ds-doc-card__title">Big footer</h3>
               <footer class="ds-site-footer ds-site-footer--big site-footer site-footer--big" role="contentinfo">
-                <a class="ds-site-footer__top site-footer__top psy-brutal psy-chip psy-focus-ring" href="#overview">回到頂部 ↑</a>
+                <a class="ds-site-footer__top site-footer__top psy-focus-ring" href="#overview">回到頂部 ↑</a>
                 <div class="ds-site-footer__primary site-footer__primary">
                   <nav class="ds-site-footer__grid site-footer__grid" aria-label="頁尾主連結">
                     <ul><li><strong>探索</strong></li><li><a href="#">熱門活動</a></li><li><a href="#">附近場館</a></li><li><a href="#">音樂類型</a></li></ul>
@@ -3443,7 +3505,7 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="footers-medium">
               <h3 class="ds-doc-card__title">Medium footer</h3>
               <footer class="ds-site-footer ds-site-footer--medium site-footer site-footer--medium" role="contentinfo">
-                <a class="ds-site-footer__top site-footer__top psy-brutal psy-chip psy-focus-ring" href="#overview">回到頂部 ↑</a>
+                <a class="ds-site-footer__top site-footer__top psy-focus-ring" href="#overview">回到頂部 ↑</a>
                 <nav class="ds-site-footer__links site-footer__links" aria-label="頁尾導覽">
                   <a href="#">關於我們</a><a href="#">隱私</a><a href="#">條款</a><a href="#">合作提案</a><a href="#">聯絡我們</a>
                 </nav>
@@ -3457,7 +3519,7 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="footers-slim">
               <h3 class="ds-doc-card__title">Slim footer</h3>
               <footer class="ds-site-footer ds-site-footer--slim site-footer site-footer--slim" role="contentinfo">
-                <a class="ds-site-footer__top site-footer__top psy-brutal psy-chip psy-focus-ring" href="#overview">回到頂部 ↑</a>
+                <a class="ds-site-footer__top site-footer__top psy-focus-ring" href="#overview">回到頂部 ↑</a>
                 <div class="ds-site-footer__row site-footer__row">
                   <nav class="ds-site-footer__links site-footer__links" aria-label="頁尾導覽">
                     <a href="#">隱私</a><a href="#">條款</a><a href="#">聯絡</a>
@@ -4075,6 +4137,62 @@ import "mimosa-design-system/tailwind.css";
         headerSection.querySelectorAll("form").forEach(function (form) {
           form.addEventListener("submit", function (e) {
             e.preventDefault();
+          });
+        });
+      })();
+
+      (function () {
+        document.querySelectorAll("[data-range-dual]").forEach(function (root) {
+          var minInput = root.querySelector("[data-range-min]");
+          var maxInput = root.querySelector("[data-range-max]");
+          var valueEl = root.querySelector(".range-field__value");
+          if (!minInput || !maxInput || !valueEl) return;
+
+          var prefix = root.getAttribute("data-value-prefix") || "";
+          var suffix = root.getAttribute("data-value-suffix") || "";
+
+          function format(n) {
+            return prefix + n + suffix;
+          }
+
+          function sync(changed) {
+            var lo = Number(minInput.value);
+            var hi = Number(maxInput.value);
+            if (lo > hi) {
+              if (changed === minInput) {
+                maxInput.value = String(lo);
+                hi = lo;
+              } else {
+                minInput.value = String(hi);
+                lo = hi;
+              }
+            }
+            valueEl.textContent = format(lo) + " – " + format(hi);
+          }
+
+          minInput.addEventListener("input", function () {
+            sync(minInput);
+          });
+          maxInput.addEventListener("input", function () {
+            sync(maxInput);
+          });
+          sync();
+        });
+      })();
+
+      (function () {
+        document.querySelectorAll("[data-bottom-nav-demo]").forEach(function (nav) {
+          var items = nav.querySelectorAll("[data-bottom-nav-item], .bottom-nav__item");
+          items.forEach(function (item) {
+            item.addEventListener("click", function (e) {
+              e.preventDefault();
+              items.forEach(function (el) {
+                el.classList.remove("is-active");
+                el.removeAttribute("aria-current");
+              });
+              item.classList.add("is-active");
+              item.setAttribute("aria-current", "page");
+            });
           });
         });
       })();

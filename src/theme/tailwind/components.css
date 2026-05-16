@@ -185,6 +185,19 @@
     background: var(--psy-button-primary-bg-active);
   }
 
+  .psy-btn--danger {
+    background: var(--psy-button-danger-bg);
+    color: var(--psy-action-danger-text);
+  }
+
+  .psy-btn--danger:hover {
+    background: var(--psy-button-danger-bg-hover);
+  }
+
+  .psy-btn--danger:active {
+    background: var(--psy-button-danger-bg-active);
+  }
+
   .psy-btn:disabled {
     opacity: var(--psy-state-disabled-opacity);
     cursor: not-allowed;

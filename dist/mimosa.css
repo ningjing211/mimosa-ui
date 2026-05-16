@@ -134,15 +134,15 @@
   --psy-surface-panel-prominent: var(--psy-surface-container-highest);
   --psy-surface-card: var(--psy-primitive-white);
   @supports (color: color-mix(in lab, red, red)) {
-    --psy-surface-card: color-mix(in srgb, var(--psy-primitive-white) 94%, var(--psy-color-bg-panel-muted));
+    --psy-surface-card: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-bg-panel-muted));
   }
   --psy-surface-card-muted: var(--psy-primitive-white);
   @supports (color: color-mix(in lab, red, red)) {
-    --psy-surface-card-muted: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-secondary-cyan));
+    --psy-surface-card-muted: color-mix(in srgb, var(--psy-primitive-white) 94%, var(--psy-color-bg-panel-muted));
   }
   --psy-surface-card-header: var(--psy-primitive-white);
   @supports (color: color-mix(in lab, red, red)) {
-    --psy-surface-card-header: color-mix(in srgb, var(--psy-primitive-white) 90%, var(--psy-color-secondary-amber));
+    --psy-surface-card-header: color-mix(in srgb, var(--psy-primitive-white) 82%, var(--psy-color-bg-panel-muted));
   }
   --psy-surface-well: var(--psy-primitive-white);
   @supports (color: color-mix(in lab, red, red)) {
@@ -193,6 +193,18 @@
     color-mix(in srgb, var(--psy-color-secondary-lime) 28%, transparent)
   );
   }
+  --psy-gradient-card-surface: linear-gradient(
+    135deg,
+    var(--psy-color-primary-light),
+    var(--psy-color-primary)
+  );
+  @supports (color: color-mix(in lab, red, red)) {
+    --psy-gradient-card-surface: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--psy-color-primary-light) 18%, transparent),
+    color-mix(in srgb, var(--psy-color-primary) 12%, transparent)
+  );
+  }
   --psy-gradient-card-wash: linear-gradient(
     135deg,
     var(--psy-color-secondary-orange),
@@ -234,6 +246,8 @@
   --psy-action-primary-text: var(--psy-text-on-dark);
   --psy-action-secondary-bg: var(--psy-color-secondary-amber);
   --psy-action-secondary-text: var(--psy-text-on-dark);
+  --psy-action-danger-bg: var(--psy-color-secondary-magenta);
+  --psy-action-danger-text: var(--psy-primitive-white);
   --psy-chip-bg: var(--psy-color-secondary-lime);
   --psy-chip-text: var(--psy-text-on-dark);
   --psy-badge-bg: var(--psy-color-secondary-amber);
@@ -305,6 +319,8 @@
   @supports (color: color-mix(in lab, red, red)) {
     --psy-footer-link: color-mix(in srgb, var(--psy-color-base) 92%, var(--psy-color-secondary-magenta));
   }
+  --psy-footer-section-padding: var(--psy-space-7);
+  --psy-footer-top-margin: var(--psy-space-6);
   --psy-feed-row-1-bg: var(--psy-color-tertiary-row-feed-1);
   --psy-feed-row-2-bg: var(--psy-color-tertiary-row-feed-2);
   --psy-feed-row-3-bg: var(--psy-color-tertiary-row-feed-3);
@@ -402,6 +418,15 @@
   --psy-button-secondary-bg-active: var(--psy-action-secondary-bg);
   @supports (color: color-mix(in lab, red, red)) {
     --psy-button-secondary-bg-active: color-mix(in srgb, var(--psy-action-secondary-bg) 78%, var(--psy-color-base));
+  }
+  --psy-button-danger-bg: var(--psy-action-danger-bg);
+  --psy-button-danger-bg-hover: var(--psy-action-danger-bg);
+  @supports (color: color-mix(in lab, red, red)) {
+    --psy-button-danger-bg-hover: color-mix(in srgb, var(--psy-action-danger-bg) 88%, var(--psy-color-base));
+  }
+  --psy-button-danger-bg-active: var(--psy-action-danger-bg);
+  @supports (color: color-mix(in lab, red, red)) {
+    --psy-button-danger-bg-active: color-mix(in srgb, var(--psy-action-danger-bg) 78%, var(--psy-color-base));
   }
   --psy-button-disabled-bg: var(--psy-color-bg-panel-muted);
   @supports (color: color-mix(in lab, red, red)) {
@@ -1447,6 +1472,16 @@
   .psy-btn--primary:active {
     background: var(--psy-button-primary-bg-active);
   }
+  .psy-btn--danger {
+    background: var(--psy-button-danger-bg);
+    color: var(--psy-action-danger-text);
+  }
+  .psy-btn--danger:hover {
+    background: var(--psy-button-danger-bg-hover);
+  }
+  .psy-btn--danger:active {
+    background: var(--psy-button-danger-bg-active);
+  }
   .psy-btn:disabled {
     opacity: var(--psy-state-disabled-opacity);
     cursor: not-allowed;
@@ -1861,7 +1896,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: var(--psy-gradient-card-wash), var(--psy-surface-card);
+    background: var(--psy-gradient-card-surface), var(--psy-surface-card);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
     color: var(--psy-text-on-light);
@@ -1968,7 +2003,7 @@
     max-width: var(--psy-modal-max-width);
     max-height: var(--psy-modal-max-height);
     overflow: hidden;
-    background: var(--psy-gradient-card-wash), var(--psy-overlay-surface);
+    background: var(--psy-gradient-card-surface), var(--psy-overlay-surface);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
     color: var(--psy-overlay-fg);
@@ -2075,7 +2110,7 @@
     max-width: 100%;
     height: 100%;
     overflow: hidden;
-    background: var(--psy-gradient-card-wash), var(--psy-overlay-surface);
+    background: var(--psy-gradient-card-surface), var(--psy-overlay-surface);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
     color: var(--psy-overlay-fg);
@@ -3016,6 +3051,9 @@
     display: grid;
     gap: var(--psy-space-5);
   }
+  .range-dual__inputs .range {
+    width: 100%;
+  }
   .range-ticks {
     display: flex;
     justify-content: space-between;
@@ -3737,7 +3775,7 @@
     border-top: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: 0 -4px 0 var(--psy-color-base);
   }
-  .bottom-nav__item {
+  a.bottom-nav__item, button.bottom-nav__item {
     flex: 1 1 0;
     display: flex;
     flex-direction: column;
@@ -3747,11 +3785,17 @@
     min-height: 3.25rem;
     padding: var(--psy-space-2);
     border: 2px solid transparent;
+    font-family: inherit;
     font-size: var(--psy-font-size-caption);
     font-weight: 700;
     text-decoration: none;
     color: var(--psy-text-muted-on-light);
     background: transparent;
+    cursor: pointer;
+  }
+  button.bottom-nav__item {
+    appearance: none;
+    width: auto;
   }
   .bottom-nav__item.is-active, .bottom-nav__item[aria-current="page"] {
     color: var(--psy-text-on-light);
@@ -4090,6 +4134,8 @@
     color: var(--psy-color-base);
   }
   .site-footer {
+    display: flex;
+    flex-direction: column;
     border: var(--psy-border-width-block) solid var(--psy-color-base);
     box-shadow: var(--psy-shadow-hard);
     background: var(--psy-footer-bg);
@@ -4101,13 +4147,38 @@
     text-underline-offset: 2px;
   }
   .site-footer__top {
-    display: inline-block;
-    padding: var(--psy-space-3) var(--psy-space-5);
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    margin: var(--psy-footer-top-margin) var(--psy-footer-section-padding) var(--psy-space-4);
+    padding: var(--psy-space-2) var(--psy-space-4);
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    background: var(--psy-chip-bg);
+    color: var(--psy-chip-text);
+    box-shadow: var(--psy-shadow-soft);
+    font-size: var(--psy-font-size-small);
     font-weight: 700;
+    line-height: 1.25;
     text-decoration: none;
   }
+  .site-footer__top:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--psy-color-base);
+  }
+  .site-footer__top.psy-brutal {
+    box-shadow: var(--psy-shadow-soft);
+  }
+  .site-footer__top.psy-brutal:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--psy-color-base);
+  }
+  .site-footer__top.psy-chip {
+    min-height: unset;
+    padding: var(--psy-space-2) var(--psy-space-4);
+    font-size: var(--psy-font-size-small);
+  }
   .site-footer__primary, .site-footer__secondary, .site-footer__row {
-    padding: var(--psy-space-5);
+    padding: var(--psy-footer-section-padding);
     border-top: var(--psy-border-width-block) solid var(--psy-color-base);
   }
   .site-footer__grid {
@@ -4130,8 +4201,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--psy-space-3);
-    padding: var(--psy-space-5);
+    padding: var(--psy-footer-section-padding);
     border-top: var(--psy-border-width-block) solid var(--psy-color-base);
+  }
+  .site-footer__row .site-footer__links {
+    flex: 1 1 auto;
+    padding: 0;
+    border-top: none;
   }
   .site-footer__links a {
     text-decoration: none;
@@ -4585,8 +4661,14 @@
     font-weight: 600;
   }
   .psy-flow-btn-danger {
-    background: var(--psy-alert-error-accent);
-    color: var(--psy-primitive-white);
+    background: var(--psy-button-danger-bg);
+    color: var(--psy-action-danger-text);
+  }
+  .psy-flow-btn-danger:hover {
+    background: var(--psy-button-danger-bg-hover);
+  }
+  .psy-flow-btn-danger:active {
+    background: var(--psy-button-danger-bg-active);
   }
   .psy-flow-btn-social {
     background: var(--psy-color-secondary-cyan);
