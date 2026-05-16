@@ -9,6 +9,9 @@
   --ds-doc-nav-pill-bg: #f0f0f2;
   --ds-sidenav-width: 17.25rem;
   --ds-sticky-top: 5.5rem;
+  /* 文件站 chrome：高於區塊內 demo（drawer 45、tooltip 40 等），低於全頁 overlay token */
+  --ds-doc-header-z: 100;
+  --ds-doc-sidenav-z: 90;
 }
 
 *,
@@ -43,6 +46,12 @@ body {
 .ds-skip:focus {
   left: var(--psy-space-4);
   top: var(--psy-space-4);
+}
+
+.ds-top {
+  position: sticky;
+  top: 0;
+  z-index: var(--ds-doc-header-z);
 }
 
 .ds-top__brand:hover {
@@ -214,6 +223,7 @@ body {
 .ds-sidenav {
   position: sticky;
   top: var(--ds-sticky-top);
+  z-index: var(--ds-doc-sidenav-z);
   max-height: calc(100vh - var(--ds-sticky-top) - var(--psy-space-6));
   overflow: auto;
   padding: var(--psy-space-6);
@@ -1187,6 +1197,8 @@ body {
 /* 文件站：覆疊層靜態展示（非 position:fixed） */
 .ds-overlay-stage {
   position: relative;
+  z-index: 0;
+  isolation: isolate;
   min-height: 18rem;
   padding: var(--psy-space-7);
   border: 1px solid var(--ds-doc-border);
@@ -1199,6 +1211,7 @@ body {
 .ds-overlay-stage .drawer {
   position: absolute;
   inset: 0;
+  z-index: auto;
   padding: var(--psy-space-5);
 }
 
@@ -1296,74 +1309,39 @@ body {
   white-space: nowrap;
 }
 
-.ds-anchor-cell--tooltip-top {
-  align-items: flex-end;
-  min-height: 20rem;
-  padding-top: 12.5rem;
-  padding-bottom: var(--psy-space-6);
+/* Tooltip 靜態格：觸發元素 flex 置中，四向留白一致（勿把觸發推到邊緣導致 tooltip 裁切） */
+.ds-anchor-grid--tooltip .ds-anchor-cell {
+  align-items: center;
+  justify-content: center;
+  min-height: 22rem;
+  padding: var(--psy-space-11) var(--psy-space-9);
 }
 
-.ds-anchor-cell--tooltip-bottom {
-  align-items: flex-start;
-  min-height: 18rem;
-  padding-top: var(--psy-space-6);
-  padding-bottom: 11.5rem;
-}
-
-.ds-anchor-cell--tooltip-side {
-  min-height: 10rem;
-  padding-left: var(--psy-space-5);
-  padding-right: var(--psy-space-5);
-}
-
-/* 僅在 tooltip 出現的一側預留空間（勿雙側同時加大 padding） */
-.ds-anchor-cell--tooltip-side:not(.ds-anchor-cell--end) {
-  justify-content: flex-end;
-  padding-left: var(--psy-space-5);
-  padding-right: 11rem;
-}
-
+.ds-anchor-cell--tooltip-top,
+.ds-anchor-cell--tooltip-bottom,
+.ds-anchor-cell--tooltip-side,
 .ds-anchor-cell--tooltip-side.ds-anchor-cell--end {
-  justify-content: flex-start;
-  padding-left: 11rem;
-  padding-right: var(--psy-space-5);
+  /* 保留 class 供文件說明；版面以 .ds-anchor-grid--tooltip 為準 */
 }
 
-.ds-anchor-cell--popover-top {
-  align-items: flex-end;
+/* Popover 靜態格：觸發元素 flex 置中（同 tooltip；面板較高故 min-height 略大） */
+.ds-anchor-grid--popover .ds-anchor-cell {
+  align-items: center;
+  justify-content: center;
   min-height: 26rem;
-  padding-top: 17rem;
-  padding-bottom: var(--psy-space-6);
+  padding: var(--psy-space-11) var(--psy-space-9);
 }
 
-.ds-anchor-cell--popover-bottom {
-  align-items: flex-start;
-  min-height: 20rem;
-  padding-top: var(--psy-space-6);
-  padding-bottom: 12.5rem;
-}
-
-.ds-anchor-cell--popover-side {
-  min-height: 12rem;
-  padding-left: var(--psy-space-5);
-  padding-right: var(--psy-space-5);
+.ds-anchor-cell--popover-top,
+.ds-anchor-cell--popover-bottom,
+.ds-anchor-cell--popover-side,
+.ds-anchor-cell--popover-side.ds-anchor-cell--end {
+  /* 保留 class 供文件說明；版面以 .ds-anchor-grid--popover 為準 */
 }
 
 .ds-anchor-cell .popover__panel {
   min-width: 10rem;
   max-width: min(var(--psy-popover-max-width), 14rem);
-}
-
-.ds-anchor-cell--popover-side:not(.ds-anchor-cell--end) {
-  justify-content: flex-end;
-  padding-left: var(--psy-space-5);
-  padding-right: 14rem;
-}
-
-.ds-anchor-cell--popover-side.ds-anchor-cell--end {
-  justify-content: flex-start;
-  padding-left: 14rem;
-  padding-right: var(--psy-space-5);
 }
 
 .ds-anchor-live {
@@ -1376,6 +1354,17 @@ body {
   border: 1px dashed var(--ds-doc-border);
   border-radius: 6px;
   background: color-mix(in srgb, var(--ds-doc-surface) 92%, var(--ds-doc-bg));
+}
+
+.ds-anchor-live--tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: min(28rem, 100%);
+  min-height: 16rem;
+  margin-inline: auto;
+  padding: var(--psy-space-11) var(--psy-space-9);
 }
 
 .ds-anchor-live .tooltip {
@@ -1482,40 +1471,14 @@ body {
     gap: var(--psy-space-9);
   }
 
-  .ds-anchor-cell--tooltip-side:not(.ds-anchor-cell--end),
-  .ds-anchor-cell--popover-side:not(.ds-anchor-cell--end) {
-    justify-content: flex-end;
-    padding-left: var(--psy-space-6);
-    padding-right: 10rem;
-    min-height: 14rem;
+  .ds-anchor-grid--tooltip .ds-anchor-cell {
+    min-height: 20rem;
+    padding: var(--psy-space-10) var(--psy-space-7);
   }
 
-  .ds-anchor-cell--tooltip-side.ds-anchor-cell--end,
-  .ds-anchor-cell--popover-side.ds-anchor-cell--end {
-    justify-content: flex-start;
-    padding-left: 10rem;
-    padding-right: var(--psy-space-6);
-    min-height: 14rem;
-  }
-
-  .ds-anchor-cell--tooltip-top {
-    min-height: 16rem;
-    padding-top: 9.5rem;
-  }
-
-  .ds-anchor-cell--tooltip-bottom {
-    min-height: 16rem;
-    padding-bottom: 9.5rem;
-  }
-
-  .ds-anchor-cell--popover-top {
-    min-height: 22rem;
-    padding-top: 13rem;
-  }
-
-  .ds-anchor-cell--popover-bottom {
-    min-height: 18rem;
-    padding-bottom: 10rem;
+  .ds-anchor-grid--popover .ds-anchor-cell {
+    min-height: 24rem;
+    padding: var(--psy-space-10) var(--psy-space-7);
   }
 }
 

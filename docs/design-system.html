@@ -1494,10 +1494,9 @@ import "mimosa-design-system/tailwind.css";
               <p class="ds-doc-card__desc">
                 定位資訊泡泡（非選單清單）；與 Dropdown 不同。修飾類 <code>popover--bottom</code>、
                 <code>popover--start</code>、<code>popover--end</code>。開關由 host JS（<code>hidden</code>、
-                <code>aria-expanded</code>）；關閉建議支援 Esc 與點擊外部。靜態展示同 Tooltip，使用
-                <code>.ds-anchor-grid</code> 避免面板與說明文字重疊。
+                <code>aria-expanded</code>）；關閉建議支援 Esc 與點擊外部。                靜態展示同 Tooltip，使用 <code>.ds-anchor-grid--popover</code>（<code>docs.css</code>）flex 置中觸發元素。
               </p>
-              <div class="ds-anchor-grid" aria-label="Popover 方向（靜態展示）">
+              <div class="ds-anchor-grid ds-anchor-grid--popover" aria-label="Popover 方向（靜態展示）">
                 <div class="ds-anchor-cell ds-anchor-cell--popover-top">
                   <p class="ds-anchor-cell__cap">上方 · 預設</p>
                   <div class="popover">
@@ -1803,7 +1802,7 @@ import "mimosa-design-system/tailwind.css";
                 文件靜態展示請用下方 <code>.ds-anchor-grid</code>（<code>docs.css</code>）預留錨點空間，勿把多個
                 <code>tooltip--static</code> 直接排在同一段落。
               </p>
-              <div class="ds-anchor-grid" aria-label="Tooltip 方向（靜態展示）">
+              <div class="ds-anchor-grid ds-anchor-grid--tooltip" aria-label="Tooltip 方向（靜態展示）">
                 <div class="ds-anchor-cell ds-anchor-cell--tooltip-top">
                   <p class="ds-anchor-cell__cap">上方 · 預設</p>
                   <span class="tooltip tooltip--static">
@@ -1836,7 +1835,7 @@ import "mimosa-design-system/tailwind.css";
               <p class="ds-doc-card__desc mt-psy-4">
                 互動示範（hover／focus 顯示；生產環境預設，勿加 <code>tooltip--static</code>）：
               </p>
-              <div class="ds-anchor-live">
+              <div class="ds-anchor-live ds-anchor-live--tooltip">
                 <span class="tooltip">
                   <button type="button" class="psy-brutal psy-btn psy-btn--ghost" aria-describedby="ds-tooltip-live">將滑鼠移入或聚焦</button>
                   <span class="tooltip__content" id="ds-tooltip-live" role="tooltip">生產環境預設行為</span>
