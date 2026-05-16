@@ -639,6 +639,53 @@
   /* Divider */
   --psy-divider-color: color-mix(in srgb, var(--psy-color-base) 22%, transparent);
 
+  /* Stepper */
+  --psy-step-indicator-size: 2rem;
+  --psy-step-line: var(--psy-divider-color);
+  --psy-step-pending-bg: var(--psy-surface-card);
+  --psy-step-pending-fg: var(--psy-text-muted-on-light);
+  --psy-step-pending-border: var(--psy-border-strong);
+  --psy-step-active-bg: var(--psy-color-secondary-lime);
+  --psy-step-active-fg: var(--psy-text-on-light);
+  --psy-step-active-border: var(--psy-border-strong);
+  --psy-step-completed-bg: var(--psy-color-base);
+  --psy-step-completed-fg: var(--psy-primitive-text);
+  --psy-step-completed-border: var(--psy-border-strong);
+  --psy-step-label-fg: var(--psy-text-on-light);
+  --psy-step-label-muted: var(--psy-text-muted-on-light);
+
+  /* Popover */
+  --psy-popover-bg: var(--psy-overlay-surface);
+  --psy-popover-fg: var(--psy-overlay-fg);
+  --psy-popover-fg-muted: var(--psy-overlay-fg-muted);
+  --psy-popover-border: var(--psy-border-strong);
+  --psy-popover-shadow: var(--psy-shadow-hard);
+  --psy-popover-max-width: 20rem;
+  --psy-popover-arrow-size: 0.5rem;
+
+  /* Combobox */
+  --psy-combobox-list-bg: var(--psy-menu-bg);
+  --psy-combobox-list-shadow: var(--psy-menu-shadow);
+  --psy-combobox-option-hover-bg: var(--psy-menu-item-hover-bg);
+  --psy-combobox-option-hover-fg: var(--psy-menu-item-hover-fg);
+  --psy-combobox-option-active-bg: var(--psy-color-secondary-lime);
+  --psy-combobox-option-active-fg: var(--psy-text-on-light);
+  --psy-combobox-tag-bg: var(--psy-chip-bg);
+  --psy-combobox-tag-fg: var(--psy-chip-text);
+
+  /* Carousel */
+  --psy-carousel-indicator-size: 0.5rem;
+  --psy-carousel-indicator-gap: var(--psy-space-2);
+  --psy-carousel-indicator-bg: color-mix(in srgb, var(--psy-color-base) 25%, transparent);
+  --psy-carousel-indicator-active-bg: var(--psy-color-base);
+
+  /* Empty state */
+  --psy-empty-state-icon-size: 2.5rem;
+
+  /* Notification list (panel / drawer 內) */
+  --psy-notification-unread-bg: color-mix(in srgb, var(--psy-color-secondary-cyan) 18%, var(--psy-surface-card));
+  --psy-notification-read-fg: var(--psy-text-muted-on-light);
+
   /* Avatar */
   --psy-avatar-size-sm: 2rem;
   --psy-avatar-size-md: 2.5rem;

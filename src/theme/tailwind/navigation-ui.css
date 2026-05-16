@@ -284,9 +284,116 @@
     box-shadow: var(--psy-shadow-soft);
     pointer-events: none;
     white-space: normal;
+    transition:
+      opacity var(--psy-motion-duration-fast) var(--psy-motion-easing-standard),
+      visibility var(--psy-motion-duration-fast);
   }
 
   .tooltip__content[hidden] {
     display: none;
+  }
+
+  /* 生產環境：hover / focus-within 顯示；文件靜態展示加 .tooltip--static */
+  .tooltip:not(.tooltip--static):not(:hover):not(:focus-within) .tooltip__content:not([hidden]) {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .tooltip:not(.tooltip--static):hover .tooltip__content:not([hidden]),
+  .tooltip:not(.tooltip--static):focus-within .tooltip__content:not([hidden]) {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .tooltip--static .tooltip__content:not([hidden]) {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .tooltip--bottom .tooltip__content {
+    bottom: auto;
+    top: calc(100% + var(--psy-space-2));
+  }
+
+  .tooltip--left .tooltip__content {
+    bottom: auto;
+    top: 50%;
+    left: auto;
+    right: calc(100% + var(--psy-space-2));
+    transform: translateY(-50%);
+  }
+
+  .tooltip--right .tooltip__content {
+    bottom: auto;
+    top: 50%;
+    left: calc(100% + var(--psy-space-2));
+    transform: translateY(-50%);
+  }
+
+  .notification-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    background: var(--psy-gradient-card-wash), var(--psy-overlay-surface);
+    box-shadow: var(--psy-shadow-soft);
+  }
+
+  .notification-list__item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--psy-space-4);
+    align-items: start;
+    padding: var(--psy-space-5) var(--psy-space-6);
+    border-bottom: 1px solid var(--psy-divider-color);
+    color: var(--psy-overlay-fg-muted);
+    font-size: var(--psy-font-size-small);
+    line-height: var(--psy-line-height-body);
+  }
+
+  .notification-list__item:last-child {
+    border-bottom: 0;
+  }
+
+  .notification-list__item--unread {
+    background: var(--psy-notification-unread-bg);
+    color: var(--psy-overlay-fg);
+    font-weight: 600;
+  }
+
+  .notification-list__item--read {
+    color: var(--psy-notification-read-fg);
+  }
+
+  .notification-list__title {
+    margin: 0 0 var(--psy-space-1);
+    font-family: var(--psy-font-family-display);
+    font-size: var(--psy-font-size-subtitle);
+    font-weight: 800;
+    line-height: 1.25;
+    color: inherit;
+  }
+
+  .notification-list__text {
+    margin: 0;
+  }
+
+  .notification-list__time {
+    font-size: var(--psy-font-size-caption);
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--psy-text-muted-on-light);
+  }
+
+  .notification-list__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-top: var(--psy-space-2);
+    border-radius: 999px;
+    background: var(--psy-color-secondary-magenta);
+  }
+
+  .notification-list__item--read .notification-list__dot {
+    visibility: hidden;
   }
 }

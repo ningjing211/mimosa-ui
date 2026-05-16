@@ -201,6 +201,23 @@
     line-height: var(--psy-line-height-body);
   }
 
+  .empty-state__icon {
+    margin: 0;
+    font-size: var(--psy-empty-state-icon-size);
+    line-height: 1;
+  }
+
+  .empty-state__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--psy-space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
   @keyframes psy-toast-enter {
     from {
       opacity: 0;

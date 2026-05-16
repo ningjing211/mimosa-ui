@@ -127,6 +127,26 @@
     background: var(--psy-header-subnav-chip-bg);
   }
 
+  .psy-divider {
+    margin: var(--psy-space-7) 0;
+    border: 0;
+    border-top: var(--psy-border-width-block) solid var(--psy-divider-color);
+  }
+
+  .psy-divider--strong {
+    border-top-color: var(--psy-border-strong);
+  }
+
+  .psy-divider--vertical {
+    display: inline-block;
+    width: 0;
+    height: 1.25em;
+    margin: 0 var(--psy-space-4);
+    vertical-align: middle;
+    border-top: 0;
+    border-left: var(--psy-border-width-block) solid var(--psy-divider-color);
+  }
+
   .psy-btn {
     display: inline-flex;
     align-items: center;

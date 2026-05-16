@@ -90,6 +90,7 @@ import "mimosa-design-system/tailwind.css";</code></pre>
               <ul class="ds-sidenav__group-list">
                 <li><a href="#ds-landing">首頁</a></li>
                 <li><a href="#overview">文件介紹</a></li>
+                <li><a href="#component-coverage">元件覆蓋</a></li>
               </ul>
             </li>
 
@@ -142,6 +143,7 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                   <a href="#layout-tokens">空間 · Space &amp; shadow</a>
                   <ul class="ds-sidenav__sub">
                     <li><a href="#spacing-scale">間距尺度</a></li>
+                    <li><a href="#spacing-divider">分隔線</a></li>
                     <li><a href="#shadow-sample">陰影</a></li>
                   </ul>
                 </li>
@@ -179,6 +181,8 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                   <ul class="ds-sidenav__sub">
                     <li><a href="#overlays-modal">Modal</a></li>
                     <li><a href="#overlays-drawer">Drawer</a></li>
+                    <li><a href="#overlays-popover">Popover</a></li>
+                    <li><a href="#overlays-notification">通知面板</a></li>
                   </ul>
                 </li>
                 <li>
@@ -188,6 +192,7 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                     <li><a href="#feedback-spinner">Spinner</a></li>
                     <li><a href="#feedback-progress">Progress</a></li>
                     <li><a href="#feedback-skeleton">Skeleton</a></li>
+                    <li><a href="#feedback-empty-state">Empty state</a></li>
                   </ul>
                 </li>
                 <li>
@@ -198,6 +203,16 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                     <li><a href="#nav-ui-breadcrumb">Breadcrumb</a></li>
                     <li><a href="#nav-ui-pagination">Pagination</a></li>
                     <li><a href="#nav-ui-switch">Toggle</a></li>
+                    <li><a href="#nav-ui-tooltip">Tooltip</a></li>
+                    <li><a href="#nav-ui-divider">Divider</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components-chips">Chip / Tag</a>
+                  <ul class="ds-sidenav__sub">
+                    <li><a href="#chips-basic">基本 Chip</a></li>
+                    <li><a href="#chips-selectable">可選取</a></li>
+                    <li><a href="#chips-a11y">可訪問性</a></li>
                   </ul>
                 </li>
                 <li>
@@ -205,9 +220,12 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                   <ul class="ds-sidenav__sub">
                     <li><a href="#extended-range">Range</a></li>
                     <li><a href="#extended-file-upload">File upload</a></li>
+                    <li><a href="#extended-combobox">Combobox</a></li>
                     <li><a href="#extended-avatar">Avatar</a></li>
                     <li><a href="#extended-timeline">Timeline</a></li>
                     <li><a href="#extended-stat-card">Stat card</a></li>
+                    <li><a href="#extended-stepper">Stepper</a></li>
+                    <li><a href="#extended-carousel">Carousel</a></li>
                   </ul>
                 </li>
                 <li>
@@ -363,7 +381,26 @@ import "mimosa-design-system/tailwind.css";
 // 僅 tokens
 // import "mimosa-design-system/tokens.css";
 
-// 細分 partial：product.css、components.css 等</code></pre>
+// 細分 partial：product.css、components.css 等
+
+// 靜態文件／GitHub Pages：已編譯 mimosa.css（勿在 host 再跑 Tailwind）
+// &lt;link rel="stylesheet" href="../dist/mimosa.css" /&gt;</code></pre>
+          </article>
+
+          <article class="ds-doc-card" id="component-coverage">
+            <h3 class="ds-doc-card__title">元件覆蓋 · 近期補齊</h3>
+            <p class="ds-doc-card__desc">
+              版面以 <strong>Tailwind utility</strong> 組裝（間距、格線、寬度）；視覺與互動狀態在
+              <strong>raw CSS partial</strong>（<code>@layer components</code> + <code>--psy-*</code>）。下列為先前缺口，已納入文件與套件：
+            </p>
+            <ul class="ds-prose-list">
+              <li><a href="#nav-ui-tooltip">Tooltip</a>、<a href="#nav-ui-divider">Divider</a> — <code>navigation-ui.css</code></li>
+              <li><a href="#components-chips">Chip / Tag</a> — <code>components.css</code>、<code>flow-page.css</code></li>
+              <li><a href="#feedback-empty-state">Empty state</a> — <code>feedback.css</code></li>
+              <li><a href="#overlays-popover">Popover</a>、<a href="#overlays-notification">通知面板</a> — <code>overlays.css</code>、<code>navigation-ui.css</code></li>
+              <li><a href="#extended-combobox">Combobox</a> — <code>forms-extended.css</code></li>
+              <li><a href="#extended-stepper">Stepper</a>、<a href="#extended-carousel">Carousel</a> — <code>data-display.css</code></li>
+            </ul>
           </article>
 
           <!-- ========== Colors ========== -->
@@ -1397,6 +1434,96 @@ import "mimosa-design-system/tailwind.css";
                 </div>
               </div>
             </article>
+
+            <article class="ds-doc-card" id="overlays-popover">
+              <h3 class="ds-doc-card__title">Popover</h3>
+              <p class="ds-doc-card__desc">
+                定位資訊泡泡（非選單清單）；與 Dropdown 不同。修飾類 <code>popover--bottom</code>、
+                <code>popover--start</code>、<code>popover--end</code>。開關由 host JS（<code>hidden</code>、
+                <code>aria-expanded</code>）；關閉建議支援 Esc 與點擊外部。
+              </p>
+              <div class="flex flex-wrap gap-psy-8 items-end py-psy-8">
+                <div class="popover">
+                  <button type="button" class="psy-brutal psy-btn" aria-expanded="true" aria-controls="ds-popover-1">
+                    說明
+                  </button>
+                  <div class="popover__panel" id="ds-popover-1" role="dialog" aria-labelledby="ds-popover-1-title">
+                    <p class="popover__title" id="ds-popover-1-title">活動代碼</p>
+                    <p class="popover__text">分享此代碼讓參與者快速加入場次。</p>
+                    <span class="popover__arrow" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <div class="popover popover--bottom">
+                  <button type="button" class="psy-brutal psy-btn psy-btn--primary" aria-expanded="true">下方</button>
+                  <div class="popover__panel" role="dialog">
+                    <p class="popover__text" style="margin: 0">修飾類 <code>popover--bottom</code>。</p>
+                    <span class="popover__arrow" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <div class="popover popover--start">
+                  <button type="button" class="psy-brutal psy-btn" aria-expanded="true">左側</button>
+                  <div class="popover__panel" role="dialog">
+                    <p class="popover__text" style="margin: 0"><code>popover--start</code></p>
+                    <span class="popover__arrow" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <div class="popover popover--end">
+                  <button type="button" class="psy-brutal psy-btn psy-btn--ghost" aria-expanded="true">右側</button>
+                  <div class="popover__panel" role="dialog">
+                    <p class="popover__text" style="margin: 0"><code>popover--end</code></p>
+                    <span class="popover__arrow" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+              <ul class="ds-prose-list mt-psy-7">
+                <li>簡短說明用 <code>role="dialog"</code> + <code>aria-labelledby</code>；勿把唯一資訊只放在 popover 內。</li>
+                <li>觸發按鈕綁定 <code>aria-expanded</code>、<code>aria-controls</code>；關閉時還原焦點至觸發元素。</li>
+                <li>支援 Esc 與點擊外部關閉（host JS）；與 Dropdown 選單語意勿混用。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="overlays-notification">
+              <h3 class="ds-doc-card__title">通知面板 · Notification center</h3>
+              <p class="ds-doc-card__desc">
+                持久型通知列表（非 Toast）。建議放在 <code>drawer--right</code> 內；class 見
+                <code>navigation-ui.css</code> 的 <code>.notification-list</code>。
+              </p>
+              <div class="ds-overlay-stage max-w-sm" aria-label="Drawer 內通知列預覽">
+                <div class="drawer drawer--right" role="dialog" aria-labelledby="ds-notif-title">
+                  <div class="drawer__backdrop" aria-hidden="true"></div>
+                  <aside class="drawer__panel drawer__panel--sm">
+                    <header class="drawer__header">
+                      <h4 class="drawer__title" id="ds-notif-title">通知</h4>
+                    </header>
+                    <div class="drawer__body" style="padding: 0">
+                      <ul class="notification-list">
+                        <li class="notification-list__item notification-list__item--unread">
+                          <span class="notification-list__dot" aria-hidden="true"></span>
+                          <div>
+                            <p class="notification-list__title">新報名</p>
+                            <p class="notification-list__text">王小明已提交表單。</p>
+                          </div>
+                          <time class="notification-list__time" datetime="2026-05-16T10:00">剛剛</time>
+                        </li>
+                        <li class="notification-list__item notification-list__item--read">
+                          <span class="notification-list__dot" aria-hidden="true"></span>
+                          <div>
+                            <p class="notification-list__title">匯出完成</p>
+                            <p class="notification-list__text">CSV 已可下載。</p>
+                          </div>
+                          <time class="notification-list__time" datetime="2026-05-15">昨日</time>
+                        </li>
+                      </ul>
+                    </div>
+                  </aside>
+                </div>
+              </div>
+              <ul class="ds-prose-list mt-psy-7">
+                <li>建議放在 <code>drawer--right</code>；列表用 <code>.notification-list</code>，未讀加 <code>notification-list__item--unread</code>。</li>
+                <li>每則通知標題用 <code>&lt;p&gt;</code> 或連結；時間用 <code>&lt;time datetime&gt;</code>。</li>
+                <li>即時彈出仍用 <a href="#feedback-toast">Toast</a>；此為持久型通知中心。</li>
+              </ul>
+            </article>
           </section>
 
           <!-- ========== Feedback ========== -->
@@ -1444,18 +1571,46 @@ import "mimosa-design-system/tailwind.css";
             </article>
 
             <article class="ds-doc-card" id="feedback-skeleton">
-              <h3 class="ds-doc-card__title">Skeleton / Empty</h3>
+              <h3 class="ds-doc-card__title">Skeleton</h3>
               <div class="ds-skeleton-demo">
                 <span class="skeleton skeleton--title"></span>
                 <span class="skeleton skeleton--text"></span>
                 <span class="skeleton skeleton--text" style="width: 80%"></span>
                 <span class="skeleton skeleton--block"></span>
               </div>
-              <div class="empty-state mt-psy-7 max-w-md">
-                <p class="empty-state__title">尚無活動</p>
-                <p class="empty-state__text">建立第一場活動，開始邀請參與者。</p>
-                <button type="button" class="psy-brutal psy-btn psy-btn--primary">建立活動</button>
+            </article>
+
+            <article class="ds-doc-card" id="feedback-empty-state">
+              <h3 class="ds-doc-card__title">Empty state</h3>
+              <p class="ds-doc-card__desc">
+                清單空態、搜尋無結果、權限不足等；見 <code>feedback.css</code> 的 <code>.empty-state</code>。
+                說明原因並提供行動出口（按鈕或連結）。
+              </p>
+              <div class="grid gap-psy-7 lg:grid-cols-3 max-w-5xl">
+                <div class="empty-state">
+                  <p class="empty-state__title">尚無活動</p>
+                  <p class="empty-state__text">建立第一場活動，開始邀請參與者。</p>
+                </div>
+                <div class="empty-state">
+                  <p class="empty-state__icon" aria-hidden="true">◇</p>
+                  <p class="empty-state__title">找不到結果</p>
+                  <p class="empty-state__text">試試其他關鍵字或清除篩選條件。</p>
+                </div>
+                <div class="empty-state">
+                  <p class="empty-state__icon" aria-hidden="true">◇</p>
+                  <p class="empty-state__title">無法存取</p>
+                  <p class="empty-state__text">請向管理員申請權限後再試。</p>
+                  <ul class="empty-state__actions">
+                    <li><button type="button" class="psy-brutal psy-btn psy-btn--primary">申請權限</button></li>
+                    <li><a href="#" class="psy-brutal psy-btn">返回首頁</a></li>
+                  </ul>
+                </div>
               </div>
+              <ul class="ds-prose-list mt-psy-7">
+                <li>版面用 Tailwind（<code>grid</code>、<code>gap-psy-*</code>）；皮膚在 <code>.empty-state</code>（<code>feedback.css</code>）。</li>
+                <li>表格內簡短空態可用 <code>.data-table__empty</code>（<code>tables.css</code>）；完整空態區塊用本元件。</li>
+                <li>標題說明「為何是空的」；至少一個明確 CTA（主按鈕或次要連結）。</li>
+              </ul>
             </article>
           </section>
 
@@ -1535,6 +1690,107 @@ import "mimosa-design-system/tailwind.css";
                 <span class="switch__label">開啟推播通知</span>
               </label>
             </article>
+
+            <article class="ds-doc-card" id="nav-ui-tooltip">
+              <h3 class="ds-doc-card__title">Tooltip</h3>
+              <p class="ds-doc-card__desc">
+                簡短補充說明；見 <code>navigation-ui.css</code> 的 <code>.tooltip</code>。預設在觸發元素上方（
+                <code>tooltip--bottom</code>、<code>tooltip--left</code>、<code>tooltip--right</code> 可改方向）。
+                生產環境請以 <code>hidden</code> + hover／focus 顯示，並綁定 <code>aria-describedby</code>。
+              </p>
+              <div class="flex flex-wrap items-center gap-psy-10 py-psy-8">
+                <span class="tooltip tooltip--static">
+                  <button type="button" class="psy-brutal psy-btn" aria-describedby="ds-tooltip-top">上方</button>
+                  <span class="tooltip__content" id="ds-tooltip-top" role="tooltip">預設置於觸發元素上方</span>
+                </span>
+                <span class="tooltip tooltip--static tooltip--bottom">
+                  <button type="button" class="psy-brutal psy-btn psy-btn--primary" aria-describedby="ds-tooltip-bottom">下方</button>
+                  <span class="tooltip__content" id="ds-tooltip-bottom" role="tooltip">修飾類 tooltip--bottom</span>
+                </span>
+                <span class="tooltip tooltip--static tooltip--left">
+                  <button type="button" class="psy-brutal psy-btn" aria-describedby="ds-tooltip-left">左側</button>
+                  <span class="tooltip__content" id="ds-tooltip-left" role="tooltip">tooltip--left</span>
+                </span>
+                <span class="tooltip tooltip--static tooltip--right">
+                  <button type="button" class="psy-brutal psy-btn" aria-describedby="ds-tooltip-right">右側</button>
+                  <span class="tooltip__content" id="ds-tooltip-right" role="tooltip">tooltip--right</span>
+                </span>
+              </div>
+              <p class="ds-doc-card__desc mt-psy-4">
+                互動示範（hover／focus 顯示；生產環境預設，勿加 <code>tooltip--static</code>）：
+              </p>
+              <span class="tooltip">
+                <button type="button" class="psy-brutal psy-btn psy-btn--ghost" aria-describedby="ds-tooltip-live">將滑鼠移入或聚焦</button>
+                <span class="tooltip__content" id="ds-tooltip-live" role="tooltip">生產環境預設行為</span>
+              </span>
+              <ul class="ds-prose-list mt-psy-6">
+                <li>觸發元素需可聚焦（<code>button</code>、<code>a</code> 或 <code>tabindex="0"</code>）。</li>
+                <li>Tooltip 內容容器使用 <code>role="tooltip"</code>；勿把重要資訊只放在 tooltip（行動裝置無 hover）。</li>
+                <li>文件截圖用 <code>tooltip--static</code> 常駐顯示；產品頁請用 <code>hidden</code> + JS 或依賴 hover／focus-within。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="nav-ui-divider">
+              <h3 class="ds-doc-card__title">Divider</h3>
+              <p class="ds-doc-card__desc">
+                區塊分隔線 token：<code>--psy-divider-color</code>。通用元件 <code>.psy-divider</code>（
+                <code>components.css</code>）；語意化區塊間距可用 <code>.divider</code>（<code>navigation-ui.css</code>）。
+              </p>
+              <hr class="psy-divider" />
+              <p style="margin: var(--psy-space-5) 0 0">區塊 A 與 B 之間的水平分隔（<code>.psy-divider</code>）。</p>
+              <hr class="divider" />
+              <p style="margin: var(--psy-space-5) 0 0">語意化區塊間距（<code>.divider</code>，<code>navigation-ui.css</code>）。</p>
+              <hr class="psy-divider psy-divider--strong" />
+              <p class="ds-doc-card__desc mt-psy-7">行內垂直分隔：</p>
+              <p style="margin: 0">
+                項目一<span class="psy-divider psy-divider--vertical" aria-hidden="true"></span>項目二<span
+                  class="psy-divider psy-divider--vertical"
+                  aria-hidden="true"
+                ></span>項目三
+              </p>
+            </article>
+          </section>
+
+          <!-- ========== Chips / Tags ========== -->
+          <section class="ds-section" id="components-chips" aria-labelledby="chips-heading">
+            <h2 class="ds-section__title" id="chips-heading">Chip / Tag</h2>
+            <p class="ds-section__lead">
+              可點擊或群組的標籤／篩選 pill；版面用 Tailwind（<code>flex</code>、<code>gap-psy-*</code>），皮膚在
+              <code>components.css</code>（<code>.psy-chip</code>）與 <code>flow-page.css</code>（<code>.psy-flow-chip</code>）。
+              與狀態標籤 <a href="#labels-variants"><code>.label</code></a> 不同：label 為非互動狀態徽章，chip 用於導覽或篩選。
+            </p>
+
+            <article class="ds-doc-card" id="chips-basic">
+              <h3 class="ds-doc-card__title">基本 Chip</h3>
+              <div class="flex flex-wrap gap-psy-3">
+                <a class="psy-brutal psy-chip psy-focus-ring" href="#">全部</a>
+                <a class="psy-brutal psy-chip psy-chip--subnav psy-focus-ring" href="#">子導覽</a>
+                <span class="psy-brutal psy-chip">唯讀標籤</span>
+              </div>
+            </article>
+
+            <article class="ds-doc-card" id="chips-selectable">
+              <h3 class="ds-doc-card__title">可選取 · Flow chip</h3>
+              <p class="ds-doc-card__desc">
+                多選篩選使用 <code>.psy-flow-chip</code>；選取態加 <code>.psy-flow-chip--selected</code>。裝飾標籤（非互動）可用
+                <code>.psy-flow-tag</code>。
+              </p>
+              <div class="flex flex-wrap gap-psy-3" role="group" aria-label="風格篩選">
+                <button type="button" class="psy-brutal psy-flow-chip psy-flow-chip--selected" aria-pressed="true">電子</button>
+                <button type="button" class="psy-brutal psy-flow-chip" aria-pressed="false">嘻哈</button>
+                <button type="button" class="psy-brutal psy-flow-chip" aria-pressed="false">獨立</button>
+              </div>
+              <p class="mt-psy-6"><span class="psy-flow-tag">NEW</span></p>
+            </article>
+
+            <article class="ds-doc-card" id="chips-a11y">
+              <h3 class="ds-doc-card__title">可訪問性</h3>
+              <ul class="ds-prose-list">
+                <li>可選取 chip 請用 <code>button</code> + <code>aria-pressed</code>（或 <code>role="checkbox"</code> + <code>aria-checked</code>）。</li>
+                <li>導覽用途用 <code>a</code> 並提供明確連結目標；勿把 <code>.label</code> 當成可點擊 chip。</li>
+                <li>群組加 <code>role="group"</code> 與 <code>aria-label</code> 描述篩選語意。</li>
+              </ul>
+            </article>
           </section>
 
           <!-- ========== Extended（range / upload / avatar / timeline / stat） ========== -->
@@ -1595,6 +1851,71 @@ import "mimosa-design-system/tailwind.css";
                 <p class="file-upload__title">拖曳檔案至此，或點擊選擇</p>
                 <p class="file-upload__hint">PNG、JPG 或 PDF，單檔上限 10MB</p>
               </label>
+            </article>
+
+            <article class="ds-doc-card" id="extended-combobox">
+              <h3 class="ds-doc-card__title">Combobox · Autocomplete</h3>
+              <p class="ds-doc-card__desc">
+                帶建議下拉的輸入；見 <code>forms-extended.css</code>。與 Search bar 不同：combobox 需
+                <code>role="combobox"</code>、<code>aria-expanded</code>、<code>aria-controls</code> 綁定 listbox。
+                鍵盤導覽與 <code>aria-activedescendant</code> 由 host JS 實作。
+              </p>
+              <div class="combobox max-w-md">
+                <label class="form-label form-label--on-light" id="ds-combobox-label" for="ds-combobox-input">城市</label>
+                <div class="combobox__control">
+                  <input
+                    class="form-input combobox__input"
+                    id="ds-combobox-input"
+                    type="text"
+                    role="combobox"
+                    aria-expanded="true"
+                    aria-controls="ds-combobox-list"
+                    aria-autocomplete="list"
+                    aria-labelledby="ds-combobox-label"
+                    value="台北"
+                  />
+                  <button type="button" class="combobox__toggle" aria-label="展開建議" aria-expanded="true">▾</button>
+                </div>
+                <ul class="combobox__listbox" id="ds-combobox-list" role="listbox" aria-labelledby="ds-combobox-label">
+                  <li role="presentation">
+                    <button type="button" class="combobox__option" role="option" aria-selected="true">台北</button>
+                  </li>
+                  <li role="presentation">
+                    <button type="button" class="combobox__option" role="option">台中</button>
+                  </li>
+                  <li role="presentation">
+                    <button type="button" class="combobox__option" role="option">高雄</button>
+                  </li>
+                </ul>
+              </div>
+              <p class="ds-doc-card__desc mt-psy-8">多選 tag 模式（已選項目 + 輸入框）：</p>
+              <div class="combobox max-w-lg">
+                <span class="form-label form-label--on-light" id="ds-combobox-tags-label">標籤</span>
+                <ul class="combobox__tags" aria-labelledby="ds-combobox-tags-label">
+                  <li class="combobox__tag">
+                    音樂
+                    <button type="button" class="combobox__tag-remove" aria-label="移除標籤 音樂">×</button>
+                  </li>
+                  <li class="combobox__tag">
+                    戶外
+                    <button type="button" class="combobox__tag-remove" aria-label="移除標籤 戶外">×</button>
+                  </li>
+                </ul>
+                <input
+                  class="form-input"
+                  type="text"
+                  role="combobox"
+                  aria-expanded="false"
+                  aria-autocomplete="list"
+                  placeholder="新增標籤…"
+                  aria-labelledby="ds-combobox-tags-label"
+                />
+              </div>
+              <ul class="ds-prose-list mt-psy-7">
+                <li>輸入使用 <code>role="combobox"</code>、<code>aria-autocomplete</code>、<code>aria-expanded</code>、<code>aria-controls</code>。</li>
+                <li>建議清單用 <code>role="listbox"</code> + <code>role="option"</code>；鍵盤高亮用 <code>aria-activedescendant</code>（host JS）。</li>
+                <li>多選 tag 的移除鈕需具體 <code>aria-label</code>（例如「移除標籤 音樂」）。</li>
+              </ul>
             </article>
 
             <article class="ds-doc-card" id="extended-avatar">
@@ -1697,6 +2018,92 @@ import "mimosa-design-system/tailwind.css";
                   </p>
                 </article>
               </div>
+            </article>
+
+            <article class="ds-doc-card" id="extended-stepper">
+              <h3 class="ds-doc-card__title">Stepper · 步驟指示</h3>
+              <p class="ds-doc-card__desc">
+                多步驟流程進度；見 <code>data-display.css</code>。狀態 token：<code>--psy-step-*</code>。目前步驟用
+                <code>aria-current="step"</code>；已完成用 <code>data-step-state="completed"</code>。進度變更建議搭配
+                <code>aria-live="polite"</code> 區域公告。
+              </p>
+              <nav class="stepper max-w-3xl" aria-label="註冊進度">
+                <ol class="stepper__list">
+                  <li class="stepper__item" data-step-state="completed">
+                    <span class="stepper__indicator stepper__indicator--completed" aria-hidden="true">✓</span>
+                    <span class="stepper__label">帳號</span>
+                  </li>
+                  <li class="stepper__item" aria-current="step">
+                    <span class="stepper__indicator stepper__indicator--active" aria-hidden="true">2</span>
+                    <span class="stepper__label">資料</span>
+                  </li>
+                  <li class="stepper__item">
+                    <span class="stepper__indicator" aria-hidden="true">3</span>
+                    <span class="stepper__label">確認</span>
+                  </li>
+                </ol>
+              </nav>
+              <p class="ds-doc-card__desc mt-psy-8">垂直佈局 <code>stepper--vertical</code>：</p>
+              <nav class="stepper stepper--vertical max-w-md" aria-label="結帳進度">
+                <ol class="stepper__list">
+                  <li class="stepper__item" data-step-state="completed">
+                    <span class="stepper__indicator stepper__indicator--completed" aria-hidden="true">✓</span>
+                    <span class="stepper__label">購物車</span>
+                  </li>
+                  <li class="stepper__item" aria-current="step">
+                    <span class="stepper__indicator stepper__indicator--active" aria-hidden="true">2</span>
+                    <span class="stepper__label">付款</span>
+                  </li>
+                  <li class="stepper__item">
+                    <span class="stepper__indicator" aria-hidden="true">3</span>
+                    <span class="stepper__label">完成</span>
+                  </li>
+                </ol>
+              </nav>
+              <ul class="ds-prose-list mt-psy-7">
+                <li>使用 <code>&lt;nav&gt;</code> + <code>&lt;ol&gt;</code>；目前步驟 <code>aria-current="step"</code>，已完成 <code>data-step-state="completed"</code>。</li>
+                <li>步驟變更時以 <code>aria-live="polite"</code> 區域公告進度（host JS）。</li>
+                <li>版面用 Tailwind（<code>max-w-*</code>）；連線與指示器樣式在 <code>.stepper</code>（<code>data-display.css</code>）。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="extended-carousel">
+              <h3 class="ds-doc-card__title">Carousel · Content slider</h3>
+              <p class="ds-doc-card__desc">
+                僅提供佈局與樣式（<code>scroll-snap</code> + indicator）；滑動與焦點管理由 host JS 實作。
+                若自動播放，須提供暫停控制（WCAG 2.2.2）。見 <code>data-display.css</code>、<code>--psy-carousel-*</code>。
+              </p>
+              <section class="carousel max-w-2xl" aria-roledescription="carousel" aria-label="精選活動">
+                <div class="carousel__viewport" tabindex="0">
+                  <article class="carousel__slide" aria-label="1 / 3">
+                    <h4 class="carousel__slide-title">Neon Warehouse</h4>
+                    <p style="margin: 0">合成器與工業節奏主題夜間派對。</p>
+                  </article>
+                  <article class="carousel__slide" aria-label="2 / 3">
+                    <h4 class="carousel__slide-title">Cosmic Rooftop</h4>
+                    <p style="margin: 0">露天 chill 電子與社交互動。</p>
+                  </article>
+                  <article class="carousel__slide" aria-label="3 / 3">
+                    <h4 class="carousel__slide-title">Basement Pulse</h4>
+                    <p style="margin: 0">地下派對與即時簽到。</p>
+                  </article>
+                </div>
+                <div class="carousel__controls">
+                  <ul class="carousel__indicators" aria-label="選擇投影片">
+                    <li>
+                      <button type="button" class="carousel__indicator is-active" aria-current="true" aria-label="第 1 張"></button>
+                    </li>
+                    <li><button type="button" class="carousel__indicator" aria-label="第 2 張"></button></li>
+                    <li><button type="button" class="carousel__indicator" aria-label="第 3 張"></button></li>
+                  </ul>
+                  <button type="button" class="carousel__pause psy-brutal psy-btn psy-btn--ghost">暫停自動播放</button>
+                </div>
+              </section>
+              <ul class="ds-prose-list mt-psy-7">
+                <li>容器 <code>aria-roledescription="carousel"</code>；投影片以 <code>aria-label</code> 或標題區分。</li>
+                <li>自動播放須提供暫停（WCAG 2.2.2）；尊重 <code>prefers-reduced-motion</code>（CSS 已關閉 smooth scroll）。</li>
+                <li>滑動、indicator 切換與焦點管理由 host JS 實作；樣式僅提供 <code>scroll-snap</code> 佈局。</li>
+              </ul>
             </article>
           </section>
 
@@ -1879,7 +2286,7 @@ import "mimosa-design-system/tailwind.css";
                     <tr>
                       <td colspan="3" class="data-table__empty">
                         <p class="data-table__empty-title">尚無資料</p>
-                        <p style="margin: 0">建立第一筆紀錄以開始。</p>
+                        <p style="margin: 0">建立第一筆紀錄以開始。完整空態見 <a href="#feedback-empty-state">Empty state</a>。</p>
                       </td>
                     </tr>
                   </tbody>
@@ -3277,6 +3684,17 @@ import "mimosa-design-system/tailwind.css";
                   </tbody>
                 </table>
               </div>
+            </article>
+
+            <article class="ds-doc-card" id="spacing-divider">
+              <h3 class="ds-doc-card__title">分隔線 · Divider</h3>
+              <p class="ds-doc-card__desc">
+                色票 <code>--psy-divider-color</code>。通用元件 <code>.psy-divider</code>、<code>.psy-divider--vertical</code>（
+                <code>components.css</code>）；語意化區塊間距可用 <code>.divider</code>（<code>navigation-ui.css</code>）。完整範例見
+                <a href="#nav-ui-divider">導覽 UI · Divider</a>。
+              </p>
+              <hr class="psy-divider max-w-md" />
+              <p class="ds-muted-cap mt-psy-5">水平 <code>.psy-divider</code></p>
             </article>
 
             <article class="ds-doc-card" id="shadow-sample">
