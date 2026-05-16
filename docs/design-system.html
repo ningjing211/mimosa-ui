@@ -848,6 +848,18 @@ import "mimosa-design-system/tailwind.css";
                     <span class="ds-swatch__token">--psy-primitive-surface-soft-mint</span>
                   </div>
                 </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-notification-unread-bg)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__token">--psy-primitive-notification-unread-bg · 淺綠</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-notification-older-bg)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__token">--psy-primitive-notification-older-bg · 淺橘</span>
+                  </div>
+                </div>
                 <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-primitive-white)">
                   <div class="ds-swatch__tone"></div>
                   <div class="ds-swatch__meta">
@@ -864,6 +876,7 @@ import "mimosa-design-system/tailwind.css";
                 導覽、hero、面板洗色、日期塊與頭像等區塊用；數值定義於 <code>tokens.css</code>。
                 <code>--psy-gradient-card-wash</code> 含洋紅／橘色，適合一般卡片；<strong>Carousel 投影片</strong>請用
                 <code>--psy-carousel-slide-bg</code>（<code>#f5faf0</code>），勿疊 card-wash。
+                <strong>通知面板</strong>列底色用 <code>--psy-notification-*</code>（淺綠／中性／淺橘），勿用 card-wash 或 cyan／洋紅底。
               </p>
               <div class="ds-gradient-grid">
                 <figure class="ds-gradient-item">
@@ -1084,16 +1097,24 @@ import "mimosa-design-system/tailwind.css";
                   <p class="ds-link-demo" style="margin: 0">深底連結示例：<a class="ds-link-on-dark" href="#">Link on dark surface</a></p>
                 </div>
                 <div class="ds-list-demo">
-                  <ul>
-                    <li>無序清單：資訊點列舉</li>
-                    <li>維持句首大寫與一致標點</li>
-                    <li>避免過長敘事型單點</li>
-                  </ul>
-                  <ol>
-                    <li>有序清單：步驟或排名</li>
-                    <li>每步驟具體可執行</li>
-                    <li>避免混入不相關描述</li>
-                  </ol>
+                  <div class="ds-list-demo__panel ds-list-demo__panel--unordered">
+                    <p class="ds-list-demo__label">無序清單 · <code>ul.psy-list</code></p>
+                    <ul class="psy-list">
+                      <li><span class="psy-list__text">資訊點列舉，一句一項</span></li>
+                      <li><span class="psy-list__text">句首大寫與一致標點</span></li>
+                      <li><span class="psy-list__text">避免過長敘事型單點</span></li>
+                    </ul>
+                    <p class="ds-list-demo__note">左側萊姆方塊為 <code>::before</code> marker，與 <code>.psy-list__text</code> 以 grid 兩欄分開（欄間距含硬陰影）。</p>
+                  </div>
+                  <div class="ds-list-demo__panel ds-list-demo__panel--ordered">
+                    <p class="ds-list-demo__label">有序清單 · <code>ol.psy-list--ordered</code></p>
+                    <ol class="psy-list--ordered">
+                      <li><span class="psy-list__text">步驟或排名</span></li>
+                      <li><span class="psy-list__text">每步驟具體可執行</span></li>
+                      <li><span class="psy-list__text">避免混入不相關描述</span></li>
+                    </ol>
+                    <p class="ds-list-demo__note">琥珀編號徽章（1、2、3）由 <code>counter</code> + <code>::before</code> 產生，勿與內文重疊。</p>
+                  </div>
                 </div>
               </div>
             </article>
@@ -1101,8 +1122,12 @@ import "mimosa-design-system/tailwind.css";
             <article class="ds-doc-card" id="typography-implementation">
               <h3 class="ds-doc-card__title">實作 · Product classes</h3>
               <p class="ds-doc-card__desc">
-                產品頁可使用 `prose-content`（66ch 內容寬度）與 `rhythm-stack`（垂直節奏容器）。連結狀態沿用 `--psy-text-link-*`；
-                深底內容區可搭配 `link-on-dark`。原生 `ul/ol` 即可，避免同頁混用過多列表樣式。長文區優先採閱讀節奏（line-height 倍數）；
+                產品頁可使用 <code>prose-content</code>（66ch 內容寬度）與 <code>rhythm-stack</code>（垂直節奏容器）。清單請用
+                <code>ul.psy-list</code>（萊姆方塊 <code>::before</code>）／<code>ol.psy-list--ordered</code>（琥珀編號徽章）；每列
+                <code>li</code> 請包 <code>&lt;span class="psy-list__text"&gt;</code>，以 grid 分欄（<code>::before</code> 第 1 欄、內文第 2 欄）；欄間距為
+                <code>--psy-list-*-marker-gap</code> + <code>--psy-list-marker-trail</code>（陰影／粗框外溢）。勿用 absolute 壓字。勿裸用
+                <code>ul</code>／<code>ol</code>。連結狀態沿用
+                <code>--psy-text-link-*</code>；深底內容區可搭配 <code>link-on-dark</code>。長文區優先採閱讀節奏（line-height 倍數）；
                 卡片/表單區優先採 token 尺度（4/8pt 家族）。
               </p>
             </article>
@@ -1508,8 +1533,29 @@ import "mimosa-design-system/tailwind.css";
               <h3 class="ds-doc-card__title">通知面板 · Notification center</h3>
               <p class="ds-doc-card__desc">
                 持久型通知列表（非 Toast）。建議放在 <code>drawer--right</code> 內；class 見
-                <code>navigation-ui.css</code> 的 <code>.notification-list</code>。
+                <code>navigation-ui.css</code> 的 <code>.notification-list</code>。底色依<strong>已讀與時間</strong>分三層（
+                <code>--psy-notification-*</code>）：最新未讀＝淺綠、當日已讀＝中性 card、昨日以前＝淺橘。勿用 cyan／洋紅／粉紫 wash（易像 info 或錯誤）。
               </p>
+              <div class="ds-grid max-w-3xl mb-psy-7" aria-label="通知列底色語意">
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-notification-unread-bg)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__token">--psy-notification-unread-bg · 淺綠</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-notification-read-bg)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__token">--psy-notification-read-bg · 當日已讀</span>
+                  </div>
+                </div>
+                <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-notification-older-bg)">
+                  <div class="ds-swatch__tone"></div>
+                  <div class="ds-swatch__meta">
+                    <span class="ds-swatch__token">--psy-notification-older-bg · 淺橘</span>
+                  </div>
+                </div>
+              </div>
               <div class="ds-overlay-stage max-w-sm" aria-label="Drawer 內通知列預覽">
                 <div class="drawer drawer--right" role="dialog" aria-labelledby="ds-notif-title">
                   <div class="drawer__backdrop" aria-hidden="true"></div>
@@ -1527,7 +1573,15 @@ import "mimosa-design-system/tailwind.css";
                           </div>
                           <time class="notification-list__time" datetime="2026-05-16T10:00">剛剛</time>
                         </li>
-                        <li class="notification-list__item notification-list__item--read">
+                        <li class="notification-list__item">
+                          <span class="notification-list__dot" aria-hidden="true"></span>
+                          <div>
+                            <p class="notification-list__title">設定已更新</p>
+                            <p class="notification-list__text">通知偏好已儲存。</p>
+                          </div>
+                          <time class="notification-list__time" datetime="2026-05-16T08:00">今天</time>
+                        </li>
+                        <li class="notification-list__item notification-list__item--older">
                           <span class="notification-list__dot" aria-hidden="true"></span>
                           <div>
                             <p class="notification-list__title">匯出完成</p>
@@ -1541,8 +1595,15 @@ import "mimosa-design-system/tailwind.css";
                 </div>
               </div>
               <ul class="ds-prose-list mt-psy-7">
-                <li>建議放在 <code>drawer--right</code>；列表用 <code>.notification-list</code>，未讀加 <code>notification-list__item--unread</code>。</li>
-                <li>每則通知標題用 <code>&lt;p&gt;</code> 或連結；時間用 <code>&lt;time datetime&gt;</code>。</li>
+                <li>建議放在 <code>drawer--right</code>；列表用 <code>.notification-list</code>。</li>
+                <li>
+                  <strong>語意修飾類</strong>（<code>--psy-notification-*</code> token）：
+                  <code>notification-list__item--unread</code> 最新未讀 → 淺綠；
+                  當日已讀 → 預設中性 card；
+                  <code>notification-list__item--older</code> 昨日以前 → 淺橘。勿用洋紅／粉紫底（易聯想錯誤）。
+                </li>
+                <li>未讀指示點 <code>.notification-list__dot</code> 為萊姆綠；已讀／較舊項目隱藏圓點。</li>
+                <li>每則標題用 <code>&lt;p&gt;</code> 或連結；時間用 <code>&lt;time datetime&gt;</code>。</li>
                 <li>即時彈出仍用 <a href="#feedback-toast">Toast</a>；此為持久型通知中心。</li>
               </ul>
             </article>

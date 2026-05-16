@@ -16,7 +16,7 @@
 | 5 | Popover | `overlays.css` + `--psy-popover-*` | `#overlays-popover` | ✅ |
 | 6 | Combobox | `forms-extended.css` + `--psy-combobox-*` | `#extended-combobox` | ✅ |
 | 7 | Divider | `.psy-divider`、`.divider` | `#nav-ui-divider`、`#spacing-divider` | ✅ |
-| 8 | Notification Center | `navigation-ui.css` `.notification-list` | `#overlays-notification` | ✅ |
+| 8 | Notification Center | `navigation-ui.css` `.notification-list`（unread 淺綠／read 中性／older 淺橘） | `#overlays-notification` | ✅ |
 | 9 | Carousel | `data-display.css` + `--psy-carousel-*` | `#extended-carousel` | ✅ |
 
 ---
@@ -46,7 +46,8 @@
 - Token + raw CSS 已就緒；鍵盤／開關邏輯由 host JS。
 
 ### Divider / Notification
-- `.psy-divider`（通用）、`.divider`（語意區塊）；通知列整合於 Drawer 範本。
+- `.psy-divider`（通用）、`.divider`（語意區塊）。
+- 通知列（Drawer 內）：`--unread` 淺綠、`--older` 淺橘、當日已讀中性 card；指示點 lime（勿用 cyan／洋紅底）。
 
 ---
 

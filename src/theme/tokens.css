@@ -38,6 +38,18 @@
   --psy-primitive-trend-down-bg: #f6f1f3;
   /* 中性淺綠底（內容滑塊／展示卡；非語意漲跌） */
   --psy-primitive-surface-soft-mint: #f5faf0;
+  /* 通知面板列底色（持久列表；非 Toast／Alert） */
+  --psy-primitive-notification-unread-bg: color-mix(
+    in srgb,
+    var(--psy-color-secondary-lime) 28%,
+    var(--psy-primitive-surface-soft-mint)
+  );
+  /* 昨日以前／較舊列：淺橘 peach（對齊 --psy-stat-surface 比例；勿用洋紅／粉紫） */
+  --psy-primitive-notification-older-bg: color-mix(
+    in srgb,
+    var(--psy-primitive-white) 91%,
+    var(--psy-color-secondary-orange)
+  );
 
   --psy-primitive-glow-orange-mix: color-mix(in srgb, var(--psy-primitive-orange) 28%, transparent);
   --psy-primitive-glow-magenta-mix: color-mix(in srgb, var(--psy-primitive-magenta) 26%, transparent);
@@ -420,7 +432,31 @@
   --psy-line-height-ui-relaxed: 1.6;
   --psy-shadow-soft: 3px 3px 0 var(--psy-color-base);
 
-  /* Links & lists（Typography） */
+  /*
+   * Links & lists（Typography）
+   * Tailwind preflight 會清 list-style → 產品頁請用：
+   *   ul.psy-list           — 萊姆方塊 marker（::before，Neo-Brutal 硬陰影）
+   *   ol.psy-list--ordered  — 琥珀編號徽章（counter + ::before）
+   * 勿依賴原生 list-style；勿在清單容器上疊 card-wash。
+   * li 建議包 <span class="psy-list__text">；以 grid 分欄（::before 第 1 欄、內文第 2 欄）。裸文字 li 仍走 flex + ::before margin。
+   */
+  --psy-list-marker-border: var(--psy-border-strong);
+  --psy-list-marker-shadow: var(--psy-shadow-soft);
+  --psy-list-marker-shadow-size: 3px;
+  /* 硬陰影 + 粗框視覺外溢，併入欄間距 */
+  --psy-list-marker-trail: calc(
+    var(--psy-list-marker-shadow-size) + var(--psy-border-width-block)
+  );
+  --psy-list-ul-marker-gap: var(--psy-space-6);
+  --psy-list-ol-marker-gap: var(--psy-space-6);
+  /* 無序：實心萊姆方塊 + ::before */
+  --psy-list-ul-marker-size: 1.125rem;
+  --psy-list-ul-marker-bg: var(--psy-color-secondary-lime);
+  /* 有序：琥珀編號徽章（counter + ::before） */
+  --psy-list-ol-marker-size: 1.875rem;
+  --psy-list-ol-marker-bg: var(--psy-color-secondary-amber);
+  --psy-list-ol-marker-fg: var(--psy-color-base);
+  --psy-list-item-gap: var(--psy-space-5);
   --psy-link-demo-bg: color-mix(in srgb, var(--psy-color-secondary-cyan) 14%, var(--psy-primitive-white));
   --psy-link-demo-border: var(--psy-border-strong);
   --psy-link-demo-text: var(--psy-color-base);
@@ -688,9 +724,26 @@
   /* Empty state */
   --psy-empty-state-icon-size: 2.5rem;
 
-  /* Notification list (panel / drawer 內) */
-  --psy-notification-unread-bg: color-mix(in srgb, var(--psy-color-secondary-cyan) 18%, var(--psy-surface-card));
+  /*
+   * Notification list（Drawer 持久列表 · 非 Toast）
+   *
+   * 語意分層（與 Toast / Alert 分離）：
+   * | 狀態           | 修飾類                         | 底色 token                    |
+   * |----------------|--------------------------------|-------------------------------|
+   * | 最新未讀       | .notification-list__item--unread | --psy-notification-unread-bg（淺綠） |
+   * | 當日已讀       | （預設，無修飾類）             | --psy-notification-read-bg（中性 card） |
+   * | 昨日以前／較舊 | .notification-list__item--older  | --psy-notification-older-bg（淺橘） |
+   *
+   * 禁止：--psy-surface-card-muted（cyan）、洋紅／粉紫 wash、--psy-gradient-card-wash（易像錯誤／info）
+   * 「匯出完成」等已讀但非錯誤 → 當日用 read；時間戳昨日以前加 --older，勿用粉紅底。
+   */
+  --psy-notification-unread-bg: var(--psy-primitive-notification-unread-bg);
+  --psy-notification-unread-fg: var(--psy-text-on-light);
+  --psy-notification-dot-unread: var(--psy-color-secondary-lime);
+  --psy-notification-read-bg: var(--psy-surface-card);
   --psy-notification-read-fg: var(--psy-text-muted-on-light);
+  --psy-notification-older-bg: var(--psy-primitive-notification-older-bg);
+  --psy-notification-older-fg: var(--psy-text-muted-on-light);
 
   /* Avatar */
   --psy-avatar-size-sm: 2rem;
@@ -731,7 +784,7 @@
    * - 勿用 amber 暖黃 → 易與 --psy-alert-warning-bg 混淆
    * - 與 --psy-alert-info-bg 分離：info 為左條+icon+較濃 orange 色洗；stat 僅低飽和 peach 大底
    */
-  --psy-stat-surface: color-mix(in srgb, var(--psy-primitive-white) 91%, var(--psy-color-secondary-orange));
+  --psy-stat-surface: var(--psy-primitive-notification-older-bg);
   --psy-stat-surface-wash: linear-gradient(
     145deg,
     color-mix(in srgb, var(--psy-color-secondary-orange) 8%, var(--psy-primitive-white)),

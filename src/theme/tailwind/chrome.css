@@ -373,6 +373,239 @@
   max-width: 66ch;
 }
 
+/*
+ * 內文清單（ul / ol）
+ * Tailwind preflight 會設 list-style: none → 勿裸用 ul/ol。
+ * 無序：ul.psy-list — 萊姆方塊 ::before
+ * 有序：ol.psy-list--ordered — 琥珀編號徽章 ::before
+ */
+.prose-content ul,
+.rhythm-stack ul,
+.ds-rhythm-stack ul,
+ul.psy-list,
+.ds-list-demo ul.psy-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prose-content ul > li,
+.rhythm-stack ul > li,
+.ds-rhythm-stack ul > li,
+ul.psy-list > li,
+.ds-list-demo ul.psy-list > li {
+  padding-inline-start: 0;
+  color: var(--psy-text-on-light);
+  line-height: var(--psy-line-height-body);
+}
+
+.prose-content ul > li:has(> .psy-list__text),
+.rhythm-stack ul > li:has(> .psy-list__text),
+.ds-rhythm-stack ul > li:has(> .psy-list__text),
+ul.psy-list > li:has(> .psy-list__text),
+.ds-list-demo ul.psy-list > li:has(> .psy-list__text) {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: calc(var(--psy-list-ul-marker-gap) + var(--psy-list-marker-trail));
+  align-items: start;
+}
+
+.prose-content ul > li:not(:has(> .psy-list__text)),
+.rhythm-stack ul > li:not(:has(> .psy-list__text)),
+.ds-rhythm-stack ul > li:not(:has(> .psy-list__text)),
+ul.psy-list > li:not(:has(> .psy-list__text)),
+.ds-list-demo ul.psy-list > li:not(:has(> .psy-list__text)) {
+  display: flex;
+  align-items: flex-start;
+}
+
+.prose-content ul > li::before,
+.rhythm-stack ul > li::before,
+.ds-rhythm-stack ul > li::before,
+ul.psy-list > li::before,
+.ds-list-demo ul.psy-list > li::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  margin-top: 0.2em;
+  width: var(--psy-list-ul-marker-size);
+  height: var(--psy-list-ul-marker-size);
+  box-sizing: border-box;
+  background: var(--psy-list-ul-marker-bg);
+  border: var(--psy-border-width-block) solid var(--psy-list-marker-border);
+  box-shadow: var(--psy-list-marker-shadow);
+  pointer-events: none;
+}
+
+.prose-content ul > li:not(:has(> .psy-list__text))::before,
+.rhythm-stack ul > li:not(:has(> .psy-list__text))::before,
+.ds-rhythm-stack ul > li:not(:has(> .psy-list__text))::before,
+ul.psy-list > li:not(:has(> .psy-list__text))::before,
+.ds-list-demo ul.psy-list > li:not(:has(> .psy-list__text))::before {
+  flex: 0 0 auto;
+  margin-inline-end: calc(var(--psy-list-ul-marker-gap) + var(--psy-list-marker-trail));
+}
+
+.prose-content ul > li > .psy-list__text,
+.rhythm-stack ul > li > .psy-list__text,
+.ds-rhythm-stack ul > li > .psy-list__text,
+ul.psy-list > li > .psy-list__text,
+.ds-list-demo ul.psy-list > li > .psy-list__text {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.prose-content ol,
+.rhythm-stack ol,
+.ds-rhythm-stack ol,
+ol.psy-list--ordered,
+.ds-list-demo ol.psy-list--ordered {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: psy-ordered;
+}
+
+.prose-content ol > li,
+.rhythm-stack ol > li,
+.ds-rhythm-stack ol > li,
+ol.psy-list--ordered > li,
+.ds-list-demo ol.psy-list--ordered > li {
+  padding-inline-start: 0;
+  counter-increment: psy-ordered;
+  color: var(--psy-text-on-light);
+  line-height: var(--psy-line-height-body);
+}
+
+.prose-content ol > li:has(> .psy-list__text),
+.rhythm-stack ol > li:has(> .psy-list__text),
+.ds-rhythm-stack ol > li:has(> .psy-list__text),
+ol.psy-list--ordered > li:has(> .psy-list__text),
+.ds-list-demo ol.psy-list--ordered > li:has(> .psy-list__text) {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: calc(var(--psy-list-ol-marker-gap) + var(--psy-list-marker-trail));
+  align-items: start;
+}
+
+.prose-content ol > li:not(:has(> .psy-list__text)),
+.rhythm-stack ol > li:not(:has(> .psy-list__text)),
+.ds-rhythm-stack ol > li:not(:has(> .psy-list__text)),
+ol.psy-list--ordered > li:not(:has(> .psy-list__text)),
+.ds-list-demo ol.psy-list--ordered > li:not(:has(> .psy-list__text)) {
+  display: flex;
+  align-items: flex-start;
+}
+
+.prose-content ol > li::before,
+.rhythm-stack ol > li::before,
+.ds-rhythm-stack ol > li::before,
+ol.psy-list--ordered > li::before,
+.ds-list-demo ol.psy-list--ordered > li::before {
+  content: counter(psy-ordered);
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--psy-list-ol-marker-size);
+  min-width: var(--psy-list-ol-marker-size);
+  height: var(--psy-list-ol-marker-size);
+  padding: 0;
+  font-family: var(--psy-font-family-display);
+  font-size: var(--psy-font-size-small);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--psy-list-ol-marker-fg);
+  background: var(--psy-list-ol-marker-bg);
+  border: var(--psy-border-width-block) solid var(--psy-list-marker-border);
+  box-shadow: var(--psy-list-marker-shadow);
+  pointer-events: none;
+}
+
+.prose-content ol > li:not(:has(> .psy-list__text))::before,
+.rhythm-stack ol > li:not(:has(> .psy-list__text))::before,
+.ds-rhythm-stack ol > li:not(:has(> .psy-list__text))::before,
+ol.psy-list--ordered > li:not(:has(> .psy-list__text))::before,
+.ds-list-demo ol.psy-list--ordered > li:not(:has(> .psy-list__text))::before {
+  flex: 0 0 auto;
+  margin-inline-end: calc(var(--psy-list-ol-marker-gap) + var(--psy-list-marker-trail));
+}
+
+.prose-content ol > li > .psy-list__text,
+.rhythm-stack ol > li > .psy-list__text,
+.ds-rhythm-stack ol > li > .psy-list__text,
+ol.psy-list--ordered > li > .psy-list__text,
+.ds-list-demo ol.psy-list--ordered > li > .psy-list__text {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.prose-content ul ul,
+.rhythm-stack ul ul,
+.ds-rhythm-stack ul ul,
+ul.psy-list ul {
+  margin-top: var(--psy-space-3);
+  margin-inline-start: var(--psy-space-2);
+}
+
+.prose-content ul ul > li::before,
+.rhythm-stack ul ul > li::before,
+.ds-rhythm-stack ul ul > li::before,
+ul.psy-list ul > li::before {
+  width: calc(var(--psy-list-ul-marker-size) * 0.72);
+  height: calc(var(--psy-list-ul-marker-size) * 0.72);
+  border-radius: 999px;
+  background: var(--psy-surface-card);
+  box-shadow: 2px 2px 0 var(--psy-list-marker-border);
+}
+
+.prose-content ol ol,
+.rhythm-stack ol ol,
+.ds-rhythm-stack ol ol,
+ol.psy-list--ordered ol {
+  margin-top: var(--psy-space-3);
+  margin-inline-start: var(--psy-space-2);
+  counter-reset: psy-ordered-nested;
+}
+
+.prose-content ol ol > li,
+.rhythm-stack ol ol > li,
+.ds-rhythm-stack ol ol > li,
+ol.psy-list--ordered ol > li {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: calc(var(--psy-list-ul-marker-gap) + var(--psy-list-marker-trail));
+  align-items: start;
+  padding-inline-start: 0;
+  counter-increment: psy-ordered-nested;
+}
+
+.prose-content ol ol > li::before,
+.rhythm-stack ol ol > li::before,
+.ds-rhythm-stack ol ol > li::before,
+ol.psy-list--ordered ol > li::before {
+  content: counter(psy-ordered-nested, lower-alpha);
+  min-width: 1.15em;
+  height: 1.15em;
+  font-size: 0.65rem;
+}
+
+.prose-content li + li,
+.rhythm-stack li + li,
+.ds-rhythm-stack li + li,
+ul.psy-list > li + li,
+ol.psy-list--ordered > li + li,
+.ds-list-demo ul.psy-list > li + li,
+.ds-list-demo ol.psy-list--ordered > li + li {
+  margin-top: var(--psy-list-item-gap);
+}
+
 .rhythm-stack > * + * {
   margin-top: var(--psy-space-4);
 }
@@ -385,7 +618,16 @@
 .rhythm-stack h6,
 .rhythm-stack p,
 .rhythm-stack ul,
-.rhythm-stack ol {
+.rhythm-stack ol,
+.ds-rhythm-stack h1,
+.ds-rhythm-stack h2,
+.ds-rhythm-stack h3,
+.ds-rhythm-stack h4,
+.ds-rhythm-stack h5,
+.ds-rhythm-stack h6,
+.ds-rhythm-stack p,
+.ds-rhythm-stack ul,
+.ds-rhythm-stack ol {
   margin: 0;
 }
 

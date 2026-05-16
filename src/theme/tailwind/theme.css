@@ -15,6 +15,8 @@
   --color-psy-chip-bg: var(--psy-chip-bg);
   --color-psy-chip-text: var(--psy-chip-text);
   --color-psy-surface-soft-mint: var(--psy-primitive-surface-soft-mint);
+  --color-psy-notification-unread: var(--psy-notification-unread-bg);
+  --color-psy-notification-older: var(--psy-notification-older-bg);
   --color-psy-nav-text: var(--psy-nav-text);
 
   --font-psy-display: var(--psy-font-family-display);

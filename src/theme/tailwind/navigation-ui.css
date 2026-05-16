@@ -341,12 +341,16 @@
     transform: translateY(-50%);
   }
 
+  /*
+   * 持久通知列表（Drawer 內）；底色語意見 tokens.css --psy-notification-*。
+   * 修飾類：--unread（淺綠）、--older（淺橘）；預設為當日已讀中性 card。
+   */
   .notification-list {
     margin: 0;
     padding: 0;
     list-style: none;
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
-    background: var(--psy-gradient-card-wash), var(--psy-overlay-surface);
+    background: var(--psy-surface-card);
     box-shadow: var(--psy-shadow-soft);
   }
 
@@ -357,7 +361,8 @@
     align-items: start;
     padding: var(--psy-space-5) var(--psy-space-6);
     border-bottom: 1px solid var(--psy-divider-color);
-    color: var(--psy-overlay-fg-muted);
+    background: var(--psy-notification-read-bg);
+    color: var(--psy-notification-read-fg);
     font-size: var(--psy-font-size-small);
     line-height: var(--psy-line-height-body);
   }
@@ -368,12 +373,28 @@
 
   .notification-list__item--unread {
     background: var(--psy-notification-unread-bg);
-    color: var(--psy-overlay-fg);
+    color: var(--psy-notification-unread-fg);
     font-weight: 600;
   }
 
-  .notification-list__item--read {
-    color: var(--psy-notification-read-fg);
+  .notification-list__item--older {
+    background: var(--psy-notification-older-bg);
+    color: var(--psy-notification-older-fg);
+  }
+
+  /* 未讀優先於較舊（少見：未讀但時間戳已過期） */
+  .notification-list__item--unread.notification-list__item--older {
+    background: var(--psy-notification-unread-bg);
+    color: var(--psy-notification-unread-fg);
+    font-weight: 600;
+  }
+
+  .notification-list__item--unread .notification-list__time {
+    color: var(--psy-text-on-light);
+  }
+
+  .notification-list__item--older .notification-list__time {
+    color: color-mix(in srgb, var(--psy-color-secondary-orange) 55%, var(--psy-text-muted-on-light));
   }
 
   .notification-list__title {
@@ -401,10 +422,10 @@
     height: 0.5rem;
     margin-top: var(--psy-space-2);
     border-radius: 999px;
-    background: var(--psy-color-secondary-magenta);
+    background: var(--psy-notification-dot-unread);
   }
 
-  .notification-list__item--read .notification-list__dot {
+  .notification-list__item:not(.notification-list__item--unread) .notification-list__dot {
     visibility: hidden;
   }
 }

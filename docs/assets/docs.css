@@ -759,21 +759,43 @@ body {
   gap: var(--psy-space-5);
 }
 
-.ds-list-demo ul,
-.ds-list-demo ol {
-  margin: 0;
-  padding: var(--psy-space-5) var(--psy-space-5) var(--psy-space-5) calc(var(--psy-space-5) + var(--psy-space-3));
+.ds-list-demo__panel {
+  padding: var(--psy-space-6) var(--psy-space-7) var(--psy-space-7);
+  overflow: visible;
   border: var(--psy-border-width-block) solid var(--psy-border-strong);
   box-shadow: var(--psy-shadow-hard);
-  background: color-mix(in srgb, var(--psy-color-secondary-amber) 16%, var(--psy-primitive-white));
 }
 
-.ds-list-demo ol {
-  background: color-mix(in srgb, var(--psy-color-secondary-magenta) 12%, var(--psy-primitive-white));
+.ds-list-demo__note {
+  margin: var(--psy-space-6) 0 0;
+  padding-top: var(--psy-space-4);
+  border-top: 1px solid color-mix(in srgb, var(--psy-color-base) 12%, transparent);
+  font-size: var(--psy-font-size-caption);
+  line-height: var(--psy-line-height-ui-normal);
+  color: var(--ds-doc-text-muted);
 }
 
-.ds-list-demo li + li {
-  margin-top: var(--psy-space-2);
+.ds-list-demo__panel--unordered {
+  background: color-mix(in srgb, var(--psy-color-secondary-amber) 14%, var(--psy-primitive-white));
+}
+
+.ds-list-demo__panel--ordered {
+  background: color-mix(in srgb, var(--psy-color-secondary-orange) 16%, var(--psy-primitive-white));
+}
+
+.ds-list-demo__label {
+  margin: 0 0 var(--psy-space-4);
+  font-size: var(--psy-font-size-caption);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ds-doc-text-muted);
+}
+
+/* 清單 marker／分欄由 mimosa.css（chrome.css）提供；此處僅覆寫文件站文字色 */
+.ds-list-demo ul.psy-list > li,
+.ds-list-demo ol.psy-list--ordered > li {
+  color: var(--ds-doc-text);
 }
 
 /* 間距表 */
