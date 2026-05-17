@@ -204,6 +204,8 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                     <li><a href="#nav-ui-pagination">Pagination</a></li>
                     <li><a href="#nav-ui-switch">Toggle</a></li>
                     <li><a href="#nav-ui-tooltip">Tooltip</a></li>
+                    <li><a href="#nav-ui-tooltip-usability">Tooltip 可用性</a></li>
+                    <li><a href="#nav-ui-tooltip-implementation">Tooltip 實作</a></li>
                     <li><a href="#nav-ui-divider">Divider</a></li>
                   </ul>
                 </li>
@@ -213,6 +215,8 @@ import "mimosa-design-system/tailwind.css";</code></pre>
                     <li><a href="#chips-basic">基本 Chip</a></li>
                     <li><a href="#chips-selectable">可選取</a></li>
                     <li><a href="#chips-a11y">可訪問性</a></li>
+                    <li><a href="#chips-usability">可用性</a></li>
+                    <li><a href="#chips-implementation">實作說明</a></li>
                   </ul>
                 </li>
                 <li>
@@ -1848,6 +1852,52 @@ import "mimosa-design-system/tailwind.css";
               </ul>
             </article>
 
+            <article class="ds-doc-card" id="nav-ui-tooltip-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <p class="ds-doc-card__desc" style="margin-bottom: var(--psy-space-3)"><strong>適合使用 Tooltip</strong></p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li>對 icon-only 按鈕或縮寫提供<strong>補充文字</strong>（最多一兩句；勿放重要操作說明）。</li>
+                <li>UI 空間受限時，做為標籤的延伸說明，避免版面過於擁擠。</li>
+              </ul>
+              <p class="ds-doc-card__desc" style="margin: var(--psy-space-6) 0 var(--psy-space-3)"><strong>不適合使用 Tooltip</strong></p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li>行動裝置為主的介面：touch 無 hover，tooltip 永遠不顯示。</li>
+                <li>說明文字超過兩行：改用 <a href="#overlays-popover">Popover</a> 或展開式說明區塊。</li>
+                <li>需要使用者與說明內容互動（選取文字、點連結）：tooltip 不可聚焦，無法互動。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="nav-ui-tooltip-implementation">
+              <h3 class="ds-doc-card__title">實作說明 · Implementation</h3>
+              <p class="ds-doc-card__desc">
+                載入 <code>navigation-ui.css</code>（含於 <code>tailwind.css</code>）。生產環境：
+                <code>.tooltip__content</code> 加 <code>hidden</code> 屬性預設隱藏；hover／focus 時以 JS 移除
+                <code>hidden</code>。<code>aria-describedby</code> 指向 tooltip 的 <code>id</code>。
+                文件截圖靜態展示用 <code>.tooltip--static</code>（勿帶入產品頁）。
+              </p>
+              <pre class="ds-code-block"><code>&lt;!-- 上方（預設） --&gt;
+&lt;span class="tooltip"&gt;
+  &lt;button type="button" class="psy-brutal psy-btn"
+          aria-describedby="tip-save"&gt;儲存&lt;/button&gt;
+  &lt;span class="tooltip__content" id="tip-save" role="tooltip" hidden&gt;
+    Ctrl + S
+  &lt;/span&gt;
+&lt;/span&gt;
+
+&lt;!-- 下方 --&gt;
+&lt;span class="tooltip tooltip--bottom"&gt; … &lt;/span&gt;
+
+&lt;!-- 左／右 --&gt;
+&lt;span class="tooltip tooltip--left"&gt; … &lt;/span&gt;
+&lt;span class="tooltip tooltip--right"&gt; … &lt;/span&gt;</code></pre>
+              <p class="ds-doc-card__desc mt-psy-5">相關 tokens（<code>tokens.css</code>）：</p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li><code>--psy-tooltip-bg</code> — 背景色（對齊 <code>--psy-color-base</code>）</li>
+                <li><code>--psy-tooltip-fg</code> — 文字色（<code>--psy-primitive-text</code>）</li>
+                <li><code>--psy-tooltip-max-width</code> — 最大寬度（預設 <code>16rem</code>）</li>
+              </ul>
+            </article>
+
             <article class="ds-doc-card" id="nav-ui-divider">
               <h3 class="ds-doc-card__title">Divider</h3>
               <p class="ds-doc-card__desc">
@@ -1902,12 +1952,51 @@ import "mimosa-design-system/tailwind.css";
             </article>
 
             <article class="ds-doc-card" id="chips-a11y">
-              <h3 class="ds-doc-card__title">可訪問性</h3>
+              <h3 class="ds-doc-card__title">可訪問性 · Accessibility</h3>
               <ul class="ds-prose-list">
                 <li>可選取 chip 請用 <code>button</code> + <code>aria-pressed</code>（或 <code>role="checkbox"</code> + <code>aria-checked</code>）。</li>
                 <li>導覽用途用 <code>a</code> 並提供明確連結目標；勿把 <code>.label</code> 當成可點擊 chip。</li>
                 <li>群組加 <code>role="group"</code> 與 <code>aria-label</code> 描述篩選語意。</li>
               </ul>
+            </article>
+
+            <article class="ds-doc-card" id="chips-usability">
+              <h3 class="ds-doc-card__title">可用性 · Usability</h3>
+              <p class="ds-doc-card__desc" style="margin-bottom: var(--psy-space-3)"><strong>三種變體的使用時機</strong></p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li><code>.psy-chip</code>（<code>components.css</code>）— 靜態標籤或導覽連結；配合 <code>psy-brutal</code> 加邊框陰影。</li>
+                <li><code>.psy-flow-chip</code>（<code>flow-page.css</code>）— 多選篩選；選取態加 <code>.psy-flow-chip--selected</code>，須搭配 <code>aria-pressed</code>。</li>
+                <li><code>.psy-flow-tag</code>（<code>flow-page.css</code>）— 純裝飾標籤（NEW、HOT 等），非互動，勿加點擊事件。</li>
+              </ul>
+              <p class="ds-doc-card__desc" style="margin: var(--psy-space-6) 0 var(--psy-space-3)"><strong>與 <code>.label</code> 的區別</strong></p>
+              <ul class="ds-prose-list" style="margin-top: 0">
+                <li><a href="#labels-variants"><code>.label</code></a> 為<strong>狀態徽章</strong>（進行中、已結束），非互動。</li>
+                <li>Chip 用於<strong>篩選或導覽</strong>，label 用於<strong>狀態顯示</strong>；兩者語意不同，不可互換。</li>
+              </ul>
+            </article>
+
+            <article class="ds-doc-card" id="chips-implementation">
+              <h3 class="ds-doc-card__title">實作說明 · Implementation</h3>
+              <p class="ds-doc-card__desc">
+                載入 <code>components.css</code> 與 <code>flow-page.css</code>（均含於 <code>tailwind.css</code>）。
+                版面（間距、換行）使用 Tailwind utility（<code>flex flex-wrap gap-psy-3</code>）。
+              </p>
+              <pre class="ds-code-block"><code>&lt;!-- 靜態 / 導覽 chip --&gt;
+&lt;a class="psy-brutal psy-chip psy-focus-ring" href="/all"&gt;全部&lt;/a&gt;
+&lt;span class="psy-brutal psy-chip"&gt;唯讀標籤&lt;/span&gt;
+
+&lt;!-- 多選篩選（flow chip） --&gt;
+&lt;div class="flex flex-wrap gap-psy-3" role="group" aria-label="風格篩選"&gt;
+  &lt;button type="button"
+          class="psy-brutal psy-flow-chip psy-flow-chip--selected"
+          aria-pressed="true"&gt;電子&lt;/button&gt;
+  &lt;button type="button"
+          class="psy-brutal psy-flow-chip"
+          aria-pressed="false"&gt;嘻哈&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- 裝飾標籤（非互動） --&gt;
+&lt;span class="psy-flow-tag"&gt;NEW&lt;/span&gt;</code></pre>
             </article>
           </section>
 
