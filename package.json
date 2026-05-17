@@ -4,6 +4,7 @@
   "description": "Mimosa design system — Tailwind v4 tokens, utilities, and product primitives.",
   "license": "MIT",
   "type": "module",
+  "sideEffects": ["**/*.css"],
   "files": [
     "dist",
     "README.md"
@@ -11,7 +12,6 @@
   "style": "./dist/tailwind.css",
   "exports": {
     ".": "./dist/tailwind.css",
-    "./mimosa.css": "./dist/mimosa.css",
     "./tokens.css": "./dist/tokens.css",
     "./tailwind.css": "./dist/tailwind.css",
     "./tailwind/theme.css": "./dist/tailwind/theme.css",
@@ -35,8 +35,12 @@
   "peerDependencies": {
     "tailwindcss": "^4.0.0"
   },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.0"
+  },
   "scripts": {
     "build": "node ./scripts/build.mjs",
+    "check:dist": "node ./scripts/check-dist.mjs",
     "prepare": "node ./scripts/build.mjs"
   }
 }

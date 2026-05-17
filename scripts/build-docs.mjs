@@ -13,6 +13,12 @@ const projectRoot = path.resolve(__dirname, "..");
 const docsRoot = path.resolve(projectRoot, "docs");
 const distRoot = path.resolve(projectRoot, "dist");
 const siteRoot = path.resolve(projectRoot, ".site");
+const tailwindCli = path.resolve(
+  projectRoot,
+  "node_modules",
+  ".bin",
+  process.platform === "win32" ? "tailwindcss.cmd" : "tailwindcss"
+);
 
 const htmlFiles = ["index.html", "design-system.html"];
 const tailwindEntry = path.resolve(docsRoot, "mimosa-entry.css");
@@ -20,12 +26,21 @@ const mimosaCssOut = path.resolve(distRoot, "mimosa.css");
 
 function compileMimosaCss() {
   return new Promise((resolve, reject) => {
-    const child = spawn("npx", ["@tailwindcss/cli", "-i", tailwindEntry, "-o", mimosaCssOut], {
+    const child = spawn(tailwindCli, ["-i", tailwindEntry, "-o", mimosaCssOut], {
       cwd: projectRoot,
-      stdio: "inherit",
-      shell: true
+      stdio: "inherit"
     });
-    child.on("error", reject);
+    child.on("error", (error) => {
+      if (error.code === "ENOENT") {
+        reject(
+          new Error(
+            "Local Tailwind CLI not found. Run `npm install` to install devDependencies before building docs."
+          )
+        );
+        return;
+      }
+      reject(error);
+    });
     child.on("close", (code) => {
       if (code === 0) {
         resolve();

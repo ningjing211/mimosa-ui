@@ -4,7 +4,7 @@ Mimosa 是以 **Tailwind v4 + CSS tokens** 為核心的 **CSS UI package**，提
 
 - `--psy-*` design tokens（`tokens.css`）
 - Tailwind 入口與 partials（`tailwind.css`、`tailwind/*`）— 供 Host App 自行編譯
-- 編譯後完整產品 CSS（`mimosa.css`）— 供靜態頁／GitHub Pages 直接 `<link>`
+- 文件站使用的編譯後 CSS（`dist/mimosa.css`）— 僅供本 repo 靜態文件頁面載入
 
 ## 安裝
 
@@ -19,7 +19,6 @@ npm install tailwindcss@^4
 |------|------|
 | `.` / `tailwind.css` | **Host App 建議**：入口 + partials（需專案內 Tailwind v4 建置） |
 | `tokens.css` | 僅 `--psy-*` |
-| `mimosa.css` | 已編譯產品 CSS（靜態 `<link>`，勿再跑 Tailwind） |
 | `tokens.json` | 由 `tokens.css` 衍生的 tooling 格式 |
 | `tailwind/*.css` | 自行組裝 partials |
 
@@ -31,6 +30,8 @@ import "mimosa-design-system/tailwind.css";
 
 專案需設定 Tailwind v4（peer dependency）。
 
+套件已宣告 `"sideEffects": ["**/*.css"]`，Webpack、Vite、Rollup 等 bundler 不需額外設定即可正確保留樣式，不會因 tree-shaking 而靜默丟棄 CSS。
+
 ## 建置套件產物
 
 維護本 repo 時：
@@ -40,8 +41,8 @@ npm install
 npm run build
 ```
 
-產出並 **commit** `dist/`（`tokens.css`、`tokens.json`、`tailwind.css`、`tailwind/*`）。  
-`dist/mimosa.css` 由 GitHub Actions 在部署文件站前編譯（見 `scripts/build-docs.mjs`），亦應一併 commit 以保持 clone 後文件可離線開啟。
+產出並 **commit** npm 發佈內容：`dist/tokens.css`、`dist/tokens.json`、`dist/tailwind.css`、`dist/tailwind/*`。  
+`dist/mimosa.css` 不屬於 npm 對外公開入口；它由 `scripts/build-docs.mjs` 為文件站額外編譯，僅供本 repo 的靜態 HTML 載入。
 
 ## 文件站（靜態 · GitHub Pages）
 
@@ -74,5 +75,5 @@ dist/                 # npm 發佈內容（已 commit）
 docs/                 # 靜態文件 HTML + docs.css
 scripts/
   build.mjs           # 套件 dist 複製 + tokens.json
-  build-docs.mjs      # 僅 Pages：編譯 mimosa.css、組 .site/
+  build-docs.mjs      # 僅文件站：編譯 mimosa.css、組 .site/
 ```
