@@ -1,6 +1,6 @@
 {
   "name": "mimosa-design-system",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Mimosa design system — Tailwind v4 tokens, utilities, and product primitives.",
   "license": "MIT",
   "type": "module",
