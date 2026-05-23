@@ -41,14 +41,13 @@
       <div class="ds-landing__inner relative z-10 mx-auto max-w-[1100px]">
         <p class="ds-landing__eyebrow">Design system · v16 Psychedelic</p>
         <h1 id="ds-landing-title" class="ds-landing__title">
-          用 token 與元件準則，<br />把介面一次對齊。
+          用 Design Tokens 與元件規範，建立一致的 UI 系統。
         </h1>
         <p class="ds-landing__subtitle">
-          本頁為靜態文件與展示：色彩、字體、版面、動效與元件狀態；並與 npm 套件
-          <code>mimosa-design-system</code> 同源。靈感來自現代文件站（例如
-          <a href="https://tailwindcss.com/" rel="noreferrer noopener">Tailwind CSS</a>、
-          <a href="https://ui.shadcn.com/" rel="noreferrer noopener">shadcn/ui</a>）的資訊層級，視覺仍維持
-          Psychedelic 語彙。
+          本站展示 Mimosa 的色彩、字體、版面與元件樣式，並提供對應的 Design System 文件與使用範例。
+        </p>
+        <p class="ds-landing__subtitle">
+          整體文件設計參考一些當代前端 UI 設計系統，並在其上添加 Mimosa 的 Psychedelic 視覺設計語彙。
         </p>
         <div class="ds-landing__actions flex flex-wrap gap-psy-4 mb-psy-10">
           <a class="psy-brutal ds-landing__btn ds-landing__btn--ghost psy-btn psy-focus-ring" href="./index.html">回到首頁</a>
@@ -56,7 +55,7 @@
         </div>
         <div class="ds-landing__panel psy-brutal-block" aria-label="Quick start">
           <div class="ds-landing__panel-head">
-            <span class="ds-landing__panel-label">Quick start</span>
+            <span class="ds-landing__panel-label">Quick start 快速開始</span>
             <span class="ds-landing__panel-pill psy-brutal-block psy-chip">npm</span>
           </div>
           <pre class="ds-landing__code"><code>npm install mimosa-design-system tailwindcss
@@ -66,15 +65,15 @@ import "mimosa-design-system/tailwind.css";</code></pre>
         <ul class="ds-landing__features">
           <li class="ds-landing__feature">
             <span class="ds-landing__feature-title">Foundation</span>
-            <span class="ds-landing__feature-desc">語意色、字階、間距與動效 token 一覽</span>
+            <span class="ds-landing__feature-desc">色彩、字體、間距等基礎樣式設定</span>
           </li>
           <li class="ds-landing__feature">
             <span class="ds-landing__feature-title">Components</span>
-            <span class="ds-landing__feature-desc">按鈕、表單、表格等狀態與無障礙說明</span>
+            <span class="ds-landing__feature-desc">按鈕、表單與元件狀態（含 Accessibility）</span>
           </li>
           <li class="ds-landing__feature">
-            <span class="ds-landing__feature-title">Ship</span>
-            <span class="ds-landing__feature-desc">純 CSS 輸出，可進 host 專案或 GitHub Pages</span>
+            <span class="ds-landing__feature-title">Integration</span>
+            <span class="ds-landing__feature-desc">可直接整合至 Web App、靜態網站與 GitHub Pages</span>
           </li>
         </ul>
       </div>
@@ -363,66 +362,100 @@ import "mimosa-design-system/tailwind.css";</code></pre>
 
         <main id="ds-main-content" class="ds-content">
           <header class="ds-page-header" id="overview">
-            <h1>文件與 token 總覽</h1>
+            <h1>Design Tokens 總覽</h1>
             <p class="ds-lead">
-              以下章節將 <code>tokens.css</code> 與元件準則分區展示；側欄目錄對應各錨點。文件結構主要參考
-              <a href="https://nasa.github.io/nasawds-site/components/colors/">NASA WDS</a>
-              各元件頁的分層方式；首頁與導覽則整理於
-              <a href="./index.html">docs 首頁</a>。
+              元件樣式、風格展示與使用規範，可透過側邊目錄快速切換各區塊內容。
             </p>
           </header>
 
           <article class="ds-doc-card" id="package-usage">
-            <h3 class="ds-doc-card__title">Mimosa 套件使用方式</h3>
+            <h3 class="ds-doc-card__title">安裝與使用</h3>
             <p class="ds-doc-card__desc">
-              本設計系統已整合為 repo root 的 <code>mimosa-design-system</code> 套件，可直接安裝並匯入公開入口。
+              Mimosa 可直接透過 npm 安裝，並於 Tailwind v4 專案中載入使用。
             </p>
-            <pre class="ds-code-block"><code>npm install mimosa-design-system tailwindcss
+            <pre class="ds-code-block"><code>npm install mimosa-design-system tailwindcss</code></pre>
+            <p class="ds-doc-card__desc"><strong>建議使用方式</strong></p>
+            <pre class="ds-code-block"><code>import "mimosa-design-system/tailwind.css";</code></pre>
+            <p class="ds-doc-card__desc">包含：</p>
+            <ul class="ds-prose-list">
+              <li>Design Tokens</li>
+              <li>Tailwind layer</li>
+              <li>Mimosa 元件樣式</li>
+            </ul>
+            <p class="ds-doc-card__desc"><strong>其他載入方式</strong></p>
+            <pre class="ds-code-block"><code>// 僅載入 Design Tokens
+import "mimosa-design-system/tokens.css";
 
-// 建議：Tailwind v4 入口（預設 export）
-import "mimosa-design-system/tailwind.css";
-
-// 僅 tokens
-// import "mimosa-design-system/tokens.css";
-
-// 細分 partial：product.css、components.css 等
-
-// 靜態文件／GitHub Pages：已編譯 mimosa.css（勿在 host 再跑 Tailwind）
-// &lt;link rel="stylesheet" href="../dist/mimosa.css" /&gt;</code></pre>
+&lt;!-- GitHub Pages / 靜態網站 --&gt;
+&lt;link rel="stylesheet" href="../dist/mimosa.css" /&gt;</code></pre>
           </article>
 
           <article class="ds-doc-card" id="component-coverage">
-            <h3 class="ds-doc-card__title">元件覆蓋 · 近期補齊</h3>
+            <h3 class="ds-doc-card__title">元件 (Components) </h3>
             <p class="ds-doc-card__desc">
-              版面以 <strong>Tailwind utility</strong> 組裝（間距、格線、寬度）；視覺與互動狀態在
-              <strong>raw CSS partial</strong>（<code>@layer components</code> + <code>--psy-*</code>）。下列為先前缺口，已納入文件與套件：
+              以下為目前已提供的元件與對應樣式檔案。
             </p>
-            <ul class="ds-prose-list">
-              <li><a href="#nav-ui-tooltip">Tooltip</a>、<a href="#nav-ui-divider">Divider</a> — <code>navigation-ui.css</code></li>
-              <li><a href="#components-chips">Chip / Tag</a> — <code>components.css</code>、<code>flow-page.css</code></li>
-              <li><a href="#feedback-empty-state">Empty state</a> — <code>feedback.css</code></li>
-              <li><a href="#overlays-popover">Popover</a>、<a href="#overlays-notification">通知面板</a> — <code>overlays.css</code>、<code>navigation-ui.css</code></li>
-              <li><a href="#extended-combobox">Combobox</a> — <code>forms-extended.css</code></li>
-              <li><a href="#extended-stepper">Stepper</a>、<a href="#extended-carousel">Carousel</a> — <code>data-display.css</code></li>
-            </ul>
+            <div class="ds-table-wrap">
+              <table class="ds-table">
+                <thead>
+                  <tr>
+                    <th scope="col">元件</th>
+                    <th scope="col">樣式檔案</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      <a href="#nav-ui-tooltip">Tooltip</a> / <a href="#nav-ui-divider">Divider</a>
+                    </th>
+                    <td><code>navigation-ui.css</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#components-chips">Chip</a> / Tag</th>
+                    <td><code>components.css</code>、<code>flow-page.css</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#feedback-empty-state">Empty State</a></th>
+                    <td><code>feedback.css</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      <a href="#overlays-popover">Popover</a> / <a href="#overlays-notification">Notifications</a>
+                    </th>
+                    <td><code>overlays.css</code>、<code>navigation-ui.css</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#extended-combobox">Combobox</a></th>
+                    <td><code>forms-extended.css</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      <a href="#extended-stepper">Stepper</a> / <a href="#extended-carousel">Carousel</a>
+                    </th>
+                    <td><code>data-display.css</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </article>
 
           <!-- ========== Colors ========== -->
           <section class="ds-section" id="colors" aria-labelledby="colors-heading">
             <h2 class="ds-section__title" id="colors-heading">色彩 · Color tokens</h2>
             <p class="ds-section__lead">
-              分層方式對齊
-              <a href="https://nasa.github.io/nasawds-site/components/colors/">NASA WDS — Colors</a>
-             ：<strong>Primary</strong>（主結構與內文於深底）、<strong>Secondary</strong>（螢光重點）、<strong>Background</strong>（大面積表面）、<strong>Tertiary</strong>（列表與次要區塊）、<strong>Special
-              state</strong>（焦點、造訪過連結等）。其下再以 <code>--psy-surface-*</code>／<code>--psy-text-*</code> 等介面語意引用。唯一
-              hex 仍只寫在 <strong>Primitive</strong> 層。
+              Mimosa 的 Color Tokens 依照介面用途分類，包含 Primary、Background、Secondary 與 State Colors。
+              <br/>
+              色彩系統以 Semantic Tokens 為主，避免在元件中直接使用 Primitive Colors。
             </p>
 
+
             <article class="ds-doc-card" id="colors-palette-primary">
-              <h3 class="ds-doc-card__title">Primary colors</h3>
+              <h3 class="ds-doc-card__title">Primary Colors</h3>
               <p class="ds-doc-card__desc">
-                對應 NASA 文件中「主色＋base＋white」角色：邊框／筆墨感 <code>--psy-color-base</code>、頁面主紫階、以及深底上的內文色。元件應優先使用此層或下述
-                Semantic，避免直接寫 primitive 名稱。
+                Primary Colors 用於品牌主色、深色背景與主要介面元素。
+              </p>
+              <p class="ds-doc-card__desc">
+                元件樣式會優先使用 Semantic Tokens，以維持整體色彩一致性。
               </p>
               <div class="ds-grid">
                 <div class="ds-swatch" style="--psy-swatch-fill: var(--psy-color-base)">
