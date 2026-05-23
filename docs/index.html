@@ -40,19 +40,19 @@
       <div class="ds-landing__inner relative z-10 mx-auto max-w-[1100px]">
         <p class="ds-landing__eyebrow">Design system · documentation first</p>
         <h1 id="home-landing-title" class="ds-landing__title">
-          把 token、樣式契約與元件規則收斂成同一份文件。
+          Mimosa Design System
         </h1>
         <p class="ds-landing__subtitle">
-          Mimosa 是一個以 CSS token、Tailwind bridge 與 product primitives 為核心的前端樣式套件。本站作為 GitHub
-          Pages 文件首頁，提供安裝方式、公開入口與元件規則入口。
+          是一套基於 Tailwind v4 的 Design System，在 Tailwind utilities 之上加入 CSS Tokens、品牌化樣式與元件
+          ，讓專案能快速建立一致、可重用的產品介面。
         </p>
         <div class="ds-landing__actions flex flex-wrap gap-psy-4 mb-psy-10">
-          <a class="psy-brutal ds-landing__btn psy-btn psy-btn--primary psy-focus-ring" href="./design-system.html">進入完整文件</a>
-          <a class="psy-brutal ds-landing__btn ds-landing__btn--ghost psy-btn psy-focus-ring" href="#package-entry">查看 package 入口</a>
+          <a class="psy-brutal ds-landing__btn psy-btn psy-btn--primary psy-focus-ring" href="./design-system.html">閱讀文件</a>
+          <a class="psy-brutal ds-landing__btn ds-landing__btn--ghost psy-btn psy-focus-ring" href="#package-entry">如何載入</a>
         </div>
         <div class="ds-landing__panel psy-brutal-block" aria-label="Quick start">
           <div class="ds-landing__panel-head">
-            <span class="ds-landing__panel-label">Quick start</span>
+            <span class="ds-landing__panel-label">Quick start 快速開始</span>
             <span class="ds-landing__panel-pill psy-brutal-block psy-chip">npm</span>
           </div>
           <pre class="ds-landing__code"><code>npm install mimosa-design-system tailwindcss
@@ -62,15 +62,15 @@ import "mimosa-design-system/tailwind.css";</code></pre>
         <ul class="ds-landing__features">
           <li class="ds-landing__feature">
             <span class="ds-landing__feature-title">Foundation</span>
-            <span class="ds-landing__feature-desc">tokens、語意映射與視覺基底</span>
+            <span class="ds-landing__feature-desc">以 Tailwind v4 與 CSS Tokens 建立樣式基礎</span>
+          </li>
+          <li class="ds-landing__feature">
+            <span class="ds-landing__feature-title">Style Layer</span>
+            <span class="ds-landing__feature-desc">在 Tailwind 之上加入 Mimosa 的品牌化 CSS 樣式</span>
           </li>
           <li class="ds-landing__feature">
             <span class="ds-landing__feature-title">Primitives</span>
-            <span class="ds-landing__feature-desc">按鈕、面板、badge、表單與 state pattern</span>
-          </li>
-          <li class="ds-landing__feature">
-            <span class="ds-landing__feature-title">Reference</span>
-            <span class="ds-landing__feature-desc">文件頁說明 package 入口與元件實作對照</span>
+            <span class="ds-landing__feature-desc">提供按鈕、表單、面板與狀態樣式等可重用元件</span>
           </li>
         </ul>
       </div>
@@ -78,36 +78,39 @@ import "mimosa-design-system/tailwind.css";</code></pre>
 
     <main id="home-main" class="ds-shell mx-auto max-w-[1280px] px-psy-8 pb-psy-13 pt-psy-9">
       <section class="ds-section" id="package-entry" aria-labelledby="package-entry-heading">
-        <h2 class="ds-section__title" id="package-entry-heading">Package 入口</h2>
+        <h2 class="ds-section__title" id="package-entry-heading">Package 樣式載入方式</h2>
         <p class="ds-section__lead">
-          請載入 <code>tailwind.css</code>（或套件預設 <code>.</code> 入口），並在專案中啟用 Tailwind v4 建置。
+          Mimosa 提供多種載入方式，可依專案需求選擇。
+        </p>
+        <p class="ds-section__lead">
+          建議在專案中啟用 Tailwind v4，並透過 <code>tailwind.css</code> 載入完整 Design System。
         </p>
         <article class="ds-doc-card">
-          <h3 class="ds-doc-card__title">建議使用順序</h3>
+          <h3 class="ds-doc-card__title">各入口用途</h3>
           <div class="ds-table-wrap">
             <table class="ds-table">
               <thead>
                 <tr>
                   <th scope="col">入口</th>
-                  <th scope="col">用途</th>
-                  <th scope="col">適合場景</th>
+                  <th scope="col">內容</th>
+                  <th scope="col">適合使用情境</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row"><code>tailwind.css</code>（預設 <code>.</code>）</th>
-                  <td>tokens + Tailwind + <code>.psy-*</code> components</td>
-                  <td><strong>建議</strong>：Vite / Tailwind v4 host app</td>
+                  <th scope="row"><code>tailwind.css</code>（預設入口）</th>
+                  <td>包含 Tokens、Tailwind layer 與 Mimosa 元件樣式</td>
+                  <td>一般 Web App 專案</td>
                 </tr>
                 <tr>
                   <th scope="row"><code>tokens.css</code></th>
-                  <td>僅 <code>--psy-*</code> CSS 變數</td>
-                  <td>靜態頁、非 Tailwind 專案</td>
+                  <td>僅包含 <code>--psy-*</code> CSS Tokens</td>
+                  <td>只需要 Design Tokens 的專案</td>
                 </tr>
                 <tr>
                   <th scope="row"><code>tokens.json</code></th>
-                  <td>給工具鏈或 JS 讀取 token</td>
-                  <td>生成 reference、同步設計資料</td>
+                  <td>提供給 JavaScript 或工具讀取的 Token 資料</td>
+                  <td>設計工具、文件生成、自動化流程</td>
                 </tr>
               </tbody>
             </table>
@@ -116,17 +119,17 @@ import "mimosa-design-system/tailwind.css";</code></pre>
       </section>
 
       <section class="ds-section" id="adoption-path" aria-labelledby="adoption-path-heading">
-        <h2 class="ds-section__title" id="adoption-path-heading">文件與整合</h2>
+        <h2 class="ds-section__title" id="adoption-path-heading">文件導覽</h2>
         <p class="ds-section__lead">
-          GitHub Pages 站點優先服務文件與規則查閱；完整元件範例、token 對照與實作說明集中在同一份文件頁。
+          完整的 Design Tokens、元件樣式與使用規範，皆整理於 Mimosa 文件中。
         </p>
         <article class="ds-doc-card">
-          <h3 class="ds-doc-card__title">下一步閱讀</h3>
+          <h3 class="ds-doc-card__title">閱讀更多..</h3>
           <ul class="ds-prose-list">
-            <li><a href="./design-system.html#overview">文件介紹與套件使用方式</a></li>
-            <li><a href="./design-system.html#colors">Color tokens 與 semantic mapping</a></li>
-            <li><a href="./design-system.html#components-buttons">Buttons、forms、alerts 等元件規則</a></li>
-            <li><a href="./design-system.html#aliases">Component aliases 與實作對照</a></li>
+            <li><a href="./design-system.html#overview">Design System 介紹與安裝方式</a></li>
+            <li><a href="./design-system.html#colors">Color Tokens 與語意色彩規則</a></li>
+            <li><a href="./design-system.html#components-buttons">Buttons、Forms、Alerts 等元件樣式</a></li>
+            <li><a href="./design-system.html#aliases">Component Aliases 與對應 class 規則</a></li>
           </ul>
         </article>
       </section>
