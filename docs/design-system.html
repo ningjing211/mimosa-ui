@@ -690,10 +690,20 @@ import "mimosa-design-system/tokens.css";
             </article>
 
             <article class="ds-doc-card" id="colors-semantic-map">
-              <h3 class="ds-doc-card__title">介面語意對照（Semantic map）</h3>
+              <h3 class="ds-doc-card__title">Semantic Tokens（介面語意）</h3>
               <p class="ds-doc-card__desc">
-                舊有 <code>--psy-surface-*</code>、<code>--psy-text-*</code>、<code>--psy-action-*</code> 等均改為引用上列 Color system，實作時可擇一慣用命名（建議新稿以
-                <code>--psy-color-*</code> 理解角色，元件仍可用語意別名）。
+                Mimosa 在 Color Tokens 之上，額外建立一層 Semantic Tokens。
+              </p>
+              <p class="ds-doc-card__desc">例如：</p>
+              <pre class="ds-code-block"><code>--psy-color-secondary-lime</code></pre>
+              <p class="ds-doc-card__desc">代表品牌識別的色彩定義；而：</p>
+              <pre class="ds-code-block"><code>--psy-action-primary-bg</code></pre>
+              <p class="ds-doc-card__desc">代表元件的介面語意。</p>
+              <p class="ds-doc-card__desc">
+                這樣未來調整品牌色彩時，只需要修改 Color Tokens，既有元件的介面語意仍可維持一致。
+              </p>
+              <p class="ds-doc-card__desc">
+                以下為常用對照：
               </p>
               <div class="ds-table-wrap">
                 <table class="ds-table">
