@@ -45,16 +45,17 @@ Host App 需自行安裝並設定 **Tailwind v4**（peer dependency）。
 
 因此在 Webpack、Vite、Rollup 等 bundler 中，**無需額外設定**即可正確保留 CSS，不會被 tree-shaking 移除。
 
-## 套件建置（維護者）
+## 套件建置與發佈
 
-維護本 repo 時：
+此段落主要供套件維護者使用。
+
+若你正在開發或準備發佈 Mimosa Design System，請先安裝依賴並執行建置：
 
 ```bash
 npm install
 npm run build
-```
 
-會產生並提交 npm 發佈所需檔案：
+建置完成後，會產生 npm 發佈所需的檔案：
 
 - `dist/tokens.css`
 - `dist/tokens.json`
@@ -67,35 +68,43 @@ npm run build
 
 此檔案由 `scripts/build-docs.mjs` 額外編譯產生，僅供文件站靜態頁面使用。
 
-## 文件站（Static · GitHub Pages）
+## 文件站（GitHub Pages）
 
 ```text
 docs/
   index.html
   design-system.html
-  assets/docs.css      # 文件站版面樣式（僅 .ds-*）
-  mimosa-entry.css     # CI 用於編譯 mimosa.css（非 npm 匯出）
+  assets/docs.css
+  mimosa-entry.css
 ```
 
-HTML 載入方式：
+- **docs.css**：文件站本身的版面樣式
+- **mimosa-entry.css**：用於編譯文件站所需的 mimosa.css
+
+文件站會載入：
 
 ```html
 <link rel="stylesheet" href="../dist/mimosa.css" />
 <link rel="stylesheet" href="./assets/docs.css" />
 ```
 
-**文件站說明**
+其中：
 
-- **不提供**本地 `npm run serve`
-- 可透過 [GitHub Pages](https://pages.github.com/) 部署
-- 或直接開啟 `docs/*.html` 預覽（需先存在 `dist/mimosa.css`）
+- **mimosa.css** 提供 Design System 樣式
+- **docs.css** 提供文件站版面樣式
 
-CI 流程會執行：
+## 預覽與部署
 
-```bash
+可直接開啟 docs/*.html 預覽，或透過 GitHub Pages 部署。
+
+CI 會執行：
+
 npm run build
 node scripts/build-docs.mjs
-```
+
+並將最終靜態網站輸出至：
+
+.site/
 
 最終部署目錄為 `.site/`（已加入 `.gitignore`）。
 
