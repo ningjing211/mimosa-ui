@@ -1,0 +1,59 @@
+# Copy this file to: .github/workflows/deploy-github-pages.yml
+# (GitHub PAT push 若無 `workflow` scope，無法直接推送 workflows 目錄；可於網頁 New file 貼上。)
+#
+# After enable: Repo → Settings → Pages → Source: GitHub Actions.
+# Site: https://<owner>.github.io/<repo>/
+
+name: Deploy design system (GitHub Pages)
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "docs/**"
+      - "docs/mimosa-entry.css"
+      - "src/theme/**"
+      - "scripts/build.mjs"
+      - "scripts/build-docs.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/deploy-github-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - run: node ./scripts/build-docs.mjs
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
