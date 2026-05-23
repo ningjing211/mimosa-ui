@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Mimosa">
+  <rect x="3" y="3" width="26" height="26" rx="2" fill="#1a1a1a" />
+  <rect x="1" y="1" width="26" height="26" rx="2" fill="#5c1578" stroke="#1a1a1a" stroke-width="2" />
+  <text
+    x="14"
+    y="22"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-weight="800"
+    font-size="18"
+    fill="#fff6ff"
+  >M</text>
+</svg>
