@@ -52,5 +52,8 @@
     "build": "node ./scripts/build.mjs",
     "check:dist": "node ./scripts/check-dist.mjs",
     "prepare": "node ./scripts/build.mjs"
+  },
+  "dependencies": {
+    "mimosa-design-system": "^0.2.3"
   }
 }
