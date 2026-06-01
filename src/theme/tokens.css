@@ -407,6 +407,12 @@
   --psy-button-ghost-bg-hover: var(--psy-elevated-hover-bg);
   --psy-button-ghost-bg-active: color-mix(in srgb, var(--psy-color-base) 8%, var(--psy-elevated-hover-bg));
   --psy-button-icon-size: 2.75rem;
+  --psy-button-cta-max-width: 28rem;
+  --psy-button-mobile-min-height: 3.25rem;
+  --psy-button-shadow-offset: 8px;
+  --psy-button-shadow-offset-hover: 10px;
+  --psy-button-shadow-offset-active: 4px;
+  --psy-button-mobile-shadow-safe-space: var(--psy-space-3);
 
   --psy-focus-ring-color: var(--psy-state-focus-ring-color);
   --psy-focus-ring-width: var(--psy-state-focus-ring-width);

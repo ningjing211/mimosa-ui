@@ -63,6 +63,8 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | Button | `psy-btn` |
 | Button variants | `psy-btn-primary` / `psy-btn-secondary` / `psy-btn-ghost` |
 | Button BEM aliases | `psy-btn--primary` / `psy-btn--secondary` / `psy-btn--ghost` |
+| Button layout | `psy-btn-full` / `psy-btn-block` / `psy-btn-center` / `psy-btn-cta` / `psy-btn-mobile` |
+| Button wrapper | `psy-btn-row` / `psy-btn-row-center` / `psy-btn-row-full` / `psy-btn-host` |
 | Card | `psy-card` |
 | Kicker | `psy-kicker` / `psy-kicker-on-light` / `psy-kicker-on-card` / `psy-kicker-on-dark` |
 | Structured card | `card` / `card__header` / `card__body` / `card__footer` |
@@ -84,6 +86,58 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 ```
 
 `psy-card` 是自包含的公開卡片 primitive：它包含背景、邊框、陰影、padding 與文字色。若需要 header/body/footer 結構，使用 `card` 系列 class。
+
+## Button Layout
+
+`psy-btn` 預設只負責 button skin 與 fit-content 行為，適合放在 card、form stack、toolbar 或 button group 中。當 button 獨立放在 mobile page grid 裡，請加上明確 layout class，避免 CTA 看起來貼邊或與上下 block 節奏不一致。
+
+Card / form 內按鈕：
+
+```html
+<article class="psy-card">
+  <p class="psy-kicker-on-card">Form smoke</p>
+  <input class="form-input" placeholder="event, user, case..." />
+  <button class="psy-btn psy-btn-primary">Run smoke check</button>
+</article>
+```
+
+Standalone mobile CTA：
+
+```html
+<button class="psy-btn psy-btn-primary psy-btn-cta psy-btn-mobile">
+  Start smoke check
+</button>
+```
+
+若 CTA 外層是 wrapper / custom element，建議讓 host 有 layout contract：
+
+```html
+<rave-button class="psy-btn-host psy-btn-host-full">
+  Start smoke check
+</rave-button>
+```
+
+Wrapper 也可以把 layout class 傳給內層 button：
+
+```html
+<button class="psy-btn psy-btn-primary psy-btn-full psy-btn-mobile">
+  Start smoke check
+</button>
+```
+
+如果需要額外保留 neo-brutal shadow 的安全空間，可以用 row 容器：
+
+```html
+<div class="psy-btn-row psy-btn-row-full">
+  <button class="psy-btn psy-btn-primary psy-btn-mobile">Start smoke check</button>
+</div>
+```
+
+建議選擇：
+
+- `psy-btn-cta psy-btn-mobile`：獨立主要 CTA，mobile 上貼齊 block rhythm。
+- `psy-btn-full`：在表單、modal、bottom sheet 等 contained space 內滿版。
+- `psy-btn-center`：次要或較短 action，需要置中但不滿版。
 
 ## Empty State
 

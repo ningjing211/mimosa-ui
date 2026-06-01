@@ -1,6 +1,6 @@
 /**
  * Component variants — buttons, input groups, table states.
- * Layout: Tailwind utilities in host HTML; skin: tokens + raw CSS here.
+ * Button defaults are fit-content; layout primitives below are opt-in for mobile CTA rhythm.
  */
 @layer components {
   /* —— Buttons —— */
@@ -31,6 +31,70 @@
   .psy-btn--icon .psy-btn__icon {
     font-size: 1.125rem;
     line-height: 1;
+  }
+
+  .psy-btn-block,
+  .psy-btn-full {
+    display: flex;
+    width: 100%;
+  }
+
+  .psy-btn-center {
+    display: flex;
+    width: max-content;
+    margin-inline: auto;
+  }
+
+  .psy-btn-cta {
+    display: flex;
+    width: min(100%, var(--psy-button-cta-max-width));
+    margin-inline: auto;
+  }
+
+  .psy-btn-mobile {
+    min-height: var(--psy-button-mobile-min-height);
+  }
+
+  .psy-btn-row {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    padding-inline-end: var(--psy-button-mobile-shadow-safe-space);
+  }
+
+  .psy-btn-row-center {
+    justify-content: center;
+  }
+
+  .psy-btn-row-full > .psy-btn {
+    width: 100%;
+  }
+
+  .psy-btn-host {
+    display: inline-flex;
+    max-width: 100%;
+  }
+
+  .psy-btn-host-block,
+  .psy-btn-host-full {
+    display: block;
+    width: 100%;
+  }
+
+  .psy-btn-host-full > .psy-btn {
+    width: 100%;
+  }
+
+  @media (max-width: 639px) {
+    .psy-btn-mobile,
+    .psy-btn-cta {
+      width: calc(100% - var(--psy-button-mobile-shadow-safe-space));
+      margin-inline: 0 var(--psy-button-mobile-shadow-safe-space);
+    }
+
+    .psy-btn-center {
+      margin-inline: auto;
+    }
   }
 
   .btn-group {
