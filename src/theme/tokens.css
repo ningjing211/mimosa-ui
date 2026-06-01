@@ -144,12 +144,23 @@
   --psy-surface-panel: var(--psy-surface-container-lowest);
   --psy-surface-panel-soft: var(--psy-surface-container);
   --psy-surface-panel-prominent: var(--psy-surface-container-highest);
-  /* Card / well — 淺色 elevated 區塊（淡紫底；對齊 table、accordion；可置於深紫頁面上） */
+  /*
+   * Card / well — 淺色 elevated 區塊（淡紫底；可置於深紫頁面上）。
+   * 每個 surface 都有對應 foreground role，避免把深底文字 token 放到淺底造成低對比。
+   */
   --psy-surface-card: color-mix(in srgb, var(--psy-primitive-white) 88%, var(--psy-color-bg-panel-muted));
   /* 卡片內文／頁尾次區：更淺淡紫（勿混 cyan，易呈藍底） */
   --psy-surface-card-muted: color-mix(in srgb, var(--psy-primitive-white) 94%, var(--psy-color-bg-panel-muted));
   /* 卡片頁首帶：略深淡紫（勿混 amber，易呈黃底） */
   --psy-surface-card-header: color-mix(in srgb, var(--psy-primitive-white) 82%, var(--psy-color-bg-panel-muted));
+  --psy-surface-card-fg: var(--psy-color-base);
+  --psy-surface-card-fg-muted: color-mix(in srgb, var(--psy-color-base) 78%, var(--psy-surface-card));
+  --psy-surface-card-fg-subtle: color-mix(in srgb, var(--psy-color-base) 66%, var(--psy-surface-card));
+  --psy-surface-card-kicker: color-mix(
+    in srgb,
+    var(--psy-color-base) 82%,
+    var(--psy-color-secondary-magenta)
+  );
   --psy-surface-well: color-mix(in srgb, var(--psy-primitive-white) 84%, var(--psy-color-bg-panel-muted));
   --psy-surface-well-on-muted: color-mix(in srgb, var(--psy-primitive-white) 78%, var(--psy-color-bg-panel-muted));
   --psy-surface-hero-epic: color-mix(in srgb, #fcffdf 10%, #639d77);
@@ -164,8 +175,8 @@
   --psy-text-secondary: var(--psy-color-primary-on-dark-muted);
   --psy-text-on-dark: var(--psy-color-base);
   /* 淺色／洗白 elevated surface（卡片、表格、手風琴等） */
-  --psy-text-on-light: var(--psy-color-base);
-  --psy-text-muted-on-light: color-mix(in srgb, var(--psy-color-base) 72%, transparent);
+  --psy-text-on-light: var(--psy-surface-card-fg);
+  --psy-text-muted-on-light: var(--psy-surface-card-fg-muted);
   --psy-text-on-bright: var(--psy-color-base);
   --psy-text-link-visited: var(--psy-color-visited);
 
@@ -373,11 +384,7 @@
    */
   --psy-kicker-text-on-dark: var(--psy-color-secondary-lime);
   --psy-kicker-surface-on-dark: var(--psy-surface-on-dark);
-  --psy-kicker-text-on-light: color-mix(
-    in srgb,
-    var(--psy-color-primary-darker) 82%,
-    var(--psy-color-secondary-magenta)
-  );
+  --psy-kicker-text-on-light: var(--psy-surface-card-kicker);
   --psy-kicker-text: var(--psy-kicker-text-on-dark);
 
   --psy-button-primary-bg: var(--psy-action-primary-bg);
@@ -615,6 +622,13 @@
   --psy-overlay-surface: var(--psy-surface-card);
   --psy-overlay-fg: var(--psy-text-on-light);
   --psy-overlay-fg-muted: var(--psy-text-muted-on-light);
+  --psy-empty-state-surface: var(--psy-surface-card);
+  --psy-empty-state-fg: var(--psy-surface-card-fg);
+  --psy-empty-state-fg-muted: var(--psy-surface-card-fg-muted);
+  --psy-empty-state-fg-subtle: var(--psy-surface-card-fg-subtle);
+  --psy-empty-state-status-bg: var(--psy-label-bg-soft);
+  --psy-empty-state-status-fg: var(--psy-surface-card-fg);
+  --psy-empty-state-status-border: var(--psy-border-strong);
   --psy-modal-max-width: 32rem;
   --psy-modal-max-width-sm: 24rem;
   --psy-modal-max-width-lg: 42rem;

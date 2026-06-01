@@ -180,10 +180,10 @@
     gap: var(--psy-space-5);
     padding: var(--psy-space-12) var(--psy-space-7);
     text-align: center;
-    background: var(--psy-overlay-surface);
+    background: var(--psy-gradient-card-surface), var(--psy-empty-state-surface);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
-    color: var(--psy-overlay-fg-muted);
+    color: var(--psy-empty-state-fg-muted);
   }
 
   .empty-state__title {
@@ -191,7 +191,7 @@
     font-family: var(--psy-font-family-display);
     font-size: var(--psy-font-size-h3);
     font-weight: var(--psy-font-weight-h3);
-    color: var(--psy-overlay-fg);
+    color: var(--psy-empty-state-fg);
   }
 
   .empty-state__text {
@@ -199,12 +199,14 @@
     max-width: var(--psy-content-max-readable);
     font-size: var(--psy-font-size-body);
     line-height: var(--psy-line-height-body);
+    color: var(--psy-empty-state-fg-muted);
   }
 
   .empty-state__icon {
     margin: 0;
     font-size: var(--psy-empty-state-icon-size);
     line-height: 1;
+    color: var(--psy-empty-state-fg);
   }
 
   .empty-state__actions {
@@ -216,6 +218,46 @@
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  .empty-state > :where(p:not(.empty-state__title):not(.psy-kicker), ul, ol, small),
+  .empty-state :where(li:not(.empty-state__status-item):not(.psy-status-item)) {
+    color: var(--psy-empty-state-fg-muted);
+  }
+
+  .empty-state > :where(h1, h2, h3, h4, h5, h6, strong) {
+    color: var(--psy-empty-state-fg);
+  }
+
+  .empty-state__status-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--psy-space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .empty-state__status-item,
+  .psy-status-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--psy-label-min-height);
+    padding: var(--psy-label-padding-block) var(--psy-label-padding-inline);
+    border: 2px solid var(--psy-empty-state-status-border);
+    border-radius: 999px;
+    background: var(--psy-empty-state-status-bg);
+    box-shadow: var(--psy-label-shadow);
+    color: var(--psy-empty-state-status-fg);
+    font-size: var(--psy-label-font-size);
+    font-weight: var(--psy-label-font-weight);
+    line-height: var(--psy-label-line-height);
+    letter-spacing: var(--psy-label-letter-spacing);
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
   @keyframes psy-toast-enter {

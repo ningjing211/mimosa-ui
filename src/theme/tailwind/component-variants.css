@@ -4,18 +4,21 @@
  */
 @layer components {
   /* —— Buttons —— */
-  .psy-btn--ghost {
+  .psy-btn--ghost,
+  .psy-btn-ghost {
     background: var(--psy-button-ghost-bg);
     color: var(--psy-button-ghost-fg);
     border: var(--psy-border-width-block) solid var(--psy-button-ghost-border);
     box-shadow: var(--psy-shadow-soft);
   }
 
-  .psy-btn--ghost:hover {
+  .psy-btn--ghost:hover,
+  .psy-btn-ghost:hover {
     background: var(--psy-button-ghost-bg-hover);
   }
 
-  .psy-btn--ghost:active {
+  .psy-btn--ghost:active,
+  .psy-btn-ghost:active {
     background: var(--psy-button-ghost-bg-active);
   }
 

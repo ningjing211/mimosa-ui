@@ -2,10 +2,45 @@
  * Cards & wells — layout shells aligned with Tailwind UI Cards.
  * https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards
  *
- * Surfaces use light purple elevated tokens (--psy-surface-card*) with dark foreground
- * (--psy-text-on-light), same pattern as .data-table / .accordion (not page-purple panels).
+ * Surfaces use light purple elevated tokens (--psy-surface-card*) with paired foreground
+ * roles (--psy-surface-card-fg*), same pattern as surface/on-surface design systems.
  */
 @layer components {
+  .psy-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--psy-space-4);
+    overflow: hidden;
+    padding: var(--psy-space-7);
+    background: var(--psy-gradient-card-surface), var(--psy-surface-card);
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-hard);
+    color: var(--psy-surface-card-fg);
+  }
+
+  .psy-card > :first-child {
+    margin-top: 0;
+  }
+
+  .psy-card > :last-child {
+    margin-bottom: 0;
+  }
+
+  .psy-card
+    > :where(
+      p:not(.psy-kicker):not(.psy-kicker-on-light):not(.psy-kicker-on-card):not(.psy-kicker-on-dark),
+      ul,
+      ol,
+      dl,
+      small
+    ) {
+    color: var(--psy-surface-card-fg-muted);
+  }
+
+  .psy-card > :where(h1, h2, h3, h4, h5, h6, strong) {
+    color: var(--psy-surface-card-fg);
+  }
+
   .card {
     display: flex;
     flex-direction: column;
@@ -13,7 +48,7 @@
     background: var(--psy-gradient-card-surface), var(--psy-surface-card);
     border: var(--psy-border-width-block) solid var(--psy-border-strong);
     box-shadow: var(--psy-shadow-hard);
-    color: var(--psy-text-on-light);
+    color: var(--psy-surface-card-fg);
   }
 
   .card__header {
@@ -29,14 +64,14 @@
     font-size: var(--psy-font-size-h3);
     font-weight: var(--psy-font-weight-h3);
     line-height: 1.25;
-    color: var(--psy-text-on-light);
+    color: var(--psy-surface-card-fg);
   }
 
   .card__subtitle {
     margin: var(--psy-space-2) 0 0;
     font-size: var(--psy-font-size-small);
     line-height: var(--psy-line-height-body);
-    color: var(--psy-text-muted-on-light);
+    color: var(--psy-surface-card-fg-muted);
   }
 
   .card__body {
@@ -89,7 +124,7 @@
     padding: var(--psy-space-7);
     background: var(--psy-surface-well);
     border: 2px solid var(--psy-border-strong);
-    color: var(--psy-text-on-light);
+    color: var(--psy-surface-card-fg);
   }
 
   .well--on-muted {

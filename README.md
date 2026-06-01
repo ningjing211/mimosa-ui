@@ -29,13 +29,79 @@ import "mimosa-design-system/tailwind.css";
 ```
 
 Mimosa 以 Tailwind v4 為基礎，需透過專案中的 Tailwind pipeline 進行編譯。
+在 CSS 入口中使用時，`tailwind.css` 是建議的單一入口，內部已載入 `tailwindcss` 與 Mimosa tokens/components：
+
+```css
+@import "mimosa-design-system/tailwind.css";
+```
 
 在 HTML／JSX 中，可直接搭配 Tailwind utilities 與 Mimosa 元件 class 使用，例如：
 
 ```html
-<button class="psy-btn">Button</button>
+<button class="psy-btn psy-btn-primary">Button</button>
+<article class="psy-card">
+  <p class="psy-kicker">Architecture</p>
+  <h2>Mimosa + shared UI wrapper loaded</h2>
+  <p>Card content</p>
+</article>
 <input class="form-input" />
 ```
+
+## 視覺邏輯
+
+Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文字 foreground 必須成組使用，避免在淺色卡片上套到深色頁面的淡色文字。
+
+- 深色頁面：使用 `psy-page-bg`，文字可用 `--psy-text-primary` / `--psy-text-secondary`。
+- 淺色 elevated surface：使用 `psy-card`、`card`、`empty-state`，文字會自動配到 `--psy-surface-card-fg` / `--psy-surface-card-fg-muted`。
+- Kicker / eyebrow：淺底使用 `psy-kicker`、`psy-kicker-on-light` 或 `psy-kicker-on-card`；深紫底使用 `psy-kicker-on-dark`。
+- Status / badge：不要只靠顏色傳達狀態，請保留文字 label。`empty-state__status-item` 會提供高對比文字、外框與膠囊背景。
+
+## 常用公開 Class
+
+| 元件 | Class |
+|------|-------|
+| Button | `psy-btn` |
+| Button variants | `psy-btn-primary` / `psy-btn-secondary` / `psy-btn-ghost` |
+| Button BEM aliases | `psy-btn--primary` / `psy-btn--secondary` / `psy-btn--ghost` |
+| Card | `psy-card` |
+| Kicker | `psy-kicker` / `psy-kicker-on-light` / `psy-kicker-on-card` / `psy-kicker-on-dark` |
+| Structured card | `card` / `card__header` / `card__body` / `card__footer` |
+| Form input | `form-input` |
+| Empty state | `empty-state` / `empty-state__title` / `empty-state__text` / `empty-state__actions` |
+| Empty state status | `empty-state__status-list` / `empty-state__status-item` |
+
+## 深色頁面中的卡片
+
+```html
+<main class="psy-page-bg">
+  <article class="psy-card">
+    <p class="psy-kicker">Architecture</p>
+    <h2>Mimosa + shared UI wrapper loaded</h2>
+    <p>Card descriptions remain readable on the light elevated surface.</p>
+    <button class="psy-btn psy-btn-primary">Primary action</button>
+  </article>
+</main>
+```
+
+`psy-card` 是自包含的公開卡片 primitive：它包含背景、邊框、陰影、padding 與文字色。若需要 header/body/footer 結構，使用 `card` 系列 class。
+
+## Empty State
+
+```html
+<div class="empty-state">
+  <p class="empty-state__title">Mobile index ready</p>
+  <p class="empty-state__text">
+    Mobile build, Ionic shell, and Capacitor output are ready to verify.
+  </p>
+  <ul class="empty-state__status-list">
+    <li class="empty-state__status-item">Mobile build ready</li>
+    <li class="empty-state__status-item">Ionic shell ready</li>
+    <li class="empty-state__status-item">Capacitor output ready</li>
+  </ul>
+</div>
+```
+
+`empty-state` 預設是淺色 elevated surface，內文、標題與 status item 都使用同一組可讀 foreground token。若在 slot 中混用 Tailwind text utility，請優先確認該 utility 與目前 surface 的對比。
 
 Mimosa 已預先設定 CSS 載入行為，在 Vite、Webpack、Rollup 等常見建置工具中，通常不需額外設定即可正常使用。
 
