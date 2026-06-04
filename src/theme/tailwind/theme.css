@@ -4,6 +4,8 @@
 @theme {
   --color-psy-text-primary: var(--psy-text-primary);
   --color-psy-text-secondary: var(--psy-text-secondary);
+  --color-psy-text-body-on-dark: var(--psy-text-body-on-dark);
+  --color-psy-text-meta-on-dark: var(--psy-text-meta-on-dark);
   --color-psy-text-on-dark: var(--psy-text-on-dark);
   --color-psy-kicker: var(--psy-kicker-text-on-light);
   --color-psy-kicker-on-dark: var(--psy-kicker-text-on-dark);

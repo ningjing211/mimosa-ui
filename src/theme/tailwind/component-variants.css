@@ -22,6 +22,24 @@
     background: var(--psy-button-ghost-bg-active);
   }
 
+  .psy-btn--ghost-on-dark,
+  .psy-btn-ghost-on-dark {
+    background: var(--psy-button-ghost-on-dark-bg);
+    color: var(--psy-button-ghost-on-dark-fg);
+    border-color: var(--psy-button-ghost-on-dark-border);
+    box-shadow: var(--psy-shadow-soft);
+  }
+
+  .psy-btn--ghost-on-dark:hover,
+  .psy-btn-ghost-on-dark:hover {
+    background: var(--psy-button-ghost-on-dark-bg-hover);
+  }
+
+  .psy-btn--ghost-on-dark:active,
+  .psy-btn-ghost-on-dark:active {
+    background: var(--psy-button-ghost-on-dark-bg-active);
+  }
+
   .psy-btn--icon {
     min-width: var(--psy-button-icon-size);
     width: var(--psy-button-icon-size);

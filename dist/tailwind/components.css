@@ -44,6 +44,101 @@
     color: var(--psy-kicker-text-on-dark);
   }
 
+  /*
+   * 深底 hero／page 次要資訊（非 uppercase kicker）。
+   * 配對：psy-page-bg、psy-hero-gradient、body 設 --psy-gradient-hero-panel。
+   * 禁止在深底使用 #555–#777；請用下列 class 或 --psy-text-*-on-dark token。
+   */
+  .psy-text-body-on-dark,
+  .psy-body-on-dark {
+    margin: 0;
+    color: var(--psy-text-body-on-dark);
+    font-size: var(--psy-font-size-body);
+    font-weight: var(--psy-font-weight-body);
+    line-height: var(--psy-line-height-body);
+  }
+
+  .psy-lead-on-dark {
+    margin: 0;
+    color: var(--psy-text-lead-on-dark);
+    font-size: var(--psy-font-size-body);
+    font-weight: var(--psy-font-weight-body);
+    line-height: var(--psy-line-height-body);
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  .psy-text-meta-on-dark,
+  .psy-meta-on-dark {
+    margin: 0;
+    color: var(--psy-text-meta-on-dark);
+    font-size: var(--psy-font-size-small);
+    font-weight: 600;
+    line-height: var(--psy-line-height-body);
+  }
+
+  .psy-link-on-dark,
+  .link-on-dark {
+    color: var(--psy-link-on-dark-fg);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--psy-link-on-dark-underline);
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+  }
+
+  .psy-link-on-dark:hover,
+  .link-on-dark:hover {
+    color: var(--psy-link-on-dark-fg-hover);
+    text-decoration-color: currentColor;
+  }
+
+  .psy-link-on-dark:focus-visible,
+  .link-on-dark:focus-visible {
+    outline: var(--psy-focus-ring-width) solid var(--psy-focus-ring-color);
+    outline-offset: var(--psy-focus-ring-offset);
+  }
+
+  .psy-icon-btn-on-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: var(--psy-icon-btn-on-dark-size);
+    min-height: var(--psy-icon-btn-on-dark-size);
+    padding: 0;
+    border: var(--psy-border-width-block) solid var(--psy-icon-btn-on-dark-border);
+    border-radius: 999px;
+    background: var(--psy-icon-btn-on-dark-bg);
+    color: var(--psy-icon-btn-on-dark-fg);
+    box-shadow: var(--psy-shadow-soft);
+    font-family: var(--psy-font-family-display);
+    font-size: var(--psy-font-size-h3);
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition-property: transform, box-shadow, background-color;
+    transition-duration: var(--psy-motion-duration-fast);
+    transition-timing-function: var(--psy-motion-easing-standard);
+  }
+
+  .psy-icon-btn-on-dark:hover {
+    background: var(--psy-state-hover-overlay);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--psy-color-base);
+  }
+
+  .psy-icon-btn-on-dark:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--psy-color-base);
+  }
+
+  .psy-icon-btn-on-dark:focus-visible {
+    outline: var(--psy-focus-ring-width) solid var(--psy-focus-ring-color);
+    outline-offset: var(--psy-focus-ring-offset);
+  }
+
   .psy-brutal {
     border-width: var(--psy-border-width-block);
     border-style: solid;

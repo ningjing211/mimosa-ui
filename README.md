@@ -51,10 +51,11 @@ Mimosa 以 Tailwind v4 為基礎，需透過專案中的 Tailwind pipeline 進�
 
 Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文字 foreground 必須成組使用，避免在淺色卡片上套到深色頁面的淡色文字。
 
-- 深色頁面：使用 `psy-page-bg`，文字可用 `--psy-text-primary` / `--psy-text-secondary`。
+- 深色頁面：使用 `psy-page-bg` 或 `psy-hero-gradient`，標題用 `--psy-text-primary`；說明／分頁／tertiary 用下方 on-dark primitive。
 - 淺色 elevated surface：使用 `psy-card`、`card`、`empty-state`，文字會自動配到 `--psy-surface-card-fg` / `--psy-surface-card-fg-muted`。
-- Kicker / eyebrow：淺底使用 `psy-kicker`、`psy-kicker-on-light` 或 `psy-kicker-on-card`；深紫底使用 `psy-kicker-on-dark`。
+- Kicker / eyebrow：淺底 `psy-kicker-on-light` / `psy-kicker-on-card`；深底短標用 `psy-kicker-on-dark`（uppercase）。**長句說明**請用 `psy-lead-on-dark`，不要用 kicker。
 - Status / badge：不要只靠顏色傳達狀態，請保留文字 label。`empty-state__status-item` 會提供高對比文字、外框與膠囊背景。
+- **禁止** 在 `color-scheme: dark` 且深紫 hero 背景上硬編碼 `#555`、`#666`、`#ccc` 等淺色頁灰字；請改用 Mimosa on-dark class 或 `--psy-text-*-on-dark` token。
 
 ## 常用公開 Class
 
@@ -67,10 +68,59 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | Button wrapper | `psy-btn-row` / `psy-btn-row-center` / `psy-btn-row-full` / `psy-btn-host` |
 | Card | `psy-card` |
 | Kicker | `psy-kicker` / `psy-kicker-on-light` / `psy-kicker-on-card` / `psy-kicker-on-dark` |
+| 深底內文 | `psy-lead-on-dark` / `psy-text-body-on-dark` |
+| 深底 meta | `psy-text-meta-on-dark`（如 `1 / 3`） |
+| 深底連結 | `psy-link-on-dark` |
+| 深底 tertiary 按鈕 | `psy-btn-ghost-on-dark` |
+| 深底 icon 控制 | `psy-icon-btn-on-dark`（輪播箭頭等） |
 | Structured card | `card` / `card__header` / `card__body` / `card__footer` |
 | Form input | `form-input` |
 | Empty state | `empty-state` / `empty-state__title` / `empty-state__text` / `empty-state__actions` |
 | Empty state status | `empty-state__status-list` / `empty-state__status-item` |
+
+## Surface 配對表
+
+| Surface | 標題 | 說明／helper | Meta（1/3） | Tertiary 動作 | 主要按鈕 |
+|---------|------|--------------|-------------|---------------|----------|
+| 深底 hero（`psy-page-bg`） | `--psy-text-primary` / 繼承 body | `psy-lead-on-dark` | `psy-text-meta-on-dark` | `psy-btn-ghost-on-dark` 或 `psy-link-on-dark` | `psy-btn-primary` |
+| 淺色 card（`psy-card`） | 繼承 card fg | 內文 muted | — | `psy-btn-ghost` | `psy-btn-primary` |
+| 深底 + 螢光 accent | `psy-kicker-on-dark` | `psy-lead-on-dark` | `psy-meta-on-dark` | `psy-btn-ghost-on-dark` | `psy-btn-primary` |
+
+## 深底 Hero 頁（訪客著陸／Carousel）
+
+```html
+<main class="psy-hero-gradient">
+  <header>
+    <h1>Rave Connect</h1>
+    <button class="psy-btn psy-btn-secondary">註冊</button>
+    <button class="psy-btn psy-btn-primary">登入</button>
+  </header>
+
+  <p class="psy-lead-on-dark">
+    探索電音活動 — 左右切換預覽，互動需先註冊或登入
+  </p>
+
+  <article class="psy-card">…</article>
+
+  <p class="psy-text-meta-on-dark">1 / 3</p>
+
+  <button type="button" class="psy-icon-btn-on-dark" aria-label="上一則">‹</button>
+  <button type="button" class="psy-icon-btn-on-dark" aria-label="下一則">›</button>
+
+  <button type="button" class="psy-btn psy-btn-ghost-on-dark">建立活動</button>
+</main>
+```
+
+全站若已設定：
+
+```css
+body {
+  background: var(--psy-gradient-hero-panel), var(--psy-surface-page-deep);
+  color: var(--psy-text-primary);
+}
+```
+
+則 `<h1>` 可繼承主色；**勿**再對 `.lead` 寫 `color: #555`。`psy-kicker-on-dark` 會 `text-transform: uppercase`，不適合繁中長句說明。
 
 ## 深色頁面中的卡片
 

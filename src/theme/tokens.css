@@ -173,6 +173,19 @@
 
   --psy-text-primary: var(--psy-color-primary-on-dark);
   --psy-text-secondary: var(--psy-color-primary-on-dark-muted);
+  /*
+   * 深底頁面（hero / page-deep / psy-page-bg）次要資訊層 — 勿用 #555–#777
+   * - body：說明段落、helper
+   * - meta：分頁 1/3、timestamp、caption
+   * - lead：同 body，供 .psy-lead-on-dark（非 uppercase kicker）
+   */
+  --psy-text-body-on-dark: var(--psy-text-secondary);
+  --psy-text-meta-on-dark: color-mix(
+    in srgb,
+    var(--psy-text-primary) 86%,
+    var(--psy-surface-page-deep)
+  );
+  --psy-text-lead-on-dark: var(--psy-text-body-on-dark);
   --psy-text-on-dark: var(--psy-color-base);
   /* 淺色／洗白 elevated surface（卡片、表格、手風琴等） */
   --psy-text-on-light: var(--psy-surface-card-fg);
@@ -290,6 +303,8 @@
   /* 建議對比組合（文件／審查；與 NASA「permitted combinations」概念對齊） */
   --psy-a11y-fg-default-on-page: var(--psy-text-primary);
   --psy-a11y-fg-muted-on-page: var(--psy-text-secondary);
+  --psy-a11y-fg-meta-on-page: var(--psy-text-meta-on-dark);
+  --psy-a11y-fg-link-on-page: var(--psy-link-on-dark-fg);
   --psy-a11y-fg-default-on-card: var(--psy-text-on-light);
   --psy-a11y-fg-muted-on-card: var(--psy-text-muted-on-light);
   --psy-a11y-fg-on-alert: var(--psy-alert-fg);
@@ -406,6 +421,27 @@
   --psy-button-ghost-border: var(--psy-border-strong);
   --psy-button-ghost-bg-hover: var(--psy-elevated-hover-bg);
   --psy-button-ghost-bg-active: color-mix(in srgb, var(--psy-color-base) 8%, var(--psy-elevated-hover-bg));
+  /* 深底頁 tertiary（建立活動、稍後）— 勿用透明底 + #666 */
+  --psy-button-ghost-on-dark-bg: transparent;
+  --psy-button-ghost-on-dark-fg: var(--psy-text-primary);
+  --psy-button-ghost-on-dark-border: color-mix(
+    in srgb,
+    var(--psy-text-primary) 70%,
+    var(--psy-surface-page-deep)
+  );
+  --psy-button-ghost-on-dark-bg-hover: var(--psy-state-hover-overlay);
+  --psy-button-ghost-on-dark-bg-active: var(--psy-state-active-overlay);
+  --psy-link-on-dark-fg: var(--psy-text-primary);
+  --psy-link-on-dark-fg-hover: var(--psy-kicker-text-on-dark);
+  --psy-link-on-dark-underline: color-mix(in srgb, var(--psy-text-primary) 58%, transparent);
+  --psy-icon-btn-on-dark-size: var(--psy-button-icon-size);
+  --psy-icon-btn-on-dark-bg: color-mix(
+    in srgb,
+    var(--psy-primitive-white) 14%,
+    var(--psy-surface-page-deep)
+  );
+  --psy-icon-btn-on-dark-fg: var(--psy-text-primary);
+  --psy-icon-btn-on-dark-border: var(--psy-border-strong);
   --psy-button-icon-size: 2.75rem;
   --psy-button-cta-max-width: 28rem;
   --psy-button-mobile-min-height: 3.25rem;
