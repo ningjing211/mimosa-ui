@@ -52,7 +52,8 @@ async function build() {
     "navigation-mobile.css",
     "tables.css",
     "chrome.css",
-    "flow-page.css"
+    "flow-page.css",
+    "ionic-bridge.css"
   ];
 
   await mkdir(distTailwindDir, { recursive: true });

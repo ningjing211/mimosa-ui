@@ -456,6 +456,13 @@
 
   /* Content rhythm / sizing（供 design-system + 產品共用） */
   --psy-content-max-readable: 66ch;
+  /* 訪客首頁／Mobile smoke 內容欄寬（對齊 Web guest-home max-width: 32rem） */
+  --psy-page-shell-max-width: 32rem;
+  --psy-page-shell-padding-block: var(--psy-space-7);
+  --psy-page-shell-padding-inline: var(--psy-space-5);
+  --psy-ionic-tab-bar-bg: var(--psy-surface-on-dark);
+  --psy-ionic-tab-bar-fg: var(--psy-text-secondary);
+  --psy-ionic-tab-bar-fg-selected: var(--psy-kicker-text-on-dark);
   --psy-control-min-height: 2.85rem;
   --psy-table-min-width: 560px;
   /*
@@ -794,6 +801,19 @@
   --psy-carousel-indicator-gap: var(--psy-space-2);
   --psy-carousel-indicator-bg: color-mix(in srgb, var(--psy-color-base) 25%, transparent);
   --psy-carousel-indicator-active-bg: var(--psy-color-base);
+  /* 深底 hero 上的輪播 meta／指示器（勿用 #ccc / 低對比深色點） */
+  --psy-carousel-meta-on-dark-fg: var(--psy-text-meta-on-dark);
+  --psy-carousel-indicator-on-dark-bg: color-mix(
+    in srgb,
+    var(--psy-text-primary) 38%,
+    transparent
+  );
+  --psy-carousel-indicator-on-dark-active-bg: var(--psy-text-primary);
+  --psy-carousel-indicator-on-dark-border: color-mix(
+    in srgb,
+    var(--psy-text-primary) 72%,
+    var(--psy-surface-page-deep)
+  );
 
   /* Empty state */
   --psy-empty-state-icon-size: 2.5rem;

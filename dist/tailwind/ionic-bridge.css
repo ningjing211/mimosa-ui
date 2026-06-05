@@ -1,0 +1,78 @@
+/**
+ * Ionic 8 + Mimosa bridge — optional partial.
+ *
+ * Import AFTER mimosa-design-system/tailwind.css in apps/mobile/src/styles.css:
+ *
+ *   @import "mimosa-design-system/tailwind.css";
+ *   @import "mimosa-design-system/tailwind/ionic-bridge.css";
+ *
+ * Aligns ion-app / ion-content / typography with --psy-* and prevents Ionic
+ * defaults from overriding .psy-btn / on-dark text on hero pages.
+ */
+@layer components {
+  ion-app {
+    color: var(--psy-text-primary);
+    background: transparent;
+    font-family: var(--psy-font-family-body);
+  }
+
+  ion-content {
+    --background: transparent;
+    --color: var(--psy-text-primary);
+    --padding-top: 0;
+    --padding-bottom: 0;
+  }
+
+  ion-content::part(background) {
+    background: transparent;
+  }
+
+  ion-app h1,
+  ion-app h2,
+  ion-app h3,
+  ion-app h4,
+  ion-app .page-title {
+    color: var(--psy-text-primary);
+    font-family: var(--psy-font-family-display);
+  }
+
+  ion-app p {
+    color: inherit;
+  }
+
+  ion-app a:not(.psy-btn):not([class*="psy-btn"]) {
+    color: var(--psy-link-on-dark-fg);
+    font-weight: 700;
+  }
+
+  ion-app a:not(.psy-btn):not([class*="psy-btn"]):hover {
+    color: var(--psy-link-on-dark-fg-hover);
+  }
+
+  ion-app .psy-btn {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    font-family: var(--psy-font-family-display);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  ion-app .psy-card,
+  ion-app .card,
+  ion-app .empty-state {
+    color: var(--psy-surface-card-fg);
+  }
+
+  ion-tab-bar {
+    --background: var(--psy-ionic-tab-bar-bg);
+    --color: var(--psy-ionic-tab-bar-fg);
+    --color-selected: var(--psy-ionic-tab-bar-fg-selected);
+    border-top: var(--psy-border-width-block) solid var(--psy-border-strong);
+  }
+
+  ion-tab-button {
+    font-family: var(--psy-font-family-body);
+    font-weight: 600;
+  }
+}

@@ -73,6 +73,10 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | 深底連結 | `psy-link-on-dark` |
 | 深底 tertiary 按鈕 | `psy-btn-ghost-on-dark` |
 | 深底 icon 控制 | `psy-icon-btn-on-dark`（輪播箭頭等） |
+| 深底輪播 | `carousel--on-dark` / `carousel__meta` / `psy-carousel-controls` |
+| 深底分頁 alias | `psy-pagination-on-dark`（同 `carousel__meta`） |
+| 頁面內容殼 | `psy-page-shell` / `psy-guest-home-shell`（max-width 32rem 置中） |
+| Ionic bridge（Mobile） | `tailwind/ionic-bridge.css`（Mimosa 之後載入） |
 | Structured card | `card` / `card__header` / `card__body` / `card__footer` |
 | Form input | `form-input` |
 | Empty state | `empty-state` / `empty-state__title` / `empty-state__text` / `empty-state__actions` |
@@ -102,10 +106,14 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 
   <article class="psy-card">…</article>
 
-  <p class="psy-text-meta-on-dark">1 / 3</p>
-
-  <button type="button" class="psy-icon-btn-on-dark" aria-label="上一則">‹</button>
-  <button type="button" class="psy-icon-btn-on-dark" aria-label="下一則">›</button>
+  <section class="carousel carousel--on-dark">
+    <article class="psy-card">…</article>
+    <div class="psy-carousel-controls">
+      <button type="button" class="psy-icon-btn-on-dark" aria-label="上一則">‹</button>
+      <p class="carousel__meta">1 / 3</p>
+      <button type="button" class="psy-icon-btn-on-dark" aria-label="下一則">›</button>
+    </div>
+  </section>
 
   <button type="button" class="psy-btn psy-btn-ghost-on-dark">建立活動</button>
 </main>
@@ -121,6 +129,35 @@ body {
 ```
 
 則 `<h1>` 可繼承主色；**勿**再對 `.lead` 寫 `color: #555`。`psy-kicker-on-dark` 會 `text-transform: uppercase`，不適合繁中長句說明。
+
+## Angular + Ionic Mobile 整合
+
+Ionic 預設 typography／`ion-content` 背景會與 Mimosa 深底 hero 衝突。Mobile 請在 **Mimosa 之後** 載入 bridge：
+
+```css
+/* apps/mobile/src/styles.css（示意） */
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "mimosa-design-system/tailwind.css";
+@import "mimosa-design-system/tailwind/ionic-bridge.css";
+```
+
+訪客首頁請用頁面殼收斂寬度（勿只寫子元素 CSS、省略根容器）：
+
+```html
+<ion-content>
+  <div class="psy-page-shell psy-hero-gradient">
+    <header class="guest-home__header">…</header>
+    <p class="psy-lead-on-dark">…</p>
+    <section class="carousel carousel--on-dark">…</section>
+    <button type="button" class="psy-btn psy-btn-ghost-on-dark">建立活動</button>
+  </div>
+</ion-content>
+```
+
+`ionic-bridge.css` 會：將 `ion-app`／`ion-content` 對齊 `--psy-text-primary`、保護 `.psy-btn` 不被 Ionic reset 覆寫、並設定 `ion-tab-bar` token。
 
 ## 深色頁面中的卡片
 
