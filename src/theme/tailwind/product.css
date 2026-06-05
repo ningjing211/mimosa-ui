@@ -282,13 +282,49 @@
   color: var(--psy-text-primary);
 }
 
-.form-choice input[type="checkbox"],
+/* 淺底 elevated（psy-card、modal、settings 區塊） */
+.form-choice--on-light {
+  color: var(--psy-form-label-text-on-light);
+}
+
+.form-choice input[type="checkbox"]:not(.psy-checkbox),
 .form-choice input[type="radio"] {
   flex-shrink: 0;
-  width: 1.125rem;
-  height: 1.125rem;
+  width: var(--psy-checkbox-size);
+  height: var(--psy-checkbox-size);
   margin-top: 0.15em;
   accent-color: var(--psy-color-secondary-lime);
+}
+
+.psy-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: var(--psy-checkbox-size);
+  height: var(--psy-checkbox-size);
+  margin-top: 0.15em;
+  border: var(--psy-checkbox-border-width) solid var(--psy-checkbox-border);
+  background-color: var(--psy-checkbox-bg);
+  box-shadow: var(--psy-checkbox-shadow);
+  cursor: pointer;
+}
+
+.psy-checkbox--on-light {
+  background-color: var(--psy-checkbox-bg-on-light);
+}
+
+.psy-checkbox:checked {
+  background-color: var(--psy-checkbox-bg-checked);
+  background-image: var(--psy-checkbox-checkmark);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.7rem 0.7rem;
+  border-color: var(--psy-checkbox-border);
+}
+
+.psy-checkbox:focus-visible {
+  outline: var(--psy-focus-ring-width) solid var(--psy-focus-ring-color);
+  outline-offset: var(--psy-focus-ring-offset);
 }
 
 .form-date-row {

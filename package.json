@@ -1,6 +1,6 @@
 {
   "name": "mimosa-design-system",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Mimosa design system — Tailwind v4 tokens, utilities, and product primitives.",
   "license": "MIT",
   "repository": {
@@ -55,5 +55,8 @@
     "build": "node ./scripts/build.mjs",
     "check:dist": "node ./scripts/check-dist.mjs",
     "prepare": "node ./scripts/build.mjs"
+  },
+  "dependencies": {
+    "mimosa-design-system": "^0.3.2"
   }
 }

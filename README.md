@@ -89,6 +89,8 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | Ionic bridge（Mobile） | `tailwind/ionic-bridge.css`（Mimosa 之後載入） |
 | Structured card | `card` / `card__header` / `card__body` / `card__footer` |
 | Form input | `form-input` |
+| Checkbox / radio label | `form-choice` / `form-choice-list` |
+| Checkbox on light card | `form-choice--on-light` + `psy-checkbox psy-checkbox--on-light` |
 | Empty state | `empty-state` / `empty-state__title` / `empty-state__text` / `empty-state__actions` |
 | Empty state status | `empty-state__status-list` / `empty-state__status-item` |
 
@@ -98,6 +100,7 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 |---------|------|--------------|-------------|---------------|----------|
 | 深底 hero（`psy-page-bg`） | `--psy-text-primary` / 繼承 body | `psy-lead-on-dark` | `psy-text-meta-on-dark` | `psy-btn-ghost-on-dark` 或 `psy-link-on-dark` | `psy-btn-primary` |
 | 淺色 card（`psy-card`） | 繼承 card fg | 內文 muted | — | `psy-btn-ghost` | `psy-btn-primary` |
+| 設定／同意勾選（card 內） | `form-choice--on-light` 標籤 | — | — | — | `psy-checkbox--on-light` 萊姆勾選 |
 | 聊天列表／氣泡 | `psy-chat-list-item__name` | `psy-chat-list-item__preview` | — | `psy-btn` in composer | `psy-btn-primary` |
 | 深底 + 螢光 accent | `psy-kicker-on-dark` | `psy-lead-on-dark` | `psy-meta-on-dark` | `psy-btn-ghost-on-dark` | `psy-btn-primary` |
 
@@ -213,6 +216,36 @@ Mimosa 主入口 `tailwind.css` 末尾已載入 **`overrides.css`**（無 layer�
 `h2` 若在可點擊 `<button>` 內，請用 `psy-card-title`；勿依賴 `.psy-card > h2` 直接子選擇器。
 
 興趣用填色 `psy-chip`；使用者填寫的場館／地點名稱用細框 `psy-venue-tag`（左側 map-pin icon），勿混用 chip 或 `well` 列表。
+
+## Checkbox／設定頁（淺色 card）
+
+原生 `<input type="checkbox">` 未設 `accent-color` 時，瀏覽器預設勾選色多為系統藍，與 `psy-btn-primary` 萊姆主行動色不一致。
+
+**最低限度**（深紫頁）：`form-choice` 會套用 `accent-color: lime`。
+
+**建議**（`psy-card` 設定區）：`form-choice--on-light` + `psy-checkbox psy-checkbox--on-light`（brutal 邊框 + 萊姆勾選，標籤用 card fg）。
+
+```html
+<section class="psy-card">
+  <label class="form-choice form-choice--on-light">
+    <input type="checkbox" class="psy-checkbox psy-checkbox--on-light" />
+    <span>接受其他使用者邀請我參加活動</span>
+  </label>
+</section>
+```
+
+註冊 18+ 確認等同理；多選請用 `form-choice-list` 包 `<li>`。
+
+```html
+<ul class="form-choice-list">
+  <li>
+    <label class="form-choice form-choice--on-light">
+      <input type="checkbox" class="psy-checkbox psy-checkbox--on-light" />
+      <span>我已年滿 18 歲</span>
+    </label>
+  </li>
+</ul>
+```
 
 ## Chat（列表／氣泡／輸入）
 
