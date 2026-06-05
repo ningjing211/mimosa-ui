@@ -319,6 +319,31 @@
     color: var(--psy-venue-tag-icon-fg);
   }
 
+  .psy-history-venue {
+    margin: 0;
+    font-size: var(--psy-font-size-small);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--psy-surface-card-fg);
+  }
+
+  .psy-meta-on-card {
+    margin: 0;
+    font-size: var(--psy-font-size-small);
+    line-height: 1.4;
+    color: var(--psy-surface-card-fg-muted);
+  }
+
+  .psy-chip--reaction-up {
+    background: var(--psy-action-primary-bg);
+    color: var(--psy-action-primary-text);
+  }
+
+  .psy-chip--reaction-down {
+    background: var(--psy-action-danger-bg);
+    color: var(--psy-action-danger-text);
+  }
+
   .psy-divider {
     margin: var(--psy-space-7) 0;
     border: 0;

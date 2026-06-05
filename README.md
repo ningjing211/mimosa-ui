@@ -63,8 +63,8 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | 元件 | Class |
 |------|-------|
 | Button | `psy-btn` |
-| Button variants | `psy-btn-primary` / `psy-btn-secondary` / `psy-btn-ghost` |
-| Button BEM aliases | `psy-btn--primary` / `psy-btn--secondary` / `psy-btn--ghost` |
+| Button variants | `psy-btn-primary` / `psy-btn-secondary` / `psy-btn-ghost` / `psy-btn-danger` |
+| Button BEM aliases | `psy-btn--primary` / `psy-btn--secondary` / `psy-btn--ghost` / `psy-btn--danger` |
 | Button layout | `psy-btn-full` / `psy-btn-block` / `psy-btn-center` / `psy-btn-cta` / `psy-btn-mobile` |
 | Button wrapper | `psy-btn-row` / `psy-btn-row-center` / `psy-btn-row-full` / `psy-btn-host` |
 | Card | `psy-card` |
@@ -86,6 +86,10 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | 卡內標題 | `psy-card-title`（可放在 `<button>` 內） |
 | 標籤列 | `psy-chip-list` + `psy-chip` |
 | 場館提及 | `psy-venue-list` + `psy-venue-tag`（細框 + location icon，非填色 chip） |
+| 活動歷史場館列 | `psy-history-venue`（字重高於 date meta） |
+| Card meta 日期 | `psy-meta-on-card` |
+| 讚／倒讚 | `psy-reaction-row` + `psy-reaction-up` / `psy-reaction-down` + `aria-pressed` |
+| 評分狀態 chip | `psy-chip--reaction-up` / `psy-chip--reaction-down` |
 | Ionic bridge（Mobile） | `tailwind/ionic-bridge.css`（Mimosa 之後載入） |
 | Structured card | `card` / `card__header` / `card__body` / `card__footer` |
 | Form input | `form-input` |
@@ -99,7 +103,10 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | Surface | 標題 | 說明／helper | Meta（1/3） | Tertiary 動作 | 主要按鈕 |
 |---------|------|--------------|-------------|---------------|----------|
 | 深底 hero（`psy-page-bg`） | `--psy-text-primary` / 繼承 body | `psy-lead-on-dark` | `psy-text-meta-on-dark` | `psy-btn-ghost-on-dark` 或 `psy-link-on-dark` | `psy-btn-primary` |
-| 淺色 card（`psy-card`） | 繼承 card fg | 內文 muted | — | `psy-btn-ghost` | `psy-btn-primary` |
+| 淺色 card（`psy-card`） | 繼承 card fg | 內文 muted | `psy-meta-on-card` | `psy-btn-ghost` | `psy-btn-primary` |
+| card 內導覽 CTA | — | — | — | — | `psy-btn-secondary psy-btn-block` |
+| 負向確認／倒讚 | — | — | — | — | `psy-btn-danger` 或 `psy-reaction-down` |
+| 讚（已選） | — | — | — | — | `psy-reaction-up[aria-pressed="true"]`（萊姆） |
 | 設定／同意勾選（card 內） | `form-choice--on-light` 標籤 | — | — | — | `psy-checkbox--on-light` 萊姆勾選 |
 | 聊天列表／氣泡 | `psy-chat-list-item__name` | `psy-chat-list-item__preview` | — | `psy-btn` in composer | `psy-btn-primary` |
 | 深底 + 螢光 accent | `psy-kicker-on-dark` | `psy-lead-on-dark` | `psy-meta-on-dark` | `psy-btn-ghost-on-dark` | `psy-btn-primary` |
@@ -175,6 +182,8 @@ Ionic 預設 typography／`ion-content` 背景會與 Mimosa 深底 hero 衝突�
 
 在 `ion-content` 內若自訂 **淺色** 列表／氣泡，請用 `psy-chat-*` 或 `psy-card`，**勿**對淺底元素設 `color: var(--psy-text-primary)`（會變成淺字在淺底）。
 
+`ion-content` 的 `--color` 為未分層規則，`<a class="psy-btn psy-btn-ghost">` 在 `psy-card` 內可能繼承深底淺字。bridge 已以 **unlayered** 規則鎖定 card 內 `a.psy-btn` variant 色票；帳號設定等**明確導覽 CTA** 仍建議用 `psy-btn-secondary psy-btn-block`，勿用 ghost。
+
 ### Ionic + `normalize.css`（按鈕 padding）
 
 Ionic 的 `button { padding: 0; border: 0 }` **沒有** `@layer`，會蓋過 Mimosa `@layer components` 內的 `.psy-btn`。
@@ -246,6 +255,33 @@ Mimosa 主入口 `tailwind.css` 末尾已載入 **`overrides.css`**（無 layer�
   </li>
 </ul>
 ```
+
+## 我的檔案／活動歷史卡（淺色 card）
+
+場館列與日期 meta 請分開語意：`psy-history-venue` 字重高於 `psy-meta-on-card`。評分用 `aria-pressed` 表選取態，**勿**在按鈕下方重複「你的評分：讚」文案；可選標題旁狀態 chip。
+
+```html
+<section class="psy-card">
+  <a class="psy-btn psy-btn-secondary psy-btn-block" href="/my/settings">帳號設定</a>
+
+  <article>
+    <h3 class="psy-card-title">
+      Warehouse Resonance
+      <span class="psy-chip psy-chip--reaction-up">已讚</span>
+    </h3>
+    <p class="psy-history-venue">Echo Basement · Taipei</p>
+    <p class="psy-meta-on-card">2026-05-18</p>
+
+    <div class="psy-reaction-row" role="group" aria-label="活動評分">
+      <button type="button" class="psy-btn psy-reaction-up" aria-pressed="true">讚</button>
+      <button type="button" class="psy-btn psy-reaction-down" aria-pressed="false">倒讚</button>
+    </div>
+  </article>
+</section>
+```
+
+- **讚**：未選為 secondary（預設 `.psy-btn`）；`aria-pressed="true"` 時為萊姆 primary。
+- **倒讚**：一律 `psy-reaction-down`（洋紅 danger）；選取時以 inset ring 強調，無需重複文字說明。
 
 ## Chat（列表／氣泡／輸入）
 

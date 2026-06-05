@@ -73,6 +73,46 @@
     min-height: var(--psy-button-mobile-min-height);
   }
 
+  /* —— Reaction / thumbs rating（搭配 aria-pressed，勿另加冗餘狀態文案）—— */
+  .psy-reaction-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--psy-btn-row-gap);
+  }
+
+  .psy-reaction-up[aria-pressed="true"] {
+    background: var(--psy-button-primary-bg);
+    color: var(--psy-action-primary-text);
+  }
+
+  .psy-reaction-up[aria-pressed="true"]:hover {
+    background: var(--psy-button-primary-bg-hover);
+  }
+
+  .psy-reaction-up[aria-pressed="true"]:active {
+    background: var(--psy-button-primary-bg-active);
+  }
+
+  .psy-reaction-down {
+    background: var(--psy-button-danger-bg);
+    color: var(--psy-action-danger-text);
+  }
+
+  .psy-reaction-down:hover {
+    background: var(--psy-button-danger-bg-hover);
+  }
+
+  .psy-reaction-down:active {
+    background: var(--psy-button-danger-bg-active);
+  }
+
+  .psy-reaction-down[aria-pressed="true"] {
+    box-shadow:
+      inset 0 0 0 2px var(--psy-color-base),
+      var(--psy-button-shadow-offset) var(--psy-button-shadow-offset) 0 var(--psy-color-base);
+  }
+
   .psy-btn-row {
     display: flex;
     flex-wrap: wrap;

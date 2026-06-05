@@ -105,3 +105,32 @@ ion-app a.psy-btn {
   border: var(--psy-border-width-block) solid var(--psy-border-strong);
   border-radius: 0;
 }
+
+/*
+ * ion-content --color 為未分層規則，子元素 <a.psy-btn> 可能繼承深底淺字。
+ * 在淺色 psy-card 內以 unlayered 規則鎖定 variant 色票（含 anchor）。
+ */
+ion-app .psy-card .psy-btn.psy-btn-ghost,
+ion-app .psy-card a.psy-btn.psy-btn-ghost {
+  color: var(--psy-button-ghost-fg);
+  background: var(--psy-button-ghost-bg);
+  border-color: var(--psy-button-ghost-border);
+}
+
+ion-app .psy-card .psy-btn.psy-btn-primary,
+ion-app .psy-card a.psy-btn.psy-btn-primary {
+  color: var(--psy-action-primary-text);
+  background: var(--psy-button-primary-bg);
+}
+
+ion-app .psy-card .psy-btn.psy-btn-secondary,
+ion-app .psy-card a.psy-btn.psy-btn-secondary {
+  color: var(--psy-action-secondary-text);
+  background: var(--psy-button-secondary-bg);
+}
+
+ion-app .psy-card .psy-btn.psy-btn-danger,
+ion-app .psy-card a.psy-btn.psy-btn-danger {
+  color: var(--psy-action-danger-text);
+  background: var(--psy-button-danger-bg);
+}
