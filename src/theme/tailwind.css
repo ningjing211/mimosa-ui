@@ -20,6 +20,8 @@
  *  16. component-variants.css — button / input / OTP variants
  *  17. navigation-mobile.css — hamburger / mega / bottom nav
  *  18. flow-page.css     — .psy-flow-* (raw overlay)
+ *  19. ionic-bridge.css  — Ionic 8 bridge (optional partial, not in default stack)
+ *  20. chat.css          — .psy-chat-* (list / bubbles / composer)
  *
  * Peer dependency: tailwindcss ^4
  */
@@ -41,3 +43,4 @@
 @import "./tailwind/tables.css";
 @import "./tailwind/chrome.css";
 @import "./tailwind/flow-page.css";
+@import "./tailwind/chat.css";

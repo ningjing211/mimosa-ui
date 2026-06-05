@@ -60,7 +60,19 @@
 
   ion-app .psy-card,
   ion-app .card,
-  ion-app .empty-state {
+  ion-app .empty-state,
+  ion-app .psy-chat-list-item,
+  ion-app .psy-chat-bubble-incoming,
+  ion-app .psy-chat-composer,
+  ion-app .psy-auth-page-shell .form-input {
+    color: var(--psy-surface-card-fg);
+  }
+
+  /*
+   * ion-content 預設 --color: text-primary（深底淺字）。
+   * 自訂淺色區塊請用 chat / card primitive，勿繼承 text-primary 到淺底子元素。
+   */
+  ion-app .psy-surface-on-light {
     color: var(--psy-surface-card-fg);
   }
 

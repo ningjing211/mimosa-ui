@@ -56,6 +56,7 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 - Kicker / eyebrow：淺底 `psy-kicker-on-light` / `psy-kicker-on-card`；深底短標用 `psy-kicker-on-dark`（uppercase）。**長句說明**請用 `psy-lead-on-dark`，不要用 kicker。
 - Status / badge：不要只靠顏色傳達狀態，請保留文字 label。`empty-state__status-item` 會提供高對比文字、外框與膠囊背景。
 - **禁止** 在 `color-scheme: dark` 且深紫 hero 背景上硬編碼 `#555`、`#666`、`#ccc` 等淺色頁灰字；請改用 Mimosa on-dark class 或 `--psy-text-*-on-dark` token。
+- **禁止** 在 `--psy-surface-card` / `psy-card` / `psy-chat-*` 等 **淺色 elevated** 區塊上使用 `--psy-text-primary`、`--psy-text-secondary`（那是深底 hero 用淺字）。應使用 `--psy-text-on-light`、`--psy-surface-card-fg`、`--psy-text-muted-on-light`。
 
 ## 常用公開 Class
 
@@ -76,6 +77,11 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | 深底輪播 | `carousel--on-dark` / `carousel__meta` / `psy-carousel-controls` |
 | 深底分頁 alias | `psy-pagination-on-dark`（同 `carousel__meta`） |
 | 頁面內容殼 | `psy-page-shell` / `psy-guest-home-shell`（max-width 32rem 置中） |
+| Auth 頁殼 | `psy-auth-page-shell`（max-width 28rem 置中） |
+| Tab 主殼 | `psy-main-app-shell`（列表／聊天與 tab bar 同寬節奏） |
+| Chat 列表 | `psy-chat-list` / `psy-chat-list-item` |
+| Chat 氣泡 | `psy-chat-bubble-incoming` / `psy-chat-bubble-outgoing` |
+| Chat 輸入 | `psy-chat-composer` + `form-input` |
 | Ionic bridge（Mobile） | `tailwind/ionic-bridge.css`（Mimosa 之後載入） |
 | Structured card | `card` / `card__header` / `card__body` / `card__footer` |
 | Form input | `form-input` |
@@ -88,6 +94,7 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 |---------|------|--------------|-------------|---------------|----------|
 | 深底 hero（`psy-page-bg`） | `--psy-text-primary` / 繼承 body | `psy-lead-on-dark` | `psy-text-meta-on-dark` | `psy-btn-ghost-on-dark` 或 `psy-link-on-dark` | `psy-btn-primary` |
 | 淺色 card（`psy-card`） | 繼承 card fg | 內文 muted | — | `psy-btn-ghost` | `psy-btn-primary` |
+| 聊天列表／氣泡 | `psy-chat-list-item__name` | `psy-chat-list-item__preview` | — | `psy-btn` in composer | `psy-btn-primary` |
 | 深底 + 螢光 accent | `psy-kicker-on-dark` | `psy-lead-on-dark` | `psy-meta-on-dark` | `psy-btn-ghost-on-dark` | `psy-btn-primary` |
 
 ## 深底 Hero 頁（訪客著陸／Carousel）
@@ -158,6 +165,66 @@ Ionic 預設 typography／`ion-content` 背景會與 Mimosa 深底 hero 衝突�
 ```
 
 `ionic-bridge.css` 會：將 `ion-app`／`ion-content` 對齊 `--psy-text-primary`、保護 `.psy-btn` 不被 Ionic reset 覆寫、並設定 `ion-tab-bar` token。
+
+在 `ion-content` 內若自訂 **淺色** 列表／氣泡，請用 `psy-chat-*` 或 `psy-card`，**勿**對淺底元素設 `color: var(--psy-text-primary)`（會變成淺字在淺底）。
+
+## Chat（列表／氣泡／輸入）
+
+```html
+<ul class="psy-chat-list">
+  <li>
+    <a class="psy-chat-list-item" href="/chats/nova">
+      <p class="psy-chat-list-item__name">Nova</p>
+      <p class="psy-chat-list-item__preview">今晚 warehouse 見？</p>
+    </a>
+  </li>
+</ul>
+
+<div class="psy-chat-thread">
+  <p class="psy-chat-bubble-incoming">內送訊息</p>
+  <p class="psy-chat-bubble-outgoing">外送訊息</p>
+</div>
+
+<form class="psy-chat-composer">
+  <input class="form-input" placeholder="輸入訊息…" />
+  <button type="submit" class="psy-btn psy-btn-primary">傳送</button>
+</form>
+```
+
+`psy-chat-*` 已鎖定 `--psy-surface-chat-*` 與 `--psy-surface-card-fg`，避免「白卡 + text-primary」反模式。
+
+## 反模式（勿這樣寫）
+
+```css
+/* ❌ 淺色卡面 + 深底主色字 → 幾乎看不見 */
+.chat-row {
+  background: var(--psy-surface-card);
+  color: var(--psy-text-primary);
+}
+
+/* ✅ 使用 chat primitive 或 on-light token */
+.chat-row {
+  background: var(--psy-surface-card);
+  color: var(--psy-surface-card-fg);
+}
+```
+
+## Angular wrapper（`rave-button`）
+
+Mimosa 樣式在內層 `<button class="psy-btn">`，**host 也需 layout contract**：
+
+```html
+<!-- 並排 CTA：用 psy-btn-row 避免 hard shadow 重疊 -->
+<div class="psy-btn-row">
+  <rave-button class="psy-btn-host">註冊</rave-button>
+  <rave-button class="psy-btn-host">登入</rave-button>
+</div>
+
+<!-- 滿版 CTA -->
+<rave-button class="psy-btn-host psy-btn-host-full">Start smoke check</rave-button>
+```
+
+Wrapper 元件建議在 `:host` 預設 `display: inline-flex`，並讓 consumer 可傳入 `psy-btn-host` class。
 
 ## 深色頁面中的卡片
 

@@ -75,9 +75,16 @@
 
   .psy-btn-row {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    gap: var(--psy-btn-row-gap);
     max-width: 100%;
     padding-inline-end: var(--psy-button-mobile-shadow-safe-space);
+  }
+
+  .psy-btn-row > .psy-btn,
+  .psy-btn-row > .psy-btn-host {
+    margin: 0;
   }
 
   .psy-btn-row-center {

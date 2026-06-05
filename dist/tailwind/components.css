@@ -43,6 +43,23 @@
     margin-top: 0;
   }
 
+  .psy-auth-page-shell {
+    width: 100%;
+    max-width: var(--psy-auth-page-shell-max-width);
+    margin-inline: auto;
+    padding: var(--psy-page-shell-padding-block) var(--psy-page-shell-padding-inline);
+    box-sizing: border-box;
+  }
+
+  .psy-main-app-shell {
+    width: 100%;
+    max-width: var(--psy-main-app-shell-max-width);
+    margin-inline: auto;
+    padding: var(--psy-page-shell-padding-block) var(--psy-page-shell-padding-inline);
+    padding-bottom: calc(var(--psy-page-shell-padding-block) + var(--psy-space-9));
+    box-sizing: border-box;
+  }
+
   /*
    * Kicker：淺底 .psy-kicker / .psy-kicker-on-light；深紫底 .psy-kicker-on-dark（萊姆）。
    * 深底請用 --psy-surface-on-dark／--psy-kicker-surface-on-dark，勿用 --psy-surface-page-deep（過黑）。

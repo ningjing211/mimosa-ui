@@ -1,0 +1,99 @@
+/**
+ * Chat primitives — list, bubbles, composer.
+ * Locks surface + on-surface pairing; do not use --psy-text-primary on these blocks.
+ */
+@layer components {
+  .psy-chat-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--psy-space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .psy-chat-list-item {
+    display: grid;
+    gap: var(--psy-space-2);
+    padding: var(--psy-space-5) var(--psy-space-6);
+    background: var(--psy-chat-list-item-bg);
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-soft);
+    color: var(--psy-chat-list-item-fg);
+    text-decoration: none;
+  }
+
+  .psy-chat-list-item__name {
+    margin: 0;
+    font-family: var(--psy-font-family-display);
+    font-size: var(--psy-font-size-subtitle);
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--psy-chat-list-item-fg);
+  }
+
+  .psy-chat-list-item__preview {
+    margin: 0;
+    font-size: var(--psy-font-size-small);
+    line-height: var(--psy-line-height-body);
+    color: var(--psy-chat-list-item-fg-muted);
+  }
+
+  .psy-chat-thread {
+    display: flex;
+    flex-direction: column;
+    gap: var(--psy-space-4);
+  }
+
+  .psy-chat-bubble-incoming,
+  .psy-chat-bubble-outgoing {
+    max-width: min(85%, 20rem);
+    padding: var(--psy-space-4) var(--psy-space-5);
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-soft);
+    font-size: var(--psy-font-size-body);
+    line-height: var(--psy-line-height-body);
+    word-break: break-word;
+  }
+
+  .psy-chat-bubble-incoming {
+    align-self: flex-start;
+    background: var(--psy-chat-bubble-incoming-bg);
+    color: var(--psy-chat-bubble-incoming-fg);
+  }
+
+  .psy-chat-bubble-outgoing {
+    align-self: flex-end;
+    background: var(--psy-chat-bubble-outgoing-bg);
+    color: var(--psy-chat-bubble-outgoing-fg);
+  }
+
+  .psy-chat-composer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: var(--psy-space-3);
+    width: 100%;
+    padding: var(--psy-space-4);
+    background: var(--psy-chat-composer-bg);
+    border: var(--psy-border-width-block) solid var(--psy-border-strong);
+    box-shadow: var(--psy-shadow-hard);
+    color: var(--psy-chat-composer-fg);
+  }
+
+  .psy-chat-composer .form-input,
+  .psy-chat-composer__input {
+    flex: 1 1 12rem;
+    min-width: 0;
+    margin: 0;
+    color: var(--psy-chat-composer-fg);
+    background: var(--psy-input-group-bg);
+    border-color: var(--psy-input-group-border);
+  }
+
+  .psy-chat-composer .form-input::placeholder,
+  .psy-chat-composer__input::placeholder {
+    color: var(--psy-chat-composer-placeholder);
+    opacity: 1;
+  }
+}
