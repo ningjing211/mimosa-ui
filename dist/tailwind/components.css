@@ -51,13 +51,18 @@
     box-sizing: border-box;
   }
 
-  .psy-main-app-shell {
+  .psy-main-app-shell,
+  .psy-chat-room-shell {
     width: 100%;
     max-width: var(--psy-main-app-shell-max-width);
     margin-inline: auto;
     padding: var(--psy-page-shell-padding-block) var(--psy-page-shell-padding-inline);
     padding-bottom: calc(var(--psy-page-shell-padding-block) + var(--psy-space-9));
     box-sizing: border-box;
+  }
+
+  .psy-chat-room-shell {
+    max-width: var(--psy-chat-room-shell-max-width);
   }
 
   /*
@@ -266,6 +271,19 @@
 
   .psy-chip--subnav {
     background: var(--psy-header-subnav-chip-bg);
+  }
+
+  .psy-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--psy-space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .psy-chip-list > li {
+    margin: 0;
   }
 
   .psy-divider {

@@ -54,7 +54,8 @@ async function build() {
     "chrome.css",
     "flow-page.css",
     "ionic-bridge.css",
-    "chat.css"
+    "chat.css",
+    "overrides.css"
   ];
 
   await mkdir(distTailwindDir, { recursive: true });

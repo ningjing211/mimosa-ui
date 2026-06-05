@@ -37,8 +37,18 @@
     color: var(--psy-surface-card-fg-muted);
   }
 
-  .psy-card > :where(h1, h2, h3, h4, h5, h6, strong) {
+  .psy-card > :where(h1, h2, h3, h4, h5, h6, strong),
+  .psy-card :where(h1, h2, h3, h4, h5, h6, strong),
+  .psy-card-title {
     color: var(--psy-surface-card-fg);
+  }
+
+  .psy-card-title {
+    margin: 0;
+    font-family: var(--psy-font-family-display);
+    font-size: var(--psy-font-size-h3);
+    font-weight: var(--psy-font-weight-h3);
+    line-height: 1.25;
   }
 
   .card {

@@ -6,8 +6,8 @@
  *   @import "mimosa-design-system/tailwind.css";
  *   @import "mimosa-design-system/tailwind/ionic-bridge.css";
  *
- * Aligns ion-app / ion-content / typography with --psy-* and prevents Ionic
- * defaults from overriding .psy-btn / on-dark text on hero pages.
+ * Aligns ion-app / ion-content with --psy-* and prevents Ionic normalize from
+ * stripping .psy-btn padding (see also tailwind/overrides.css in main entry).
  */
 @layer components {
   ion-app {
@@ -27,12 +27,21 @@
     background: transparent;
   }
 
-  ion-app h1,
-  ion-app h2,
-  ion-app h3,
-  ion-app h4,
+  /*
+   * 深底頁標題白名單 — 勿對 ion-content 內所有 h1–h6 設 text-primary，
+   * 否則 psy-card 內標題會變成淺字在淺底。
+   */
+  ion-app .psy-page-on-dark :is(h1, h2, h3, h4, h5, h6),
+  ion-app .psy-hero-page :is(h1, h2, h3, h4, h5, h6),
+  ion-app .psy-page-shell.psy-hero-gradient :is(h1, h2, h3, h4, h5, h6),
   ion-app .page-title {
     color: var(--psy-text-primary);
+    font-family: var(--psy-font-family-display);
+  }
+
+  ion-app .psy-card :is(h1, h2, h3, h4, h5, h6, .psy-card-title),
+  ion-app .card :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--psy-surface-card-fg);
     font-family: var(--psy-font-family-display);
   }
 
@@ -53,7 +62,6 @@
     -webkit-appearance: none;
     appearance: none;
     margin: 0;
-    font-family: var(--psy-font-family-display);
     text-transform: none;
     letter-spacing: normal;
   }
@@ -68,10 +76,6 @@
     color: var(--psy-surface-card-fg);
   }
 
-  /*
-   * ion-content 預設 --color: text-primary（深底淺字）。
-   * 自訂淺色區塊請用 chat / card primitive，勿繼承 text-primary 到淺底子元素。
-   */
   ion-app .psy-surface-on-light {
     color: var(--psy-surface-card-fg);
   }
@@ -87,4 +91,17 @@
     font-family: var(--psy-font-family-body);
     font-weight: 600;
   }
+}
+
+/* Ionic normalize 無 @layer，需無 layer 規則還原 box model（與 overrides.css 互補） */
+ion-app button.psy-btn,
+ion-app a.psy-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: var(--psy-space-3) var(--psy-space-6);
+  border: var(--psy-border-width-block) solid var(--psy-border-strong);
+  border-radius: 0;
 }

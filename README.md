@@ -82,6 +82,9 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | Chat 列表 | `psy-chat-list` / `psy-chat-list-item` |
 | Chat 氣泡 | `psy-chat-bubble-incoming` / `psy-chat-bubble-outgoing` |
 | Chat 輸入 | `psy-chat-composer` + `form-input` |
+| Chat 房殼 | `psy-chat-room-shell`（max-width 36rem） |
+| 卡內標題 | `psy-card-title`（可放在 `<button>` 內） |
+| 標籤列 | `psy-chip-list` + `psy-chip` |
 | Ionic bridge（Mobile） | `tailwind/ionic-bridge.css`（Mimosa 之後載入） |
 | Structured card | `card` / `card__header` / `card__body` / `card__footer` |
 | Form input | `form-input` |
@@ -168,6 +171,38 @@ Ionic 預設 typography／`ion-content` 背景會與 Mimosa 深底 hero 衝突�
 
 在 `ion-content` 內若自訂 **淺色** 列表／氣泡，請用 `psy-chat-*` 或 `psy-card`，**勿**對淺底元素設 `color: var(--psy-text-primary)`（會變成淺字在淺底）。
 
+### Ionic + `normalize.css`（按鈕 padding）
+
+Ionic 的 `button { padding: 0; border: 0 }` **沒有** `@layer`，會蓋過 Mimosa `@layer components` 內的 `.psy-btn`。
+
+Mimosa 主入口 `tailwind.css` 末尾已載入 **`overrides.css`**（無 layer）還原 `button.psy-btn` 的 padding／border／min-height。Mobile 仍建議載入 `ionic-bridge.css`，且 **不要** 對 `ion-content h1–h6` 全域設 `text-primary`；深底標題請限縮在 `psy-page-on-dark`／`psy-hero-page` 等白名單容器。
+
+## 配對卡／個人頁（淺色 card）
+
+```html
+<section class="psy-card">
+  <button type="button" class="matching__card-tap">
+    <h2 class="psy-card-title">Raven</h2>
+  </button>
+
+  <ul class="psy-chip-list" aria-label="興趣標籤">
+    <li><span class="psy-chip">techno</span></li>
+    <li><span class="psy-chip">house</span></li>
+    <li><span class="psy-chip">acid</span></li>
+  </ul>
+
+  <p class="psy-kicker-on-card">近期活動</p>
+  <p>Warehouse Resonance</p>
+
+  <div class="psy-btn-row">
+    <button type="button" class="psy-btn">略過</button>
+    <button type="button" class="psy-btn psy-btn-primary">Like</button>
+  </div>
+</section>
+```
+
+`h2` 若在可點擊 `<button>` 內，請用 `psy-card-title`；勿依賴 `.psy-card > h2` 直接子選擇器。
+
 ## Chat（列表／氣泡／輸入）
 
 ```html
@@ -189,6 +224,17 @@ Ionic 預設 typography／`ion-content` 背景會與 Mimosa 深底 hero 衝突�
   <input class="form-input" placeholder="輸入訊息…" />
   <button type="submit" class="psy-btn psy-btn-primary">傳送</button>
 </form>
+```
+
+聊天室頁請包在 `psy-chat-room-shell`（或 `psy-main-app-shell`）內，避免 composer 與返回連結貼死視窗邊緣：
+
+```html
+<ion-content>
+  <main class="psy-chat-room-shell">
+    <a class="psy-link-on-dark" href="/chats">← 聊天</a>
+    <!-- thread + psy-chat-composer -->
+  </main>
+</ion-content>
 ```
 
 `psy-chat-*` 已鎖定 `--psy-surface-chat-*` 與 `--psy-surface-card-fg`，避免「白卡 + text-primary」反模式。

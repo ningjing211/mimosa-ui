@@ -1,0 +1,26 @@
+/**
+ * Unlayered reset shield — imported last in tailwind.css.
+ *
+ * Ionic normalize (`button { padding: 0; border: 0 }`) and other unlayered
+ * resets beat @layer components. These rules restore .psy-btn box model without
+ * duplicating full component skin (background/color stay in @layer components).
+ */
+button.psy-btn,
+a.psy-btn,
+input.psy-btn[type="button"],
+input.psy-btn[type="submit"] {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: var(--psy-space-3) var(--psy-space-6);
+  border: var(--psy-border-width-block) solid var(--psy-border-strong);
+  border-radius: 0;
+  font-family: var(--psy-font-family-display);
+  font-size: var(--psy-font-size-button);
+  font-weight: var(--psy-font-weight-button);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}

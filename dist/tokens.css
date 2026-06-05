@@ -459,7 +459,8 @@
   /* 訪客首頁／Mobile smoke 內容欄寬（對齊 Web guest-home max-width: 32rem） */
   --psy-page-shell-max-width: 32rem;
   --psy-auth-page-shell-max-width: 28rem;
-  --psy-main-app-shell-max-width: 32rem;
+  --psy-main-app-shell-max-width: 36rem;
+  --psy-chat-room-shell-max-width: 36rem;
   --psy-page-shell-padding-block: var(--psy-space-7);
   --psy-page-shell-padding-inline: var(--psy-space-5);
   --psy-btn-row-gap: calc(var(--psy-button-shadow-offset) + var(--psy-space-4));
