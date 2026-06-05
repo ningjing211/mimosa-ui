@@ -286,6 +286,39 @@
     margin: 0;
   }
 
+  .psy-venue-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--psy-venue-list-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .psy-venue-list > li {
+    margin: 0;
+  }
+
+  .psy-venue-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--psy-venue-tag-gap);
+    padding: var(--psy-venue-tag-padding-block) var(--psy-venue-tag-padding-inline);
+    background: var(--psy-venue-tag-bg);
+    border: var(--psy-venue-tag-border-width) solid var(--psy-venue-tag-border);
+    color: var(--psy-venue-tag-fg);
+    font-size: var(--psy-venue-tag-font-size);
+    font-weight: var(--psy-venue-tag-font-weight);
+    line-height: var(--psy-line-height-ui-tight);
+  }
+
+  .psy-venue-tag__icon {
+    flex-shrink: 0;
+    width: var(--psy-venue-tag-icon-size);
+    height: var(--psy-venue-tag-icon-size);
+    color: var(--psy-venue-tag-icon-fg);
+  }
+
   .psy-divider {
     margin: var(--psy-space-7) 0;
     border: 0;

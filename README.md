@@ -85,6 +85,7 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | Chat 房殼 | `psy-chat-room-shell`（max-width 36rem） |
 | 卡內標題 | `psy-card-title`（可放在 `<button>` 內） |
 | 標籤列 | `psy-chip-list` + `psy-chip` |
+| 場館提及 | `psy-venue-list` + `psy-venue-tag`（細框 + location icon，非填色 chip） |
 | Ionic bridge（Mobile） | `tailwind/ionic-bridge.css`（Mimosa 之後載入） |
 | Structured card | `card` / `card__header` / `card__body` / `card__footer` |
 | Form input | `form-input` |
@@ -192,7 +193,15 @@ Mimosa 主入口 `tailwind.css` 末尾已載入 **`overrides.css`**（無 layer�
   </ul>
 
   <p class="psy-kicker-on-card">近期活動</p>
-  <p>Warehouse Resonance</p>
+  <ul class="psy-venue-list" aria-label="近期場館">
+    <li class="psy-venue-tag">
+      <svg class="psy-venue-tag__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M12 21s7-4.35 7-10a7 7 0 1 0-14 0c0 5.65 7 10 7 10Z" />
+        <circle cx="12" cy="11" r="2.5" />
+      </svg>
+      <span class="psy-venue-tag__name">Warehouse Resonance</span>
+    </li>
+  </ul>
 
   <div class="psy-btn-row">
     <button type="button" class="psy-btn">略過</button>
@@ -202,6 +211,8 @@ Mimosa 主入口 `tailwind.css` 末尾已載入 **`overrides.css`**（無 layer�
 ```
 
 `h2` 若在可點擊 `<button>` 內，請用 `psy-card-title`；勿依賴 `.psy-card > h2` 直接子選擇器。
+
+興趣用填色 `psy-chip`；使用者填寫的場館／地點名稱用細框 `psy-venue-tag`（左側 map-pin icon），勿混用 chip 或 `well` 列表。
 
 ## Chat（列表／氣泡／輸入）
 
