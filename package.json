@@ -1,6 +1,6 @@
 {
   "name": "mimosa-design-system",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Mimosa design system — Tailwind v4 tokens, utilities, and product primitives.",
   "license": "MIT",
   "repository": {
@@ -23,6 +23,7 @@
   "exports": {
     ".": "./dist/tailwind.css",
     "./tokens.css": "./dist/tokens.css",
+    "./ops-theme.css": "./dist/ops-theme.css",
     "./tailwind.css": "./dist/tailwind.css",
     "./tailwind/theme.css": "./dist/tailwind/theme.css",
     "./tailwind/base.css": "./dist/tailwind/base.css",
@@ -43,6 +44,7 @@
     "./tailwind/ionic-bridge.css": "./dist/tailwind/ionic-bridge.css",
     "./tailwind/chat.css": "./dist/tailwind/chat.css",
     "./tailwind/workbench.css": "./dist/tailwind/workbench.css",
+    "./tailwind/workbench-ops.css": "./dist/tailwind/workbench-ops.css",
     "./tailwind/overrides.css": "./dist/tailwind/overrides.css",
     "./tokens.json": "./dist/tokens.json"
   },

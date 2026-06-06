@@ -105,6 +105,8 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | 篩選列 | `psy-filter-bar` + `form-select--on-light` |
 | 資料表格容器 | `table-card` / `psy-data-panel` + `data-table` |
 | 維運狀態 badge | `psy-badge-status--warning` / `--processing` / `--success` / `--info` / `--default` |
+| Ops Calm 主題 | `data-psy-theme="ops"`（admin route 根節點） |
+| Ops 修飾類 | `psy-filter-bar--ops` / `table-card--ops` / `form-select--ops` / `psy-btn-primary--ops` |
 
 ## Surface 配對表
 
@@ -123,10 +125,37 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 
 ## Workbench / Admin（B2B 工作台）
 
-**Consumer mode**（`psy-page-bg`、hero 漸層、螢光 CTA）與 **Ops mode**（`psy-page-workbench`、中性底、淺色 data panel）請 route-level 隔離。`psy-btn-secondary` 為消費者並排 CTA **第二順位**（如「感興趣」），**不應**作為 admin 側欄登出預設。
+**Consumer mode**（`psy-page-bg`、hero 漸層、螢光 CTA、3px 黑框、8px 硬陰影）與 **Ops Calm mode**（`data-psy-theme="ops"`、扁平中性底、藍色 primary）請 **route-level 隔離**。
+
+| 模式 | 啟用方式 | 視覺 |
+|------|----------|------|
+| Consumer | 預設（無 attribute） | Acid Neo-Brutalism、萊姆 CTA |
+| Ops Calm | `<html data-psy-theme="ops">` 或 admin 根節點 | 灰／白 workbench、1px 邊框、無 offset shadow |
+
+**禁止** 在 Ops 頁直接使用消費者 `psy-btn-primary`（萊姆）與帶 `4px` offset shadow 的 `form-select`，除非已啟用 `data-psy-theme="ops"` 或加 `--ops` 修飾類。
+
+`psy-btn-secondary` 為消費者並排 CTA **第二順位**（如「感興趣」），**不應**作為 admin 側欄登出預設。
+
+### Ops Calm 範例（推薦 admin 使用）
 
 ```html
-<div class="psy-page-workbench">
+<html data-psy-theme="ops">
+  <body>
+    <div class="psy-page-workbench">
+      <div class="psy-workbench-shell">
+        <!-- 結構同下；token 自動切換為扁平 B2B 視覺 -->
+      </div>
+    </div>
+  </body>
+</html>
+```
+
+靜態參考頁：`examples/admin-reports.html`（對標 Polaris 密度，可作視覺回歸基準）。
+
+### Workbench 結構範例（需搭配 Ops theme）
+
+```html
+<div class="psy-page-workbench" data-psy-theme="ops">
   <div class="psy-workbench-shell">
     <aside class="psy-workbench-sidebar">
       <nav>
@@ -144,17 +173,17 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
         <p class="psy-workbench-page-header__subtitle">審核使用者舉報，依狀態與來源篩選。</p>
       </header>
 
-      <form class="psy-filter-bar">
+      <form class="psy-filter-bar psy-filter-bar--ops">
         <div class="psy-filter-bar__field">
           <label class="psy-filter-bar__label" for="status">狀態</label>
-          <select class="form-select form-select--on-light" id="status">…</select>
+          <select class="form-select form-select--on-light form-select--ops" id="status">…</select>
         </div>
         <div class="psy-filter-bar__actions">
-          <button type="submit" class="psy-btn psy-btn-primary">套用篩選</button>
+          <button type="submit" class="psy-btn psy-btn-primary psy-btn-primary--ops">套用篩選</button>
         </div>
       </form>
 
-      <section class="table-card psy-data-panel">
+      <section class="table-card psy-data-panel table-card--ops">
         <div class="table-card__header">
           <div>
             <h2 class="table-card__title">待處理案件</h2>
@@ -192,7 +221,9 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 </div>
 ```
 
-狀態語意對照：`--warning` 待處理、`--processing` 處理中、`--success` 已結案、`--info` 已檢視、`--default` 已關閉。請保留繁中 label，勿只輸出 API enum。
+狀態語意對照：`--warning` 待處理、`--processing` 處理中、`--success` 已結案、`--info` 已檢視（cyan／indigo，非粉紅）、`--default` 已關閉。請保留繁中 label，勿只輸出 API enum。
+
+啟用 `data-psy-theme="ops"` 時，`--ops` 修飾類可省略（主題已覆寫 token）；過渡期可單獨加修飾類而不切全站 theme。
 
 ## 深底 Hero 頁（訪客著陸／Carousel）
 

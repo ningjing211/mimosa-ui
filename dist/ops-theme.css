@@ -1,0 +1,71 @@
+/**
+ * Ops Calm theme — B2B admin workbench (flat, neutral, data-first).
+ * Apply on admin route root: <html data-psy-theme="ops"> or <div class="psy-page-workbench" data-psy-theme="ops">
+ *
+ * Consumer Acid Neo-Brutalism tokens remain default; Ops overrides only inside this scope.
+ */
+[data-psy-theme="ops"] {
+  --psy-border-width-block: 1px;
+  --psy-border-strong: #e5e7eb;
+  --psy-shadow-hard: 0 1px 2px rgba(17, 24, 39, 0.06);
+  --psy-shadow-soft: 0 1px 2px rgba(17, 24, 39, 0.04);
+
+  --psy-surface-workbench: #111827;
+  --psy-surface-workbench-sidebar: #1f2937;
+  --psy-surface-workbench-panel: #ffffff;
+  --psy-text-workbench-primary: #f9fafb;
+  --psy-text-workbench-muted: #9ca3af;
+  --psy-border-workbench-subtle: #374151;
+  --psy-surface-workbench-nav-active: rgba(255, 255, 255, 0.08);
+  --psy-surface-workbench-nav-hover: rgba(255, 255, 255, 0.05);
+  --psy-workbench-nav-active-accent: #3b82f6;
+
+  --psy-surface-card: #ffffff;
+  --psy-surface-card-muted: #f9fafb;
+  --psy-surface-card-header: #f9fafb;
+  --psy-surface-card-fg: #111827;
+  --psy-surface-card-fg-muted: #6b7280;
+  --psy-surface-card-fg-subtle: #9ca3af;
+  --psy-gradient-card-surface: none;
+
+  --psy-text-on-light: #111827;
+  --psy-text-muted-on-light: #6b7280;
+
+  --psy-action-primary-bg: #2563eb;
+  --psy-action-primary-text: #ffffff;
+  --psy-button-primary-bg: #2563eb;
+  --psy-button-primary-bg-hover: #1d4ed8;
+  --psy-button-primary-bg-active: #1e40af;
+  --psy-button-shadow-offset: 0px;
+  --psy-button-shadow-offset-hover: 0px;
+  --psy-button-shadow-offset-active: 0px;
+
+  --psy-button-ghost-on-workbench-fg: #d1d5db;
+  --psy-button-ghost-on-workbench-border: #4b5563;
+  --psy-button-ghost-on-workbench-bg-hover: rgba(255, 255, 255, 0.06);
+  --psy-button-ghost-on-workbench-bg-active: rgba(255, 255, 255, 0.1);
+
+  --psy-table-wrap-bg: #ffffff;
+  --psy-table-surface: #ffffff;
+  --psy-table-row-bg: #ffffff;
+  --psy-table-row-bg-alt: #f9fafb;
+  --psy-table-row-hover-bg: #f3f4f6;
+  --psy-table-head-bg: #f9fafb;
+  --psy-table-head-fg: #6b7280;
+  --psy-table-head-border-bottom: #e5e7eb;
+  --psy-table-row-divider: #e5e7eb;
+
+  --psy-form-input-border: #e5e7eb;
+  --psy-form-label-text-on-light: #374151;
+
+  --psy-badge-status-warning-bg: #fef3c7;
+  --psy-badge-status-warning-fg: #92400e;
+  --psy-badge-status-processing-bg: #dbeafe;
+  --psy-badge-status-processing-fg: #1e40af;
+  --psy-badge-status-success-bg: #d1fae5;
+  --psy-badge-status-success-fg: #065f46;
+  --psy-badge-status-info-bg: #e0e7ff;
+  --psy-badge-status-info-fg: #3730a3;
+  --psy-badge-status-default-bg: #f3f4f6;
+  --psy-badge-status-default-fg: #4b5563;
+}

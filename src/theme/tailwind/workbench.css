@@ -55,7 +55,7 @@
 
   .psy-workbench-nav__link.is-active {
     background: var(--psy-surface-workbench-nav-active);
-    border-left-color: var(--psy-color-secondary-lime);
+    border-left-color: var(--psy-workbench-nav-active-accent);
     color: var(--psy-text-workbench-primary);
   }
 

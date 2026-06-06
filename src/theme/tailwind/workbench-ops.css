@@ -1,0 +1,89 @@
+/**
+ * Ops Calm component overrides — pair with data-psy-theme="ops" (ops-theme.css).
+ * Modifier classes (--ops) apply calm styling without full theme when needed.
+ */
+@layer components {
+  [data-psy-theme="ops"] .psy-workbench-page-header__title {
+    font-family: var(--psy-font-family-body);
+    font-weight: 700;
+  }
+
+  [data-psy-theme="ops"] .psy-workbench-nav__link.is-active {
+    border-left-width: 2px;
+  }
+
+  [data-psy-theme="ops"] .psy-filter-bar,
+  [data-psy-theme="ops"] .psy-data-panel,
+  [data-psy-theme="ops"] .table-card,
+  [data-psy-theme="ops"] .data-table-wrap {
+    border-width: 1px;
+    box-shadow: var(--psy-shadow-hard);
+    background: var(--psy-surface-workbench-panel);
+  }
+
+  [data-psy-theme="ops"] .form-input,
+  [data-psy-theme="ops"] .form-select,
+  [data-psy-theme="ops"] .form-textarea,
+  [data-psy-theme="ops"] .form-input--on-light,
+  [data-psy-theme="ops"] .form-select--on-light,
+  [data-psy-theme="ops"] .form-textarea--on-light {
+    border-width: 1px;
+    box-shadow: none;
+    background: #ffffff;
+    color: #111827;
+  }
+
+  [data-psy-theme="ops"] .psy-btn {
+    border-width: 1px;
+    box-shadow: none;
+    transform: none;
+  }
+
+  [data-psy-theme="ops"] .psy-btn:hover,
+  [data-psy-theme="ops"] .psy-btn:active {
+    transform: none;
+    box-shadow: none;
+  }
+
+  [data-psy-theme="ops"] .psy-badge-status {
+    border-color: color-mix(in srgb, currentColor 12%, transparent);
+  }
+
+  .psy-filter-bar--ops,
+  .psy-data-panel--ops,
+  .table-card--ops,
+  .data-table-wrap--ops {
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px rgba(17, 24, 39, 0.06);
+    background: #ffffff;
+  }
+
+  .form-select--ops,
+  .form-input--ops {
+    border: 1px solid #e5e7eb;
+    box-shadow: none;
+    background: #ffffff;
+    color: #111827;
+  }
+
+  .psy-btn--ops,
+  .psy-btn-primary--ops {
+    border: 1px solid #1d4ed8;
+    box-shadow: none;
+    background: #2563eb;
+    color: #ffffff;
+  }
+
+  .psy-btn--ops:hover,
+  .psy-btn-primary--ops:hover {
+    background: #1d4ed8;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .data-table--ops thead th {
+    background: #f9fafb;
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+  }
+}

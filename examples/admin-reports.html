@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-psy-theme="ops">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mimosa Ops Calm — Admin Reports Reference</title>
+    <link rel="stylesheet" href="../dist/tailwind.css" />
+  </head>
+  <body>
+    <div class="psy-page-workbench">
+      <div class="psy-workbench-shell">
+        <aside class="psy-workbench-sidebar">
+          <p style="margin: 0; font-weight: 700; font-size: 0.875rem">Rave Admin</p>
+          <nav>
+            <ul class="psy-workbench-nav">
+              <li>
+                <a class="psy-workbench-nav__link is-active" href="#">舉報列表</a>
+              </li>
+              <li>
+                <span class="psy-workbench-nav__link is-disabled">使用者管理（即將推出）</span>
+              </li>
+            </ul>
+          </nav>
+          <button type="button" class="psy-btn psy-btn-ghost-on-workbench psy-btn-block">
+            登出
+          </button>
+        </aside>
+
+        <main class="psy-workbench-main">
+          <header class="psy-workbench-page-header">
+            <h1 class="psy-workbench-page-header__title">舉報列表</h1>
+            <p class="psy-workbench-page-header__subtitle">
+              審核使用者舉報，依狀態與來源篩選。
+            </p>
+          </header>
+
+          <form class="psy-filter-bar">
+            <div class="psy-filter-bar__field">
+              <label class="psy-filter-bar__label" for="status">狀態</label>
+              <select class="form-select form-select--on-light" id="status">
+                <option>全部</option>
+                <option>待處理</option>
+                <option>已檢視</option>
+                <option>已結案</option>
+              </select>
+            </div>
+            <div class="psy-filter-bar__field">
+              <label class="psy-filter-bar__label" for="source">來源</label>
+              <select class="form-select form-select--on-light" id="source">
+                <option>全部</option>
+                <option>聊天</option>
+                <option>個人檔案</option>
+                <option>活動</option>
+              </select>
+            </div>
+            <div class="psy-filter-bar__actions">
+              <button type="submit" class="psy-btn psy-btn-primary">套用篩選</button>
+            </div>
+          </form>
+
+          <section class="table-card psy-data-panel">
+            <div class="table-card__header">
+              <div>
+                <h2 class="table-card__title">待處理案件</h2>
+                <p class="table-card__description">共 3 筆</p>
+              </div>
+            </div>
+            <div class="table-card__body">
+              <div class="data-table-wrap data-table-wrap--sticky-header">
+                <table class="data-table data-table--uniform-rows data-table--sm">
+                  <thead>
+                    <tr>
+                      <th scope="col">狀態</th>
+                      <th scope="col">來源</th>
+                      <th scope="col">對象</th>
+                      <th scope="col">時間</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="psy-badge-status psy-badge-status--warning">待處理</span>
+                      </td>
+                      <td>聊天</td>
+                      <td class="data-table__cell--primary">user_42</td>
+                      <td class="data-table__cell--muted">2026-06-06</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="psy-badge-status psy-badge-status--info">已檢視</span>
+                      </td>
+                      <td>個人檔案</td>
+                      <td class="data-table__cell--primary">user_17</td>
+                      <td class="data-table__cell--muted">2026-06-05</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="psy-badge-status psy-badge-status--success">已結案</span>
+                      </td>
+                      <td>活動</td>
+                      <td class="data-table__cell--primary">event_9</td>
+                      <td class="data-table__cell--muted">2026-06-04</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

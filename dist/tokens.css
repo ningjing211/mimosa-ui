@@ -184,6 +184,7 @@
   --psy-surface-workbench-nav-hover: color-mix(in srgb, var(--psy-text-primary) 8%, var(--psy-surface-workbench-sidebar));
   --psy-workbench-sidebar-width: 240px;
   --psy-workbench-content-max-width: 72rem;
+  --psy-workbench-nav-active-accent: var(--psy-color-secondary-lime);
 
   --psy-text-primary: var(--psy-color-primary-on-dark);
   --psy-text-secondary: var(--psy-color-primary-on-dark-muted);
@@ -288,7 +289,11 @@
   --psy-badge-status-processing-fg: var(--psy-color-base);
   --psy-badge-status-success-bg: var(--psy-alert-success-bg);
   --psy-badge-status-success-fg: var(--psy-color-base);
-  --psy-badge-status-info-bg: var(--psy-alert-info-bg);
+  --psy-badge-status-info-bg: color-mix(
+    in srgb,
+    var(--psy-color-secondary-cyan) 22%,
+    var(--psy-surface-card)
+  );
   --psy-badge-status-info-fg: var(--psy-color-base);
   --psy-badge-status-default-bg: color-mix(in srgb, var(--psy-color-base) 8%, var(--psy-surface-card));
   --psy-badge-status-default-fg: var(--psy-text-muted-on-light);

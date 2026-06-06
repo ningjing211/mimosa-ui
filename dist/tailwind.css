@@ -23,11 +23,13 @@
  *  19. ionic-bridge.css  — Ionic 8 bridge (optional partial, not in default stack)
  *  20. chat.css          — .psy-chat-* (list / bubbles / composer)
  *  21. workbench.css     — .psy-page-workbench / admin data panel / filter bar
- *  22. overrides.css     — unlayered .psy-btn reset shield (after layered stack)
+ *  22. workbench-ops.css — Ops Calm overrides (data-psy-theme="ops")
+ *  23. overrides.css     — unlayered .psy-btn reset shield (after layered stack)
  *
  * Peer dependency: tailwindcss ^4
  */
 @import "./tokens.css";
+@import "./ops-theme.css";
 @import "tailwindcss";
 @import "./tailwind/theme.css";
 @import "./tailwind/base.css";
@@ -47,4 +49,5 @@
 @import "./tailwind/flow-page.css";
 @import "./tailwind/chat.css";
 @import "./tailwind/workbench.css";
+@import "./tailwind/workbench-ops.css";
 @import "./tailwind/overrides.css";

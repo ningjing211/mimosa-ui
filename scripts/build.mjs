@@ -27,9 +27,12 @@ async function build() {
   await rm(distDir, { recursive: true, force: true });
   await mkdir(distDir, { recursive: true });
 
-  const [tokensCss, tailwindCss] = await Promise.all([
+  const opsThemeSourcePath = path.resolve(srcRoot, "ops-theme.css");
+
+  const [tokensCss, tailwindCss, opsThemeCss] = await Promise.all([
     readFile(tokenSourcePath, "utf8"),
-    readFile(path.resolve(srcRoot, "tailwind.css"), "utf8")
+    readFile(path.resolve(srcRoot, "tailwind.css"), "utf8"),
+    readFile(opsThemeSourcePath, "utf8")
   ]);
 
   const tokenJson = JSON.stringify(extractTokenMap(tokensCss), null, 2);
@@ -56,6 +59,7 @@ async function build() {
     "ionic-bridge.css",
     "chat.css",
     "workbench.css",
+    "workbench-ops.css",
     "overrides.css"
   ];
 
@@ -63,6 +67,7 @@ async function build() {
 
   await Promise.all([
     writeFile(path.resolve(distDir, "tokens.css"), tokensCss, "utf8"),
+    writeFile(path.resolve(distDir, "ops-theme.css"), opsThemeCss, "utf8"),
     writeFile(path.resolve(distDir, "tokens.json"), tokenJson, "utf8"),
     writeFile(path.resolve(distDir, "tailwind.css"), tailwindCss, "utf8"),
     ...tailwindPartials.map((file) =>
