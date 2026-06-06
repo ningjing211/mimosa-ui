@@ -85,6 +85,17 @@
     color: var(--psy-text-workbench-muted);
   }
 
+  /*
+   * 淺色 panel（psy-card、table-card）內勿用預設 page header 色（為深色 workbench 主區設計）。
+   */
+  .psy-workbench-page-header--on-panel .psy-workbench-page-header__title {
+    color: var(--psy-text-on-light);
+  }
+
+  .psy-workbench-page-header--on-panel .psy-workbench-page-header__subtitle {
+    color: var(--psy-text-muted-on-light);
+  }
+
   .psy-filter-bar {
     display: flex;
     flex-wrap: wrap;

@@ -101,7 +101,9 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | Empty state status | `empty-state__status-list` / `empty-state__status-item` |
 | Workbench 頁底 | `psy-page-workbench` / `psy-workbench-shell` |
 | Workbench 側欄 | `psy-workbench-sidebar` / `psy-workbench-nav` |
-| Workbench 標題 | `psy-workbench-page-header` |
+| Workbench 標題 | `psy-workbench-page-header`（深色主區） |
+| Panel 內標題 | `psy-card-title` + `psy-lead-on-light`；或 `psy-workbench-page-header--on-panel` |
+| TableCard 非表格 body | `table-card__body--content` |
 | 篩選列 | `psy-filter-bar` + `form-select--on-light` |
 | 資料表格容器 | `table-card` / `psy-data-panel` + `data-table` |
 | 維運狀態 badge | `psy-badge-status--warning` / `--processing` / `--success` / `--info` / `--default` |
@@ -224,6 +226,36 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 狀態語意對照：`--warning` 待處理、`--processing` 處理中、`--success` 已結案、`--info` 已檢視（cyan／indigo，非粉紅）、`--default` 已關閉。請保留繁中 label，勿只輸出 API enum。
 
 啟用 `data-psy-theme="ops"` 時，`--ops` 修飾類可省略（主題已覆寫 token）；過渡期可單獨加修飾類而不切全站 theme。
+
+### TableCard 契約（列表 vs 詳情）
+
+`table-card__header` 為 `display:flex; justify-content: space-between`。**標題與說明須包在同一 wrapper**，否則會左右分列錯位：
+
+```html
+<div class="table-card__header">
+  <div>
+    <h2 class="table-card__title">執行處置</h2>
+    <p class="table-card__description">選擇處置動作並填寫說明。</p>
+  </div>
+</div>
+```
+
+`table-card__body` **預設無 padding**（假設內容為 `data-table-wrap`）。放 metadata `<dl>`、表單等非表格內容時：
+
+- 加 `table-card__body--content`，或
+- 在 `data-psy-theme="ops"` 下，無 `data-table-wrap` 的 `__body` 會自動補 `--psy-space-6` padding 與 on-light 文字色。
+
+### Admin 登入 card（淺色 panel）
+
+`psy-workbench-page-header` 的 title 色為 **深色 workbench 主區**（淺字），**勿**直接放在 `psy-card` 內。登入／置中 card 請用：
+
+```html
+<section class="psy-card">
+  <h1 class="psy-card-title">管理者登入</h1>
+  <p class="psy-lead-on-light">請使用管理員帳號登入。</p>
+  <input class="form-input form-input--on-light" />
+</section>
+```
 
 ## 深底 Hero 頁（訪客著陸／Carousel）
 

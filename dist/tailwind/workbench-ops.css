@@ -33,6 +33,21 @@
     color: #111827;
   }
 
+  [data-psy-theme="ops"] .form-input::placeholder,
+  [data-psy-theme="ops"] .form-textarea::placeholder {
+    color: var(--psy-form-placeholder-text-on-light);
+    opacity: 1;
+  }
+
+  [data-psy-theme="ops"] .table-card__body,
+  [data-psy-theme="ops"] .psy-data-panel .table-card__body {
+    color: var(--psy-text-on-light);
+  }
+
+  [data-psy-theme="ops"] .table-card__body:not(:has(.data-table-wrap)) {
+    padding: var(--psy-space-6);
+  }
+
   [data-psy-theme="ops"] .psy-btn {
     border-width: 1px;
     box-shadow: none;
@@ -64,6 +79,11 @@
     box-shadow: none;
     background: #ffffff;
     color: #111827;
+  }
+
+  .form-input--ops::placeholder {
+    color: #6b7280;
+    opacity: 1;
   }
 
   .psy-btn--ops,

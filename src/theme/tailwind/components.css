@@ -115,6 +115,16 @@
     text-transform: none;
   }
 
+  .psy-lead-on-light {
+    margin: 0;
+    color: var(--psy-text-muted-on-light);
+    font-size: var(--psy-font-size-body);
+    font-weight: var(--psy-font-weight-body);
+    line-height: var(--psy-line-height-body);
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
   .psy-text-meta-on-dark,
   .psy-meta-on-dark {
     margin: 0;

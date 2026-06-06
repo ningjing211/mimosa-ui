@@ -55,6 +55,16 @@
     min-width: 0;
   }
 
+  /* 非表格內容（metadata dl、表單等）；表格場景請省略，由 data-table 儲存格自帶 padding */
+  .table-card__body--content {
+    padding: var(--psy-space-6);
+    color: var(--psy-text-on-light);
+  }
+
+  .table-card__body--content > :last-child {
+    margin-bottom: 0;
+  }
+
   /* —— Wrap + base table —— */
   .data-table-wrap {
     overflow-x: auto;
