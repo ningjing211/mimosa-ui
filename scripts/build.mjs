@@ -55,6 +55,7 @@ async function build() {
     "flow-page.css",
     "ionic-bridge.css",
     "chat.css",
+    "workbench.css",
     "overrides.css"
   ];
 

@@ -57,6 +57,7 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 - Status / badge：不要只靠顏色傳達狀態，請保留文字 label。`empty-state__status-item` 會提供高對比文字、外框與膠囊背景。
 - **禁止** 在 `color-scheme: dark` 且深紫 hero 背景上硬編碼 `#555`、`#666`、`#ccc` 等淺色頁灰字；請改用 Mimosa on-dark class 或 `--psy-text-*-on-dark` token。
 - **禁止** 在 `--psy-surface-card` / `psy-card` / `psy-chat-*` 等 **淺色 elevated** 區塊上使用 `--psy-text-primary`、`--psy-text-secondary`（那是深底 hero 用淺字）。應使用 `--psy-text-on-light`、`--psy-surface-card-fg`、`--psy-text-muted-on-light`。
+- **禁止** 將 `--psy-gradient-hero-panel` 作為 **admin／B2B 工作台** 全頁背景；資料密集頁請用 `psy-page-workbench`（中性底 + 淺色 data panel）。
 
 ## 常用公開 Class
 
@@ -73,6 +74,7 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | 深底 meta | `psy-text-meta-on-dark`（如 `1 / 3`） |
 | 深底連結 | `psy-link-on-dark` |
 | 深底 tertiary 按鈕 | `psy-btn-ghost-on-dark` |
+| Workbench tertiary | `psy-btn-ghost-on-workbench`（側欄登出等，**非** `psy-btn-secondary`） |
 | 深底 icon 控制 | `psy-icon-btn-on-dark`（輪播箭頭等） |
 | 深底輪播 | `carousel--on-dark` / `carousel__meta` / `psy-carousel-controls` |
 | 深底分頁 alias | `psy-pagination-on-dark`（同 `carousel__meta`） |
@@ -97,6 +99,12 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | Checkbox on light card | `form-choice--on-light` + `psy-checkbox psy-checkbox--on-light` |
 | Empty state | `empty-state` / `empty-state__title` / `empty-state__text` / `empty-state__actions` |
 | Empty state status | `empty-state__status-list` / `empty-state__status-item` |
+| Workbench 頁底 | `psy-page-workbench` / `psy-workbench-shell` |
+| Workbench 側欄 | `psy-workbench-sidebar` / `psy-workbench-nav` |
+| Workbench 標題 | `psy-workbench-page-header` |
+| 篩選列 | `psy-filter-bar` + `form-select--on-light` |
+| 資料表格容器 | `table-card` / `psy-data-panel` + `data-table` |
+| 維運狀態 badge | `psy-badge-status--warning` / `--processing` / `--success` / `--info` / `--default` |
 
 ## Surface 配對表
 
@@ -110,6 +118,81 @@ Mimosa 使用「surface + on-surface」的配對概念：背景 surface 與文�
 | 設定／同意勾選（card 內） | `form-choice--on-light` 標籤 | — | — | — | `psy-checkbox--on-light` 萊姆勾選 |
 | 聊天列表／氣泡 | `psy-chat-list-item__name` | `psy-chat-list-item__preview` | — | `psy-btn` in composer | `psy-btn-primary` |
 | 深底 + 螢光 accent | `psy-kicker-on-dark` | `psy-lead-on-dark` | `psy-meta-on-dark` | `psy-btn-ghost-on-dark` | `psy-btn-primary` |
+| Workbench（admin） | `psy-workbench-page-header__title` | `psy-workbench-page-header__subtitle` | — | `psy-btn-ghost-on-workbench` | `psy-btn-primary`（篩選套用） |
+| Workbench panel 內表格 | `table-card__title` | `table-card__description` | `data-table__cell--muted` | — | — |
+
+## Workbench / Admin（B2B 工作台）
+
+**Consumer mode**（`psy-page-bg`、hero 漸層、螢光 CTA）與 **Ops mode**（`psy-page-workbench`、中性底、淺色 data panel）請 route-level 隔離。`psy-btn-secondary` 為消費者並排 CTA **第二順位**（如「感興趣」），**不應**作為 admin 側欄登出預設。
+
+```html
+<div class="psy-page-workbench">
+  <div class="psy-workbench-shell">
+    <aside class="psy-workbench-sidebar">
+      <nav>
+        <ul class="psy-workbench-nav">
+          <li><a class="psy-workbench-nav__link is-active" href="/admin/reports">舉報列表</a></li>
+          <li><span class="psy-workbench-nav__link is-disabled">使用者管理（即將推出）</span></li>
+        </ul>
+      </nav>
+      <button type="button" class="psy-btn psy-btn-ghost-on-workbench psy-btn-block">登出</button>
+    </aside>
+
+    <main class="psy-workbench-main">
+      <header class="psy-workbench-page-header">
+        <h1 class="psy-workbench-page-header__title">舉報列表</h1>
+        <p class="psy-workbench-page-header__subtitle">審核使用者舉報，依狀態與來源篩選。</p>
+      </header>
+
+      <form class="psy-filter-bar">
+        <div class="psy-filter-bar__field">
+          <label class="psy-filter-bar__label" for="status">狀態</label>
+          <select class="form-select form-select--on-light" id="status">…</select>
+        </div>
+        <div class="psy-filter-bar__actions">
+          <button type="submit" class="psy-btn psy-btn-primary">套用篩選</button>
+        </div>
+      </form>
+
+      <section class="table-card psy-data-panel">
+        <div class="table-card__header">
+          <div>
+            <h2 class="table-card__title">待處理案件</h2>
+            <p class="table-card__description">共 12 筆</p>
+          </div>
+        </div>
+        <div class="table-card__body">
+          <div class="data-table-wrap data-table-wrap--sticky-header">
+            <table class="data-table data-table--uniform-rows data-table--sm">
+              <thead>
+                <tr>
+                  <th scope="col">狀態</th>
+                  <th scope="col">來源</th>
+                  <th scope="col">時間</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="psy-badge-status psy-badge-status--warning">待處理</span></td>
+                  <td>聊天</td>
+                  <td class="data-table__cell--muted">2026-06-05</td>
+                </tr>
+                <tr>
+                  <td><span class="psy-badge-status psy-badge-status--success">已結案</span></td>
+                  <td>個人檔案</td>
+                  <td class="data-table__cell--muted">2026-06-04</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+```
+
+狀態語意對照：`--warning` 待處理、`--processing` 處理中、`--success` 已結案、`--info` 已檢視、`--default` 已關閉。請保留繁中 label，勿只輸出 API enum。
 
 ## 深底 Hero 頁（訪客著陸／Carousel）
 

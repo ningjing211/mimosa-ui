@@ -40,6 +40,25 @@
     background: var(--psy-button-ghost-on-dark-bg-active);
   }
 
+  .psy-btn--ghost-on-workbench,
+  .psy-btn-ghost-on-workbench {
+    background: var(--psy-button-ghost-on-workbench-bg);
+    color: var(--psy-button-ghost-on-workbench-fg);
+    border-color: var(--psy-button-ghost-on-workbench-border);
+    box-shadow: var(--psy-shadow-soft);
+  }
+
+  .psy-btn--ghost-on-workbench:hover,
+  .psy-btn-ghost-on-workbench:hover {
+    background: var(--psy-button-ghost-on-workbench-bg-hover);
+    color: var(--psy-text-workbench-primary);
+  }
+
+  .psy-btn--ghost-on-workbench:active,
+  .psy-btn-ghost-on-workbench:active {
+    background: var(--psy-button-ghost-on-workbench-bg-active);
+  }
+
   .psy-btn--icon {
     min-width: var(--psy-button-icon-size);
     width: var(--psy-button-icon-size);

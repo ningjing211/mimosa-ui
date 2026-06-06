@@ -188,6 +188,19 @@
   color: var(--psy-form-hint-text-on-light);
 }
 
+.form-input--on-light,
+.form-select--on-light,
+.form-textarea--on-light {
+  color: var(--psy-text-on-light);
+  background: var(--psy-surface-card);
+  border-color: var(--psy-form-input-border);
+}
+
+.form-input--on-light::placeholder,
+.form-textarea--on-light::placeholder {
+  color: var(--psy-form-placeholder-text-on-light);
+}
+
 .form-input,
 .form-select,
 .form-textarea {
